@@ -39,35 +39,64 @@ func init() {
 }
 
 var messageKeyToIndex = map[string]int{
-	"About":               2,
-	"Astronomy Education": 1,
-	"EduLab":              0,
-	"Home":                5,
-	"If you would like to contribute to the project, for example, adding more translations, get in touch:": 7,
-	"Internal Server Error": 3,
-	"Page Not Found":        4,
-	"References":            6,
-	"Source Code":           8,
+	"About":               12,
+	"Astronomy Education": 11,
+	"Back":                4,
+	"Created":             2,
+	"EduLab":              10,
+	"EduLab brings **data-driven** experimentation into the classroom, empowering you to evaluate and refine teaching methods across distinct **cohorts**.\n\nBy running controlled pre- and post-assessments, you gain **evidence-based insights** into how different teaching approaches impact learning outcomes.\n\nCompare cohorts, **measure learning gains**, and adapt strategies to elevate student engagement—all supported by real-time educational data.": 17,
+	"Empowering Educators Through Evidence-Based Insights": 16,
+	"Experiment %s": 5,
+	"Experiments":   0,
+	"Home":          15,
+	"If you would like to contribute to the project, for example, adding more translations, get in touch:": 21,
+	"Internal Server Error":    13,
+	"Join":                     7,
+	"Name":                     1,
+	"New Experiment":           18,
+	"No available experiments": 3,
+	"Page Not Found":           14,
+	"Previous Experiments":     19,
+	"References":               20,
+	"Results":                  8,
+	"Share Link:":              6,
+	"Source Code":              22,
+	"Statistics":               9,
 }
 
-var enIndex = []uint32{ // 10 elements
-	0x00000000, 0x00000007, 0x0000001b, 0x00000021,
-	0x00000037, 0x00000046, 0x0000004b, 0x00000056,
-	0x000000bb, 0x000000c7,
-} // Size: 64 bytes
+var enIndex = []uint32{ // 24 elements
+	0x00000000, 0x0000000c, 0x00000011, 0x00000019,
+	0x00000032, 0x00000037, 0x00000048, 0x00000054,
+	0x00000059, 0x00000061, 0x0000006c, 0x00000073,
+	0x00000087, 0x0000008d, 0x000000a3, 0x000000b2,
+	0x000000b7, 0x000000ec, 0x000002aa, 0x000002b9,
+	0x000002ce, 0x000002d9, 0x0000033e, 0x0000034a,
+} // Size: 120 bytes
 
-const enData string = "" + // Size: 199 bytes
-	"\x02EduLab\x02Astronomy Education\x02About\x02Internal Server Error\x02P" +
-	"age Not Found\x02Home\x02References\x02If you would like to contribute t" +
-	"o the project, for example, adding more translations, get in touch:\x02S" +
-	"ource Code"
+const enData string = "" + // Size: 842 bytes
+	"\x02Experiments\x02Name\x02Created\x02No available experiments\x02Back" +
+	"\x02Experiment %[1]s\x02Share Link:\x02Join\x02Results\x02Statistics\x02" +
+	"EduLab\x02Astronomy Education\x02About\x02Internal Server Error\x02Page " +
+	"Not Found\x02Home\x02Empowering Educators Through Evidence-Based Insight" +
+	"s\x02EduLab brings **data-driven** experimentation into the classroom, e" +
+	"mpowering you to evaluate and refine teaching methods across distinct **" +
+	"cohorts**.\x0a\x0aBy running controlled pre- and post-assessments, you g" +
+	"ain **evidence-based insights** into how different teaching approaches i" +
+	"mpact learning outcomes.\x0a\x0aCompare cohorts, **measure learning gain" +
+	"s**, and adapt strategies to elevate student engagement—all supported by" +
+	" real-time educational data.\x02New Experiment\x02Previous Experiments" +
+	"\x02References\x02If you would like to contribute to the project, for ex" +
+	"ample, adding more translations, get in touch:\x02Source Code"
 
-var pt_BRIndex = []uint32{ // 10 elements
+var pt_BRIndex = []uint32{ // 24 elements
 	0x00000000, 0x00000000, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000,
-} // Size: 64 bytes
+	0x00000000, 0x00000000, 0x00000000, 0x00000000,
+	0x00000000, 0x00000000, 0x00000000, 0x00000000,
+	0x00000000, 0x00000000, 0x00000000, 0x00000000,
+	0x00000000, 0x00000000, 0x00000000, 0x00000000,
+} // Size: 120 bytes
 
 const pt_BRData string = ""
 
-// Total table size 327 bytes (0KiB); checksum: DBCF6017
+// Total table size 1082 bytes (1KiB); checksum: 17D2544E

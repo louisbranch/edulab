@@ -2,6 +2,66 @@
     "language": "pt-BR",
     "messages": [
         {
+            "id": "Experiments",
+            "message": "Experiments",
+            "translation": ""
+        },
+        {
+            "id": "Name",
+            "message": "Name",
+            "translation": ""
+        },
+        {
+            "id": "Created",
+            "message": "Created",
+            "translation": ""
+        },
+        {
+            "id": "No available experiments",
+            "message": "No available experiments",
+            "translation": ""
+        },
+        {
+            "id": "Back",
+            "message": "Back",
+            "translation": ""
+        },
+        {
+            "id": "Experiment {Name}",
+            "message": "Experiment {Name}",
+            "translation": "",
+            "placeholders": [
+                {
+                    "id": "Name",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "name"
+                }
+            ]
+        },
+        {
+            "id": "Share Link:",
+            "message": "Share Link:",
+            "translation": ""
+        },
+        {
+            "id": "Join",
+            "message": "Join",
+            "translation": ""
+        },
+        {
+            "id": "Results",
+            "message": "Results",
+            "translation": ""
+        },
+        {
+            "id": "Statistics",
+            "message": "Statistics",
+            "translation": ""
+        },
+        {
             "id": "EduLab",
             "message": "EduLab",
             "translation": ""
@@ -29,6 +89,26 @@
         {
             "id": "Home",
             "message": "Home",
+            "translation": ""
+        },
+        {
+            "id": "Empowering Educators Through Evidence-Based Insights",
+            "message": "Empowering Educators Through Evidence-Based Insights",
+            "translation": ""
+        },
+        {
+            "id": "EduLab brings **data-driven** experimentation into the classroom, empowering you to evaluate and refine teaching methods across distinct **cohorts**.\n\nBy running controlled pre- and post-assessments, you gain **evidence-based insights** into how different teaching approaches impact learning outcomes.\n\nCompare cohorts, **measure learning gains**, and adapt strategies to elevate student engagement—all supported by real-time educational data.",
+            "message": "EduLab brings **data-driven** experimentation into the classroom, empowering you to evaluate and refine teaching methods across distinct **cohorts**.\n\nBy running controlled pre- and post-assessments, you gain **evidence-based insights** into how different teaching approaches impact learning outcomes.\n\nCompare cohorts, **measure learning gains**, and adapt strategies to elevate student engagement—all supported by real-time educational data.",
+            "translation": ""
+        },
+        {
+            "id": "New Experiment",
+            "message": "New Experiment",
+            "translation": ""
+        },
+        {
+            "id": "Previous Experiments",
+            "message": "Previous Experiments",
             "translation": ""
         },
         {

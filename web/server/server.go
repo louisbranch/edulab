@@ -22,6 +22,7 @@ func (srv *Server) NewServeMux() *http.ServeMux {
 	mux.Handle("/edulab/assets/", http.StripPrefix("/edulab/assets/", srv.Assets))
 
 	mux.HandleFunc("/edulab/about/", srv.about)
+	mux.HandleFunc("/edulab/experiments/", srv.experiments)
 
 	mux.HandleFunc("/edulab/", srv.index)
 	mux.HandleFunc("/", srv.astro)
@@ -46,10 +47,10 @@ func (srv *Server) index(w http.ResponseWriter, r *http.Request) {
 	page.Title = printer.Sprintf("EduLab")
 	page.Partials = []string{"index"}
 	page.Content = struct {
-		Tagline       string
-		Introduction  string
-		NewExperiment string
-		PastResults   string
+		Tagline             string
+		Introduction        string
+		NewExperiment       string
+		PreviousExperiments string
 	}{
 		Tagline: printer.Sprintf("Empowering Educators Through Evidence-Based Insights"),
 		Introduction: printer.Sprintf(`EduLab brings **data-driven** experimentation into the classroom, empowering you to evaluate and refine teaching methods across distinct **cohorts**.
@@ -57,8 +58,8 @@ func (srv *Server) index(w http.ResponseWriter, r *http.Request) {
 By running controlled pre- and post-assessments, you gain **evidence-based insights** into how different teaching approaches impact learning outcomes.
 
 Compare cohorts, **measure learning gains**, and adapt strategies to elevate student engagement—all supported by real-time educational data.`),
-		NewExperiment: printer.Sprintf("New Experiment"),
-		PastResults:   printer.Sprintf("Past Results"),
+		NewExperiment:       printer.Sprintf("New Experiment"),
+		PreviousExperiments: printer.Sprintf("Previous Experiments"),
 	}
 
 	srv.render(w, page)

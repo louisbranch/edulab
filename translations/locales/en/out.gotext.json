@@ -2,6 +2,86 @@
     "language": "en",
     "messages": [
         {
+            "id": "Experiments",
+            "message": "Experiments",
+            "translation": "Experiments",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Name",
+            "message": "Name",
+            "translation": "Name",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Created",
+            "message": "Created",
+            "translation": "Created",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "No available experiments",
+            "message": "No available experiments",
+            "translation": "No available experiments",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Back",
+            "message": "Back",
+            "translation": "Back",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Experiment {Name}",
+            "message": "Experiment {Name}",
+            "translation": "Experiment {Name}",
+            "translatorComment": "Copied from source.",
+            "placeholders": [
+                {
+                    "id": "Name",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "name"
+                }
+            ],
+            "fuzzy": true
+        },
+        {
+            "id": "Share Link:",
+            "message": "Share Link:",
+            "translation": "Share Link:",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Join",
+            "message": "Join",
+            "translation": "Join",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Results",
+            "message": "Results",
+            "translation": "Results",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Statistics",
+            "message": "Statistics",
+            "translation": "Statistics",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
             "id": "EduLab",
             "message": "EduLab",
             "translation": "EduLab",
@@ -40,6 +120,34 @@
             "id": "Home",
             "message": "Home",
             "translation": "Home",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Empowering Educators Through Evidence-Based Insights",
+            "message": "Empowering Educators Through Evidence-Based Insights",
+            "translation": "Empowering Educators Through Evidence-Based Insights",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "EduLab brings **data-driven** experimentation into the classroom, empowering you to evaluate and refine teaching methods across distinct **cohorts**.\n\nBy running controlled pre- and post-assessments, you gain **evidence-based insights** into how different teaching approaches impact learning outcomes.\n\nCompare cohorts, **measure learning gains**, and adapt strategies to elevate student engagement—all supported by real-time educational data.",
+            "message": "EduLab brings **data-driven** experimentation into the classroom, empowering you to evaluate and refine teaching methods across distinct **cohorts**.\n\nBy running controlled pre- and post-assessments, you gain **evidence-based insights** into how different teaching approaches impact learning outcomes.\n\nCompare cohorts, **measure learning gains**, and adapt strategies to elevate student engagement—all supported by real-time educational data.",
+            "translation": "EduLab brings **data-driven** experimentation into the classroom, empowering you to evaluate and refine teaching methods across distinct **cohorts**.\n\nBy running controlled pre- and post-assessments, you gain **evidence-based insights** into how different teaching approaches impact learning outcomes.\n\nCompare cohorts, **measure learning gains**, and adapt strategies to elevate student engagement—all supported by real-time educational data.",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "New Experiment",
+            "message": "New Experiment",
+            "translation": "New Experiment",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Previous Experiments",
+            "message": "Previous Experiments",
+            "translation": "Previous Experiments",
             "translatorComment": "Copied from source.",
             "fuzzy": true
         },
