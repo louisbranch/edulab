@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{{ .Website }}</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #131a2e;
+            color: #8ac5d5;
+            text-align: center;
+        }
+        ul {
+            padding-inline-start: 0;
+            font-size: 1.5em;
+            list-style: none;
+        }
+        a, a:visited {
+            color: #8ac5d5;
+            text-decoration: none;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>{{ .Website }}</h1>
+    <ul>
+        <li>
+            <a href="/edulab">/edulab</a>
+        </li>
+    </ul>
+  </body>
+</html>
