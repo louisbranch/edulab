@@ -1,0 +1,42 @@
+version: '3'
+services:
+  server:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - "8080:80"
+    environment:
+      - VIRTUAL_HOST=your_domain
+      - LETSENCRYPT_HOST=your_domain
+      - PORT=80
+      - FILES_PATH=/var/www
+      - POSTGRES_USER=development
+      - POSTGRES_PASSWORD=development
+      - POSTGRES_HOSTNAME=postgres
+      - POSTGRES_DB=edulab
+    depends_on:
+      - postgres
+    networks:
+      - edulab
+
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=development
+      - POSTGRES_PASSWORD=development
+      - POSTGRES_DB=edulab
+    ports:
+      - '1234:5432'
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - edulab
+
+volumes:
+  pg_data:
+
+networks:
+  edulab:
+    driver: bridge
