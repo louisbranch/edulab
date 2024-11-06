@@ -1,2 +1,18 @@
 {{ define "content" }}
+<div class="hero">
+    <h2>{{ .Tagline }}</h2>
+    <p>{{markdown .Introduction }}</p>
+</div>
+<nav>
+    <ul>
+        <li>
+            <form action="/edulab/experiments/new" method="post">
+                <button class="pure-button pure-button-primary" type="submit">{{ .NewExperiment }}</button>
+            </form>
+        </li>
+        <li>
+            <a class="pure-button" href="/edulab/results">{{ .PastResults }}</a>
+        </li>
+    </ul>
+</nav>
 {{ end }}

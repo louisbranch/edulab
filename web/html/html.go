@@ -1,10 +1,12 @@
 package html
 
 import (
+	"bytes"
 	"encoding/json"
 	"html"
 	"html/template"
 	"io"
+	"log"
 	"path"
 	"path/filepath"
 	"sort"
@@ -12,6 +14,7 @@ import (
 	"sync"
 
 	"github.com/louisbranch/edulab/web"
+	"github.com/yuin/goldmark"
 )
 
 type HTML struct {
@@ -45,11 +48,6 @@ func (h *HTML) Render(w io.Writer, page web.Page) error {
 	return err
 }
 
-var fns = template.FuncMap{
-	"add":     add,
-	"marshal": marshal,
-}
-
 func (h *HTML) parse(names ...string) (tpl *template.Template, err error) {
 	cp := make([]string, len(names))
 	copy(cp, names)
@@ -59,6 +57,12 @@ func (h *HTML) parse(names ...string) (tpl *template.Template, err error) {
 	h.sync.RLock()
 	tpl, ok := h.cache[id]
 	h.sync.RUnlock()
+
+	fns := template.FuncMap{
+		"add":      add,
+		"marshal":  marshal,
+		"markdown": markdown,
+	}
 
 	if !ok {
 		tpl = template.New(path.Base(names[0])).Funcs(fns)
@@ -82,4 +86,13 @@ func add(a, b int) int {
 func marshal(v any) string {
 	s, _ := json.Marshal(v)
 	return html.UnescapeString(string(s))
+}
+
+func markdown(input string) template.HTML {
+	var buf bytes.Buffer
+	if err := goldmark.Convert([]byte(input), &buf); err != nil {
+		log.Println("Error converting Markdown:", err)
+		return ""
+	}
+	return template.HTML(buf.String()) // Safe because goldmark escapes HTML
 }

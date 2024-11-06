@@ -99,15 +99,11 @@ form.pure-form > input {
 }
 
 .hero {
-    margin: 2em 0;
+    margin: 0 0 2em 0;
 }
 
 .hero h2 {
     text-align: center;
-}
-
-.hero p {
-    text-align: justify;
 }
 
 footer {
