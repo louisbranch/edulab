@@ -70,16 +70,8 @@ func (srv *Server) experiments(w http.ResponseWriter, r *http.Request) {
 		page.Partials = []string{"experiment"}
 		page.Content = struct {
 			Experiment edulab.Experiment
-			Share      string
-			Join       string
-			Results    string
-			Statistics string
 		}{
 			Experiment: experiment,
-			Share:      printer.Sprintf("Share Link:"),
-			Join:       printer.Sprintf("Join"),
-			Results:    printer.Sprintf("Results"),
-			Statistics: printer.Sprintf("Statistics"),
 		}
 
 		srv.render(w, page)

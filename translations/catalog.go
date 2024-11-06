@@ -39,64 +39,72 @@ func init() {
 }
 
 var messageKeyToIndex = map[string]int{
-	"About":               12,
-	"Astronomy Education": 11,
+	"About":               8,
+	"Astronomy Education": 7,
 	"Back":                4,
 	"Created":             2,
-	"EduLab":              10,
-	"EduLab brings **data-driven** experimentation into the classroom, empowering you to evaluate and refine teaching methods across distinct **cohorts**.\n\nBy running controlled pre- and post-assessments, you gain **evidence-based insights** into how different teaching approaches impact learning outcomes.\n\nCompare cohorts, **measure learning gains**, and adapt strategies to elevate student engagement—all supported by real-time educational data.": 17,
-	"Empowering Educators Through Evidence-Based Insights": 16,
+	"EduLab":              6,
+	"EduLab brings **data-driven** experimentation into the classroom, empowering you to evaluate and refine teaching methods across distinct **cohorts**.\n\nBy running controlled pre- and post-assessments, you gain **evidence-based insights** into how different teaching approaches impact learning outcomes.\n\nCompare cohorts, **measure learning gains**, and adapt strategies to elevate student engagement—all supported by real-time educational data.": 13,
+	"Empowering Educators Through Evidence-Based Insights": 12,
 	"Experiment %s": 5,
 	"Experiments":   0,
-	"Home":          15,
-	"If you would like to contribute to the project, for example, adding more translations, get in touch:": 21,
-	"Internal Server Error":    13,
-	"Join":                     7,
+	"Home":          11,
+	"If you would like to contribute to the project, for example, adding more translations, get in touch:": 17,
+	"Internal Server Error":    9,
 	"Name":                     1,
-	"New Experiment":           18,
+	"New Experiment":           14,
 	"No available experiments": 3,
-	"Page Not Found":           14,
-	"Previous Experiments":     19,
-	"References":               20,
-	"Results":                  8,
-	"Share Link:":              6,
-	"Source Code":              22,
-	"Statistics":               9,
+	"Page Not Found":           10,
+	"Previous Experiments":     15,
+	"References":               16,
+	"Source Code":              18,
 }
 
-var enIndex = []uint32{ // 24 elements
+var enIndex = []uint32{ // 20 elements
 	0x00000000, 0x0000000c, 0x00000011, 0x00000019,
-	0x00000032, 0x00000037, 0x00000048, 0x00000054,
-	0x00000059, 0x00000061, 0x0000006c, 0x00000073,
-	0x00000087, 0x0000008d, 0x000000a3, 0x000000b2,
-	0x000000b7, 0x000000ec, 0x000002aa, 0x000002b9,
-	0x000002ce, 0x000002d9, 0x0000033e, 0x0000034a,
-} // Size: 120 bytes
+	0x00000032, 0x00000037, 0x00000048, 0x0000004f,
+	0x00000063, 0x00000069, 0x0000007f, 0x0000008e,
+	0x00000093, 0x000000c8, 0x00000286, 0x00000295,
+	0x000002aa, 0x000002b5, 0x0000031a, 0x00000326,
+} // Size: 104 bytes
 
-const enData string = "" + // Size: 842 bytes
+const enData string = "" + // Size: 806 bytes
 	"\x02Experiments\x02Name\x02Created\x02No available experiments\x02Back" +
-	"\x02Experiment %[1]s\x02Share Link:\x02Join\x02Results\x02Statistics\x02" +
-	"EduLab\x02Astronomy Education\x02About\x02Internal Server Error\x02Page " +
-	"Not Found\x02Home\x02Empowering Educators Through Evidence-Based Insight" +
-	"s\x02EduLab brings **data-driven** experimentation into the classroom, e" +
-	"mpowering you to evaluate and refine teaching methods across distinct **" +
-	"cohorts**.\x0a\x0aBy running controlled pre- and post-assessments, you g" +
-	"ain **evidence-based insights** into how different teaching approaches i" +
-	"mpact learning outcomes.\x0a\x0aCompare cohorts, **measure learning gain" +
-	"s**, and adapt strategies to elevate student engagement—all supported by" +
-	" real-time educational data.\x02New Experiment\x02Previous Experiments" +
-	"\x02References\x02If you would like to contribute to the project, for ex" +
-	"ample, adding more translations, get in touch:\x02Source Code"
+	"\x02Experiment %[1]s\x02EduLab\x02Astronomy Education\x02About\x02Intern" +
+	"al Server Error\x02Page Not Found\x02Home\x02Empowering Educators Throug" +
+	"h Evidence-Based Insights\x02EduLab brings **data-driven** experimentati" +
+	"on into the classroom, empowering you to evaluate and refine teaching me" +
+	"thods across distinct **cohorts**.\x0a\x0aBy running controlled pre- and" +
+	" post-assessments, you gain **evidence-based insights** into how differe" +
+	"nt teaching approaches impact learning outcomes.\x0a\x0aCompare cohorts," +
+	" **measure learning gains**, and adapt strategies to elevate student eng" +
+	"agement—all supported by real-time educational data.\x02New Experiment" +
+	"\x02Previous Experiments\x02References\x02If you would like to contribut" +
+	"e to the project, for example, adding more translations, get in touch:" +
+	"\x02Source Code"
 
-var pt_BRIndex = []uint32{ // 24 elements
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-} // Size: 120 bytes
+var pt_BRIndex = []uint32{ // 20 elements
+	0x00000000, 0x0000000d, 0x00000012, 0x00000019,
+	0x00000038, 0x0000003f, 0x00000051, 0x00000058,
+	0x00000071, 0x00000077, 0x00000090, 0x000000a8,
+	0x000000b0, 0x000000f0, 0x0000030d, 0x0000031e,
+	0x00000336, 0x00000343, 0x000003b0, 0x000003be,
+} // Size: 104 bytes
 
-const pt_BRData string = ""
+const pt_BRData string = "" + // Size: 958 bytes
+	"\x02Experimentos\x02Nome\x02Criado\x02Nehnum experimento disponível\x02V" +
+	"oltar\x02Experimento %[1]s\x02EduLab\x02Educação em Astronomia\x02Sobre" +
+	"\x02Erro Interno do Servidor\x02Página Não Encontrada\x02Início\x02Capac" +
+	"itando Educadores com Perspectivas Baseadas em Evidências\x02O EduLab tr" +
+	"az experimentação **orientada por dados** para a sala de aula, permitind" +
+	"o que você avalie e refine métodos de ensino em diferentes **coortes**." +
+	"\x0a\x0a Com a realização de avaliações controladas antes e depois das a" +
+	"ulas, você obtém **perspectivas baseadas em evidências** sobre como dife" +
+	"rentes abordagens impactam os resultados de aprendizagem.\x0a\x0aCompare" +
+	" coortes, meça os **ganhos de aprendizado** e adapte suas estratégias pa" +
+	"ra elevar o engajamento dos alunos—tudo isso com o suporte de dados educ" +
+	"acionais em tempo real.\x02Novo Experimento\x02Experimentos Anteriores" +
+	"\x02Referências\x02Se você gostaria de contribuir para o projeto, por ex" +
+	"emplo, adicionando mais traduções, entre em contato:\x02Código Fonte"
 
-// Total table size 1082 bytes (1KiB); checksum: 17D2544E
+	// Total table size 1972 bytes (1KiB); checksum: D80D8135

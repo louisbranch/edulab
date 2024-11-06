@@ -54,34 +54,6 @@
             "fuzzy": true
         },
         {
-            "id": "Share Link:",
-            "message": "Share Link:",
-            "translation": "Share Link:",
-            "translatorComment": "Copied from source.",
-            "fuzzy": true
-        },
-        {
-            "id": "Join",
-            "message": "Join",
-            "translation": "Join",
-            "translatorComment": "Copied from source.",
-            "fuzzy": true
-        },
-        {
-            "id": "Results",
-            "message": "Results",
-            "translation": "Results",
-            "translatorComment": "Copied from source.",
-            "fuzzy": true
-        },
-        {
-            "id": "Statistics",
-            "message": "Statistics",
-            "translation": "Statistics",
-            "translatorComment": "Copied from source.",
-            "fuzzy": true
-        },
-        {
             "id": "EduLab",
             "message": "EduLab",
             "translation": "EduLab",
