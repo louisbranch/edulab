@@ -1,6 +1,7 @@
 package server
 
 import (
+	"fmt"
 	"math/rand"
 	"net/http"
 
@@ -20,6 +21,8 @@ func (srv *Server) NewServeMux() *http.ServeMux {
 
 	mux.Handle("/edulab/assets/", http.StripPrefix("/edulab/assets/", srv.Assets))
 
+	mux.HandleFunc("/edulab/about/", srv.about)
+
 	mux.HandleFunc("/edulab/", srv.index)
 	mux.HandleFunc("/", srv.astro)
 
@@ -30,7 +33,7 @@ func (srv *Server) index(w http.ResponseWriter, r *http.Request) {
 	name := r.URL.Path[len("/edulab/"):]
 
 	if name != "" {
-		srv.surveys(w, r, name)
+		fmt.Printf("404: %s\n", name)
 		return
 	}
 

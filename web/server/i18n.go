@@ -6,8 +6,8 @@ import (
 	"golang.org/x/text/language"
 	"golang.org/x/text/message"
 
-	_ "github.com/louisbranch/edublab/translations"
-	"github.com/louisbranch/edublab/web"
+	_ "github.com/louisbranch/edulab/translations"
+	"github.com/louisbranch/edulab/web"
 )
 
 func (s *Server) i18n(w http.ResponseWriter, r *http.Request) (*message.Printer, web.Page) {

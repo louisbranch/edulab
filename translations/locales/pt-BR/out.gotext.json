@@ -1,0 +1,50 @@
+{
+    "language": "pt-BR",
+    "messages": [
+        {
+            "id": "EduLab",
+            "message": "EduLab",
+            "translation": ""
+        },
+        {
+            "id": "Astronomy Education",
+            "message": "Astronomy Education",
+            "translation": ""
+        },
+        {
+            "id": "About",
+            "message": "About",
+            "translation": ""
+        },
+        {
+            "id": "Internal Server Error",
+            "message": "Internal Server Error",
+            "translation": ""
+        },
+        {
+            "id": "Page Not Found",
+            "message": "Page Not Found",
+            "translation": ""
+        },
+        {
+            "id": "Home",
+            "message": "Home",
+            "translation": ""
+        },
+        {
+            "id": "References",
+            "message": "References",
+            "translation": ""
+        },
+        {
+            "id": "If you would like to contribute to the project, for example, adding more translations, get in touch:",
+            "message": "If you would like to contribute to the project, for example, adding more translations, get in touch:",
+            "translation": ""
+        },
+        {
+            "id": "Source Code",
+            "message": "Source Code",
+            "translation": ""
+        }
+    ]
+}

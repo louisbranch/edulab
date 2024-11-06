@@ -1,0 +1,68 @@
+{
+    "language": "en",
+    "messages": [
+        {
+            "id": "EduLab",
+            "message": "EduLab",
+            "translation": "EduLab",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Astronomy Education",
+            "message": "Astronomy Education",
+            "translation": "Astronomy Education",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "About",
+            "message": "About",
+            "translation": "About",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Internal Server Error",
+            "message": "Internal Server Error",
+            "translation": "Internal Server Error",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Page Not Found",
+            "message": "Page Not Found",
+            "translation": "Page Not Found",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Home",
+            "message": "Home",
+            "translation": "Home",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "References",
+            "message": "References",
+            "translation": "References",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "If you would like to contribute to the project, for example, adding more translations, get in touch:",
+            "message": "If you would like to contribute to the project, for example, adding more translations, get in touch:",
+            "translation": "If you would like to contribute to the project, for example, adding more translations, get in touch:",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Source Code",
+            "message": "Source Code",
+            "translation": "Source Code",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        }
+    ]
+}
