@@ -12,6 +12,7 @@ type Experiment struct {
 
 type Database interface {
 	CreateExperiment(*Experiment) error
+	UpdateExperiment(Experiment) error
 	FindExperiments() ([]Experiment, error)
 	FindExperiment(string) (Experiment, error)
 }

@@ -1,4 +1,5 @@
 {{ define "content" }}
+{{ .Breadcrumbs }}
 {{ if .Experiments }}
     <table class="pure-table pure-table-horizontal">
         <thead>
@@ -17,8 +18,6 @@
         </tbody>
     </table>
 {{ else }}
-    {{ .None }}
+    <p>{{ .None }}</p>
 {{ end }}
-
-<a href="/edulab/" class="pure-button">{{ .Back }}</a>
 {{ end }}

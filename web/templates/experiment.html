@@ -1,3 +1,26 @@
 {{ define "content" }}
+{{ .Breadcrumbs }}
 <h2>{{ .Experiment.Name }}</h2>
+<div class="pure-menu">
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item">
+            <a href="/edulab/experiments/{{ .Experiment.PublicID }}/edit" class="pure-menu-link">{{ .EditSettings }}</a>
+        </li>
+        <li class="pure-menu-item">
+            <a href="/edulab/experiments/{{ .Experiment.PublicID }}/demographics" class="pure-menu-link">{{ .Demographics }}</a>
+        </li>
+        <li class="pure-menu-item">
+            <a href="/edulab/experiments/{{ .Experiment.PublicID }}/assessement" class="pure-menu-link">{{ .PreAssessment }}</a>
+        </li>
+        <li class="pure-menu-item">
+            <a href="/edulab/experiments/{{ .Experiment.PublicID }}/assessement" class="pure-menu-link">{{ .PostAssessment }}</a>
+        </li>
+        <li class="pure-menu-item">
+            <a href="/edulab/experiments/{{ .Experiment.PublicID }}/cohorts" class="pure-menu-link">{{ .Cohorts }}</a>
+        </li>
+        <li class="pure-menu-item">
+            <a href="/edulab/experiments/{{ .Experiment.PublicID }}/publish" class="pure-menu-link">{{ .Publish }}</a>
+        </li>
+    </ul>
+</div>
 {{ end }}
