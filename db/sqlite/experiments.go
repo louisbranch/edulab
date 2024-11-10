@@ -26,6 +26,17 @@ func (db *DB) CreateExperiment(e *edulab.Experiment) error {
 	return nil
 }
 
+func (db *DB) UpdateExperiment(e edulab.Experiment) error {
+	q := `UPDATE experiments set name = ?, description = ? where public_id = ?`
+
+	_, err := db.Exec(q, e.Name, e.Description, e.PublicID)
+	if err != nil {
+		return errors.Wrap(err, "update experiment")
+	}
+
+	return nil
+}
+
 func (db *DB) FindExperiments() ([]edulab.Experiment, error) {
 	var experiments []edulab.Experiment
 

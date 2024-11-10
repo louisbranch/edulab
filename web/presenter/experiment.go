@@ -1,6 +1,7 @@
 package presenter
 
 import (
+	"fmt"
 	"math"
 	"time"
 
@@ -12,6 +13,19 @@ import (
 type Experiment struct {
 	edulab.Experiment
 	ElapsedTime string
+}
+
+func ExperimentsBreadcrumb(e *edulab.Experiment, printer *message.Printer) []Breadcrumb {
+	urls := []Breadcrumb{
+		{URL: "/edulab/", Name: printer.Sprintf("Home")},
+		{URL: "/edulab/experiments", Name: printer.Sprintf("Experiments")},
+	}
+
+	if e != nil {
+		urls = append(urls, Breadcrumb{URL: fmt.Sprintf("/edulab/experiments/%s", e.PublicID), Name: e.Name})
+	}
+
+	return urls
 }
 
 func ExperimentsList(experiments []edulab.Experiment, printer *message.Printer) []Experiment {

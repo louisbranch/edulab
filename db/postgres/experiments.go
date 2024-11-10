@@ -6,7 +6,11 @@ import (
 	"github.com/louisbranch/edulab"
 )
 
-func (db *DB) CreateExperiment(s *edulab.Experiment) error {
+func (db *DB) CreateExperiment(e *edulab.Experiment) error {
+	return errors.New("not implemented")
+}
+
+func (db *DB) UpdateExperiment(e edulab.Experiment) error {
 	return errors.New("not implemented")
 }
 
