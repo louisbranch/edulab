@@ -1,10 +1,12 @@
 {{ define "content" }}
 {{ .Breadcrumbs }}
+<h2>{{ .Title }}</h2>  
 {{ if .Experiments }}
     <table class="pure-table pure-table-horizontal">
         <thead>
             <th>#</th>
             <th>{{ .Name }}</th>
+            <th>{{ .Participants }}</th>
             <th>{{ .Created }}</th>
         </thead>
         <tbody>
@@ -12,6 +14,7 @@
             <tr>
                 <td>{{ add $i 1 }}</td>
                 <td><a href="/edulab/experiments/{{ $el.PublicID }}">{{ $el.Name }}</a></td>
+                <td>{{ .Participants }}</td>
                 <td>{{ .ElapsedTime }}</td>
             </tr>
             {{ end }}

@@ -53,8 +53,9 @@ func (s *Server) i18n(w http.ResponseWriter, r *http.Request) (*message.Printer,
 
 	page := web.Page{
 		Header:    printer.Sprintf("EduLab"),
-		Website:   printer.Sprintf("Astronomy Education"),
-		Footer:    printer.Sprintf("About"),
+		Website:   printer.Sprintf("Edulab"),
+		About:     printer.Sprintf("About"),
+		FAQ:       printer.Sprintf("FAQ"),
 		Languages: languages,
 	}
 

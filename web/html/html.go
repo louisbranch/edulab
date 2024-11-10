@@ -45,6 +45,10 @@ func (h *HTML) Render(w io.Writer, page web.Page) error {
 		return err
 	}
 
+	if page.ID == "" && len(page.Partials) > 0 {
+		page.ID = page.Partials[0]
+	}
+
 	err = tpl.Execute(w, page)
 	return err
 }

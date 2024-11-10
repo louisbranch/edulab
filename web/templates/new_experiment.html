@@ -5,11 +5,12 @@
     <fieldset>
         <div class="pure-control-group">
             <label for="name">{{ .Name }}</label>
-            <input type="text" class="pure-input-1" id="name" name="name" required>
+            <input type="text" class="pure-input-1" id="name" name="name" required placeholder="{{ .NamePlaceholder }}">
         </div>
         <div class="pure-control-group">
             <label for="description">{{ .Description }}</label>
-            <textarea class="pure-input-1" id="description" name="description"></textarea>
+            <div class="pure-form-message-inline">{{ .DescriptionHelp }}</div>
+            <textarea class="pure-input-1" id="description" name="description" rows="5" placeholder="{{ .DescriptionPlaceholder }}"></textarea>
         </div>
     </fieldset>
     <div class="pure-controls">
