@@ -19,18 +19,26 @@ type Assessment struct {
 	IsPre        bool
 }
 
+type QuestionType string
+
+const (
+	SingleChoice   QuestionType = "single_choice"
+	MultipleChoice QuestionType = "multiple_choice"
+	FreeForm       QuestionType = "free_form"
+)
+
 type AssessmentQuestion struct {
 	ID           string
 	AssessmentID string
-	Text         string
-	Type         string
+	Prompt       string
+	Type         QuestionType
 }
 
 type AssessmentChoice struct {
 	ID            string
 	AssessmentID  string
 	AssessmentQID string
-	Text          string
+	Value         string
 	IsCorrect     bool
 }
 
@@ -49,5 +57,6 @@ type Database interface {
 	FindExperiment(string) (Experiment, error)
 
 	CreateAssessment(*Assessment) error
+	FindAssessment(string, string) (Assessment, error)
 	FindAssessments(string) ([]Assessment, error)
 }

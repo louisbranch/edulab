@@ -35,13 +35,24 @@ func (srv *Server) experimentsHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	experiment, err := srv.DB.FindExperiment(pid)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	if len(segments) == 1 && r.Method == "POST" {
+		srv.updateExperiment(w, r, experiment)
+		return
+	}
+
 	if len(segments) > 1 {
 		switch segments[1] {
 		case "edit":
-			srv.editExperiment(w, r, pid)
+			srv.editExperiment(w, r, experiment)
 			return
 		case "assessments":
-			srv.assessmentsForExperiment(w, r, pid)
+			srv.assessmentsHandler(w, r, experiment, segments[2:])
 			return
 		default:
 			srv.renderNotFound(w, r)
@@ -49,12 +60,7 @@ func (srv *Server) experimentsHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	if r.Method == "POST" {
-		srv.updateExperiment(w, r, pid)
-		return
-	}
-
-	srv.showExperiment(w, r, pid)
+	srv.showExperiment(w, r, experiment)
 }
 
 func (srv *Server) newExperimentForm(w http.ResponseWriter, r *http.Request) {
@@ -189,14 +195,8 @@ func (srv *Server) listExperiments(w http.ResponseWriter, r *http.Request) {
 	srv.render(w, page)
 }
 
-func (srv *Server) editExperiment(w http.ResponseWriter, r *http.Request, pid string) {
+func (srv *Server) editExperiment(w http.ResponseWriter, r *http.Request, experiment edulab.Experiment) {
 	printer, page := srv.i18n(w, r)
-
-	experiment, err := srv.DB.FindExperiment(pid)
-	if err != nil {
-		srv.renderError(w, r, err)
-		return
-	}
 
 	page.Title = printer.Sprintf("Edit Experiment: %s", experiment.Name)
 	page.Partials = []string{"edit_experiment"}
@@ -225,18 +225,8 @@ func (srv *Server) editExperiment(w http.ResponseWriter, r *http.Request, pid st
 	srv.render(w, page)
 }
 
-func (srv *Server) assessmentsForExperiment(w http.ResponseWriter, r *http.Request, _ string) {
-	srv.renderError(w, r, fmt.Errorf("not implemented"))
-}
-
-func (srv *Server) showExperiment(w http.ResponseWriter, r *http.Request, pid string) {
+func (srv *Server) showExperiment(w http.ResponseWriter, r *http.Request, experiment edulab.Experiment) {
 	printer, page := srv.i18n(w, r)
-
-	experiment, err := srv.DB.FindExperiment(pid)
-	if err != nil {
-		srv.renderError(w, r, err)
-		return
-	}
 
 	assessments, err := srv.DB.FindAssessments(experiment.ID)
 	if err != nil {
@@ -271,14 +261,8 @@ func (srv *Server) showExperiment(w http.ResponseWriter, r *http.Request, pid st
 	srv.render(w, page)
 }
 
-func (srv *Server) updateExperiment(w http.ResponseWriter, r *http.Request, pid string) {
-	experiment, err := srv.DB.FindExperiment(pid)
-	if err != nil {
-		srv.renderError(w, r, err)
-		return
-	}
-
-	err = r.ParseForm()
+func (srv *Server) updateExperiment(w http.ResponseWriter, r *http.Request, experiment edulab.Experiment) {
+	err := r.ParseForm()
 	if err != nil {
 		srv.renderError(w, r, err)
 		return
