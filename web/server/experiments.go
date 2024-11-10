@@ -26,14 +26,17 @@ func (srv *Server) newExperiment() edulab.Experiment {
 	return experiment
 }
 
-func (srv *Server) experiments(w http.ResponseWriter, r *http.Request) {
+func (srv *Server) experimentsHandler(w http.ResponseWriter, r *http.Request) {
 	printer, page := srv.i18n(w, r)
 
 	switch r.Method {
 	case "GET":
+		// Extract the path after "/edulab/experiments/"
+		path := r.URL.Path[len("/edulab/experiments/"):]
 
-		pid := r.URL.Path[len("/edulab/experiments/"):]
-		if pid == "new" {
+		switch {
+		case path == "new":
+			// Handle creation of new experiment
 			page.Title = printer.Sprintf("New Experiment")
 			page.Partials = []string{"new_experiment"}
 			page.Content = struct {
@@ -45,16 +48,16 @@ func (srv *Server) experiments(w http.ResponseWriter, r *http.Request) {
 				Name:        printer.Sprintf("Name"),
 				Description: printer.Sprintf("Description"),
 			}
-
 			srv.render(w, page)
 			return
-		} else if pid == "" {
+
+		case path == "":
+			// List all experiments
 			experiments, err := srv.DB.FindExperiments()
 			if err != nil {
 				srv.renderError(w, r, err)
 				return
 			}
-
 			page.Title = printer.Sprintf("Experiments")
 			page.Partials = []string{"experiments"}
 			page.Content = struct {
@@ -70,26 +73,29 @@ func (srv *Server) experiments(w http.ResponseWriter, r *http.Request) {
 				None:        printer.Sprintf("No available experiments"),
 				Back:        printer.Sprintf("Back"),
 			}
+			srv.render(w, page)
+			return
+
+		default:
+			// Handle a specific experiment
+			pid := path // path after "/edulab/experiments/"
+			experiment, err := srv.DB.FindExperiment(pid)
+			if err != nil {
+				srv.renderError(w, r, err)
+				return
+			}
+
+			page.Title = printer.Sprintf("Experiment %s", experiment.Name)
+			page.Partials = []string{"experiment"}
+			page.Content = struct {
+				Experiment edulab.Experiment
+			}{
+				Experiment: experiment,
+			}
 
 			srv.render(w, page)
 			return
 		}
-
-		experiment, err := srv.DB.FindExperiment(pid)
-		if err != nil {
-			srv.renderError(w, r, err)
-			return
-		}
-
-		page.Title = printer.Sprintf("Experiment %s", experiment.Name)
-		page.Partials = []string{"experiment"}
-		page.Content = struct {
-			Experiment edulab.Experiment
-		}{
-			Experiment: experiment,
-		}
-
-		srv.render(w, page)
 
 	case "POST":
 		experiment := srv.newExperiment()
@@ -111,8 +117,8 @@ func (srv *Server) experiments(w http.ResponseWriter, r *http.Request) {
 		}
 
 		uri := fmt.Sprintf("/edulab/experiments/%s", experiment.PublicID)
-
 		http.Redirect(w, r, uri, http.StatusFound)
+
 	default:
 		w.WriteHeader(http.StatusMethodNotAllowed)
 	}
