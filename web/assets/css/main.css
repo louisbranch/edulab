@@ -9,7 +9,7 @@
 /* Light theme styles when the system prefers light mode */
 @media (prefers-color-scheme: light) {
     :root {
-        --background-color: #FFFFFF;
+        --background-color: #F7F4E9;
         --text-color: #333333;
         --highlight-color: #007ACC;
         --button-hover-text-color: #FFFFFF;
