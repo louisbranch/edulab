@@ -1,6 +1,7 @@
 /* Default to dark theme */
 :root {
     --background-color: #1C1C1C;
+    --form-background-color: #2C2C2C;
     --text-color: #E0E0E0;
     --highlight-color: #00CFFF;
     --button-hover-text-color: #0c142a;
@@ -127,6 +128,16 @@ a.pure-button-link {
 a.pure-button-link:hover {
     background-image: none;
     text-decoration: underline;
+}
+
+.pure-form input[type="text"], .pure-form textarea {
+    background-color: var(--form-background-color);
+    color: var(--text-color);
+    box-shadow: none;
+}
+
+.pure-form input[type="text"]:focus, .pure-form textarea:focus {
+    border: 1px solid var(--highlight-color);
 }
 
 form.pure-form > input {
