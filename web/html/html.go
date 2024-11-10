@@ -7,6 +7,7 @@ import (
 	"html/template"
 	"io"
 	"log"
+	"os"
 	"path"
 	"path/filepath"
 	"sort"
@@ -49,6 +50,8 @@ func (h *HTML) Render(w io.Writer, page web.Page) error {
 }
 
 func (h *HTML) parse(names ...string) (tpl *template.Template, err error) {
+	cache := os.Getenv("APP_ENV") == "production"
+
 	cp := make([]string, len(names))
 	copy(cp, names)
 	sort.Strings(cp)
@@ -71,9 +74,11 @@ func (h *HTML) parse(names ...string) (tpl *template.Template, err error) {
 		if err != nil {
 			return nil, err
 		}
-		h.sync.Lock()
-		h.cache[id] = tpl
-		h.sync.Unlock()
+		if cache {
+			h.sync.Lock()
+			h.cache[id] = tpl
+			h.sync.Unlock()
+		}
 	}
 
 	return tpl, nil

@@ -1,0 +1,24 @@
+{{ define "content" }}
+{{ if .Experiments }}
+    <table class="pure-table pure-table-horizontal">
+        <thead>
+            <th>#</th>
+            <th>{{ .Name }}</th>
+            <th>{{ .Created }}</th>
+        </thead>
+        <tbody>
+            {{ range $i, $el := .Experiments }}
+            <tr>
+                <td>{{ add $i 1 }}</td>
+                <td><a href="/edulab/experiments/{{ $el.PublicID }}">{{ $el.Name }}</a></td>
+                <td>{{ .ElapsedTime }}</td>
+            </tr>
+            {{ end }}
+        </tbody>
+    </table>
+{{ else }}
+    {{ .None }}
+{{ end }}
+
+<a href="/edulab/" class="pure-button">{{ .Back }}</a>
+{{ end }}
