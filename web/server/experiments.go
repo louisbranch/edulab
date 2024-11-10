@@ -31,8 +31,7 @@ func (srv *Server) experimentsHandler(w http.ResponseWriter, r *http.Request) {
 
 	switch r.Method {
 	case "GET":
-		// Extract the path after "/edulab/experiments/"
-		path := r.URL.Path[len("/edulab/experiments/"):]
+		path := r.URL.Path
 
 		switch {
 		case path == "new":

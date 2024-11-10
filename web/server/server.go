@@ -23,7 +23,7 @@ func (srv *Server) NewServeMux() *http.ServeMux {
 	mux.Handle("/edulab/assets/", http.StripPrefix("/edulab/assets/", srv.Assets))
 
 	// Dynamic routes
-	mux.HandleFunc("/edulab/experiments/", srv.experimentsHandler)
+	mux.Handle("/edulab/experiments/", http.StripPrefix("/edulab/experiments/", http.HandlerFunc(srv.experimentsHandler)))
 	mux.HandleFunc("/edulab/about/", srv.about)
 	mux.HandleFunc("/edulab/", srv.index)
 	mux.HandleFunc("/", srv.astro)
