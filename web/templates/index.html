@@ -2,6 +2,7 @@
 <div class="hero">
     <h2>{{ .Tagline }}</h2>
     <p>{{markdown .Introduction }}</p>
+
 </div>
 <nav>
     <ul>
@@ -11,7 +12,12 @@
             </form>
         </li>
         <li>
-            <a class="pure-button" href="/edulab/experiments">{{ .PreviousExperiments }}</a>
+            <a class="pure-button pure-button-link" href="/edulab/guide">{{ .EducatorsGuide }}</a>
+        </li>
+        <li>
+            <a class="pure-button pure-button-link" href="/edulab/experiments">{{ .PreviousExperiments }}</a>
+        </li>
+        <li>
         </li>
     </ul>
 </nav>

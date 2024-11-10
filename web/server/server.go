@@ -25,6 +25,8 @@ func (srv *Server) NewServeMux() *http.ServeMux {
 	// Dynamic routes
 	mux.Handle("/edulab/experiments/", http.StripPrefix("/edulab/experiments/", http.HandlerFunc(srv.experimentsHandler)))
 	mux.HandleFunc("/edulab/about/", srv.about)
+	mux.HandleFunc("/edulab/guide/", srv.guide)
+	mux.HandleFunc("/edulab/faq/", srv.faq)
 	mux.HandleFunc("/edulab/", srv.index)
 	mux.HandleFunc("/", srv.astro)
 
@@ -45,12 +47,13 @@ func (srv *Server) index(w http.ResponseWriter, r *http.Request) {
 	}
 
 	printer, page := srv.i18n(w, r)
-	page.Title = printer.Sprintf("EduLab")
+	page.Title = printer.Sprintf("EduLab - Empowering Educators")
 	page.Partials = []string{"index"}
 	page.Content = struct {
 		Tagline             string
 		Introduction        string
 		NewExperiment       string
+		EducatorsGuide      string
 		PreviousExperiments string
 	}{
 		Tagline: printer.Sprintf("Empowering Educators Through Evidence-Based Insights"),
@@ -60,6 +63,7 @@ By running controlled pre- and post-assessments, you gain **evidence-based insig
 
 Compare cohorts, **measure learning gains**, and adapt strategies to elevate student engagement—all supported by real-time educational data.`),
 		NewExperiment:       printer.Sprintf("New Experiment"),
+		EducatorsGuide:      printer.Sprintf("Educator's Guide"),
 		PreviousExperiments: printer.Sprintf("Previous Experiments"),
 	}
 

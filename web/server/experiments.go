@@ -63,16 +63,22 @@ func (srv *Server) newExperimentForm(w http.ResponseWriter, r *http.Request) {
 	page.Title = printer.Sprintf("New Experiment")
 	page.Partials = []string{"new_experiment"}
 	page.Content = struct {
-		Title       string
-		Name        string
-		Description string
-		Create      string
-		Breadcrumbs template.HTML
+		Title                  string
+		Name                   string
+		NamePlaceholder        string
+		Description            string
+		DescriptionHelp        string
+		DescriptionPlaceholder string
+		Create                 string
+		Breadcrumbs            template.HTML
 	}{
-		Title:       printer.Sprintf("New Experiment"),
-		Name:        printer.Sprintf("Name"),
-		Description: printer.Sprintf("Description"),
-		Create:      printer.Sprintf("Create"),
+		Title:                  printer.Sprintf("New Experiment"),
+		Name:                   printer.Sprintf("Name"),
+		NamePlaceholder:        printer.Sprintf("e.g. Earth's Seasons"),
+		Description:            printer.Sprintf("Description"),
+		DescriptionHelp:        printer.Sprintf("Optional. Not visible to participants."),
+		DescriptionPlaceholder: printer.Sprintf("e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop..."),
+		Create:                 printer.Sprintf("Create"),
 		Breadcrumbs: presenter.RenderBreadcrumbs(
 			[]presenter.Breadcrumb{{URL: "/edulab/", Name: printer.Sprintf("Home")}},
 		),
@@ -81,17 +87,34 @@ func (srv *Server) newExperimentForm(w http.ResponseWriter, r *http.Request) {
 	srv.render(w, page)
 }
 
-func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
-	printer, _ := srv.i18n(w, r)
+func (srv *Server) newPublicID(lens []int) string {
+	sum := 0
+	for _, l := range lens {
+		sum += l
+	}
 
-	b := make([]rune, 6)
+	b := make([]rune, sum)
 	for i := range b {
 		b[i] = alphanum[srv.Random.Intn(len(alphanum))]
 	}
-	pid := fmt.Sprintf("%s-%s", string(b[:3]), string(b[3:]))
+
+	pid := ""
+	for i, l := range lens {
+		pid += string(b[:l])
+		if i < len(lens)-1 {
+			pid += "-"
+		}
+		b = b[l:]
+	}
+
+	return pid
+}
+
+func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
+	printer, _ := srv.i18n(w, r)
 
 	experiment := edulab.Experiment{
-		PublicID: pid,
+		PublicID: srv.newPublicID([]int{3, 3}),
 	}
 
 	err := r.ParseForm()
@@ -112,6 +135,7 @@ func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
 
 	err = srv.DB.CreateAssessment(&edulab.Assessment{
 		ExperimentID: experiment.ID,
+		PublicID:     srv.newPublicID([]int{3}),
 		Name:         printer.Sprintf("Pre-Assessment"),
 		IsPre:        true,
 	})
@@ -122,6 +146,7 @@ func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
 
 	err = srv.DB.CreateAssessment(&edulab.Assessment{
 		ExperimentID: experiment.ID,
+		PublicID:     srv.newPublicID([]int{3}),
 		Name:         printer.Sprintf("Post-Assessment"),
 		IsPre:        false,
 	})
@@ -145,19 +170,21 @@ func (srv *Server) listExperiments(w http.ResponseWriter, r *http.Request) {
 	page.Title = printer.Sprintf("Experiments")
 	page.Partials = []string{"experiments"}
 	page.Content = struct {
-		Breadcrumbs template.HTML
-		Experiments []presenter.Experiment
-		Name        string
-		Created     string
-		None        string
+		Breadcrumbs  template.HTML
+		Title        string
+		Experiments  []presenter.Experiment
+		Name         string
+		Participants string
+		Created      string
+		None         string
 	}{
-		Experiments: presenter.ExperimentsList(experiments, printer),
-		Name:        printer.Sprintf("Name"),
-		Created:     printer.Sprintf("Created"),
-		None:        printer.Sprintf("No available experiments"),
-		Breadcrumbs: presenter.RenderBreadcrumbs(
-			[]presenter.Breadcrumb{{URL: "/edulab/", Name: printer.Sprintf("Home")}},
-		),
+		Breadcrumbs:  presenter.BreadcrumbsHome(),
+		Title:        printer.Sprintf("Experiments"),
+		Experiments:  presenter.ExperimentsList(experiments, printer),
+		Name:         printer.Sprintf("Name"),
+		Participants: printer.Sprintf("Participants"),
+		Created:      printer.Sprintf("Created"),
+		None:         printer.Sprintf("No available experiments"),
 	}
 	srv.render(w, page)
 }
@@ -174,19 +201,25 @@ func (srv *Server) editExperiment(w http.ResponseWriter, r *http.Request, pid st
 	page.Title = printer.Sprintf("Edit Experiment: %s", experiment.Name)
 	page.Partials = []string{"edit_experiment"}
 	page.Content = struct {
-		Edit        string
-		Name        string
-		Description string
-		Experiment  edulab.Experiment
-		Update      string
-		Breadcrumbs template.HTML
+		Edit                   string
+		Name                   string
+		NamePlaceholder        string
+		Description            string
+		DescriptionHelp        string
+		DescriptionPlaceholder string
+		Experiment             edulab.Experiment
+		Update                 string
+		Breadcrumbs            template.HTML
 	}{
-		Edit:        printer.Sprintf("Edit Experiment"),
-		Name:        printer.Sprintf("Name"),
-		Description: printer.Sprintf("Description"),
-		Experiment:  experiment,
-		Update:      printer.Sprintf("Update"),
-		Breadcrumbs: presenter.RenderBreadcrumbs(presenter.ExperimentsBreadcrumb(&experiment, printer)),
+		Edit:                   printer.Sprintf("Edit Experiment"),
+		Name:                   printer.Sprintf("Name"),
+		NamePlaceholder:        printer.Sprintf("e.g. Earth's Seasons"),
+		Description:            printer.Sprintf("Description"),
+		DescriptionHelp:        printer.Sprintf("Optional. Not visible to participants."),
+		DescriptionPlaceholder: printer.Sprintf("e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop..."),
+		Experiment:             experiment,
+		Update:                 printer.Sprintf("Update"),
+		Breadcrumbs:            presenter.RenderBreadcrumbs(presenter.ExperimentsBreadcrumb(&experiment, printer)),
 	}
 
 	srv.render(w, page)

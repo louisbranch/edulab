@@ -11,6 +11,12 @@ type Breadcrumb struct {
 	Name string
 }
 
+func BreadcrumbsHome() template.HTML {
+	return RenderBreadcrumbs([]Breadcrumb{
+		{URL: "/edulab/", Name: "Home"},
+	})
+}
+
 func RenderBreadcrumbs(breadcrumbs []Breadcrumb) template.HTML {
 	var sb strings.Builder
 	sb.WriteString(`<nav class="breadcrumb">`)

@@ -11,13 +11,15 @@ type Language struct {
 }
 
 type Page struct {
+	ID        string
 	Title     string
 	Header    string
 	Website   string
 	Layout    string
 	Partials  []string
 	Content   interface{}
-	Footer    string
+	About     string
+	FAQ       string
 	Languages []Language
 }
 

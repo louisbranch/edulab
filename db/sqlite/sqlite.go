@@ -44,6 +44,7 @@ func New(path string) (*DB, error) {
 	CREATE TABLE IF NOT EXISTS assessments (
 		id INTEGER PRIMARY KEY,
 		experiment_id INTEGER NOT NULL,
+        public_id TEXT NOT NULL UNIQUE CHECK(public_id <> ''),
 		name TEXT NOT NULL CHECK(name <> ''),
 		description TEXT,
 		is_pre BOOLEAN NOT NULL DEFAULT 0,  -- Indicates if it's the pre-assessment
@@ -51,6 +52,25 @@ func New(path string) (*DB, error) {
 		FOREIGN KEY (experiment_id) REFERENCES experiments(id) ON DELETE CASCADE
 	);
 	`,
+		`
+    CREATE UNIQUE INDEX IF NOT EXISTS assessments_public_id ON
+        assessments(public_id);
+    `,
+		`
+	CREATE TABLE IF NOT EXISTS cohorts (
+		id INTEGER PRIMARY KEY,
+		experiment_id INTEGER NOT NULL,
+        public_id TEXT NOT NULL UNIQUE CHECK(public_id <> ''),
+		name TEXT NOT NULL CHECK(name <> ''),
+		description TEXT,
+		created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+		FOREIGN KEY (experiment_id) REFERENCES experiments(id) ON DELETE CASCADE
+	);
+	`,
+		`
+    CREATE UNIQUE INDEX IF NOT EXISTS cohorts_public_id ON
+        cohorts(public_id);
+    `,
 	}
 
 	for _, q := range queries {
