@@ -19,11 +19,12 @@ type Server struct {
 func (srv *Server) NewServeMux() *http.ServeMux {
 	mux := http.NewServeMux()
 
+	// Static assets
 	mux.Handle("/edulab/assets/", http.StripPrefix("/edulab/assets/", srv.Assets))
 
+	// Dynamic routes
+	mux.Handle("/edulab/experiments/", http.StripPrefix("/edulab/experiments/", http.HandlerFunc(srv.experimentsHandler)))
 	mux.HandleFunc("/edulab/about/", srv.about)
-	mux.HandleFunc("/edulab/experiments/", srv.experiments)
-
 	mux.HandleFunc("/edulab/", srv.index)
 	mux.HandleFunc("/", srv.astro)
 
