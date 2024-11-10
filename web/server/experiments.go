@@ -5,7 +5,6 @@ import (
 	"html/template"
 	"net/http"
 	"strings"
-	"time"
 
 	"github.com/louisbranch/edulab"
 	"github.com/louisbranch/edulab/web/presenter"
@@ -83,6 +82,8 @@ func (srv *Server) newExperimentForm(w http.ResponseWriter, r *http.Request) {
 }
 
 func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
+	printer, _ := srv.i18n(w, r)
+
 	b := make([]rune, 6)
 	for i := range b {
 		b[i] = alphanum[srv.Random.Intn(len(alphanum))]
@@ -90,8 +91,7 @@ func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
 	pid := fmt.Sprintf("%s-%s", string(b[:3]), string(b[3:]))
 
 	experiment := edulab.Experiment{
-		PublicID:  pid,
-		CreatedAt: time.Now(),
+		PublicID: pid,
 	}
 
 	err := r.ParseForm()
@@ -105,6 +105,26 @@ func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
 	experiment.Description = form.Get("description")
 
 	err = srv.DB.CreateExperiment(&experiment)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	err = srv.DB.CreateAssessment(&edulab.Assessment{
+		ExperimentID: experiment.ID,
+		Name:         printer.Sprintf("Pre-Assessment"),
+		IsPre:        true,
+	})
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	err = srv.DB.CreateAssessment(&edulab.Assessment{
+		ExperimentID: experiment.ID,
+		Name:         printer.Sprintf("Post-Assessment"),
+		IsPre:        false,
+	})
 	if err != nil {
 		srv.renderError(w, r, err)
 		return
@@ -185,11 +205,18 @@ func (srv *Server) showExperiment(w http.ResponseWriter, r *http.Request, pid st
 		return
 	}
 
+	assessments, err := srv.DB.FindAssessments(experiment.ID)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
 	page.Title = printer.Sprintf("Experiment: %s", experiment.Name)
 	page.Partials = []string{"experiment"}
 	page.Content = struct {
 		Breadcrumbs    template.HTML
 		Experiment     edulab.Experiment
+		Assessments    []edulab.Assessment
 		EditSettings   string
 		Demographics   string
 		PreAssessment  string
@@ -199,6 +226,7 @@ func (srv *Server) showExperiment(w http.ResponseWriter, r *http.Request, pid st
 	}{
 		Breadcrumbs:    presenter.RenderBreadcrumbs(presenter.ExperimentsBreadcrumb(nil, printer)),
 		Experiment:     experiment,
+		Assessments:    assessments,
 		EditSettings:   printer.Sprintf("Edit Settings"),
 		Demographics:   printer.Sprintf("Demographics"),
 		PreAssessment:  printer.Sprintf("Pre-Assessment"),

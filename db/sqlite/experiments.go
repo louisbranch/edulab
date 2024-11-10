@@ -9,9 +9,9 @@ import (
 )
 
 func (db *DB) CreateExperiment(e *edulab.Experiment) error {
-	q := `INSERT into experiments (public_id, name, description, created_at) values (?, ?, ?, ?);`
+	q := `INSERT into experiments (public_id, name, description) values (?, ?, ?);`
 
-	res, err := db.Exec(q, e.PublicID, e.Name, e.Description, e.CreatedAt)
+	res, err := db.Exec(q, e.PublicID, e.Name, e.Description)
 	if err != nil {
 		return errors.Wrap(err, "create experiment")
 	}
