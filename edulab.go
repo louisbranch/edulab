@@ -3,10 +3,11 @@ package edulab
 import "time"
 
 type Experiment struct {
-	ID           string
-	Name         string
-	Participants int
-	CreatedAt    time.Time
+	ID          string
+	PublicID    string
+	Name        string
+	Description string
+	CreatedAt   time.Time
 }
 
 type Database interface {

@@ -16,10 +16,10 @@ func (srv *Server) newExperiment() edulab.Experiment {
 	for i := range b {
 		b[i] = alphanum[srv.Random.Intn(len(alphanum))]
 	}
-	name := fmt.Sprintf("%s-%s", string(b[:3]), string(b[3:]))
+	pid := fmt.Sprintf("%s-%s", string(b[:3]), string(b[3:]))
 
 	experiment := edulab.Experiment{
-		Name:      name,
+		PublicID:  pid,
 		CreatedAt: time.Now(),
 	}
 
@@ -32,8 +32,23 @@ func (srv *Server) experiments(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
 
-		name := r.URL.Path[len("/edulab/experiments/"):]
-		if name == "" {
+		pid := r.URL.Path[len("/edulab/experiments/"):]
+		if pid == "new" {
+			page.Title = printer.Sprintf("New Experiment")
+			page.Partials = []string{"new_experiment"}
+			page.Content = struct {
+				Title       string
+				Name        string
+				Description string
+			}{
+				Title:       printer.Sprintf("New Experiment"),
+				Name:        printer.Sprintf("Name"),
+				Description: printer.Sprintf("Description"),
+			}
+
+			srv.render(w, page)
+			return
+		} else if pid == "" {
 			experiments, err := srv.DB.FindExperiments()
 			if err != nil {
 				srv.renderError(w, r, err)
@@ -60,13 +75,13 @@ func (srv *Server) experiments(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		experiment, err := srv.DB.FindExperiment(name)
+		experiment, err := srv.DB.FindExperiment(pid)
 		if err != nil {
 			srv.renderError(w, r, err)
 			return
 		}
 
-		page.Title = printer.Sprintf("Experiment %s", name)
+		page.Title = printer.Sprintf("Experiment %s", experiment.Name)
 		page.Partials = []string{"experiment"}
 		page.Content = struct {
 			Experiment edulab.Experiment
@@ -79,13 +94,23 @@ func (srv *Server) experiments(w http.ResponseWriter, r *http.Request) {
 	case "POST":
 		experiment := srv.newExperiment()
 
-		err := srv.DB.CreateExperiment(&experiment)
+		err := r.ParseForm()
 		if err != nil {
 			srv.renderError(w, r, err)
 			return
 		}
 
-		uri := fmt.Sprintf("/edulab/experiments/%s", experiment.Name)
+		form := r.PostForm
+		experiment.Name = form.Get("name")
+		experiment.Description = form.Get("description")
+
+		err = srv.DB.CreateExperiment(&experiment)
+		if err != nil {
+			srv.renderError(w, r, err)
+			return
+		}
+
+		uri := fmt.Sprintf("/edulab/experiments/%s", experiment.PublicID)
 
 		http.Redirect(w, r, uri, http.StatusFound)
 	default:
