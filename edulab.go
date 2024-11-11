@@ -65,4 +65,5 @@ type Database interface {
 	FindQuestions(assessmentID string) ([]Question, error)
 
 	CreateQuestionChoice(*QuestionChoice) error
+	FindQuestionChoices(assessmentID string) ([]QuestionChoice, error)
 }

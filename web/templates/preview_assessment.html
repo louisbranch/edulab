@@ -1,0 +1,29 @@
+{{ define "content" }}
+{{ .Breadcrumbs }}
+<h2>{{ .Assessment.Name }}</h2>
+{{ if .Assessment.Description }}
+<p>{{ .Assessment.Description }}</p>
+{{ end }}
+
+<form class="pure-form pure-form-stacked">
+
+{{ range $i, $question := .Questions }}
+    <fieldset>
+    <legend>{{ add $i 1 }} - {{ $question.Prompt }}</legend>
+    {{ range $j, $choice := $question.Choices }}
+        {{ if eq $question.Type "single_choice" }}
+            <label for="question_{{$i}}_choice"><input type="radio" name="question_{{$i}}_choice" value="{{$choice.ID}}"> {{ $choice.Text }}</label>
+        {{ else if eq $question.Type "multiple_choice" }}
+            <label for="question_{{$i}}choice"><input type="checkbox" name="question_{{$i}}_choice[]" value="{{$choice.ID}}"> {{ $choice.Text }}</label>
+        {{ else if eq $question.Type "free_form" }}
+            <textarea name="free_form"></textarea>
+        {{ else }}
+            {{ $question.Type }}
+        {{ end }}
+    {{ end }}
+    </fieldset>
+{{ end }}
+
+</form>
+
+{{ end }}
