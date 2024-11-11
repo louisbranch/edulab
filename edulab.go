@@ -20,9 +20,6 @@ type Assessment struct {
 	QuestionsCount int
 }
 
-<<<<<<< Updated upstream
-type AssessmentQuestion struct {
-=======
 type QuestionType string
 
 const (
@@ -32,27 +29,17 @@ const (
 )
 
 type Question struct {
->>>>>>> Stashed changes
 	ID           string
 	AssessmentID string
-	Text         string
-	Type         string
+	Prompt       string
+	Type         QuestionType
 }
 
-<<<<<<< Updated upstream
-type AssessmentChoice struct {
-	ID            string
-	AssessmentID  string
-	AssessmentQID string
-	Text          string
-	IsCorrect     bool
-=======
 type QuestionChoice struct {
 	ID         string
 	QuestionID string
 	Text       string
 	IsCorrect  bool
->>>>>>> Stashed changes
 }
 
 type Cohort struct {
@@ -70,9 +57,6 @@ type Database interface {
 	FindExperiment(publicID string) (Experiment, error)
 
 	CreateAssessment(*Assessment) error
-<<<<<<< Updated upstream
-	FindAssessments(string) ([]Assessment, error)
-=======
 	FindAssessment(experimentID string, publicID string) (Assessment, error)
 	FindAssessments(experimentID string) ([]Assessment, error)
 
@@ -81,5 +65,4 @@ type Database interface {
 	FindQuestions(assessmentID string) ([]Question, error)
 
 	CreateQuestionChoice(*QuestionChoice) error
->>>>>>> Stashed changes
 }

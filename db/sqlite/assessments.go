@@ -1,6 +1,9 @@
 package sqlite
 
-import "github.com/louisbranch/edulab"
+import (
+	"github.com/louisbranch/edulab"
+	"github.com/pkg/errors"
+)
 
 func (db *DB) CreateAssessment(a *edulab.Assessment) error {
 	query := `INSERT INTO assessments (experiment_id, public_id, name, description, is_pre)
@@ -11,8 +14,6 @@ func (db *DB) CreateAssessment(a *edulab.Assessment) error {
 	return errors.Wrap(err, "cannot create assessment")
 }
 
-<<<<<<< Updated upstream
-=======
 func (db *DB) FindAssessment(parentID string, pid string) (edulab.Assessment, error) {
 	q := `SELECT id, name, description, is_pre
 	FROM assessments where experiment_id = ? AND public_id = ?`
@@ -31,7 +32,6 @@ func (db *DB) FindAssessment(parentID string, pid string) (edulab.Assessment, er
 	return e, nil
 }
 
->>>>>>> Stashed changes
 func (db *DB) FindAssessments(experimentID string) ([]edulab.Assessment, error) {
 	rows, err := db.Query(`
 		SELECT assessments.id, experiment_id, assessments.public_id, name, description, is_pre,
