@@ -138,9 +138,6 @@ func (srv *Server) createQuestion(w http.ResponseWriter, r *http.Request,
 		}
 	}
 
-	log.Printf("%v", choices)
-	log.Printf("%v", correct)
-
 	question := edulab.Question{
 		AssessmentID: assessment.ID,
 		Prompt:       prompt,
