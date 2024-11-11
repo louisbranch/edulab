@@ -1,6 +1,9 @@
 package sqlite
 
-import "github.com/louisbranch/edulab"
+import (
+	"github.com/louisbranch/edulab"
+	"github.com/pkg/errors"
+)
 
 func (db *DB) CreateAssessment(a *edulab.Assessment) error {
 	_, err := db.Exec(`
@@ -9,6 +12,24 @@ func (db *DB) CreateAssessment(a *edulab.Assessment) error {
 	`, a.ExperimentID, a.PublicID, a.Name, a.Description, a.IsPre)
 
 	return err
+}
+
+func (db *DB) FindAssessment(parentID string, pid string) (edulab.Assessment, error) {
+	q := `SELECT id, name, description, is_pre
+	FROM assessments where experiment_id = ? AND public_id = ?`
+
+	e := edulab.Assessment{
+		ExperimentID: parentID,
+		PublicID:     pid,
+	}
+
+	err := db.QueryRow(q, parentID, pid).Scan(&e.ID, &e.Name, &e.Description, &e.IsPre)
+
+	if err != nil {
+		return e, errors.Wrap(err, "find experiment")
+	}
+
+	return e, nil
 }
 
 func (db *DB) FindAssessments(experimentID string) ([]edulab.Assessment, error) {
