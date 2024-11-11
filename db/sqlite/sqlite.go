@@ -57,6 +57,23 @@ func New(path string) (*DB, error) {
         assessments(public_id);
     `,
 		`
+	CREATE TABLE IF NOT EXISTS questions (
+		id INTEGER PRIMARY KEY,
+		assessment_id INTEGER NOT NULL,
+		prompt TEXT NOT NULL CHECK(prompt <> ''),
+		type TEXT CHECK(type IN ('multiple_choice', 'single_choice', 'free_form')),
+		created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+		FOREIGN KEY (assessment_id) REFERENCES assessments(id) ON DELETE CASCADE
+	);`,
+		`
+	CREATE TABLE IF NOT EXISTS question_choices (
+		id INTEGER PRIMARY KEY,
+		question_id INTEGER NOT NULL,
+		text TEXT NOT NULL CHECK(text <> ''),
+		is_correct BOOLEAN NOT NULL DEFAULT 0,
+		FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
+	);`,
+		`
 	CREATE TABLE IF NOT EXISTS cohorts (
 		id INTEGER PRIMARY KEY,
 		experiment_id INTEGER NOT NULL,

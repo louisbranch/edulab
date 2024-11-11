@@ -20,7 +20,7 @@ func (srv *Server) about(w http.ResponseWriter, r *http.Request) {
 		Contributions string
 		Source        string
 	}{
-		Breadcrumbs:   presenter.BreadcrumbsHome(),
+		Breadcrumbs:   presenter.HomeBreadcrumbs(printer),
 		Title:         title,
 		References:    printer.Sprint("References"),
 		Context:       printer.Sprint(""),
@@ -48,7 +48,7 @@ func (srv *Server) guide(w http.ResponseWriter, r *http.Request) {
 		Breadcrumbs template.HTML
 		Title       string
 	}{
-		Breadcrumbs: presenter.BreadcrumbsHome(),
+		Breadcrumbs: presenter.HomeBreadcrumbs(printer),
 		Title:       title,
 	}
 
@@ -65,7 +65,7 @@ func (srv *Server) faq(w http.ResponseWriter, r *http.Request) {
 		Breadcrumbs template.HTML
 		Title       string
 	}{
-		Breadcrumbs: presenter.BreadcrumbsHome(),
+		Breadcrumbs: presenter.HomeBreadcrumbs(printer),
 		Title:       title,
 	}
 

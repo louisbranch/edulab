@@ -178,7 +178,7 @@ func (srv *Server) listExperiments(w http.ResponseWriter, r *http.Request) {
 		Created      string
 		None         string
 	}{
-		Breadcrumbs:  presenter.BreadcrumbsHome(),
+		Breadcrumbs:  presenter.HomeBreadcrumbs(printer),
 		Title:        printer.Sprintf("Experiments"),
 		Experiments:  presenter.ExperimentsList(experiments, printer),
 		Name:         printer.Sprintf("Name"),
@@ -219,7 +219,7 @@ func (srv *Server) editExperiment(w http.ResponseWriter, r *http.Request, pid st
 		DescriptionPlaceholder: printer.Sprintf("e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop..."),
 		Experiment:             experiment,
 		Update:                 printer.Sprintf("Update"),
-		Breadcrumbs:            presenter.RenderBreadcrumbs(presenter.ExperimentsBreadcrumb(&experiment, printer)),
+		Breadcrumbs:            presenter.ExperimentBreadcrumb(experiment, printer),
 	}
 
 	srv.render(w, page)
@@ -247,25 +247,31 @@ func (srv *Server) showExperiment(w http.ResponseWriter, r *http.Request, pid st
 	page.Title = printer.Sprintf("Experiment: %s", experiment.Name)
 	page.Partials = []string{"experiment"}
 	page.Content = struct {
-		Breadcrumbs    template.HTML
-		Experiment     edulab.Experiment
-		Assessments    []edulab.Assessment
-		EditSettings   string
-		Demographics   string
-		PreAssessment  string
-		PostAssessment string
-		Cohorts        string
-		Publish        string
+		Breadcrumbs template.HTML
+		Experiment  edulab.Experiment
+		Assessments []edulab.Assessment
+		Texts       interface{}
 	}{
-		Breadcrumbs:    presenter.RenderBreadcrumbs(presenter.ExperimentsBreadcrumb(nil, printer)),
-		Experiment:     experiment,
-		Assessments:    assessments,
-		EditSettings:   printer.Sprintf("Edit Settings"),
-		Demographics:   printer.Sprintf("Demographics"),
-		PreAssessment:  printer.Sprintf("Pre-Assessment"),
-		PostAssessment: printer.Sprintf("Post-Assessment"),
-		Cohorts:        printer.Sprintf("Cohorts"),
-		Publish:        printer.Sprintf("Publish"),
+		Breadcrumbs: presenter.HomeBreadcrumbs(printer),
+		Experiment:  experiment,
+		Assessments: assessments,
+		Texts: struct {
+			EditSettings   string
+			Demographics   string
+			QuestionsCount string
+			PreAssessment  string
+			PostAssessment string
+			Cohorts        string
+			Publish        string
+		}{
+			EditSettings:   printer.Sprintf("Edit Settings"),
+			Demographics:   printer.Sprintf("Demographics"),
+			QuestionsCount: printer.Sprintf("Questions"),
+			PreAssessment:  printer.Sprintf("Pre-Assessment"),
+			PostAssessment: printer.Sprintf("Post-Assessment"),
+			Cohorts:        printer.Sprintf("Cohorts"),
+			Publish:        printer.Sprintf("Publish"),
+		},
 	}
 
 	srv.render(w, page)

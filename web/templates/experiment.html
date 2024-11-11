@@ -4,22 +4,26 @@
 <div class="pure-menu">
     <ul class="pure-menu-list">
         <li class="pure-menu-item">
-            <a href="/edulab/experiments/{{ .Experiment.PublicID }}/edit" class="pure-menu-link">{{ .EditSettings }}</a>
+            <a href="/edulab/experiments/{{ .Experiment.PublicID }}/edit" class="pure-menu-link">{{ .Texts.EditSettings }}</a>
         </li>
         <li class="pure-menu-item">
-            <a href="/edulab/experiments/{{ .Experiment.PublicID }}/demographics" class="pure-menu-link">{{ .Demographics }}</a>
+            <a href="/edulab/experiments/{{ .Experiment.PublicID }}/demographics" class="pure-menu-link">{{ .Texts.Demographics }}</a>
         </li>
         {{ $exp := .Experiment }}
         {{ range $el := .Assessments }}
             <li class="pure-menu-item">
+<<<<<<< Updated upstream
                 <a href="/edulab/experiments/{{ $exp.PublicID }}/assessement/{{ $el.PublicID }}" class="pure-menu-link">{{ $el.Name }}</a>
+=======
+                <a href="/edulab/experiments/{{ $exp.PublicID }}/assessments/{{ $el.PublicID }}" class="pure-menu-link">{{ $el.Name }} ({{$el.QuestionsCount}} {{$.Texts.QuestionsCount}})</a>
+>>>>>>> Stashed changes
             </li>
         {{ end }}
         <li class="pure-menu-item">
-            <a href="/edulab/experiments/{{ .Experiment.PublicID }}/cohorts" class="pure-menu-link">{{ .Cohorts }}</a>
+            <a href="/edulab/experiments/{{ .Experiment.PublicID }}/cohorts" class="pure-menu-link">{{ .Texts.Cohorts }}</a>
         </li>
         <li class="pure-menu-item">
-            <a href="/edulab/experiments/{{ .Experiment.PublicID }}/publish" class="pure-menu-link">{{ .Publish }}</a>
+            <a href="/edulab/experiments/{{ .Experiment.PublicID }}/publish" class="pure-menu-link">{{ .Texts.Publish }}</a>
         </li>
     </ul>
 </div>
