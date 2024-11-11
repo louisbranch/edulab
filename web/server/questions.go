@@ -32,7 +32,6 @@ func (srv *Server) questionsHandler(w http.ResponseWriter, r *http.Request,
 		srv.showQuestion(w, r, experiment, assessment, pid)
 		return
 	}
-
 }
 
 func (srv *Server) newQuestionForm(w http.ResponseWriter, r *http.Request,

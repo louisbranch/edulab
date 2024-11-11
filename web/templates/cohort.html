@@ -1,0 +1,24 @@
+{{ define "content" }}
+{{ .Breadcrumbs }}
+
+<h2>{{ .Texts.Title }}</h2>
+
+<form method="post" action="/edulab/experiments/{{ .Experiment.PublicID }}/cohorts/{{ .Cohort.PublicID }}" class="pure-form pure-form-stacked">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="name">{{ .Texts.Name }}</label>
+            <div class="pure-form-message-inline">{{ .Texts.NameHelp }}</div>
+            <input type="text" name="name" id="name" required value="{{ .Cohort.Name }}" class="pure-input-1">
+        </div>
+        <div class="pure-control-group">
+            <label for="description">{{ .Texts.Description }}</label>
+            <div class="pure-form-message-inline">{{ .Texts.DescriptionHelp }}</div>
+            <textarea name="description" id="description" value="{{ .Cohort.Description }}" class="pure-input-1" rows="4">{{ .Cohort.Description }}</textarea>
+        </div>
+    </fieldset>
+    <div class="pure-controls">
+        <button type="submit" class="pure-button pure-button-primary">{{ .Texts.Update }}</button>
+    </div>
+</form>
+
+{{ end }}
