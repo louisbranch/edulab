@@ -5,6 +5,10 @@
 <p>{{ .Assessment.Description }}</p>
 {{ end }}
 
+<div class="pure-button-group">
+  <a href="/edulab/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/preview" class="pure-button">{{ .Texts.Preview }}</a>
+</div>
+
 <h3>{{ .Texts.Questions }}</h3>
 {{ if .Questions }}
     <table class="pure-table pure-table-horizontal">
@@ -28,6 +32,8 @@
     <p>{{ .Texts.NoQuestions }}</p>
 {{ end }}
 
-<a href="/edulab/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/questions/new" class="pure-button pure-button-primary">{{ .Texts.AddQuestion }}</a>
+<div class="pure-button-group">
+  <a href="/edulab/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/questions/new" class="pure-button pure-button-primary">{{ .Texts.AddQuestion }}</a>
+</div>
 
 {{ end }}

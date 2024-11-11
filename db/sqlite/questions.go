@@ -81,3 +81,31 @@ func (db *DB) FindQuestions(assessmentID string) ([]edulab.Question, error) {
 	return questions, nil
 
 }
+
+func (db *DB) FindQuestionChoices(assessmentID string) ([]edulab.QuestionChoice, error) {
+
+	query := `SELECT qc.id, qc.question_id, qc.text, qc.is_correct
+	FROM question_choices AS qc
+	JOIN questions AS q ON qc.question_id = q.id
+	WHERE q.assessment_id = ?`
+
+	rows, err := db.Query(query, assessmentID)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not find question choices")
+	}
+
+	defer rows.Close()
+
+	var choices []edulab.QuestionChoice
+	for rows.Next() {
+		c := edulab.QuestionChoice{}
+		err = rows.Scan(&c.ID, &c.QuestionID, &c.Text, &c.IsCorrect)
+		if err != nil {
+			return nil, errors.Wrap(err, "could not find question choices")
+		}
+
+		choices = append(choices, c)
+	}
+
+	return choices, nil
+}
