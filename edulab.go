@@ -66,4 +66,9 @@ type Database interface {
 
 	CreateQuestionChoice(*QuestionChoice) error
 	FindQuestionChoices(assessmentID string) ([]QuestionChoice, error)
+
+	CreateCohort(*Cohort) error
+	UpdateCohort(experimentID string, c Cohort) error
+	FindCohort(experimentID string, publicID string) (Cohort, error)
+	FindCohorts(experimentID string) ([]Cohort, error)
 }

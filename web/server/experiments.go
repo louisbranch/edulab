@@ -58,7 +58,7 @@ func (srv *Server) experimentsHandler(w http.ResponseWriter, r *http.Request) {
 			srv.demographicsHandler(w, r, experiment)
 			return
 		case "cohorts":
-			srv.cohortsHandler(w, r, experiment)
+			srv.cohortsHandler(w, r, experiment, segments[2:])
 			return
 		case "publish":
 			srv.publishHandler(w, r, experiment)
@@ -100,29 +100,6 @@ func (srv *Server) newExperimentForm(w http.ResponseWriter, r *http.Request) {
 	}
 
 	srv.render(w, page)
-}
-
-func (srv *Server) newPublicID(lens []int) string {
-	sum := 0
-	for _, l := range lens {
-		sum += l
-	}
-
-	b := make([]rune, sum)
-	for i := range b {
-		b[i] = alphanum[srv.Random.Intn(len(alphanum))]
-	}
-
-	pid := ""
-	for i, l := range lens {
-		pid += string(b[:l])
-		if i < len(lens)-1 {
-			pid += "-"
-		}
-		b = b[l:]
-	}
-
-	return pid
 }
 
 func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {

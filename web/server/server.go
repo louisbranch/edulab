@@ -69,3 +69,26 @@ Compare cohorts, **measure learning gains**, and adapt strategies to elevate stu
 
 	srv.render(w, page)
 }
+
+func (srv *Server) newPublicID(lens []int) string {
+	sum := 0
+	for _, l := range lens {
+		sum += l
+	}
+
+	b := make([]rune, sum)
+	for i := range b {
+		b[i] = alphanum[srv.Random.Intn(len(alphanum))]
+	}
+
+	pid := ""
+	for i, l := range lens {
+		pid += string(b[:l])
+		if i < len(lens)-1 {
+			pid += "-"
+		}
+		b = b[l:]
+	}
+
+	return pid
+}

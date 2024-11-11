@@ -42,6 +42,14 @@ func AssessmentBreadcrumb(e edulab.Experiment, a edulab.Assessment, printer *mes
 	})
 }
 
+func CohortBreadcrumb(e edulab.Experiment, printer *message.Printer) template.HTML {
+	return RenderBreadcrumbs([]Breadcrumb{
+		{URL: "/edulab/", Name: printer.Sprintf("Home")},
+		{URL: fmt.Sprintf("/edulab/experiments/%s", e.PublicID), Name: e.Name},
+		{URL: fmt.Sprintf("/edulab/experiments/%s/cohorts/", e.PublicID), Name: printer.Sprint("Cohorts")},
+	})
+}
+
 func RenderBreadcrumbs(breadcrumbs []Breadcrumb) template.HTML {
 	var sb strings.Builder
 	sb.WriteString(`<nav class="breadcrumb">`)
