@@ -32,11 +32,11 @@ func (srv *Server) assessmentsHandler(w http.ResponseWriter, r *http.Request,
 	}
 
 	switch segments[1] {
-	case "questions":
-		srv.questionsHandler(w, r, experiment, assessment, segments[2:])
-		return
 	case "preview":
 		srv.previewAssessment(w, r, experiment, assessment)
+		return
+	case "questions":
+		srv.questionsHandler(w, r, experiment, assessment, segments[2:])
 		return
 	default:
 		srv.renderNotFound(w, r)

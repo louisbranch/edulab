@@ -54,6 +54,15 @@ func (srv *Server) experimentsHandler(w http.ResponseWriter, r *http.Request) {
 		case "assessments":
 			srv.assessmentsHandler(w, r, experiment, segments[2:])
 			return
+		case "demographics":
+			srv.demographicsHandler(w, r, experiment)
+			return
+		case "cohorts":
+			srv.cohortsHandler(w, r, experiment)
+			return
+		case "publish":
+			srv.publishHandler(w, r, experiment)
+			return
 		default:
 			srv.renderNotFound(w, r)
 			return
