@@ -9,18 +9,37 @@
 
 {{ range $i, $question := .Questions }}
     <fieldset>
-    <legend>{{ add $i 1 }} - {{ $question.Prompt }}</legend>
-    {{ range $j, $choice := $question.Choices }}
-        {{ if eq $question.Type "single_choice" }}
-            <label for="question_{{$i}}_choice"><input type="radio" name="question_{{$i}}_choice" value="{{$choice.ID}}"> {{ $choice.Text }}</label>
-        {{ else if eq $question.Type "multiple_choice" }}
-            <label for="question_{{$i}}choice"><input type="checkbox" name="question_{{$i}}_choice[]" value="{{$choice.ID}}"> {{ $choice.Text }}</label>
-        {{ else if eq $question.Type "free_form" }}
-            <textarea name="free_form"></textarea>
-        {{ else }}
-            {{ $question.Type }}
+    <legend>{{ markdown $question.Prompt }}</legend>
+    <div>
+        {{ range $j, $choice := $question.Choices }}
+            {{ if eq $question.Type "single_choice" }}
+                <div class="pure-g pure-g-middle">
+                    <div class="pure-u-2-24">
+                        <input type="radio" name="question_{{$i}}_choice" id="question_{{$i}}_choice_{{$j}}" value="{{$choice.ID}}">
+                    </div>
+                    <div class="pure-u-22-24">
+                        <label for="question_{{$i}}_choice_{{$j}}">
+                            {{markdown $choice.Text }}
+                        </label>
+                    </div>
+                </div>
+            {{ else if eq $question.Type "multiple_choice" }}
+                <div class="pure-g pure-g-middle">
+                    <div class="pure-u-2-24">
+                        <input type="checkbox" name="question_{{$i}}_choice[]" id="question_{{$i}}_choice_{{$j}}" value="{{$choice.ID}}">
+                    </div>
+                    <div class="pure-u-22-24">
+                        <label for="question_{{$i}}_choice_{{$j}}[]">
+                            {{markdown $choice.Text }}
+                        </label>
+                    </div>
+                </div>
+            {{ end }}
         {{ end }}
-    {{ end }}
+        {{ if eq $question.Type "free_form" }}
+            <textarea class="pure-input-1" rows="5"></textarea>
+        {{ end }}
+    </div>
     </fieldset>
 {{ end }}
 
