@@ -11,12 +11,13 @@ type Experiment struct {
 }
 
 type Assessment struct {
-	ID           string
-	ExperimentID string
-	PublicID     string
-	Name         string
-	Description  string
-	IsPre        bool
+	ID             string
+	ExperimentID   string
+	PublicID       string
+	Name           string
+	Description    string
+	IsPre          bool
+	QuestionsCount int
 }
 
 type QuestionType string
@@ -27,19 +28,18 @@ const (
 	FreeForm       QuestionType = "free_form"
 )
 
-type AssessmentQuestion struct {
+type Question struct {
 	ID           string
 	AssessmentID string
 	Prompt       string
 	Type         QuestionType
 }
 
-type AssessmentChoice struct {
-	ID            string
-	AssessmentID  string
-	AssessmentQID string
-	Value         string
-	IsCorrect     bool
+type QuestionChoice struct {
+	ID         string
+	QuestionID string
+	Text       string
+	IsCorrect  bool
 }
 
 type Cohort struct {
@@ -54,9 +54,15 @@ type Database interface {
 	CreateExperiment(*Experiment) error
 	UpdateExperiment(Experiment) error
 	FindExperiments() ([]Experiment, error)
-	FindExperiment(string) (Experiment, error)
+	FindExperiment(publicID string) (Experiment, error)
 
 	CreateAssessment(*Assessment) error
-	FindAssessment(string, string) (Assessment, error)
-	FindAssessments(string) ([]Assessment, error)
+	FindAssessment(experimentID string, publicID string) (Assessment, error)
+	FindAssessments(experimentID string) ([]Assessment, error)
+
+	CreateQuestion(*Question) error
+	FindQuestion(assessmentID string, publicID string) (Question, error)
+	FindQuestions(assessmentID string) ([]Question, error)
+
+	CreateQuestionChoice(*QuestionChoice) error
 }

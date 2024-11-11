@@ -1,7 +1,7 @@
 /* Default to dark theme */
 :root {
     --background-color: #1C1C1C;
-    --form-background-color: #2C2C2C;
+    --form-background-color: #595959;
     --text-color: #E0E0E0;
     --highlight-color: #00CFFF;
     --button-hover-text-color: #0c142a;
@@ -11,6 +11,7 @@
 @media (prefers-color-scheme: light) {
     :root {
         --background-color: #F7F4E9;
+        --form-background-color: #FFF;
         --text-color: #333333;
         --highlight-color: #007ACC;
         --button-hover-text-color: #FFFFFF;
@@ -103,7 +104,9 @@ table.pure-table {
 }
 
 table.pure-table thead {
-    background-color: var(--highlight-color);
+    background-color: transparent;
+    border-bottom: 2px solid var(--highlight-color);
+    color: var(--text-color);
 }
 
 mark {

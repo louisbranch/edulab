@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"github.com/louisbranch/edulab"
-	"github.com/louisbranch/edulab/db/postgres"
 	"github.com/louisbranch/edulab/db/sqlite"
 	"github.com/louisbranch/edulab/web/html"
 	"github.com/louisbranch/edulab/web/server"
@@ -53,7 +52,9 @@ func main() {
 
 		connection := fmt.Sprintf("postgres://%s:%s@%s/%s?sslmode=%s",
 			dbuser, pswd, host, dbname, sslmode)
-		db, err = postgres.New(connection)
+		// FIXME: enable postgres
+		log.Printf("connection: %s\n", connection)
+		// db, err = postgres.New(connection)
 	}
 	if err != nil {
 		log.Fatal(err)

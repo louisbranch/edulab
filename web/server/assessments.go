@@ -2,6 +2,7 @@ package server
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 
 	"github.com/louisbranch/edulab"
@@ -10,6 +11,9 @@ import (
 
 func (srv *Server) assessmentsHandler(w http.ResponseWriter, r *http.Request,
 	experiment edulab.Experiment, segments []string) {
+
+	log.Print("[DEBUG] web/server/assessments.go: handling assessments")
+
 	if len(segments) < 1 {
 		srv.renderNotFound(w, r)
 		return
@@ -27,59 +31,53 @@ func (srv *Server) assessmentsHandler(w http.ResponseWriter, r *http.Request,
 		return
 	}
 
-	srv.renderNotFound(w, r)
+	switch segments[1] {
+	case "questions":
+		srv.questionsHandler(w, r, experiment, assessment, segments[2:])
+		return
+	default:
+		srv.renderNotFound(w, r)
+		return
+	}
 }
 
 func (srv *Server) showAssessment(w http.ResponseWriter, r *http.Request,
 	experiment edulab.Experiment, assessment edulab.Assessment) {
+
+	questions, err := srv.DB.FindQuestions(assessment.ID)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
 
 	printer, page := srv.i18n(w, r)
 
 	page.Title = printer.Sprintf("Assessment: %s", assessment.Name)
 	page.Partials = []string{"assessment"}
 	page.Content = struct {
-		Breadcrumbs   template.HTML
-		Experiment    edulab.Experiment
-		Assessment    edulab.Assessment
-		Questions     []edulab.AssessmentQuestion
-		QuestionTypes []presenter.QuestionType
-		Texts         interface{}
+		Breadcrumbs template.HTML
+		Experiment  edulab.Experiment
+		Assessment  edulab.Assessment
+		Questions   []edulab.Question
+		Texts       interface{}
 	}{
-		Breadcrumbs:   presenter.RenderBreadcrumbs(presenter.ExperimentsBreadcrumb(&experiment, printer)),
-		Experiment:    experiment,
-		Assessment:    assessment,
-		QuestionTypes: presenter.QuestionTypes(printer),
+		Breadcrumbs: presenter.ExperimentBreadcrumb(experiment, printer),
+		Experiment:  experiment,
+		Assessment:  assessment,
+		Questions:   questions,
 		Texts: struct {
-			Prompt             string
-			PromptHelp         string
-			PromptPlaceholder  string
-			Type               string
-			Choices            string
-			ChoicesHelp        string
-			ChoicePlaceholders []string
-			Correct            string
-			Create             string
-			Questions          string
-			NewQuestion        string
-			NoQuestions        string
+			Questions   string
+			Prompt      string
+			Actions     string
+			Edit        string
+			AddQuestion string
+			NoQuestions string
 		}{
-			Prompt:            printer.Sprintf("Prompt"),
-			PromptHelp:        printer.Sprintf("Markdown supported"),
-			PromptPlaceholder: printer.Sprintf("e.g. What is the best explanation for the cause of Earth's seasons?"),
-			Type:              printer.Sprintf("Type"),
-			Choices:           printer.Sprintf("Choices"),
-			ChoicesHelp:       printer.Sprintf("Markdown supported. Empty choices will be ignored."),
-			ChoicePlaceholders: []string{
-				printer.Sprintf("e.g. The tilt of Earth's axis"),
-				printer.Sprintf("e.g. The distance from the Sun"),
-				printer.Sprintf("e.g. The Earth's elliptical orbit"),
-				printer.Sprintf("e.g. The Earth's rotation"),
-				printer.Sprintf("e.g. The Earth's revolution"),
-			},
-			Correct:     printer.Sprintf("Correct"),
-			Create:      printer.Sprintf("Create"),
 			Questions:   printer.Sprintf("Questions"),
-			NewQuestion: printer.Sprintf("New Question"),
+			Prompt:      printer.Sprintf("Prompt"),
+			Actions:     printer.Sprintf("Actions"),
+			Edit:        printer.Sprintf("Edit"),
+			AddQuestion: printer.Sprintf("Add Question"),
 			NoQuestions: printer.Sprintf("No questions yet"),
 		},
 	}

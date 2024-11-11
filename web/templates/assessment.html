@@ -7,50 +7,27 @@
 
 <h3>{{ .Texts.Questions }}</h3>
 {{ if .Questions }}
-    {{ range .Questions }}
-        <h4>{{ .Question }}</h4>
-        {{ range .Answers }}
-            <p>{{ .Answer }}</p>
-        {{ end }}
-    {{ end }}
+    <table class="pure-table pure-table-horizontal">
+       <thead>
+              <tr>
+                <th>{{ .Texts.Prompt }}</th>
+                <th>{{ .Texts.Actions }}</th>
+              </tr>
+       </thead> 
+         <tbody>
+          {{ range .Questions }}
+                <tr>
+                 <td>{{ .Prompt }}</td>
+                 <td>
+                    <a href="/edulab/experiments/{{ $.Experiment.PublicID }}/assessments/{{ $.Assessment.PublicID }}/questions/{{ .ID }}">{{ $.Texts.Edit }}</a>
+                 </td>
+                </tr>
+          {{ end }}
+    </table>
 {{ else }}
     <p>{{ .Texts.NoQuestions }}</p>
 {{ end }}
 
-<hr>
-
-<h3>{{ .Texts.NewQuestion }}</h3>
-<form method="post" action="/edulab/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/questions" class="pure-form pure-form-stacked">
-    <fieldset>
-        <div class="pure-control-group">
-            <label for="text">{{ .Texts.Prompt }}</label>
-            <div class="pure-form-message-inline">{{ .Texts.PromptHelp }}</div>
-            <textarea name="text" id="text" required placeholder="{{ .Texts.PromptPlaceholder}}" class="pure-input-1" rows="4"></textarea>
-        </div>
-        <div class="pure-control-group">
-            <label for="type">{{ .Texts.Type }}</label>
-            <select name="type" id="type" required>
-                {{ range .QuestionTypes }}
-                    <option value="{{ .Value }}">{{ .Text }}</option>
-                {{ end }}
-            </select>
-        </div>
-        <div class="pure-control-group">
-            <label for="choices">{{ .Texts.Choices }}</label>
-            <div class="pure-form-message-inline">{{ .Texts.ChoicesHelp }}</div>
-        </div>
-        {{ range $i, $el := .Texts.ChoicePlaceholders }}
-        <fieldset class="pure-group">
-            <textarea name="choice_{{$i}}" placeholder="{{ $el }}" class="pure-input-1" rows="2"></textarea>
-            <label for="choice_{{$i}}_correct" class="pure-checkbox">
-                <input type="checkbox" name="choice_{{$i}}_correct" id="choice_{{$i}}_correct" value="1"> {{ $.Texts.Correct }}
-            </label>
-        </fieldset>
-        {{ end }}
-    </fieldset>
-    <div class="pure-controls">
-        <button type="submit" class="pure-button pure-button-primary">{{ .Texts.Create }}</button>
-    </div>
-</form>
+<a href="/edulab/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/questions/new" class="pure-button pure-button-primary">{{ .Texts.AddQuestion }}</a>
 
 {{ end }}
