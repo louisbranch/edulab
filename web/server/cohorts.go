@@ -120,8 +120,6 @@ func (srv *Server) newCohort(w http.ResponseWriter, r *http.Request, experiment 
 }
 
 func (srv *Server) createCohort(w http.ResponseWriter, r *http.Request, experiment edulab.Experiment) {
-	printer, _ := srv.i18n(w, r)
-
 	err := r.ParseForm()
 	if err != nil {
 		srv.renderError(w, r, err)
@@ -137,7 +135,7 @@ func (srv *Server) createCohort(w http.ResponseWriter, r *http.Request, experime
 		Description:  description,
 	}
 
-	err = srv.model(printer).CreateCohort(cohort)
+	err = srv.models.CreateCohort(cohort)
 	if err != nil {
 		srv.renderError(w, r, err)
 		return

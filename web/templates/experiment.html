@@ -12,7 +12,7 @@
         {{ $exp := .Experiment }}
         {{ range $el := .Assessments }}
             <li class="pure-menu-item">
-                <a href="/edulab/experiments/{{ $exp.PublicID }}/assessments/{{ $el.PublicID }}" class="pure-menu-link">{{ $el.Name }} ({{$el.QuestionsCount}} {{$.Texts.QuestionsCount}})</a>
+                <a href="/edulab/experiments/{{ $exp.PublicID }}/assessments/{{ $el.PublicID }}" class="pure-menu-link">{{ $el.Type }} ({{$el.QuestionsCount}} {{$.Texts.QuestionsCount}})</a>
             </li>
         {{ end }}
         <li class="pure-menu-item">

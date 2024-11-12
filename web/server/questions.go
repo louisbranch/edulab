@@ -140,7 +140,7 @@ func (srv *Server) createQuestion(w http.ResponseWriter, r *http.Request,
 	question := edulab.Question{
 		AssessmentID: assessment.ID,
 		Prompt:       prompt,
-		Type:         edulab.QuestionType(qtype),
+		Type:         edulab.InputType(qtype),
 	}
 
 	err = srv.DB.CreateQuestion(&question)

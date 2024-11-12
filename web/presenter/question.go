@@ -20,7 +20,7 @@ func QuestionTypes(printer *message.Printer) []QuestionType {
 	return []QuestionType{
 		{Value: string(edulab.SingleChoice), Text: printer.Sprintf("Single choice")},
 		{Value: string(edulab.MultipleChoice), Text: printer.Sprintf("Multiple choice")},
-		{Value: string(edulab.FreeForm), Text: printer.Sprintf("Free form")},
+		{Value: string(edulab.Text), Text: printer.Sprintf("Text")},
 	}
 }
 
