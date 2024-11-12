@@ -9,12 +9,9 @@
         <li class="pure-menu-item">
             <a href="/edulab/experiments/{{ .Experiment.PublicID }}/demographics" class="pure-menu-link">{{ .Texts.Demographics }}</a>
         </li>
-        {{ $exp := .Experiment }}
-        {{ range $el := .Assessments }}
-            <li class="pure-menu-item">
-                <a href="/edulab/experiments/{{ $exp.PublicID }}/assessments/{{ $el.PublicID }}" class="pure-menu-link">{{ $el.Type }} ({{$el.QuestionsCount}} {{$.Texts.QuestionsCount}})</a>
-            </li>
-        {{ end }}
+        <li class="pure-menu-item">
+            <a href="/edulab/experiments/{{ .Experiment.PublicID }}/assessments" class="pure-menu-link">{{ .Texts.Assessments }}</a>
+        </li>
         <li class="pure-menu-item">
             <a href="/edulab/experiments/{{ .Experiment.PublicID }}/cohorts" class="pure-menu-link">{{ .Texts.Cohorts }}</a>
         </li>

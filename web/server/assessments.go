@@ -15,7 +15,7 @@ func (srv *Server) assessmentsHandler(w http.ResponseWriter, r *http.Request,
 	log.Print("[DEBUG] web/server/assessments.go: handling assessments")
 
 	if len(segments) < 1 {
-		srv.renderNotFound(w, r)
+		srv.listAssessments(w, r, experiment)
 		return
 	}
 
@@ -44,6 +44,54 @@ func (srv *Server) assessmentsHandler(w http.ResponseWriter, r *http.Request,
 	}
 }
 
+func (srv *Server) listAssessments(w http.ResponseWriter, r *http.Request,
+	experiment edulab.Experiment) {
+
+	assessments, err := srv.DB.FindAssessments(experiment.ID)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	printer, page := srv.i18n(w, r)
+
+	page.Title = printer.Sprint("Assessments")
+	page.Partials = []string{"assessments"}
+	page.Content = struct {
+		Breadcrumbs template.HTML
+		Experiment  edulab.Experiment
+		Assessments []presenter.Assessment
+		Texts       interface{}
+	}{
+		Breadcrumbs: presenter.ExperimentBreadcrumb(experiment, printer),
+		Experiment:  experiment,
+		Assessments: presenter.NewAssessments(assessments, printer),
+		Texts: struct {
+			Title         string
+			Type          string
+			Questions     string
+			Actions       string
+			Edit          string
+			AddAssessment string
+			NoAssessments string
+			Preview       string
+			ComingSoon    string
+		}{
+			Title:         printer.Sprintf("Assessments"),
+			Type:          printer.Sprintf("Type"),
+			Questions:     printer.Sprintf("Questions"),
+			Actions:       printer.Sprintf("Actions"),
+			AddAssessment: printer.Sprintf("Add Assessment"),
+			NoAssessments: printer.Sprintf("No assessments yet"),
+			Edit:          printer.Sprintf("Edit"),
+			Preview:       printer.Sprintf("Preview"),
+			ComingSoon:    printer.Sprintf("Coming Soon"),
+		},
+	}
+
+	srv.render(w, page)
+}
+
 func (srv *Server) showAssessment(w http.ResponseWriter, r *http.Request,
 	experiment edulab.Experiment, assessment edulab.Assessment) {
 
@@ -64,7 +112,7 @@ func (srv *Server) showAssessment(w http.ResponseWriter, r *http.Request,
 		Questions   []edulab.Question
 		Texts       interface{}
 	}{
-		Breadcrumbs: presenter.ExperimentBreadcrumb(experiment, printer),
+		Breadcrumbs: presenter.AssessmentsBreadcrumb(experiment, printer),
 		Experiment:  experiment,
 		Assessment:  presenter.NewAssessment(assessment, printer),
 		Questions:   questions,

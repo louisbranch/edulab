@@ -1,0 +1,35 @@
+{{ define "content" }}
+{{ .Breadcrumbs }}
+<h2>{{ .Texts.Title }}</h2>
+
+{{ if .Assessments }}
+    <table class="pure-table pure-table-horizontal">
+       <thead>
+              <tr>
+                <th>{{ .Texts.Type }}</th>
+                <th>{{ .Texts.Questions }}</th>
+                <th>{{ .Texts.Actions }}</th>
+              </tr>
+       </thead> 
+         <tbody>
+          {{ range .Assessments }}
+                <tr>
+                 <td>{{ .Type }}</td>
+                 <td>{{ .QuestionsCount }}</td>
+                 <td>
+                    <a href="/edulab/experiments/{{ $.Experiment.PublicID }}/assessments/{{ .PublicID }}">{{ $.Texts.Edit }}</a>
+                    |
+                    <a href="/edulab/experiments/{{ $.Experiment.PublicID }}/assessments/{{ .PublicID }}/preview">{{ $.Texts.Preview }}</a>
+                 </td>
+                </tr>
+          {{ end }}
+    </table>
+{{ else }}
+    <p>{{ .Texts.NoAssessments }}</p>
+{{ end }}
+
+<div class="pure-button-group">
+  <a href="/edulab/experiments/{{ .Experiment.PublicID }}/assessments/new" class="pure-button pure-button-primary" disabled>{{ .Texts.AddAssessment }} ({{ .Texts.ComingSoon }})</a>
+</div>
+
+{{ end }}

@@ -187,39 +187,27 @@ func (srv *Server) editExperiment(w http.ResponseWriter, r *http.Request, experi
 func (srv *Server) showExperiment(w http.ResponseWriter, r *http.Request, experiment edulab.Experiment) {
 	printer, page := srv.i18n(w, r)
 
-	assessments, err := srv.DB.FindAssessments(experiment.ID)
-	if err != nil {
-		srv.renderError(w, r, err)
-		return
-	}
-
 	page.Title = printer.Sprintf("Experiment: %s", experiment.Name)
 	page.Partials = []string{"experiment"}
 	page.Content = struct {
 		Breadcrumbs template.HTML
 		Experiment  edulab.Experiment
-		Assessments []presenter.Assessment
 		Texts       interface{}
 	}{
 		Breadcrumbs: presenter.HomeBreadcrumbs(printer),
 		Experiment:  experiment,
-		Assessments: presenter.NewAssessments(assessments, printer),
 		Texts: struct {
-			EditSettings   string
-			Demographics   string
-			QuestionsCount string
-			PreAssessment  string
-			PostAssessment string
-			Cohorts        string
-			Publish        string
+			EditSettings string
+			Demographics string
+			Assessments  string
+			Cohorts      string
+			Publish      string
 		}{
-			EditSettings:   printer.Sprintf("Edit Settings"),
-			Demographics:   printer.Sprintf("Demographics"),
-			QuestionsCount: printer.Sprintf("Questions"),
-			PreAssessment:  printer.Sprintf("Pre-Assessment"),
-			PostAssessment: printer.Sprintf("Post-Assessment"),
-			Cohorts:        printer.Sprintf("Cohorts"),
-			Publish:        printer.Sprintf("Publish"),
+			EditSettings: printer.Sprintf("Edit Settings"),
+			Demographics: printer.Sprintf("Demographics"),
+			Assessments:  printer.Sprintf("Assessments"),
+			Cohorts:      printer.Sprintf("Cohorts"),
+			Publish:      printer.Sprintf("Publish"),
 		},
 	}
 
