@@ -68,11 +68,13 @@ func (srv *Server) listCohorts(w http.ResponseWriter, r *http.Request, experimen
 			Name      string
 			Actions   string
 			Edit      string
+			NoCohorts string
 		}{
 			AddCohort: printer.Sprintf("Add Cohort"),
 			Name:      printer.Sprintf("Name"),
 			Actions:   printer.Sprintf("Actions"),
 			Edit:      printer.Sprintf("Edit"),
+			NoCohorts: printer.Sprintf("No cohorts found"),
 		},
 	}
 
@@ -118,6 +120,8 @@ func (srv *Server) newCohort(w http.ResponseWriter, r *http.Request, experiment 
 }
 
 func (srv *Server) createCohort(w http.ResponseWriter, r *http.Request, experiment edulab.Experiment) {
+	printer, _ := srv.i18n(w, r)
+
 	err := r.ParseForm()
 	if err != nil {
 		srv.renderError(w, r, err)
@@ -127,14 +131,13 @@ func (srv *Server) createCohort(w http.ResponseWriter, r *http.Request, experime
 	name := r.FormValue("name")
 	description := r.FormValue("description")
 
-	cohort := edulab.Cohort{
+	cohort := &edulab.Cohort{
 		ExperimentID: experiment.ID,
-		PublicID:     srv.newPublicID([]int{3}),
 		Name:         name,
 		Description:  description,
 	}
 
-	err = srv.DB.CreateCohort(&cohort)
+	err = srv.model(printer).CreateCohort(cohort)
 	if err != nil {
 		srv.renderError(w, r, err)
 		return

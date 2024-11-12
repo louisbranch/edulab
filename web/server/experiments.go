@@ -10,8 +10,6 @@ import (
 	"github.com/louisbranch/edulab/web/presenter"
 )
 
-var alphanum = []rune("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-
 func (srv *Server) experimentsHandler(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path
 	segments := strings.Split(strings.Trim(path, "/"), "/")
@@ -105,10 +103,6 @@ func (srv *Server) newExperimentForm(w http.ResponseWriter, r *http.Request) {
 func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
 	printer, _ := srv.i18n(w, r)
 
-	experiment := edulab.Experiment{
-		PublicID: srv.newPublicID([]int{3, 3}),
-	}
-
 	err := r.ParseForm()
 	if err != nil {
 		srv.renderError(w, r, err)
@@ -116,32 +110,13 @@ func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
 	}
 
 	form := r.PostForm
-	experiment.Name = form.Get("name")
-	experiment.Description = form.Get("description")
 
-	err = srv.DB.CreateExperiment(&experiment)
-	if err != nil {
-		srv.renderError(w, r, err)
-		return
+	experiment := &edulab.Experiment{
+		Name:        form.Get("name"),
+		Description: form.Get("description"),
 	}
 
-	err = srv.DB.CreateAssessment(&edulab.Assessment{
-		ExperimentID: experiment.ID,
-		PublicID:     srv.newPublicID([]int{3}),
-		Name:         printer.Sprintf("Pre-Assessment"),
-		IsPre:        true,
-	})
-	if err != nil {
-		srv.renderError(w, r, err)
-		return
-	}
-
-	err = srv.DB.CreateAssessment(&edulab.Assessment{
-		ExperimentID: experiment.ID,
-		PublicID:     srv.newPublicID([]int{3}),
-		Name:         printer.Sprintf("Post-Assessment"),
-		IsPre:        false,
-	})
+	err = srv.model(printer).CreateExperiment(experiment)
 	if err != nil {
 		srv.renderError(w, r, err)
 		return

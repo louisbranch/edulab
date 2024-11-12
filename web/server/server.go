@@ -5,7 +5,10 @@ import (
 	"math/rand"
 	"net/http"
 
+	"golang.org/x/text/message"
+
 	"github.com/louisbranch/edulab"
+	"github.com/louisbranch/edulab/models"
 	"github.com/louisbranch/edulab/web"
 )
 
@@ -70,25 +73,6 @@ Compare cohorts, **measure learning gains**, and adapt strategies to elevate stu
 	srv.render(w, page)
 }
 
-func (srv *Server) newPublicID(lens []int) string {
-	sum := 0
-	for _, l := range lens {
-		sum += l
-	}
-
-	b := make([]rune, sum)
-	for i := range b {
-		b[i] = alphanum[srv.Random.Intn(len(alphanum))]
-	}
-
-	pid := ""
-	for i, l := range lens {
-		pid += string(b[:l])
-		if i < len(lens)-1 {
-			pid += "-"
-		}
-		b = b[l:]
-	}
-
-	return pid
+func (srv *Server) model(printer *message.Printer) models.Model {
+	return models.New(srv.DB, srv.Random, printer)
 }
