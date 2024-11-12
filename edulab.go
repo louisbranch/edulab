@@ -59,19 +59,16 @@ type Cohort struct {
 type Demographic struct {
 	ID           string
 	ExperimentID string
-	Translatable
-	Type InputType
+	I18nKey      string
+	Text         string
+	Type         InputType
 }
 
 type DemographicOption struct {
 	ID            string
 	DemographicID string
-	Translatable
-}
-
-type Translatable struct {
-	I18n string
-	Text string
+	I18nKey       string
+	Text          string
 }
 
 type Database interface {
@@ -95,4 +92,10 @@ type Database interface {
 	UpdateCohort(experimentID string, c Cohort) error
 	FindCohort(experimentID string, publicID string) (Cohort, error)
 	FindCohorts(experimentID string) ([]Cohort, error)
+
+	CreateDemographic(*Demographic) error
+	FindDemographics(experimentID string) ([]Demographic, error)
+
+	CreateDemographicOption(*DemographicOption) error
+	FindDemographicOptions(demographicID string) ([]DemographicOption, error)
 }

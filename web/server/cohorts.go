@@ -135,7 +135,7 @@ func (srv *Server) createCohort(w http.ResponseWriter, r *http.Request, experime
 		Description:  description,
 	}
 
-	err = srv.models.CreateCohort(cohort)
+	err = srv.DB.CreateCohort(cohort)
 	if err != nil {
 		srv.renderError(w, r, err)
 		return
