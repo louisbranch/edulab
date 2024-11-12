@@ -95,5 +95,5 @@ type Database interface {
 	FindDemographics(experimentID string) ([]Demographic, error)
 
 	CreateDemographicOption(*DemographicOption) error
-	FindDemographicOptions(demographicID string) ([]DemographicOption, error)
+	FindDemographicOptions(experimentID string) ([]DemographicOption, error)
 }

@@ -79,19 +79,54 @@ func (srv *Server) previewDemographics(w http.ResponseWriter, r *http.Request,
 
 	printer, page := srv.i18n(w, r)
 
+	demographics, err := srv.DB.FindDemographics(experiment.ID)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	dp := make(map[string]presenter.Demographic)
+	for _, d := range demographics {
+		dp[d.ID] = presenter.Demographic{
+			Demographic: d,
+		}
+	}
+
+	options, err := srv.DB.FindDemographicOptions(experiment.ID)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	for _, o := range options {
+		d, ok := dp[o.DemographicID]
+		if !ok {
+			log.Printf("[ERROR] web/server/assessments.go: demographic not found: %s", o.DemographicID)
+			continue
+		}
+		d.Options = append(d.Options, o)
+		dp[o.DemographicID] = d
+	}
+
 	page.Title = printer.Sprintf("Demographics")
 	page.Partials = []string{"demographics_preview"}
 	page.Content = struct {
-		Breadcrumbs template.HTML
-		Experiment  edulab.Experiment
-		Texts       interface{}
+		Breadcrumbs  template.HTML
+		Experiment   edulab.Experiment
+		Demographics []presenter.Demographic
+		Texts        interface{}
 	}{
-		Breadcrumbs: presenter.ExperimentBreadcrumb(experiment, printer),
-		Experiment:  experiment,
+		Breadcrumbs:  presenter.ExperimentBreadcrumb(experiment, printer),
+		Experiment:   experiment,
+		Demographics: presenter.SortDemographics(demographics, dp),
 		Texts: struct {
-			Title string
+			Title  string
+			Submit string
+			Back   string
 		}{
-			Title: printer.Sprintf("Demographics"),
+			Title:  printer.Sprintf("Demographics"),
+			Submit: printer.Sprintf("Submit"),
+			Back:   printer.Sprintf("Back"),
 		},
 	}
 
