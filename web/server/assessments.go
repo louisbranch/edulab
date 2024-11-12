@@ -55,7 +55,7 @@ func (srv *Server) listAssessments(w http.ResponseWriter, r *http.Request,
 
 	printer, page := srv.i18n(w, r)
 
-	page.Title = printer.Sprint("Assessments")
+	page.Title = printer.Sprintf("Assessments")
 	page.Partials = []string{"assessments"}
 	page.Content = struct {
 		Breadcrumbs template.HTML
@@ -67,25 +67,25 @@ func (srv *Server) listAssessments(w http.ResponseWriter, r *http.Request,
 		Experiment:  experiment,
 		Assessments: presenter.NewAssessments(assessments, printer),
 		Texts: struct {
-			Title         string
-			Type          string
-			Questions     string
-			Actions       string
-			Edit          string
-			AddAssessment string
-			NoAssessments string
-			Preview       string
-			ComingSoon    string
+			Title      string
+			Type       string
+			Questions  string
+			Actions    string
+			Edit       string
+			Add        string
+			Empty      string
+			Preview    string
+			ComingSoon string
 		}{
-			Title:         printer.Sprintf("Assessments"),
-			Type:          printer.Sprintf("Type"),
-			Questions:     printer.Sprintf("Questions"),
-			Actions:       printer.Sprintf("Actions"),
-			AddAssessment: printer.Sprintf("Add Assessment"),
-			NoAssessments: printer.Sprintf("No assessments yet"),
-			Edit:          printer.Sprintf("Edit"),
-			Preview:       printer.Sprintf("Preview"),
-			ComingSoon:    printer.Sprintf("Coming Soon"),
+			Title:      printer.Sprintf("Assessments"),
+			Type:       printer.Sprintf("Type"),
+			Questions:  printer.Sprintf("Questions"),
+			Actions:    printer.Sprintf("Actions"),
+			Add:        printer.Sprintf("Add Assessment"),
+			Empty:      printer.Sprintf("No assessments yet"),
+			Edit:       printer.Sprintf("Edit"),
+			Preview:    printer.Sprintf("Preview"),
+			ComingSoon: printer.Sprintf("Coming Soon"),
 		},
 	}
 
@@ -103,7 +103,7 @@ func (srv *Server) showAssessment(w http.ResponseWriter, r *http.Request,
 
 	printer, page := srv.i18n(w, r)
 
-	page.Title = printer.Sprint("Assessment")
+	page.Title = printer.Sprintf("Assessment")
 	page.Partials = []string{"assessment"}
 	page.Content = struct {
 		Breadcrumbs template.HTML
@@ -117,21 +117,21 @@ func (srv *Server) showAssessment(w http.ResponseWriter, r *http.Request,
 		Assessment:  presenter.NewAssessment(assessment, printer),
 		Questions:   questions,
 		Texts: struct {
-			Questions   string
-			Prompt      string
-			Actions     string
-			Edit        string
-			AddQuestion string
-			NoQuestions string
-			Preview     string
+			Questions string
+			Prompt    string
+			Actions   string
+			Edit      string
+			Add       string
+			Empty     string
+			Preview   string
 		}{
-			Questions:   printer.Sprintf("Questions"),
-			Prompt:      printer.Sprintf("Prompt"),
-			Actions:     printer.Sprintf("Actions"),
-			Edit:        printer.Sprintf("Edit"),
-			AddQuestion: printer.Sprintf("Add Question"),
-			NoQuestions: printer.Sprintf("No questions yet"),
-			Preview:     printer.Sprintf("Preview"),
+			Questions: printer.Sprintf("Questions"),
+			Prompt:    printer.Sprintf("Prompt"),
+			Actions:   printer.Sprintf("Actions"),
+			Edit:      printer.Sprintf("Edit"),
+			Add:       printer.Sprintf("Add Question"),
+			Empty:     printer.Sprintf("No questions yet"),
+			Preview:   printer.Sprintf("Preview"),
 		},
 	}
 
@@ -173,8 +173,8 @@ func (srv *Server) previewAssessment(w http.ResponseWriter, r *http.Request,
 
 	printer, page := srv.i18n(w, r)
 
-	page.Title = printer.Sprint("Preview Assessment")
-	page.Partials = []string{"preview_assessment"}
+	page.Title = printer.Sprintf("Preview Assessment")
+	page.Partials = []string{"assessment_preview"}
 	page.Content = struct {
 		Breadcrumbs template.HTML
 		Experiment  edulab.Experiment

@@ -8,10 +8,10 @@ import (
 )
 
 func (db *DB) CreateQuestion(q *edulab.Question) error {
-	query := `INSERT INTO questions (assessment_id, prompt, type)
+	query := `INSERT INTO questions (assessment_id, text, type)
 	VALUES (?, ?, ?)`
 
-	res, err := db.Exec(query, q.AssessmentID, q.Prompt, q.Type)
+	res, err := db.Exec(query, q.AssessmentID, q.Text, q.Type)
 	if err != nil {
 		return errors.Wrap(err, "could not create question")
 	}
@@ -40,11 +40,11 @@ func (db *DB) FindQuestion(assessmentID string, pid string) (edulab.Question, er
 		AssessmentID: assessmentID,
 	}
 
-	query := `SELECT id, prompt, type
+	query := `SELECT id, text, type
 	FROM questions
 	WHERE assessment_id AND id = ?`
 
-	err := db.QueryRow(query, pid).Scan(&question.ID, &question.Prompt, &question.Type)
+	err := db.QueryRow(query, pid).Scan(&question.ID, &question.Text, &question.Type)
 	if err != nil {
 		return question, errors.Wrap(err, "could not find question")
 	}
@@ -53,7 +53,7 @@ func (db *DB) FindQuestion(assessmentID string, pid string) (edulab.Question, er
 
 func (db *DB) FindQuestions(assessmentID string) ([]edulab.Question, error) {
 
-	query := `SELECT id, prompt, type
+	query := `SELECT id, text, type
 	FROM questions
 	WHERE assessment_id = ?
 	ORDER BY created_at ASC`
@@ -70,7 +70,7 @@ func (db *DB) FindQuestions(assessmentID string) ([]edulab.Question, error) {
 		q := edulab.Question{
 			AssessmentID: assessmentID,
 		}
-		err = rows.Scan(&q.ID, &q.Prompt, &q.Type)
+		err = rows.Scan(&q.ID, &q.Text, &q.Type)
 		if err != nil {
 			return nil, errors.Wrap(err, "could not find questions")
 		}

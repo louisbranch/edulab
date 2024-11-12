@@ -37,7 +37,7 @@ const (
 type Question struct {
 	ID           string
 	AssessmentID string
-	Prompt       string
+	Text         string
 	Type         InputType
 }
 
@@ -59,7 +59,6 @@ type Cohort struct {
 type Demographic struct {
 	ID           string
 	ExperimentID string
-	I18nKey      string
 	Text         string
 	Type         InputType
 }
@@ -67,7 +66,6 @@ type Demographic struct {
 type DemographicOption struct {
 	ID            string
 	DemographicID string
-	I18nKey       string
 	Text          string
 }
 

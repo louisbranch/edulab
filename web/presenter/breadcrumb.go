@@ -35,7 +35,7 @@ func AssessmentsBreadcrumb(e edulab.Experiment, printer *message.Printer) templa
 	return RenderBreadcrumbs([]Breadcrumb{
 		{URL: "/edulab/", Name: printer.Sprintf("Home")},
 		{URL: fmt.Sprintf("/edulab/experiments/%s", e.PublicID), Name: e.Name},
-		{URL: fmt.Sprintf("/edulab/experiments/%s/assessments/", e.PublicID), Name: printer.Sprint("Assessments")},
+		{URL: fmt.Sprintf("/edulab/experiments/%s/assessments/", e.PublicID), Name: printer.Sprintf("Assessments")},
 	})
 }
 
@@ -45,7 +45,7 @@ func AssessmentBreadcrumb(e edulab.Experiment, a edulab.Assessment, printer *mes
 	return RenderBreadcrumbs([]Breadcrumb{
 		{URL: "/edulab/", Name: printer.Sprintf("Home")},
 		{URL: fmt.Sprintf("/edulab/experiments/%s", e.PublicID), Name: e.Name},
-		{URL: fmt.Sprintf("/edulab/experiments/%s/assessments/", e.PublicID), Name: printer.Sprint("Assessments")},
+		{URL: fmt.Sprintf("/edulab/experiments/%s/assessments/", e.PublicID), Name: printer.Sprintf("Assessments")},
 		{URL: fmt.Sprintf("/edulab/experiments/%s/assessments/%s", e.PublicID, a.PublicID), Name: ap.Type()},
 	})
 }
@@ -54,7 +54,7 @@ func CohortBreadcrumb(e edulab.Experiment, printer *message.Printer) template.HT
 	return RenderBreadcrumbs([]Breadcrumb{
 		{URL: "/edulab/", Name: printer.Sprintf("Home")},
 		{URL: fmt.Sprintf("/edulab/experiments/%s", e.PublicID), Name: e.Name},
-		{URL: fmt.Sprintf("/edulab/experiments/%s/cohorts/", e.PublicID), Name: printer.Sprint("Cohorts")},
+		{URL: fmt.Sprintf("/edulab/experiments/%s/cohorts/", e.PublicID), Name: printer.Sprintf("Cohorts")},
 	})
 }
 

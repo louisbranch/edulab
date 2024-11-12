@@ -10,9 +10,27 @@ import (
 )
 
 func (srv *Server) demographicsHandler(w http.ResponseWriter, r *http.Request,
-	experiment edulab.Experiment) {
+	experiment edulab.Experiment, segments []string) {
 
 	log.Print("[DEBUG] web/server/demographics.go: handling demographics")
+
+	if len(segments) < 1 {
+		srv.listDemographics(w, r, experiment)
+		return
+	}
+
+	switch segments[0] {
+	case "preview":
+		srv.previewDemographics(w, r, experiment)
+		return
+	default:
+		srv.renderNotFound(w, r)
+		return
+	}
+}
+
+func (srv *Server) listDemographics(w http.ResponseWriter, r *http.Request,
+	experiment edulab.Experiment) {
 
 	printer, page := srv.i18n(w, r)
 
@@ -22,32 +40,58 @@ func (srv *Server) demographicsHandler(w http.ResponseWriter, r *http.Request,
 		return
 	}
 
-	title := printer.Sprint("Demographics")
+	title := printer.Sprintf("Demographics")
 	page.Title = title
 	page.Partials = []string{"demographics"}
 	page.Content = struct {
 		Breadcrumbs  template.HTML
 		Experiment   edulab.Experiment
-		Demographics []presenter.Demographic
+		Demographics []edulab.Demographic
 		Texts        interface{}
 	}{
 		Breadcrumbs:  presenter.ExperimentBreadcrumb(experiment, printer),
 		Experiment:   experiment,
-		Demographics: presenter.NewDemographics(demographics, printer),
+		Demographics: demographics,
 		Texts: struct {
 			Title       string
 			Demographic string
-			Prompt      string
+			Text        string
 			Actions     string
 			Add         string
 			ComingSoon  string
+			Preview     string
 		}{
 			Title:       title,
-			Demographic: printer.Sprint("Demographic"),
-			Prompt:      printer.Sprint("Prompt"),
-			Actions:     printer.Sprint("Actions"),
-			Add:         printer.Sprint("Add Demographic"),
-			ComingSoon:  printer.Sprint("Coming Soon"),
+			Demographic: printer.Sprintf("Demographic"),
+			Text:        printer.Sprintf("Text"),
+			Actions:     printer.Sprintf("Actions"),
+			Add:         printer.Sprintf("Add Demographic"),
+			ComingSoon:  printer.Sprintf("Coming Soon"),
+			Preview:     printer.Sprintf("Preview"),
+		},
+	}
+
+	srv.render(w, page)
+}
+
+func (srv *Server) previewDemographics(w http.ResponseWriter, r *http.Request,
+	experiment edulab.Experiment) {
+
+	printer, page := srv.i18n(w, r)
+
+	page.Title = printer.Sprintf("Demographics")
+	page.Partials = []string{"demographics_preview"}
+	page.Content = struct {
+		Breadcrumbs template.HTML
+		Experiment  edulab.Experiment
+		Texts       interface{}
+	}{
+		Breadcrumbs: presenter.ExperimentBreadcrumb(experiment, printer),
+		Experiment:  experiment,
+		Texts: struct {
+			Title string
+		}{
+			Title: printer.Sprintf("Demographics"),
 		},
 	}
 

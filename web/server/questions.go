@@ -40,7 +40,7 @@ func (srv *Server) newQuestionForm(w http.ResponseWriter, r *http.Request,
 	printer, page := srv.i18n(w, r)
 
 	page.Title = printer.Sprintf("New Question")
-	page.Partials = []string{"new_question"}
+	page.Partials = []string{"question_new"}
 	page.Content = struct {
 		Breadcrumbs   template.HTML
 		Experiment    edulab.Experiment
@@ -53,9 +53,9 @@ func (srv *Server) newQuestionForm(w http.ResponseWriter, r *http.Request,
 		Assessment:    assessment,
 		QuestionTypes: presenter.QuestionTypes(printer),
 		Texts: struct {
-			Prompt             string
-			PromptHelp         string
-			PromptPlaceholder  string
+			Text               string
+			TextHelp           string
+			TextPlaceholder    string
 			Type               string
 			Choices            string
 			ChoicesHelp        string
@@ -64,12 +64,12 @@ func (srv *Server) newQuestionForm(w http.ResponseWriter, r *http.Request,
 			Create             string
 			NewQuestion        string
 		}{
-			Prompt:            printer.Sprintf("Prompt"),
-			PromptHelp:        printer.Sprintf("Markdown supported"),
-			PromptPlaceholder: printer.Sprintf("e.g. What is the best explanation for the cause of Earth's seasons?"),
-			Type:              printer.Sprintf("Type"),
-			Choices:           printer.Sprintf("Choices"),
-			ChoicesHelp:       printer.Sprintf("Markdown supported. Empty choices will be ignored."),
+			Text:            printer.Sprintf("Text"),
+			TextHelp:        printer.Sprintf("Markdown supported"),
+			TextPlaceholder: printer.Sprintf("e.g. What is the best explanation for the cause of Earth's seasons?"),
+			Type:            printer.Sprintf("Type"),
+			Choices:         printer.Sprintf("Choices"),
+			ChoicesHelp:     printer.Sprintf("Markdown supported. Empty choices will be ignored."),
 			ChoicePlaceholders: []string{
 				printer.Sprintf("e.g. The tilt of Earth's axis"),
 				printer.Sprintf("e.g. The distance from the Sun"),
@@ -97,7 +97,7 @@ func (srv *Server) showQuestion(w http.ResponseWriter, r *http.Request,
 		return
 	}
 
-	page.Title = printer.Sprintf("Question: %s", question.Prompt)
+	page.Title = printer.Sprintf("Question: %s", question.Text)
 	page.Partials = []string{"question"}
 	page.Content = struct {
 		Breadcrumbs template.HTML
@@ -122,7 +122,7 @@ func (srv *Server) createQuestion(w http.ResponseWriter, r *http.Request,
 		return
 	}
 
-	prompt := r.FormValue("prompt")
+	text := r.FormValue("text")
 	qtype := r.FormValue("type")
 	choices := r.Form["choices[]"]
 
@@ -139,7 +139,7 @@ func (srv *Server) createQuestion(w http.ResponseWriter, r *http.Request,
 
 	question := edulab.Question{
 		AssessmentID: assessment.ID,
-		Prompt:       prompt,
+		Text:         text,
 		Type:         edulab.InputType(qtype),
 	}
 

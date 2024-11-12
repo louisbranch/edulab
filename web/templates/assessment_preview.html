@@ -9,7 +9,7 @@
 
 {{ range $i, $question := .Questions }}
     <fieldset>
-    <legend>{{ markdown $question.Prompt }}</legend>
+    <legend>{{ markdown $question.Text }}</legend>
     <div>
         {{ range $j, $choice := $question.Choices }}
             {{ if eq $question.Type "single" }}

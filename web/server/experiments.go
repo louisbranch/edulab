@@ -53,7 +53,7 @@ func (srv *Server) experimentsHandler(w http.ResponseWriter, r *http.Request) {
 			srv.assessmentsHandler(w, r, experiment, segments[2:])
 			return
 		case "demographics":
-			srv.demographicsHandler(w, r, experiment)
+			srv.demographicsHandler(w, r, experiment, segments[2:])
 			return
 		case "cohorts":
 			srv.cohortsHandler(w, r, experiment, segments[2:])
@@ -74,7 +74,7 @@ func (srv *Server) newExperimentForm(w http.ResponseWriter, r *http.Request) {
 	printer, page := srv.i18n(w, r)
 
 	page.Title = printer.Sprintf("New Experiment")
-	page.Partials = []string{"new_experiment"}
+	page.Partials = []string{"experiment_new"}
 	page.Content = struct {
 		Title                  string
 		Name                   string
@@ -160,7 +160,7 @@ func (srv *Server) editExperiment(w http.ResponseWriter, r *http.Request, experi
 	printer, page := srv.i18n(w, r)
 
 	page.Title = printer.Sprintf("Edit Experiment: %s", experiment.Name)
-	page.Partials = []string{"edit_experiment"}
+	page.Partials = []string{"experiment_edit"}
 	page.Content = struct {
 		Edit                   string
 		Name                   string

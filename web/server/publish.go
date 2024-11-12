@@ -16,7 +16,7 @@ func (srv *Server) publishHandler(w http.ResponseWriter, r *http.Request,
 
 	printer, page := srv.i18n(w, r)
 
-	title := printer.Sprint("Publish Experiment")
+	title := printer.Sprintf("Publish Experiment")
 	page.Title = title
 	page.Partials = []string{"publish"}
 	page.Content = struct {

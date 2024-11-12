@@ -8,10 +8,75 @@ import (
 	"golang.org/x/text/message"
 
 	"github.com/louisbranch/edulab"
-	_ "github.com/louisbranch/edulab/translations"
 )
 
 func Experiment(db edulab.Database) error {
+
+	printer := message.NewPrinter(language.English)
+
+	var (
+		gender       = printer.Sprintf("Gender")
+		male         = printer.Sprintf("Male")
+		female       = printer.Sprintf("Female")
+		nonBinary    = printer.Sprintf("Non-binary")
+		preferNotSay = printer.Sprintf("Prefer not to say")
+
+		ageGroup  = printer.Sprintf("Age Group")
+		under18   = printer.Sprintf("Under 18")
+		age18To20 = printer.Sprintf("18 to 20")
+		age21To23 = printer.Sprintf("21 to 23")
+		age24To26 = printer.Sprintf("24 to 26")
+		age27Plus = printer.Sprintf("27+")
+
+		yearOfStudy = printer.Sprintf("Year of Study")
+		year1       = printer.Sprintf("Year 1")
+		year2       = printer.Sprintf("Year 2")
+		year3       = printer.Sprintf("Year 3")
+		year4       = printer.Sprintf("Year 4")
+		year5Plus   = printer.Sprintf("Year 5+")
+
+		stemMajor                  = printer.Sprintf("STEM Major")
+		physicalSciences           = printer.Sprintf("Physical Sciences")
+		lifeSciences               = printer.Sprintf("Life Sciences")
+		earthEnvironmentalSciences = printer.Sprintf("Earth & Environmental Sciences")
+		mathematicsComputerScience = printer.Sprintf("Mathematics & Computer Science")
+		engineering                = printer.Sprintf("Engineering")
+		other                      = printer.Sprintf("Other")
+	)
+
+	var demographics = map[string][]string{
+		gender: {
+			male,
+			female,
+			nonBinary,
+			preferNotSay,
+		},
+
+		ageGroup: {
+			under18,
+			age18To20,
+			age21To23,
+			age24To26,
+			age27Plus,
+		},
+
+		yearOfStudy: {
+			year1,
+			year2,
+			year3,
+			year4,
+			year5Plus,
+		},
+
+		stemMajor: {
+			physicalSciences,
+			lifeSciences,
+			earthEnvironmentalSciences,
+			mathematicsComputerScience,
+			engineering,
+			other,
+		},
+	}
 
 	experiments, err := db.FindExperiments()
 	if err != nil {
@@ -21,8 +86,6 @@ func Experiment(db edulab.Database) error {
 	if len(experiments) > 0 {
 		return nil
 	}
-
-	printer := message.NewPrinter(language.English)
 
 	experiment := edulab.Experiment{
 		PublicID: "NCC-1701",
@@ -114,7 +177,7 @@ One cohort will attend a traditional lecture, while the other will attend a work
 
 			qs := edulab.Question{
 				AssessmentID: assessment.ID,
-				Prompt:       q.text,
+				Text:         q.text,
 				Type:         edulab.InputType(q.qtype),
 			}
 
@@ -136,50 +199,10 @@ One cohort will attend a traditional lecture, while the other will attend a work
 		}
 	}
 
-	type i18npair struct {
-		key string
-		val string
-	}
-
-	demographics := map[i18npair][]i18npair{
-		{key: "gender", val: printer.Sprint("Gender")}: {
-			{key: "male", val: printer.Sprint("Male")},
-			{key: "female", val: printer.Sprint("Female")},
-			{key: "non_binary", val: printer.Sprint("Non-binary")},
-			{key: "prefer_not_to_say", val: printer.Sprint("Prefer not to say")},
-		},
-
-		{key: "age_group", val: printer.Sprint("Age Group")}: {
-			{key: "<18", val: printer.Sprint("Under 18")},
-			{key: "18_20", val: printer.Sprint("18 to 20")},
-			{key: "21_23", val: printer.Sprint("21 to 23")},
-			{key: "24_26", val: printer.Sprint("24 to 26")},
-			{key: "27+", val: printer.Sprint("27+")},
-		},
-
-		{key: "year_study", val: printer.Sprint("Year of Study")}: {
-			{key: "1", val: printer.Sprint("Year 1")},
-			{key: "2", val: printer.Sprint("Year 2")},
-			{key: "3", val: printer.Sprint("Year 3")},
-			{key: "4", val: printer.Sprint("Year 4")},
-			{key: "5+", val: printer.Sprint("Year 5+")},
-		},
-
-		{key: "stem_major", val: printer.Sprint("STEM Major")}: {
-			{key: "physical_sciences", val: printer.Sprint("Physical Sciences")},
-			{key: "life_sciences", val: printer.Sprint("Life Sciences")},
-			{key: "earth_environmental_sciences", val: printer.Sprint("Earth & Environmental Sciences")},
-			{key: "mathematics_computer_science", val: printer.Sprint("Mathematics & Computer Science")},
-			{key: "engineering", val: printer.Sprint("Engineering")},
-			{key: "other", val: printer.Sprint("Other")},
-		},
-	}
-
 	for category, options := range demographics {
 		d := edulab.Demographic{
 			ExperimentID: experiment.ID,
-			I18nKey:      category.key,
-			Text:         category.val,
+			Text:         category,
 			Type:         edulab.InputSingle,
 		}
 
@@ -191,8 +214,7 @@ One cohort will attend a traditional lecture, while the other will attend a work
 		for _, option := range options {
 			err := db.CreateDemographicOption(&edulab.DemographicOption{
 				DemographicID: d.ID,
-				I18nKey:       option.key,
-				Text:          option.val,
+				Text:          option,
 			})
 			if err != nil {
 				return err

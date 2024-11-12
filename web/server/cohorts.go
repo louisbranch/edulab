@@ -87,7 +87,7 @@ func (srv *Server) newCohort(w http.ResponseWriter, r *http.Request, experiment 
 
 	title := printer.Sprintf("New Cohort")
 	page.Title = title
-	page.Partials = []string{"new_cohort"}
+	page.Partials = []string{"cohort_new"}
 	page.Content = struct {
 		Breadcrumbs template.HTML
 		Experiment  edulab.Experiment

@@ -7,14 +7,14 @@
     <table class="pure-table pure-table-horizontal">
        <thead>
               <tr>
-                <th>{{ .Texts.Prompt }}</th>
+                <th>{{ .Texts.Text }}</th>
                 <th>{{ .Texts.Actions }}</th>
               </tr>
        </thead> 
          <tbody>
           {{ range .Demographics }}
                 <tr>
-                 <td>{{ .Prompt }}</td>
+                 <td>{{ .Text }}</td>
                  <td>-</td>
                 </tr>
           {{ end }}
@@ -25,6 +25,7 @@
 
 <div class="pure-button-group">
   <a href="/edulab/experiments/{{ .Experiment.PublicID }}/demographics/new" class="pure-button pure-button-primary" disabled>{{ .Texts.Add }} ({{ .Texts.ComingSoon }})</a>
+  <a href="/edulab/experiments/{{ .Experiment.PublicID }}/demographics/preview" class="pure-button pure-button-link">{{ .Texts.Preview }}</a>
 </div>
 
 {{ end }}
