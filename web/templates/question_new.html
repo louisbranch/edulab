@@ -5,9 +5,9 @@
 <form method="post" action="/edulab/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/questions" class="pure-form pure-form-stacked">
     <fieldset>
         <div class="pure-control-group">
-            <label for="prompt">{{ .Texts.Prompt }}</label>
-            <div class="pure-form-message-inline">{{ .Texts.PromptHelp }}</div>
-            <textarea name="prompt" id="prompt" required placeholder="{{ .Texts.PromptPlaceholder}}" class="pure-input-1" rows="4"></textarea>
+            <label for="text">{{ .Texts.Text }}</label>
+            <div class="pure-form-message-inline">{{ .Texts.TextHelp }}</div>
+            <textarea name="text" id="text" required placeholder="{{ .Texts.TextPlaceholder}}" class="pure-input-1" rows="4"></textarea>
         </div>
         <div class="pure-control-group">
             <label for="type">{{ .Texts.Type }}</label>

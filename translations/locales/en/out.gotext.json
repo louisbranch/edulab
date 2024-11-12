@@ -30,6 +30,20 @@
             "fuzzy": true
         },
         {
+            "id": "Assessments",
+            "message": "Assessments",
+            "translation": "Assessments",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Cohorts",
+            "message": "Cohorts",
+            "translation": "Cohorts",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
             "id": "Less than one min ago",
             "message": "Less than one min ago",
             "translation": "Less than one min ago",
@@ -109,13 +123,6 @@
             "fuzzy": true
         },
         {
-            "id": "Assessments",
-            "message": "Assessments",
-            "translation": "Assessments",
-            "translatorComment": "Copied from source.",
-            "fuzzy": true
-        },
-        {
             "id": "Type",
             "message": "Type",
             "translation": "Type",
@@ -172,6 +179,13 @@
             "fuzzy": true
         },
         {
+            "id": "Assessment",
+            "message": "Assessment",
+            "translation": "Assessment",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
             "id": "Prompt",
             "message": "Prompt",
             "translation": "Prompt",
@@ -193,6 +207,13 @@
             "fuzzy": true
         },
         {
+            "id": "Preview Assessment",
+            "message": "Preview Assessment",
+            "translation": "Preview Assessment",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
             "id": "Submit",
             "message": "Submit",
             "translation": "Submit",
@@ -203,13 +224,6 @@
             "id": "Back",
             "message": "Back",
             "translation": "Back",
-            "translatorComment": "Copied from source.",
-            "fuzzy": true
-        },
-        {
-            "id": "Cohorts",
-            "message": "Cohorts",
-            "translation": "Cohorts",
             "translatorComment": "Copied from source.",
             "fuzzy": true
         },
@@ -304,6 +318,27 @@
             "id": "Update",
             "message": "Update",
             "translation": "Update",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Demographics",
+            "message": "Demographics",
+            "translation": "Demographics",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Demographic",
+            "message": "Demographic",
+            "translation": "Demographic",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Add Demographic",
+            "message": "Add Demographic",
+            "translation": "Add Demographic",
             "translatorComment": "Copied from source.",
             "fuzzy": true
         },
@@ -405,13 +440,6 @@
             "fuzzy": true
         },
         {
-            "id": "Demographics",
-            "message": "Demographics",
-            "translation": "Demographics",
-            "translatorComment": "Copied from source.",
-            "fuzzy": true
-        },
-        {
             "id": "Publish",
             "message": "Publish",
             "translation": "Publish",
@@ -443,6 +471,13 @@
             "id": "FAQ",
             "message": "FAQ",
             "translation": "FAQ",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Publish Experiment",
+            "message": "Publish Experiment",
+            "translation": "Publish Experiment",
             "translatorComment": "Copied from source.",
             "fuzzy": true
         },
@@ -524,18 +559,18 @@
             "fuzzy": true
         },
         {
-            "id": "Question: {Prompt}",
-            "message": "Question: {Prompt}",
-            "translation": "Question: {Prompt}",
+            "id": "Question: {Text}",
+            "message": "Question: {Text}",
+            "translation": "Question: {Text}",
             "translatorComment": "Copied from source.",
             "placeholders": [
                 {
-                    "id": "Prompt",
+                    "id": "Text",
                     "string": "%[1]s",
                     "type": "string",
                     "underlyingType": "string",
                     "argNum": 1,
-                    "expr": "question.Prompt"
+                    "expr": "question.Text"
                 }
             ],
             "fuzzy": true
@@ -586,6 +621,195 @@
             "id": "Previous Experiments",
             "message": "Previous Experiments",
             "translation": "Previous Experiments",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "References",
+            "message": "References",
+            "translation": "References",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "If you would like to contribute to the project, for example, adding more translations, get in touch:",
+            "message": "If you would like to contribute to the project, for example, adding more translations, get in touch:",
+            "translation": "If you would like to contribute to the project, for example, adding more translations, get in touch:",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Source Code",
+            "message": "Source Code",
+            "translation": "Source Code",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Frequently Asked Questions",
+            "message": "Frequently Asked Questions",
+            "translation": "Frequently Asked Questions",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Gender",
+            "message": "Gender",
+            "translation": "Gender",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Male",
+            "message": "Male",
+            "translation": "Male",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Female",
+            "message": "Female",
+            "translation": "Female",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Non-binary",
+            "message": "Non-binary",
+            "translation": "Non-binary",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Prefer not to say",
+            "message": "Prefer not to say",
+            "translation": "Prefer not to say",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Age Group",
+            "message": "Age Group",
+            "translation": "Age Group",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Under 18",
+            "message": "Under 18",
+            "translation": "Under 18",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "18 to 20",
+            "message": "18 to 20",
+            "translation": "18 to 20",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "21 to 23",
+            "message": "21 to 23",
+            "translation": "21 to 23",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "24 to 26",
+            "message": "24 to 26",
+            "translation": "24 to 26",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Year of Study",
+            "message": "Year of Study",
+            "translation": "Year of Study",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Year 1",
+            "message": "Year 1",
+            "translation": "Year 1",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Year 2",
+            "message": "Year 2",
+            "translation": "Year 2",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Year 3",
+            "message": "Year 3",
+            "translation": "Year 3",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Year 4",
+            "message": "Year 4",
+            "translation": "Year 4",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Year 5+",
+            "message": "Year 5+",
+            "translation": "Year 5+",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "STEM Major",
+            "message": "STEM Major",
+            "translation": "STEM Major",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Physical Sciences",
+            "message": "Physical Sciences",
+            "translation": "Physical Sciences",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Life Sciences",
+            "message": "Life Sciences",
+            "translation": "Life Sciences",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Earth \u0026 Environmental Sciences",
+            "message": "Earth \u0026 Environmental Sciences",
+            "translation": "Earth \u0026 Environmental Sciences",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Mathematics \u0026 Computer Science",
+            "message": "Mathematics \u0026 Computer Science",
+            "translation": "Mathematics \u0026 Computer Science",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Engineering",
+            "message": "Engineering",
+            "translation": "Engineering",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Other",
+            "message": "Other",
+            "translation": "Other",
             "translatorComment": "Copied from source.",
             "fuzzy": true
         }

@@ -59,7 +59,7 @@ func New(path string) (*DB, error) {
 	CREATE TABLE IF NOT EXISTS questions (
 		id INTEGER PRIMARY KEY,
 		assessment_id INTEGER NOT NULL,
-		prompt TEXT NOT NULL CHECK(prompt <> ''),
+		text TEXT NOT NULL CHECK(text <> ''),
 		type TEXT CHECK(type IN ('multiple', 'single', 'text')),
 		created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 		FOREIGN KEY (assessment_id) REFERENCES assessments(id) ON DELETE CASCADE
@@ -91,20 +91,16 @@ func New(path string) (*DB, error) {
 	CREATE TABLE IF NOT EXISTS demographics (
 		id INTEGER PRIMARY KEY,
 		experiment_id INTEGER NOT NULL,
-		i18n_key TEXT,  -- Localization key (e.g., "age", "gender")
-		text TEXT,  -- Direct text for non-localized options
+		text TEXT NOT NULL CHECK(text <> ''),
 		type TEXT CHECK(type IN ('multiple', 'single', 'text')),
-		FOREIGN KEY (experiment_id) REFERENCES experiments(id) ON DELETE CASCADE,
-		CHECK (i18n_key IS NOT NULL OR text IS NOT NULL)  -- Ensures at least one is present
+		FOREIGN KEY (experiment_id) REFERENCES experiments(id) ON DELETE CASCADE
 	);`,
 		`
 	CREATE TABLE IF NOT EXISTS demographic_options (
 		id INTEGER PRIMARY KEY,
 		demographic_id INTEGER NOT NULL,
-		i18n_key TEXT,  -- Localization key (e.g., "gender_male")
-		text TEXT,  -- Direct text for non-localized options
-		FOREIGN KEY (demographic_id) REFERENCES demographics(id) ON DELETE CASCADE,
-		CHECK (i18n_key IS NOT NULL OR text IS NOT NULL)  -- Ensures at least one is present
+		text TEXT NOT NULL CHECK(text <> ''),
+		FOREIGN KEY (demographic_id) REFERENCES demographics(id) ON DELETE CASCADE
 	);`,
 	}
 

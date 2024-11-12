@@ -9,10 +9,10 @@ import (
 )
 
 func (db *DB) CreateDemographic(d *edulab.Demographic) error {
-	query := `INSERT INTO demographics (experiment_id, i18n_key, text, type)
-	VALUES (?, ?, ?, ?)`
+	query := `INSERT INTO demographics (experiment_id, text, type)
+	VALUES (?, ?, ?)`
 
-	res, err := db.Exec(query, d.ExperimentID, d.I18nKey, d.Text, d.Type)
+	res, err := db.Exec(query, d.ExperimentID, d.Text, d.Type)
 	if err != nil {
 		return errors.Wrap(err, "could not create demographic")
 	}
@@ -30,7 +30,7 @@ func (db *DB) CreateDemographic(d *edulab.Demographic) error {
 func (db *DB) FindDemographics(experimentID string) ([]edulab.Demographic, error) {
 	var demographics []edulab.Demographic
 
-	query := `SELECT id, i18n_key, text, type
+	query := `SELECT id, text, type
 	FROM demographics
 	WHERE experiment_id = ?`
 
@@ -42,7 +42,7 @@ func (db *DB) FindDemographics(experimentID string) ([]edulab.Demographic, error
 
 	for rows.Next() {
 		var d edulab.Demographic
-		err := rows.Scan(&d.ID, &d.I18nKey, &d.Text, &d.Type)
+		err := rows.Scan(&d.ID, &d.Text, &d.Type)
 		if err != nil {
 			return demographics, errors.Wrap(err, "could not scan demographic")
 		}
@@ -55,10 +55,9 @@ func (db *DB) FindDemographics(experimentID string) ([]edulab.Demographic, error
 }
 
 func (db *DB) CreateDemographicOption(o *edulab.DemographicOption) error {
-	query := `INSERT INTO demographic_options (demographic_id, i18n_key, text)
-	VALUES (?, ?, ?)`
+	query := `INSERT INTO demographic_options (demographic_id, text) VALUES (?, ?)`
 
-	res, err := db.Exec(query, o.DemographicID, o.I18nKey, o.Text)
+	res, err := db.Exec(query, o.DemographicID, o.Text)
 	if err != nil {
 		return errors.Wrap(err, "could not create demographic option")
 	}
@@ -73,14 +72,15 @@ func (db *DB) CreateDemographicOption(o *edulab.DemographicOption) error {
 	return nil
 }
 
-func (db *DB) FindDemographicOptions(demographicID string) ([]edulab.DemographicOption, error) {
+func (db *DB) FindDemographicOptions(experimentID string) ([]edulab.DemographicOption, error) {
 	var options []edulab.DemographicOption
 
-	query := `SELECT id, i18n_key, text
-	FROM demographic_options
-	WHERE demographic_id = ?`
+	query := `SELECT o.id, o.demographic_id, o.text
+	FROM demographic_options AS o
+	JOIN demographics AS d ON o.demographic_id = d.id
+	WHERE d.experiment_id = ?`
 
-	rows, err := db.Query(query, demographicID)
+	rows, err := db.Query(query, experimentID)
 	if err != nil {
 		return options, errors.Wrap(err, "could not find demographic options")
 	}
@@ -88,11 +88,10 @@ func (db *DB) FindDemographicOptions(demographicID string) ([]edulab.Demographic
 
 	for rows.Next() {
 		var o edulab.DemographicOption
-		err := rows.Scan(&o.ID, &o.I18nKey, &o.Text)
+		err := rows.Scan(&o.ID, &o.DemographicID, &o.Text)
 		if err != nil {
 			return options, errors.Wrap(err, "could not scan demographic option")
 		}
-		o.DemographicID = demographicID
 
 		options = append(options, o)
 	}

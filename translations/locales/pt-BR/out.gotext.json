@@ -22,6 +22,16 @@
             "translation": "Início"
         },
         {
+            "id": "Assessments",
+            "message": "Assessments",
+            "translation": ""
+        },
+        {
+            "id": "Cohorts",
+            "message": "Cohorts",
+            "translation": ""
+        },
+        {
             "id": "Less than one min ago",
             "message": "Less than one min ago",
             "translation": ""
@@ -87,11 +97,6 @@
             "translation": ""
         },
         {
-            "id": "Assessments",
-            "message": "Assessments",
-            "translation": ""
-        },
-        {
             "id": "Type",
             "message": "Type",
             "translation": ""
@@ -132,6 +137,11 @@
             "translation": ""
         },
         {
+            "id": "Assessment",
+            "message": "Assessment",
+            "translation": ""
+        },
+        {
             "id": "Prompt",
             "message": "Prompt",
             "translation": ""
@@ -147,6 +157,11 @@
             "translation": ""
         },
         {
+            "id": "Preview Assessment",
+            "message": "Preview Assessment",
+            "translation": ""
+        },
+        {
             "id": "Submit",
             "message": "Submit",
             "translation": ""
@@ -155,11 +170,6 @@
             "id": "Back",
             "message": "Back",
             "translation": "Voltar"
-        },
-        {
-            "id": "Cohorts",
-            "message": "Cohorts",
-            "translation": ""
         },
         {
             "id": "Add Cohort",
@@ -229,6 +239,21 @@
         {
             "id": "Update",
             "message": "Update",
+            "translation": ""
+        },
+        {
+            "id": "Demographics",
+            "message": "Demographics",
+            "translation": ""
+        },
+        {
+            "id": "Demographic",
+            "message": "Demographic",
+            "translation": ""
+        },
+        {
+            "id": "Add Demographic",
+            "message": "Add Demographic",
             "translation": ""
         },
         {
@@ -307,11 +332,6 @@
             "translation": ""
         },
         {
-            "id": "Demographics",
-            "message": "Demographics",
-            "translation": ""
-        },
-        {
             "id": "Publish",
             "message": "Publish",
             "translation": ""
@@ -334,6 +354,11 @@
         {
             "id": "FAQ",
             "message": "FAQ",
+            "translation": ""
+        },
+        {
+            "id": "Publish Experiment",
+            "message": "Publish Experiment",
             "translation": ""
         },
         {
@@ -392,17 +417,17 @@
             "translation": ""
         },
         {
-            "id": "Question: {Prompt}",
-            "message": "Question: {Prompt}",
+            "id": "Question: {Text}",
+            "message": "Question: {Text}",
             "translation": "",
             "placeholders": [
                 {
-                    "id": "Prompt",
+                    "id": "Text",
                     "string": "%[1]s",
                     "type": "string",
                     "underlyingType": "string",
                     "argNum": 1,
-                    "expr": "question.Prompt"
+                    "expr": "question.Text"
                 }
             ]
         },
@@ -440,6 +465,141 @@
             "id": "Previous Experiments",
             "message": "Previous Experiments",
             "translation": "Experimentos Anteriores"
+        },
+        {
+            "id": "References",
+            "message": "References",
+            "translation": "Referências"
+        },
+        {
+            "id": "If you would like to contribute to the project, for example, adding more translations, get in touch:",
+            "message": "If you would like to contribute to the project, for example, adding more translations, get in touch:",
+            "translation": "Se você gostaria de contribuir para o projeto, por exemplo, adicionando mais traduções, entre em contato:"
+        },
+        {
+            "id": "Source Code",
+            "message": "Source Code",
+            "translation": "Código Fonte"
+        },
+        {
+            "id": "Frequently Asked Questions",
+            "message": "Frequently Asked Questions",
+            "translation": ""
+        },
+        {
+            "id": "Gender",
+            "message": "Gender",
+            "translation": ""
+        },
+        {
+            "id": "Male",
+            "message": "Male",
+            "translation": ""
+        },
+        {
+            "id": "Female",
+            "message": "Female",
+            "translation": ""
+        },
+        {
+            "id": "Non-binary",
+            "message": "Non-binary",
+            "translation": ""
+        },
+        {
+            "id": "Prefer not to say",
+            "message": "Prefer not to say",
+            "translation": ""
+        },
+        {
+            "id": "Age Group",
+            "message": "Age Group",
+            "translation": ""
+        },
+        {
+            "id": "Under 18",
+            "message": "Under 18",
+            "translation": ""
+        },
+        {
+            "id": "18 to 20",
+            "message": "18 to 20",
+            "translation": ""
+        },
+        {
+            "id": "21 to 23",
+            "message": "21 to 23",
+            "translation": ""
+        },
+        {
+            "id": "24 to 26",
+            "message": "24 to 26",
+            "translation": ""
+        },
+        {
+            "id": "Year of Study",
+            "message": "Year of Study",
+            "translation": ""
+        },
+        {
+            "id": "Year 1",
+            "message": "Year 1",
+            "translation": ""
+        },
+        {
+            "id": "Year 2",
+            "message": "Year 2",
+            "translation": ""
+        },
+        {
+            "id": "Year 3",
+            "message": "Year 3",
+            "translation": ""
+        },
+        {
+            "id": "Year 4",
+            "message": "Year 4",
+            "translation": ""
+        },
+        {
+            "id": "Year 5+",
+            "message": "Year 5+",
+            "translation": ""
+        },
+        {
+            "id": "STEM Major",
+            "message": "STEM Major",
+            "translation": ""
+        },
+        {
+            "id": "Physical Sciences",
+            "message": "Physical Sciences",
+            "translation": ""
+        },
+        {
+            "id": "Life Sciences",
+            "message": "Life Sciences",
+            "translation": ""
+        },
+        {
+            "id": "Earth \u0026 Environmental Sciences",
+            "message": "Earth \u0026 Environmental Sciences",
+            "translation": ""
+        },
+        {
+            "id": "Mathematics \u0026 Computer Science",
+            "message": "Mathematics \u0026 Computer Science",
+            "translation": ""
+        },
+        {
+            "id": "Engineering",
+            "message": "Engineering",
+            "translation": ""
+        },
+        {
+            "id": "Other",
+            "message": "Other",
+            "translation": ""
         }
     ]
 }
