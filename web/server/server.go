@@ -5,8 +5,6 @@ import (
 	"math/rand"
 	"net/http"
 
-	"golang.org/x/text/message"
-
 	"github.com/louisbranch/edulab"
 	"github.com/louisbranch/edulab/models"
 	"github.com/louisbranch/edulab/web"
@@ -17,10 +15,13 @@ type Server struct {
 	Template web.Template
 	Assets   http.Handler
 	Random   *rand.Rand
+	models   models.Model
 }
 
 func (srv *Server) NewServeMux() *http.ServeMux {
 	mux := http.NewServeMux()
+
+	srv.models = models.New(srv.DB, srv.Random)
 
 	// Static assets
 	mux.Handle("/edulab/assets/", http.StripPrefix("/edulab/assets/", srv.Assets))
@@ -71,8 +72,4 @@ Compare cohorts, **measure learning gains**, and adapt strategies to elevate stu
 	}
 
 	srv.render(w, page)
-}
-
-func (srv *Server) model(printer *message.Printer) models.Model {
-	return models.New(srv.DB, srv.Random, printer)
 }

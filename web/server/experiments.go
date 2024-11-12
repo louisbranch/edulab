@@ -101,8 +101,6 @@ func (srv *Server) newExperimentForm(w http.ResponseWriter, r *http.Request) {
 }
 
 func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
-	printer, _ := srv.i18n(w, r)
-
 	err := r.ParseForm()
 	if err != nil {
 		srv.renderError(w, r, err)
@@ -116,7 +114,7 @@ func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
 		Description: form.Get("description"),
 	}
 
-	err = srv.model(printer).CreateExperiment(experiment)
+	err = srv.models.CreateExperiment(experiment)
 	if err != nil {
 		srv.renderError(w, r, err)
 		return
@@ -200,12 +198,12 @@ func (srv *Server) showExperiment(w http.ResponseWriter, r *http.Request, experi
 	page.Content = struct {
 		Breadcrumbs template.HTML
 		Experiment  edulab.Experiment
-		Assessments []edulab.Assessment
+		Assessments []presenter.Assessment
 		Texts       interface{}
 	}{
 		Breadcrumbs: presenter.HomeBreadcrumbs(printer),
 		Experiment:  experiment,
-		Assessments: assessments,
+		Assessments: presenter.NewAssessments(assessments, printer),
 		Texts: struct {
 			EditSettings   string
 			Demographics   string

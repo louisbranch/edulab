@@ -32,13 +32,10 @@ func ExperimentBreadcrumb(e edulab.Experiment, printer *message.Printer) templat
 }
 
 func AssessmentBreadcrumb(e edulab.Experiment, a edulab.Assessment, printer *message.Printer) template.HTML {
-	// truncate name for breadcrumbs
-	name := a.Name[:int(math.Min(20, float64(len(a.Name))))] + "..."
-
 	return RenderBreadcrumbs([]Breadcrumb{
 		{URL: "/edulab/", Name: printer.Sprintf("Home")},
 		{URL: fmt.Sprintf("/edulab/experiments/%s", e.PublicID), Name: e.Name},
-		{URL: fmt.Sprintf("/edulab/experiments/%s/assessments/%s", e.PublicID, a.PublicID), Name: name},
+		{URL: fmt.Sprintf("/edulab/experiments/%s/assessments/%s", e.PublicID, a.PublicID), Name: printer.Sprint("Assessment")},
 	})
 }
 

@@ -3,22 +3,18 @@ package models
 import (
 	"math/rand"
 
-	"golang.org/x/text/message"
-
 	"github.com/louisbranch/edulab"
 )
 
 type Model struct {
-	rand    *rand.Rand
-	printer *message.Printer
-	db      edulab.Database
+	rand *rand.Rand
+	db   edulab.Database
 }
 
-func New(db edulab.Database, rand *rand.Rand, printer *message.Printer) Model {
+func New(db edulab.Database, rand *rand.Rand) Model {
 	return Model{
-		db:      db,
-		rand:    rand,
-		printer: printer,
+		db:   db,
+		rand: rand,
 	}
 }
 
@@ -33,8 +29,7 @@ func (m Model) CreateExperiment(e *edulab.Experiment) error {
 	err = m.db.CreateAssessment(&edulab.Assessment{
 		ExperimentID: e.ID,
 		PublicID:     m.NewPublicID([]int{3}),
-		Name:         m.printer.Sprintf("Pre-Assessment"),
-		IsPre:        true,
+		Type:         edulab.PreAssessment,
 	})
 	if err != nil {
 		return err
@@ -43,8 +38,7 @@ func (m Model) CreateExperiment(e *edulab.Experiment) error {
 	err = m.db.CreateAssessment(&edulab.Assessment{
 		ExperimentID: e.ID,
 		PublicID:     m.NewPublicID([]int{3}),
-		Name:         m.printer.Sprintf("Post-Assessment"),
-		IsPre:        false,
+		Type:         edulab.PostAssessment,
 	})
 	if err != nil {
 		return err

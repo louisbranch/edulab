@@ -10,29 +10,35 @@ type Experiment struct {
 	CreatedAt   time.Time
 }
 
+type AssessmentType string
+
+const (
+	PreAssessment  AssessmentType = "pre_assessment"
+	PostAssessment AssessmentType = "post_assessment"
+)
+
 type Assessment struct {
 	ID             string
 	ExperimentID   string
 	PublicID       string
-	Name           string
 	Description    string
-	IsPre          bool
+	Type           AssessmentType
 	QuestionsCount int
 }
 
-type QuestionType string
+type InputType string
 
 const (
-	SingleChoice   QuestionType = "single_choice"
-	MultipleChoice QuestionType = "multiple_choice"
-	FreeForm       QuestionType = "free_form"
+	SingleChoice   InputType = "single_choice"
+	MultipleChoice InputType = "multiple_choice"
+	Text           InputType = "text"
 )
 
 type Question struct {
 	ID           string
 	AssessmentID string
 	Prompt       string
-	Type         QuestionType
+	Type         InputType
 }
 
 type QuestionChoice struct {
@@ -48,6 +54,24 @@ type Cohort struct {
 	PublicID     string
 	Name         string
 	Description  string
+}
+
+type Demographic struct {
+	ID           string
+	ExperimentID string
+	Translatable
+	Type InputType
+}
+
+type DemographicOption struct {
+	ID            string
+	DemographicID string
+	Translatable
+}
+
+type Translatable struct {
+	I18n string
+	Text string
 }
 
 type Database interface {

@@ -55,18 +55,18 @@ func (srv *Server) showAssessment(w http.ResponseWriter, r *http.Request,
 
 	printer, page := srv.i18n(w, r)
 
-	page.Title = printer.Sprintf("Assessment: %s", assessment.Name)
+	page.Title = printer.Sprint("Assessment")
 	page.Partials = []string{"assessment"}
 	page.Content = struct {
 		Breadcrumbs template.HTML
 		Experiment  edulab.Experiment
-		Assessment  edulab.Assessment
+		Assessment  presenter.Assessment
 		Questions   []edulab.Question
 		Texts       interface{}
 	}{
 		Breadcrumbs: presenter.ExperimentBreadcrumb(experiment, printer),
 		Experiment:  experiment,
-		Assessment:  assessment,
+		Assessment:  presenter.NewAssessment(assessment, printer),
 		Questions:   questions,
 		Texts: struct {
 			Questions   string
@@ -125,18 +125,18 @@ func (srv *Server) previewAssessment(w http.ResponseWriter, r *http.Request,
 
 	printer, page := srv.i18n(w, r)
 
-	page.Title = printer.Sprintf("Preview: %s", assessment.Name)
+	page.Title = printer.Sprint("Preview Assessment")
 	page.Partials = []string{"preview_assessment"}
 	page.Content = struct {
 		Breadcrumbs template.HTML
 		Experiment  edulab.Experiment
-		Assessment  edulab.Assessment
+		Assessment  presenter.Assessment
 		Questions   []presenter.Question
 		Texts       interface{}
 	}{
 		Breadcrumbs: presenter.AssessmentBreadcrumb(experiment, assessment, printer),
 		Experiment:  experiment,
-		Assessment:  assessment,
+		Assessment:  presenter.NewAssessment(assessment, printer),
 		Questions:   presenter.SortQuestions(questions, qp),
 		Texts: struct {
 			Questions string
