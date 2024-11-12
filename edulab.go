@@ -69,6 +69,26 @@ type DemographicOption struct {
 	Text          string
 }
 
+type Participant struct {
+	ID           string
+	PublicID     string
+	ExperimentID string
+	CohortID     string
+	AccessToken  string
+}
+
+type AssessmentParticipation struct {
+	AssessmentID        string
+	ParticipantID       string
+	SerializedResponses string
+}
+
+type DemographicsParticipation struct {
+	ExperimentID        string
+	ParticipantID       string
+	SerializedResponses string
+}
+
 type Database interface {
 	CreateExperiment(*Experiment) error
 	UpdateExperiment(Experiment) error
@@ -96,4 +116,8 @@ type Database interface {
 
 	CreateDemographicOption(*DemographicOption) error
 	FindDemographicOptions(experimentID string) ([]DemographicOption, error)
+
+	CreateParticipant(*Participant) error
+	FindParticipant(experimentID string, accessToken string) (Participant, error)
+	FindParticipants(experimentID string) ([]Participant, error)
 }

@@ -102,6 +102,17 @@ func New(path string) (*DB, error) {
 		text TEXT NOT NULL CHECK(text <> ''),
 		FOREIGN KEY (demographic_id) REFERENCES demographics(id) ON DELETE CASCADE
 	);`,
+		`
+	CREATE TABLE IF NOT EXISTS participants (
+		id INTEGER PRIMARY KEY,
+		public_id TEXT NOT NULL UNIQUE CHECK(public_id <> ''),
+		experiment_id INTEGER NOT NULL,
+		cohort_id INTEGER NOT NULL,
+		access_token TEXT NOT NULL UNIQUE CHECK(access_token <> ''),
+		created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+		FOREIGN KEY (experiment_id) REFERENCES experiments(id) ON DELETE CASCADE,
+		FOREIGN KEY (cohort_id) REFERENCES cohorts(id) ON DELETE CASCADE
+	);`,
 	}
 
 	for _, q := range queries {
