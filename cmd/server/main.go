@@ -13,6 +13,7 @@ import (
 	"github.com/louisbranch/edulab/db/sqlite"
 	"github.com/louisbranch/edulab/web/html"
 	"github.com/louisbranch/edulab/web/server"
+	"github.com/louisbranch/edulab/wizard"
 )
 
 func main() {
@@ -56,6 +57,11 @@ func main() {
 		log.Printf("connection: %s\n", connection)
 		// db, err = postgres.New(connection)
 	}
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = wizard.Experiment(db)
 	if err != nil {
 		log.Fatal(err)
 	}

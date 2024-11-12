@@ -1,6 +1,8 @@
 package sqlite
 
 import (
+	"strconv"
+
 	"github.com/louisbranch/edulab"
 	"github.com/pkg/errors"
 )
@@ -9,9 +11,19 @@ func (db *DB) CreateAssessment(a *edulab.Assessment) error {
 	query := `INSERT INTO assessments (experiment_id, public_id, description, type)
 		VALUES (?, ?, ?, ?)`
 
-	_, err := db.Exec(query, a.ExperimentID, a.PublicID, a.Description, a.Type)
+	res, err := db.Exec(query, a.ExperimentID, a.PublicID, a.Description, a.Type)
+	if err != nil {
+		return errors.Wrap(err, "cannot create assessment")
+	}
 
-	return errors.Wrap(err, "cannot create assessment")
+	id, err := res.LastInsertId()
+	if err != nil {
+		return errors.Wrap(err, "cannot retrieve last assessment id")
+	}
+
+	a.ID = strconv.FormatInt(id, 10)
+
+	return nil
 }
 
 func (db *DB) FindAssessment(parentID string, pid string) (edulab.Assessment, error) {

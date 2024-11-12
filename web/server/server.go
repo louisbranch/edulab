@@ -6,7 +6,6 @@ import (
 	"net/http"
 
 	"github.com/louisbranch/edulab"
-	"github.com/louisbranch/edulab/models"
 	"github.com/louisbranch/edulab/web"
 )
 
@@ -15,13 +14,10 @@ type Server struct {
 	Template web.Template
 	Assets   http.Handler
 	Random   *rand.Rand
-	models   models.Model
 }
 
 func (srv *Server) NewServeMux() *http.ServeMux {
 	mux := http.NewServeMux()
-
-	srv.models = models.New(srv.DB, srv.Random)
 
 	// Static assets
 	mux.Handle("/edulab/assets/", http.StripPrefix("/edulab/assets/", srv.Assets))
@@ -72,4 +68,29 @@ Compare cohorts, **measure learning gains**, and adapt strategies to elevate stu
 	}
 
 	srv.render(w, page)
+}
+
+var alphanum = []rune("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
+func (srv *Server) newPublicID(lens []int) string {
+	sum := 0
+	for _, l := range lens {
+		sum += l
+	}
+
+	b := make([]rune, sum)
+	for i := range b {
+		b[i] = alphanum[srv.Random.Intn(len(alphanum))]
+	}
+
+	pid := ""
+	for i, l := range lens {
+		pid += string(b[:l])
+		if i < len(lens)-1 {
+			pid += "-"
+		}
+		b = b[l:]
+	}
+
+	return pid
 }

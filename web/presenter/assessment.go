@@ -1,8 +1,9 @@
 package presenter
 
 import (
-	"github.com/louisbranch/edulab"
 	"golang.org/x/text/message"
+
+	"github.com/louisbranch/edulab"
 )
 
 type Assessment struct {

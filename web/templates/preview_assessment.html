@@ -29,20 +29,24 @@
                         <input type="checkbox" name="question_{{$i}}_choice[]" id="question_{{$i}}_choice_{{$j}}" value="{{$choice.ID}}">
                     </div>
                     <div class="pure-u-22-24">
-                        <label for="question_{{$i}}_choice_{{$j}}[]">
+                        <label for="question_{{$i}}_choice_{{$j}}">
                             {{markdown $choice.Text }}
                         </label>
                     </div>
                 </div>
             {{ end }}
         {{ end }}
-        {{ if eq $question.Type "free_form" }}
+        {{ if eq $question.Type "text" }}
             <textarea class="pure-input-1" rows="5"></textarea>
         {{ end }}
     </div>
     </fieldset>
 {{ end }}
 
+    <div class="pure-controls">
+        <button type="submit" class="pure-button pure-button-primary" disabled>{{ .Texts.Submit }}</button>
+        <a href="/edulab/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}" class="pure-button pure-button-link">{{ .Texts.Back }}</a>
+    </div>
 </form>
 
 {{ end }}

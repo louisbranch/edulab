@@ -188,8 +188,12 @@ func (srv *Server) previewAssessment(w http.ResponseWriter, r *http.Request,
 		Questions:   presenter.SortQuestions(questions, qp),
 		Texts: struct {
 			Questions string
+			Submit    string
+			Back      string
 		}{
 			Questions: printer.Sprintf("Questions"),
+			Submit:    printer.Sprintf("Submit"),
+			Back:      printer.Sprintf("Back"),
 		},
 	}
 

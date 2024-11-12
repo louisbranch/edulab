@@ -101,6 +101,7 @@ func (srv *Server) newExperimentForm(w http.ResponseWriter, r *http.Request) {
 }
 
 func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
+
 	err := r.ParseForm()
 	if err != nil {
 		srv.renderError(w, r, err)
@@ -114,7 +115,7 @@ func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
 		Description: form.Get("description"),
 	}
 
-	err = srv.models.CreateExperiment(experiment)
+	err = srv.DB.CreateExperiment(experiment)
 	if err != nil {
 		srv.renderError(w, r, err)
 		return
