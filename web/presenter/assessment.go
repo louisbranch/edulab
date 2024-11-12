@@ -11,16 +11,16 @@ type Assessment struct {
 	printer *message.Printer
 }
 
-func NewAssessment(assessment edulab.Assessment, printer *message.Printer) Assessment {
+func NewAssessment(a edulab.Assessment, printer *message.Printer) Assessment {
 	return Assessment{
-		Assessment: assessment,
+		Assessment: a,
 		printer:    printer,
 	}
 }
 
-func NewAssessments(assessments []edulab.Assessment, printer *message.Printer) []Assessment {
-	result := make([]Assessment, len(assessments))
-	for i, a := range assessments {
+func NewAssessments(as []edulab.Assessment, printer *message.Printer) []Assessment {
+	result := make([]Assessment, len(as))
+	for i, a := range as {
 		result[i] = NewAssessment(a, printer)
 	}
 	return result

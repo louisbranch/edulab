@@ -8,6 +8,7 @@ import (
 	"golang.org/x/text/message"
 
 	"github.com/louisbranch/edulab"
+	_ "github.com/louisbranch/edulab/translations"
 )
 
 func Experiment(db edulab.Database) error {
@@ -178,6 +179,7 @@ One cohort will attend a traditional lecture, while the other will attend a work
 		d := edulab.Demographic{
 			ExperimentID: experiment.ID,
 			I18nKey:      category.key,
+			Text:         category.val,
 			Type:         edulab.InputSingle,
 		}
 
@@ -190,6 +192,7 @@ One cohort will attend a traditional lecture, while the other will attend a work
 			err := db.CreateDemographicOption(&edulab.DemographicOption{
 				DemographicID: d.ID,
 				I18nKey:       option.key,
+				Text:          option.val,
 			})
 			if err != nil {
 				return err

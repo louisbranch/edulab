@@ -1,5 +1,30 @@
 {{ define "content" }}
 {{ .Breadcrumbs }}
-<h2>{{ .Title }}</h2>
+
+<h2>{{ .Texts.Title }}</h2>
+
+{{ if .Demographics }}
+    <table class="pure-table pure-table-horizontal">
+       <thead>
+              <tr>
+                <th>{{ .Texts.Prompt }}</th>
+                <th>{{ .Texts.Actions }}</th>
+              </tr>
+       </thead> 
+         <tbody>
+          {{ range .Demographics }}
+                <tr>
+                 <td>{{ .Prompt }}</td>
+                 <td>-</td>
+                </tr>
+          {{ end }}
+    </table>
+{{ else }}
+    <p>{{ .Texts.Empty }}</p>
+{{ end }}
+
+<div class="pure-button-group">
+  <a href="/edulab/experiments/{{ .Experiment.PublicID }}/demographics/new" class="pure-button pure-button-primary" disabled>{{ .Texts.Add }} ({{ .Texts.ComingSoon }})</a>
+</div>
 
 {{ end }}

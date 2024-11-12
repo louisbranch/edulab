@@ -39,72 +39,175 @@ func init() {
 }
 
 var messageKeyToIndex = map[string]int{
-	"About":               8,
-	"Astronomy Education": 7,
-	"Back":                4,
-	"Created":             2,
-	"EduLab":              6,
-	"EduLab brings **data-driven** experimentation into the classroom, empowering you to evaluate and refine teaching methods across distinct **cohorts**.\n\nBy running controlled pre- and post-assessments, you gain **evidence-based insights** into how different teaching approaches impact learning outcomes.\n\nCompare cohorts, **measure learning gains**, and adapt strategies to elevate student engagement—all supported by real-time educational data.": 13,
-	"Empowering Educators Through Evidence-Based Insights": 12,
-	"Experiment %s": 5,
-	"Experiments":   0,
-	"Home":          11,
-	"If you would like to contribute to the project, for example, adding more translations, get in touch:": 17,
-	"Internal Server Error":    9,
-	"Name":                     1,
-	"New Experiment":           14,
-	"No available experiments": 3,
-	"Page Not Found":           10,
-	"Previous Experiments":     15,
-	"References":               16,
-	"Source Code":              18,
+	"%d days ago":                   7,
+	"%d hours ago":                  6,
+	"%d mins ago":                   5,
+	"About":                         53,
+	"Actions":                       14,
+	"Add Assessment":                15,
+	"Add Cohort":                    26,
+	"Add Question":                  21,
+	"Assessments":                   11,
+	"Back":                          24,
+	"Choices":                       58,
+	"Cohort: %s":                    36,
+	"Cohorts":                       25,
+	"Coming Soon":                   19,
+	"Correct":                       65,
+	"Create":                        35,
+	"Created":                       43,
+	"Demographics":                  49,
+	"Description":                   32,
+	"Edit":                          17,
+	"Edit Experiment":               46,
+	"Edit Experiment: %s":           45,
+	"Edit Settings":                 48,
+	"EduLab":                        51,
+	"EduLab - Empowering Educators": 69,
+	"EduLab brings **data-driven** experimentation into the classroom, empowering you to evaluate and refine teaching methods across distinct **cohorts**.\n\nBy running controlled pre- and post-assessments, you gain **evidence-based insights** into how different teaching approaches impact learning outcomes.\n\nCompare cohorts, **measure learning gains**, and adapt strategies to elevate student engagement—all supported by real-time educational data.": 71,
+	"Educator's Guide": 72,
+	"Edulab":           52,
+	"Empowering Educators Through Evidence-Based Insights": 70,
+	"Experiment: %s":        47,
+	"Experiments":           41,
+	"FAQ":                   54,
+	"Home":                  3,
+	"Internal Server Error": 67,
+	"Less than one min ago": 4,
+	"Markdown supported":    56,
+	"Markdown supported. Empty choices will be ignored.": 59,
+	"Multiple Choice":                        9,
+	"Name":                                   27,
+	"New Cohort":                             29,
+	"New Experiment":                         38,
+	"New Question":                           55,
+	"No assessments yet":                     16,
+	"No available experiments":               44,
+	"No cohorts found":                       28,
+	"No questions yet":                       22,
+	"Not visible to participants.":           31,
+	"Optional. Not visible to participants.": 34,
+	"Page Not Found":                         68,
+	"Participants":                           42,
+	"Post-Assessment":                        1,
+	"Pre-Assessment":                         0,
+	"Preview":                                18,
+	"Previous Experiments":                   73,
+	"Prompt":                                 20,
+	"Publish":                                50,
+	"Question: %s":                           66,
+	"Questions":                              13,
+	"Single Choice":                          8,
+	"Submit":                                 23,
+	"Text":                                   10,
+	"Type":                                   12,
+	"Unknown Assessment Type":                2,
+	"Update":                                 37,
+	"e.g. Baseline":                          30,
+	"e.g. Cohort attending lecture-based instruction": 33,
+	"e.g. Earth's Seasons":                            39,
+	"e.g. The Earth's elliptical orbit":               62,
+	"e.g. The Earth's revolution":                     64,
+	"e.g. The Earth's rotation":                       63,
+	"e.g. The distance from the Sun":                  61,
+	"e.g. The tilt of Earth's axis":                   60,
+	"e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop...": 40,
+	"e.g. What is the best explanation for the cause of Earth's seasons?":                                                      57,
 }
 
-var enIndex = []uint32{ // 20 elements
-	0x00000000, 0x0000000c, 0x00000011, 0x00000019,
-	0x00000032, 0x00000037, 0x00000048, 0x0000004f,
-	0x00000063, 0x00000069, 0x0000007f, 0x0000008e,
-	0x00000093, 0x000000c8, 0x00000286, 0x00000295,
-	0x000002aa, 0x000002b5, 0x0000031a, 0x00000326,
-} // Size: 104 bytes
+var enIndex = []uint32{ // 75 elements
+	// Entry 0 - 1F
+	0x00000000, 0x0000000f, 0x0000001f, 0x00000037,
+	0x0000003c, 0x00000052, 0x00000061, 0x00000071,
+	0x00000080, 0x0000008e, 0x0000009e, 0x000000a3,
+	0x000000af, 0x000000b4, 0x000000be, 0x000000c6,
+	0x000000d5, 0x000000e8, 0x000000ed, 0x000000f5,
+	0x00000101, 0x00000108, 0x00000115, 0x00000126,
+	0x0000012d, 0x00000132, 0x0000013a, 0x00000145,
+	0x0000014a, 0x0000015b, 0x00000166, 0x00000174,
+	// Entry 20 - 3F
+	0x00000191, 0x0000019d, 0x000001cd, 0x000001f4,
+	0x000001fb, 0x00000209, 0x00000210, 0x0000021f,
+	0x00000234, 0x000002ad, 0x000002b9, 0x000002c6,
+	0x000002ce, 0x000002e7, 0x000002fe, 0x0000030e,
+	0x00000320, 0x0000032e, 0x0000033b, 0x00000343,
+	0x0000034a, 0x00000351, 0x00000357, 0x0000035b,
+	0x00000368, 0x0000037b, 0x000003bf, 0x000003c7,
+	0x000003fa, 0x00000418, 0x00000437, 0x00000459,
+	// Entry 40 - 5F
+	0x00000473, 0x0000048f, 0x00000497, 0x000004a7,
+	0x000004bd, 0x000004cc, 0x000004ea, 0x0000051f,
+	0x000006dd, 0x000006ee, 0x00000703,
+} // Size: 324 bytes
 
-const enData string = "" + // Size: 806 bytes
-	"\x02Experiments\x02Name\x02Created\x02No available experiments\x02Back" +
-	"\x02Experiment %[1]s\x02EduLab\x02Astronomy Education\x02About\x02Intern" +
-	"al Server Error\x02Page Not Found\x02Home\x02Empowering Educators Throug" +
-	"h Evidence-Based Insights\x02EduLab brings **data-driven** experimentati" +
-	"on into the classroom, empowering you to evaluate and refine teaching me" +
-	"thods across distinct **cohorts**.\x0a\x0aBy running controlled pre- and" +
-	" post-assessments, you gain **evidence-based insights** into how differe" +
-	"nt teaching approaches impact learning outcomes.\x0a\x0aCompare cohorts," +
-	" **measure learning gains**, and adapt strategies to elevate student eng" +
-	"agement—all supported by real-time educational data.\x02New Experiment" +
-	"\x02Previous Experiments\x02References\x02If you would like to contribut" +
-	"e to the project, for example, adding more translations, get in touch:" +
-	"\x02Source Code"
+const enData string = "" + // Size: 1795 bytes
+	"\x02Pre-Assessment\x02Post-Assessment\x02Unknown Assessment Type\x02Home" +
+	"\x02Less than one min ago\x02%[1]d mins ago\x02%[1]d hours ago\x02%[1]d " +
+	"days ago\x02Single Choice\x02Multiple Choice\x02Text\x02Assessments\x02T" +
+	"ype\x02Questions\x02Actions\x02Add Assessment\x02No assessments yet\x02E" +
+	"dit\x02Preview\x02Coming Soon\x02Prompt\x02Add Question\x02No questions " +
+	"yet\x02Submit\x02Back\x02Cohorts\x02Add Cohort\x02Name\x02No cohorts fou" +
+	"nd\x02New Cohort\x02e.g. Baseline\x02Not visible to participants.\x02Des" +
+	"cription\x02e.g. Cohort attending lecture-based instruction\x02Optional." +
+	" Not visible to participants.\x02Create\x02Cohort: %[1]s\x02Update\x02Ne" +
+	"w Experiment\x02e.g. Earth's Seasons\x02e.g. This experiment will compar" +
+	"e 2 cohorts of students. One attending a traditional lecture and the oth" +
+	"er a workshop...\x02Experiments\x02Participants\x02Created\x02No availab" +
+	"le experiments\x02Edit Experiment: %[1]s\x02Edit Experiment\x02Experimen" +
+	"t: %[1]s\x02Edit Settings\x02Demographics\x02Publish\x02EduLab\x02Edulab" +
+	"\x02About\x02FAQ\x02New Question\x02Markdown supported\x02e.g. What is t" +
+	"he best explanation for the cause of Earth's seasons?\x02Choices\x02Mark" +
+	"down supported. Empty choices will be ignored.\x02e.g. The tilt of Earth" +
+	"'s axis\x02e.g. The distance from the Sun\x02e.g. The Earth's elliptical" +
+	" orbit\x02e.g. The Earth's rotation\x02e.g. The Earth's revolution\x02Co" +
+	"rrect\x02Question: %[1]s\x02Internal Server Error\x02Page Not Found\x02E" +
+	"duLab - Empowering Educators\x02Empowering Educators Through Evidence-Ba" +
+	"sed Insights\x02EduLab brings **data-driven** experimentation into the c" +
+	"lassroom, empowering you to evaluate and refine teaching methods across " +
+	"distinct **cohorts**.\x0a\x0aBy running controlled pre- and post-assessm" +
+	"ents, you gain **evidence-based insights** into how different teaching a" +
+	"pproaches impact learning outcomes.\x0a\x0aCompare cohorts, **measure le" +
+	"arning gains**, and adapt strategies to elevate student engagement—all s" +
+	"upported by real-time educational data.\x02Educator's Guide\x02Previous " +
+	"Experiments"
 
-var pt_BRIndex = []uint32{ // 20 elements
-	0x00000000, 0x0000000d, 0x00000012, 0x00000019,
-	0x00000038, 0x0000003f, 0x00000051, 0x00000058,
-	0x00000071, 0x00000077, 0x00000090, 0x000000a8,
-	0x000000b0, 0x000000f0, 0x0000030d, 0x0000031e,
-	0x00000336, 0x00000343, 0x000003b0, 0x000003be,
-} // Size: 104 bytes
+var pt_BRIndex = []uint32{ // 75 elements
+	// Entry 0 - 1F
+	0x00000000, 0x00000000, 0x00000000, 0x00000000,
+	0x00000008, 0x00000008, 0x00000008, 0x00000008,
+	0x00000008, 0x00000008, 0x00000008, 0x00000008,
+	0x00000008, 0x00000008, 0x00000008, 0x00000008,
+	0x00000008, 0x00000008, 0x00000008, 0x00000008,
+	0x00000008, 0x00000008, 0x00000008, 0x00000008,
+	0x00000008, 0x0000000f, 0x0000000f, 0x0000000f,
+	0x00000014, 0x00000014, 0x00000014, 0x00000014,
+	// Entry 20 - 3F
+	0x00000014, 0x00000014, 0x00000014, 0x00000014,
+	0x00000014, 0x00000014, 0x00000014, 0x00000025,
+	0x00000025, 0x00000025, 0x00000032, 0x00000032,
+	0x00000039, 0x00000058, 0x00000058, 0x00000058,
+	0x00000058, 0x00000058, 0x00000058, 0x00000058,
+	0x0000005f, 0x0000005f, 0x00000065, 0x00000065,
+	0x00000065, 0x00000065, 0x00000065, 0x00000065,
+	0x00000065, 0x00000065, 0x00000065, 0x00000065,
+	// Entry 40 - 5F
+	0x00000065, 0x00000065, 0x00000065, 0x00000065,
+	0x0000007e, 0x00000096, 0x00000096, 0x000000d6,
+	0x000002f3, 0x000002f3, 0x0000030b,
+} // Size: 324 bytes
 
-const pt_BRData string = "" + // Size: 958 bytes
-	"\x02Experimentos\x02Nome\x02Criado\x02Nehnum experimento disponível\x02V" +
-	"oltar\x02Experimento %[1]s\x02EduLab\x02Educação em Astronomia\x02Sobre" +
-	"\x02Erro Interno do Servidor\x02Página Não Encontrada\x02Início\x02Capac" +
-	"itando Educadores com Perspectivas Baseadas em Evidências\x02O EduLab tr" +
-	"az experimentação **orientada por dados** para a sala de aula, permitind" +
-	"o que você avalie e refine métodos de ensino em diferentes **coortes**." +
-	"\x0a\x0a Com a realização de avaliações controladas antes e depois das a" +
-	"ulas, você obtém **perspectivas baseadas em evidências** sobre como dife" +
-	"rentes abordagens impactam os resultados de aprendizagem.\x0a\x0aCompare" +
-	" coortes, meça os **ganhos de aprendizado** e adapte suas estratégias pa" +
-	"ra elevar o engajamento dos alunos—tudo isso com o suporte de dados educ" +
-	"acionais em tempo real.\x02Novo Experimento\x02Experimentos Anteriores" +
-	"\x02Referências\x02Se você gostaria de contribuir para o projeto, por ex" +
-	"emplo, adicionando mais traduções, entre em contato:\x02Código Fonte"
+const pt_BRData string = "" + // Size: 779 bytes
+	"\x02Início\x02Voltar\x02Nome\x02Novo Experimento\x02Experimentos\x02Cria" +
+	"do\x02Nehnum experimento disponível\x02EduLab\x02Sobre\x02Erro Interno d" +
+	"o Servidor\x02Página Não Encontrada\x02Capacitando Educadores com Perspe" +
+	"ctivas Baseadas em Evidências\x02O EduLab traz experimentação **orientad" +
+	"a por dados** para a sala de aula, permitindo que você avalie e refine m" +
+	"étodos de ensino em diferentes **coortes**.\x0a\x0a Com a realização de" +
+	" avaliações controladas antes e depois das aulas, você obtém **perspecti" +
+	"vas baseadas em evidências** sobre como diferentes abordagens impactam o" +
+	"s resultados de aprendizagem.\x0a\x0aCompare coortes, meça os **ganhos d" +
+	"e aprendizado** e adapte suas estratégias para elevar o engajamento dos " +
+	"alunos—tudo isso com o suporte de dados educacionais em tempo real.\x02E" +
+	"xperimentos Anteriores"
 
-	// Total table size 1972 bytes (1KiB); checksum: D80D8135
+	// Total table size 3222 bytes (3KiB); checksum: DF040664
