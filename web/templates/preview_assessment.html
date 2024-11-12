@@ -12,7 +12,7 @@
     <legend>{{ markdown $question.Prompt }}</legend>
     <div>
         {{ range $j, $choice := $question.Choices }}
-            {{ if eq $question.Type "single_choice" }}
+            {{ if eq $question.Type "single" }}
                 <div class="pure-g pure-g-middle">
                     <div class="pure-u-2-24">
                         <input type="radio" name="question_{{$i}}_choice" id="question_{{$i}}_choice_{{$j}}" value="{{$choice.ID}}">
@@ -23,7 +23,7 @@
                         </label>
                     </div>
                 </div>
-            {{ else if eq $question.Type "multiple_choice" }}
+            {{ else if eq $question.Type "multiple" }}
                 <div class="pure-g pure-g-middle">
                     <div class="pure-u-2-24">
                         <input type="checkbox" name="question_{{$i}}_choice[]" id="question_{{$i}}_choice_{{$j}}" value="{{$choice.ID}}">

@@ -13,8 +13,8 @@ type Experiment struct {
 type AssessmentType string
 
 const (
-	PreAssessment  AssessmentType = "pre_assessment"
-	PostAssessment AssessmentType = "post_assessment"
+	AssessmentTypePre AssessmentType = "pre"
+	AssessmentTypePos AssessmentType = "post"
 )
 
 type Assessment struct {
@@ -29,9 +29,9 @@ type Assessment struct {
 type InputType string
 
 const (
-	SingleChoice   InputType = "single_choice"
-	MultipleChoice InputType = "multiple_choice"
-	Text           InputType = "text"
+	InputSingle   InputType = "single"
+	InputMultiple InputType = "multiple"
+	InputText     InputType = "text"
 )
 
 type Question struct {

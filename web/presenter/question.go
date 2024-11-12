@@ -18,9 +18,9 @@ type QuestionType struct {
 
 func QuestionTypes(printer *message.Printer) []QuestionType {
 	return []QuestionType{
-		{Value: string(edulab.SingleChoice), Text: printer.Sprintf("Single choice")},
-		{Value: string(edulab.MultipleChoice), Text: printer.Sprintf("Multiple choice")},
-		{Value: string(edulab.Text), Text: printer.Sprintf("Text")},
+		{Value: string(edulab.InputSingle), Text: printer.Sprintf("Single Choice")},
+		{Value: string(edulab.InputMultiple), Text: printer.Sprintf("Multiple Choice")},
+		{Value: string(edulab.InputText), Text: printer.Sprintf("Text")},
 	}
 }
 

@@ -45,7 +45,7 @@ func New(path string) (*DB, error) {
 		id INTEGER PRIMARY KEY,
 		experiment_id INTEGER NOT NULL,
         public_id TEXT NOT NULL UNIQUE CHECK(public_id <> ''),
-		type TEXT CHECK(type IN ('pre_assessment', 'post_assessment')),
+		type TEXT CHECK(type IN ('pre', 'post')),
 		description TEXT,
 		created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 		FOREIGN KEY (experiment_id) REFERENCES experiments(id) ON DELETE CASCADE
@@ -60,7 +60,7 @@ func New(path string) (*DB, error) {
 		id INTEGER PRIMARY KEY,
 		assessment_id INTEGER NOT NULL,
 		prompt TEXT NOT NULL CHECK(prompt <> ''),
-		type TEXT CHECK(type IN ('multiple_choice', 'single_choice', 'text')),
+		type TEXT CHECK(type IN ('multiple', 'single', 'text')),
 		created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 		FOREIGN KEY (assessment_id) REFERENCES assessments(id) ON DELETE CASCADE
 	);`,
@@ -93,7 +93,7 @@ func New(path string) (*DB, error) {
 		experiment_id INTEGER NOT NULL,
 		i18n_key TEXT,  -- Localization key (e.g., "age", "gender")
 		text TEXT,  -- Direct text for non-localized options
-		type TEXT CHECK(type IN ('multiple_choice', 'single_choice', 'text')),
+		type TEXT CHECK(type IN ('multiple', 'single', 'text')),
 		FOREIGN KEY (experiment_id) REFERENCES experiments(id) ON DELETE CASCADE,
 		CHECK (i18n_key IS NOT NULL OR text IS NOT NULL)  -- Ensures at least one is present
 	);`,

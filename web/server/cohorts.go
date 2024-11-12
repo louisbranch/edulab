@@ -94,7 +94,7 @@ func (srv *Server) newCohort(w http.ResponseWriter, r *http.Request, experiment 
 		Title       string
 		Texts       interface{}
 	}{
-		Breadcrumbs: presenter.ExperimentBreadcrumb(experiment, printer),
+		Breadcrumbs: presenter.CohortBreadcrumb(experiment, printer),
 		Experiment:  experiment,
 		Title:       title,
 		Texts: struct {

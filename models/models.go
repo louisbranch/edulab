@@ -29,7 +29,7 @@ func (m Model) CreateExperiment(e *edulab.Experiment) error {
 	err = m.db.CreateAssessment(&edulab.Assessment{
 		ExperimentID: e.ID,
 		PublicID:     m.NewPublicID([]int{3}),
-		Type:         edulab.PreAssessment,
+		Type:         edulab.AssessmentTypePre,
 	})
 	if err != nil {
 		return err
@@ -38,7 +38,7 @@ func (m Model) CreateExperiment(e *edulab.Experiment) error {
 	err = m.db.CreateAssessment(&edulab.Assessment{
 		ExperimentID: e.ID,
 		PublicID:     m.NewPublicID([]int{3}),
-		Type:         edulab.PostAssessment,
+		Type:         edulab.AssessmentTypePos,
 	})
 	if err != nil {
 		return err

@@ -27,9 +27,9 @@ func NewAssessments(assessments []edulab.Assessment, printer *message.Printer) [
 
 func (a Assessment) Type() string {
 	switch a.Assessment.Type {
-	case edulab.PreAssessment:
+	case edulab.AssessmentTypePre:
 		return a.printer.Sprintf("Pre-Assessment")
-	case edulab.PostAssessment:
+	case edulab.AssessmentTypePos:
 		return a.printer.Sprintf("Post-Assessment")
 	default:
 		return a.printer.Sprintf("Unknown Assessment Type")
