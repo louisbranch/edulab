@@ -118,7 +118,7 @@ func (srv *Server) showAssessment(w http.ResponseWriter, r *http.Request,
 		Questions:   questions,
 		Texts: struct {
 			Questions string
-			Prompt    string
+			Text      string
 			Actions   string
 			Edit      string
 			Add       string
@@ -126,12 +126,12 @@ func (srv *Server) showAssessment(w http.ResponseWriter, r *http.Request,
 			Preview   string
 		}{
 			Questions: printer.Sprintf("Questions"),
-			Prompt:    printer.Sprintf("Prompt"),
+			Text:      printer.Sprintf("Text"),
 			Actions:   printer.Sprintf("Actions"),
 			Edit:      printer.Sprintf("Edit"),
 			Add:       printer.Sprintf("Add Question"),
 			Empty:     printer.Sprintf("No questions yet"),
-			Preview:   printer.Sprintf("Preview"),
+			Preview:   printer.Sprintf("Preview Questions"),
 		},
 	}
 

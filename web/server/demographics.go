@@ -67,7 +67,7 @@ func (srv *Server) listDemographics(w http.ResponseWriter, r *http.Request,
 			Actions:     printer.Sprintf("Actions"),
 			Add:         printer.Sprintf("Add Demographic"),
 			ComingSoon:  printer.Sprintf("Coming Soon"),
-			Preview:     printer.Sprintf("Preview"),
+			Preview:     printer.Sprintf("Preview Questions"),
 		},
 	}
 

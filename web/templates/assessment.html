@@ -10,14 +10,14 @@
     <table class="pure-table pure-table-horizontal">
        <thead>
               <tr>
-                <th>{{ .Texts.Prompt }}</th>
+                <th>{{ .Texts.Text }}</th>
                 <th>{{ .Texts.Actions }}</th>
               </tr>
        </thead> 
          <tbody>
           {{ range .Questions }}
                 <tr>
-                 <td>{{ .Prompt }}</td>
+                 <td>{{ .Text }}</td>
                  <td>
                     <a href="/edulab/experiments/{{ $.Experiment.PublicID }}/assessments/{{ $.Assessment.PublicID }}/questions/{{ .ID }}">{{ $.Texts.Edit }}</a>
                  </td>
