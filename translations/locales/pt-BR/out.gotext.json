@@ -2,14 +2,259 @@
     "language": "pt-BR",
     "messages": [
         {
-            "id": "Experiments",
-            "message": "Experiments",
-            "translation": "Experimentos"
+            "id": "Pre-Assessment",
+            "message": "Pre-Assessment",
+            "translation": ""
+        },
+        {
+            "id": "Post-Assessment",
+            "message": "Post-Assessment",
+            "translation": ""
+        },
+        {
+            "id": "Unknown Assessment Type",
+            "message": "Unknown Assessment Type",
+            "translation": ""
+        },
+        {
+            "id": "Home",
+            "message": "Home",
+            "translation": "Início"
+        },
+        {
+            "id": "Less than one min ago",
+            "message": "Less than one min ago",
+            "translation": ""
+        },
+        {
+            "id": "{Min} mins ago",
+            "message": "{Min} mins ago",
+            "translation": "",
+            "placeholders": [
+                {
+                    "id": "Min",
+                    "string": "%[1]d",
+                    "type": "int64",
+                    "underlyingType": "int64",
+                    "argNum": 1,
+                    "expr": "min"
+                }
+            ]
+        },
+        {
+            "id": "{Hr} hours ago",
+            "message": "{Hr} hours ago",
+            "translation": "",
+            "placeholders": [
+                {
+                    "id": "Hr",
+                    "string": "%[1]d",
+                    "type": "int64",
+                    "underlyingType": "int64",
+                    "argNum": 1,
+                    "expr": "hr"
+                }
+            ]
+        },
+        {
+            "id": "{Days} days ago",
+            "message": "{Days} days ago",
+            "translation": "",
+            "placeholders": [
+                {
+                    "id": "Days",
+                    "string": "%[1]d",
+                    "type": "int64",
+                    "underlyingType": "int64",
+                    "argNum": 1,
+                    "expr": "days"
+                }
+            ]
+        },
+        {
+            "id": "Single Choice",
+            "message": "Single Choice",
+            "translation": ""
+        },
+        {
+            "id": "Multiple Choice",
+            "message": "Multiple Choice",
+            "translation": ""
+        },
+        {
+            "id": "Text",
+            "message": "Text",
+            "translation": ""
+        },
+        {
+            "id": "Assessments",
+            "message": "Assessments",
+            "translation": ""
+        },
+        {
+            "id": "Type",
+            "message": "Type",
+            "translation": ""
+        },
+        {
+            "id": "Questions",
+            "message": "Questions",
+            "translation": ""
+        },
+        {
+            "id": "Actions",
+            "message": "Actions",
+            "translation": ""
+        },
+        {
+            "id": "Add Assessment",
+            "message": "Add Assessment",
+            "translation": ""
+        },
+        {
+            "id": "No assessments yet",
+            "message": "No assessments yet",
+            "translation": ""
+        },
+        {
+            "id": "Edit",
+            "message": "Edit",
+            "translation": ""
+        },
+        {
+            "id": "Preview",
+            "message": "Preview",
+            "translation": ""
+        },
+        {
+            "id": "Coming Soon",
+            "message": "Coming Soon",
+            "translation": ""
+        },
+        {
+            "id": "Prompt",
+            "message": "Prompt",
+            "translation": ""
+        },
+        {
+            "id": "Add Question",
+            "message": "Add Question",
+            "translation": ""
+        },
+        {
+            "id": "No questions yet",
+            "message": "No questions yet",
+            "translation": ""
+        },
+        {
+            "id": "Submit",
+            "message": "Submit",
+            "translation": ""
+        },
+        {
+            "id": "Back",
+            "message": "Back",
+            "translation": "Voltar"
+        },
+        {
+            "id": "Cohorts",
+            "message": "Cohorts",
+            "translation": ""
+        },
+        {
+            "id": "Add Cohort",
+            "message": "Add Cohort",
+            "translation": ""
         },
         {
             "id": "Name",
             "message": "Name",
             "translation": "Nome"
+        },
+        {
+            "id": "No cohorts found",
+            "message": "No cohorts found",
+            "translation": ""
+        },
+        {
+            "id": "New Cohort",
+            "message": "New Cohort",
+            "translation": ""
+        },
+        {
+            "id": "e.g. Baseline",
+            "message": "e.g. Baseline",
+            "translation": ""
+        },
+        {
+            "id": "Not visible to participants.",
+            "message": "Not visible to participants.",
+            "translation": ""
+        },
+        {
+            "id": "Description",
+            "message": "Description",
+            "translation": ""
+        },
+        {
+            "id": "e.g. Cohort attending lecture-based instruction",
+            "message": "e.g. Cohort attending lecture-based instruction",
+            "translation": ""
+        },
+        {
+            "id": "Optional. Not visible to participants.",
+            "message": "Optional. Not visible to participants.",
+            "translation": ""
+        },
+        {
+            "id": "Create",
+            "message": "Create",
+            "translation": ""
+        },
+        {
+            "id": "Cohort: {Name}",
+            "message": "Cohort: {Name}",
+            "translation": "",
+            "placeholders": [
+                {
+                    "id": "Name",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "cohort.Name"
+                }
+            ]
+        },
+        {
+            "id": "Update",
+            "message": "Update",
+            "translation": ""
+        },
+        {
+            "id": "New Experiment",
+            "message": "New Experiment",
+            "translation": "Novo Experimento"
+        },
+        {
+            "id": "e.g. Earth's Seasons",
+            "message": "e.g. Earth's Seasons",
+            "translation": ""
+        },
+        {
+            "id": "e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop...",
+            "message": "e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop...",
+            "translation": ""
+        },
+        {
+            "id": "Experiments",
+            "message": "Experiments",
+            "translation": "Experimentos"
+        },
+        {
+            "id": "Participants",
+            "message": "Participants",
+            "translation": ""
         },
         {
             "id": "Created",
@@ -22,14 +267,9 @@
             "translation": "Nehnum experimento disponível"
         },
         {
-            "id": "Back",
-            "message": "Back",
-            "translation": "Voltar"
-        },
-        {
-            "id": "Experiment {Name}",
-            "message": "Experiment {Name}",
-            "translation": "Experimento {Name}",
+            "id": "Edit Experiment: {Name}",
+            "message": "Edit Experiment: {Name}",
+            "translation": "",
             "placeholders": [
                 {
                     "id": "Name",
@@ -37,9 +277,44 @@
                     "type": "string",
                     "underlyingType": "string",
                     "argNum": 1,
-                    "expr": "name"
+                    "expr": "experiment.Name"
                 }
             ]
+        },
+        {
+            "id": "Edit Experiment",
+            "message": "Edit Experiment",
+            "translation": ""
+        },
+        {
+            "id": "Experiment: {Name}",
+            "message": "Experiment: {Name}",
+            "translation": "",
+            "placeholders": [
+                {
+                    "id": "Name",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "experiment.Name"
+                }
+            ]
+        },
+        {
+            "id": "Edit Settings",
+            "message": "Edit Settings",
+            "translation": ""
+        },
+        {
+            "id": "Demographics",
+            "message": "Demographics",
+            "translation": ""
+        },
+        {
+            "id": "Publish",
+            "message": "Publish",
+            "translation": ""
         },
         {
             "id": "EduLab",
@@ -47,14 +322,89 @@
             "translation": "EduLab"
         },
         {
-            "id": "Astronomy Education",
-            "message": "Astronomy Education",
-            "translation": "Educação em Astronomia"
+            "id": "Edulab",
+            "message": "Edulab",
+            "translation": ""
         },
         {
             "id": "About",
             "message": "About",
             "translation": "Sobre"
+        },
+        {
+            "id": "FAQ",
+            "message": "FAQ",
+            "translation": ""
+        },
+        {
+            "id": "New Question",
+            "message": "New Question",
+            "translation": ""
+        },
+        {
+            "id": "Markdown supported",
+            "message": "Markdown supported",
+            "translation": ""
+        },
+        {
+            "id": "e.g. What is the best explanation for the cause of Earth's seasons?",
+            "message": "e.g. What is the best explanation for the cause of Earth's seasons?",
+            "translation": ""
+        },
+        {
+            "id": "Choices",
+            "message": "Choices",
+            "translation": ""
+        },
+        {
+            "id": "Markdown supported. Empty choices will be ignored.",
+            "message": "Markdown supported. Empty choices will be ignored.",
+            "translation": ""
+        },
+        {
+            "id": "e.g. The tilt of Earth's axis",
+            "message": "e.g. The tilt of Earth's axis",
+            "translation": ""
+        },
+        {
+            "id": "e.g. The distance from the Sun",
+            "message": "e.g. The distance from the Sun",
+            "translation": ""
+        },
+        {
+            "id": "e.g. The Earth's elliptical orbit",
+            "message": "e.g. The Earth's elliptical orbit",
+            "translation": ""
+        },
+        {
+            "id": "e.g. The Earth's rotation",
+            "message": "e.g. The Earth's rotation",
+            "translation": ""
+        },
+        {
+            "id": "e.g. The Earth's revolution",
+            "message": "e.g. The Earth's revolution",
+            "translation": ""
+        },
+        {
+            "id": "Correct",
+            "message": "Correct",
+            "translation": ""
+        },
+        {
+            "id": "Question: {Prompt}",
+            "message": "Question: {Prompt}",
+            "translation": "",
+            "placeholders": [
+                {
+                    "id": "Prompt",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "question.Prompt"
+                }
+            ]
         },
         {
             "id": "Internal Server Error",
@@ -67,9 +417,9 @@
             "translation": "Página Não Encontrada"
         },
         {
-            "id": "Home",
-            "message": "Home",
-            "translation": "Início"
+            "id": "EduLab - Empowering Educators",
+            "message": "EduLab - Empowering Educators",
+            "translation": ""
         },
         {
             "id": "Empowering Educators Through Evidence-Based Insights",
@@ -82,29 +432,14 @@
             "translation": "O EduLab traz experimentação **orientada por dados** para a sala de aula, permitindo que você avalie e refine métodos de ensino em diferentes **coortes**.\n\n Com a realização de avaliações controladas antes e depois das aulas, você obtém **perspectivas baseadas em evidências** sobre como diferentes abordagens impactam os resultados de aprendizagem.\n\nCompare coortes, meça os **ganhos de aprendizado** e adapte suas estratégias para elevar o engajamento dos alunos—tudo isso com o suporte de dados educacionais em tempo real."
         },
         {
-            "id": "New Experiment",
-            "message": "New Experiment",
-            "translation": "Novo Experimento"
+            "id": "Educator's Guide",
+            "message": "Educator's Guide",
+            "translation": ""
         },
         {
             "id": "Previous Experiments",
             "message": "Previous Experiments",
             "translation": "Experimentos Anteriores"
-        },
-        {
-            "id": "References",
-            "message": "References",
-            "translation": "Referências"
-        },
-        {
-            "id": "If you would like to contribute to the project, for example, adding more translations, get in touch:",
-            "message": "If you would like to contribute to the project, for example, adding more translations, get in touch:",
-            "translation": "Se você gostaria de contribuir para o projeto, por exemplo, adicionando mais traduções, entre em contato:"
-        },
-        {
-            "id": "Source Code",
-            "message": "Source Code",
-            "translation": "Código Fonte"
         }
     ]
 }

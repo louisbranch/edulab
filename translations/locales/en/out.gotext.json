@@ -2,9 +2,221 @@
     "language": "en",
     "messages": [
         {
-            "id": "Experiments",
-            "message": "Experiments",
-            "translation": "Experiments",
+            "id": "Pre-Assessment",
+            "message": "Pre-Assessment",
+            "translation": "Pre-Assessment",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Post-Assessment",
+            "message": "Post-Assessment",
+            "translation": "Post-Assessment",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Unknown Assessment Type",
+            "message": "Unknown Assessment Type",
+            "translation": "Unknown Assessment Type",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Home",
+            "message": "Home",
+            "translation": "Home",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Less than one min ago",
+            "message": "Less than one min ago",
+            "translation": "Less than one min ago",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "{Min} mins ago",
+            "message": "{Min} mins ago",
+            "translation": "{Min} mins ago",
+            "translatorComment": "Copied from source.",
+            "placeholders": [
+                {
+                    "id": "Min",
+                    "string": "%[1]d",
+                    "type": "int64",
+                    "underlyingType": "int64",
+                    "argNum": 1,
+                    "expr": "min"
+                }
+            ],
+            "fuzzy": true
+        },
+        {
+            "id": "{Hr} hours ago",
+            "message": "{Hr} hours ago",
+            "translation": "{Hr} hours ago",
+            "translatorComment": "Copied from source.",
+            "placeholders": [
+                {
+                    "id": "Hr",
+                    "string": "%[1]d",
+                    "type": "int64",
+                    "underlyingType": "int64",
+                    "argNum": 1,
+                    "expr": "hr"
+                }
+            ],
+            "fuzzy": true
+        },
+        {
+            "id": "{Days} days ago",
+            "message": "{Days} days ago",
+            "translation": "{Days} days ago",
+            "translatorComment": "Copied from source.",
+            "placeholders": [
+                {
+                    "id": "Days",
+                    "string": "%[1]d",
+                    "type": "int64",
+                    "underlyingType": "int64",
+                    "argNum": 1,
+                    "expr": "days"
+                }
+            ],
+            "fuzzy": true
+        },
+        {
+            "id": "Single Choice",
+            "message": "Single Choice",
+            "translation": "Single Choice",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Multiple Choice",
+            "message": "Multiple Choice",
+            "translation": "Multiple Choice",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Text",
+            "message": "Text",
+            "translation": "Text",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Assessments",
+            "message": "Assessments",
+            "translation": "Assessments",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Type",
+            "message": "Type",
+            "translation": "Type",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Questions",
+            "message": "Questions",
+            "translation": "Questions",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Actions",
+            "message": "Actions",
+            "translation": "Actions",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Add Assessment",
+            "message": "Add Assessment",
+            "translation": "Add Assessment",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "No assessments yet",
+            "message": "No assessments yet",
+            "translation": "No assessments yet",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Edit",
+            "message": "Edit",
+            "translation": "Edit",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Preview",
+            "message": "Preview",
+            "translation": "Preview",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Coming Soon",
+            "message": "Coming Soon",
+            "translation": "Coming Soon",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Prompt",
+            "message": "Prompt",
+            "translation": "Prompt",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Add Question",
+            "message": "Add Question",
+            "translation": "Add Question",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "No questions yet",
+            "message": "No questions yet",
+            "translation": "No questions yet",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Submit",
+            "message": "Submit",
+            "translation": "Submit",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Back",
+            "message": "Back",
+            "translation": "Back",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Cohorts",
+            "message": "Cohorts",
+            "translation": "Cohorts",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Add Cohort",
+            "message": "Add Cohort",
+            "translation": "Add Cohort",
             "translatorComment": "Copied from source.",
             "fuzzy": true
         },
@@ -12,6 +224,121 @@
             "id": "Name",
             "message": "Name",
             "translation": "Name",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "No cohorts found",
+            "message": "No cohorts found",
+            "translation": "No cohorts found",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "New Cohort",
+            "message": "New Cohort",
+            "translation": "New Cohort",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "e.g. Baseline",
+            "message": "e.g. Baseline",
+            "translation": "e.g. Baseline",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Not visible to participants.",
+            "message": "Not visible to participants.",
+            "translation": "Not visible to participants.",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Description",
+            "message": "Description",
+            "translation": "Description",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "e.g. Cohort attending lecture-based instruction",
+            "message": "e.g. Cohort attending lecture-based instruction",
+            "translation": "e.g. Cohort attending lecture-based instruction",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Optional. Not visible to participants.",
+            "message": "Optional. Not visible to participants.",
+            "translation": "Optional. Not visible to participants.",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Create",
+            "message": "Create",
+            "translation": "Create",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Cohort: {Name}",
+            "message": "Cohort: {Name}",
+            "translation": "Cohort: {Name}",
+            "translatorComment": "Copied from source.",
+            "placeholders": [
+                {
+                    "id": "Name",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "cohort.Name"
+                }
+            ],
+            "fuzzy": true
+        },
+        {
+            "id": "Update",
+            "message": "Update",
+            "translation": "Update",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "New Experiment",
+            "message": "New Experiment",
+            "translation": "New Experiment",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "e.g. Earth's Seasons",
+            "message": "e.g. Earth's Seasons",
+            "translation": "e.g. Earth's Seasons",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop...",
+            "message": "e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop...",
+            "translation": "e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop...",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Experiments",
+            "message": "Experiments",
+            "translation": "Experiments",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Participants",
+            "message": "Participants",
+            "translation": "Participants",
             "translatorComment": "Copied from source.",
             "fuzzy": true
         },
@@ -30,16 +357,9 @@
             "fuzzy": true
         },
         {
-            "id": "Back",
-            "message": "Back",
-            "translation": "Back",
-            "translatorComment": "Copied from source.",
-            "fuzzy": true
-        },
-        {
-            "id": "Experiment {Name}",
-            "message": "Experiment {Name}",
-            "translation": "Experiment {Name}",
+            "id": "Edit Experiment: {Name}",
+            "message": "Edit Experiment: {Name}",
+            "translation": "Edit Experiment: {Name}",
             "translatorComment": "Copied from source.",
             "placeholders": [
                 {
@@ -48,9 +368,54 @@
                     "type": "string",
                     "underlyingType": "string",
                     "argNum": 1,
-                    "expr": "name"
+                    "expr": "experiment.Name"
                 }
             ],
+            "fuzzy": true
+        },
+        {
+            "id": "Edit Experiment",
+            "message": "Edit Experiment",
+            "translation": "Edit Experiment",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Experiment: {Name}",
+            "message": "Experiment: {Name}",
+            "translation": "Experiment: {Name}",
+            "translatorComment": "Copied from source.",
+            "placeholders": [
+                {
+                    "id": "Name",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "experiment.Name"
+                }
+            ],
+            "fuzzy": true
+        },
+        {
+            "id": "Edit Settings",
+            "message": "Edit Settings",
+            "translation": "Edit Settings",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Demographics",
+            "message": "Demographics",
+            "translation": "Demographics",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Publish",
+            "message": "Publish",
+            "translation": "Publish",
+            "translatorComment": "Copied from source.",
             "fuzzy": true
         },
         {
@@ -61,9 +426,9 @@
             "fuzzy": true
         },
         {
-            "id": "Astronomy Education",
-            "message": "Astronomy Education",
-            "translation": "Astronomy Education",
+            "id": "Edulab",
+            "message": "Edulab",
+            "translation": "Edulab",
             "translatorComment": "Copied from source.",
             "fuzzy": true
         },
@@ -72,6 +437,107 @@
             "message": "About",
             "translation": "About",
             "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "FAQ",
+            "message": "FAQ",
+            "translation": "FAQ",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "New Question",
+            "message": "New Question",
+            "translation": "New Question",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Markdown supported",
+            "message": "Markdown supported",
+            "translation": "Markdown supported",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "e.g. What is the best explanation for the cause of Earth's seasons?",
+            "message": "e.g. What is the best explanation for the cause of Earth's seasons?",
+            "translation": "e.g. What is the best explanation for the cause of Earth's seasons?",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Choices",
+            "message": "Choices",
+            "translation": "Choices",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Markdown supported. Empty choices will be ignored.",
+            "message": "Markdown supported. Empty choices will be ignored.",
+            "translation": "Markdown supported. Empty choices will be ignored.",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "e.g. The tilt of Earth's axis",
+            "message": "e.g. The tilt of Earth's axis",
+            "translation": "e.g. The tilt of Earth's axis",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "e.g. The distance from the Sun",
+            "message": "e.g. The distance from the Sun",
+            "translation": "e.g. The distance from the Sun",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "e.g. The Earth's elliptical orbit",
+            "message": "e.g. The Earth's elliptical orbit",
+            "translation": "e.g. The Earth's elliptical orbit",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "e.g. The Earth's rotation",
+            "message": "e.g. The Earth's rotation",
+            "translation": "e.g. The Earth's rotation",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "e.g. The Earth's revolution",
+            "message": "e.g. The Earth's revolution",
+            "translation": "e.g. The Earth's revolution",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Correct",
+            "message": "Correct",
+            "translation": "Correct",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Question: {Prompt}",
+            "message": "Question: {Prompt}",
+            "translation": "Question: {Prompt}",
+            "translatorComment": "Copied from source.",
+            "placeholders": [
+                {
+                    "id": "Prompt",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "question.Prompt"
+                }
+            ],
             "fuzzy": true
         },
         {
@@ -89,9 +555,9 @@
             "fuzzy": true
         },
         {
-            "id": "Home",
-            "message": "Home",
-            "translation": "Home",
+            "id": "EduLab - Empowering Educators",
+            "message": "EduLab - Empowering Educators",
+            "translation": "EduLab - Empowering Educators",
             "translatorComment": "Copied from source.",
             "fuzzy": true
         },
@@ -110,9 +576,9 @@
             "fuzzy": true
         },
         {
-            "id": "New Experiment",
-            "message": "New Experiment",
-            "translation": "New Experiment",
+            "id": "Educator's Guide",
+            "message": "Educator's Guide",
+            "translation": "Educator's Guide",
             "translatorComment": "Copied from source.",
             "fuzzy": true
         },
@@ -120,27 +586,6 @@
             "id": "Previous Experiments",
             "message": "Previous Experiments",
             "translation": "Previous Experiments",
-            "translatorComment": "Copied from source.",
-            "fuzzy": true
-        },
-        {
-            "id": "References",
-            "message": "References",
-            "translation": "References",
-            "translatorComment": "Copied from source.",
-            "fuzzy": true
-        },
-        {
-            "id": "If you would like to contribute to the project, for example, adding more translations, get in touch:",
-            "message": "If you would like to contribute to the project, for example, adding more translations, get in touch:",
-            "translation": "If you would like to contribute to the project, for example, adding more translations, get in touch:",
-            "translatorComment": "Copied from source.",
-            "fuzzy": true
-        },
-        {
-            "id": "Source Code",
-            "message": "Source Code",
-            "translation": "Source Code",
             "translatorComment": "Copied from source.",
             "fuzzy": true
         }

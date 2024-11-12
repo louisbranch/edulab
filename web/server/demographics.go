@@ -16,15 +16,39 @@ func (srv *Server) demographicsHandler(w http.ResponseWriter, r *http.Request,
 
 	printer, page := srv.i18n(w, r)
 
+	demographics, err := srv.DB.FindDemographics(experiment.ID)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
 	title := printer.Sprint("Demographics")
 	page.Title = title
 	page.Partials = []string{"demographics"}
 	page.Content = struct {
-		Title       string
-		Breadcrumbs template.HTML
+		Breadcrumbs  template.HTML
+		Experiment   edulab.Experiment
+		Demographics []presenter.Demographic
+		Texts        interface{}
 	}{
-		Title:       title,
-		Breadcrumbs: presenter.ExperimentBreadcrumb(experiment, printer),
+		Breadcrumbs:  presenter.ExperimentBreadcrumb(experiment, printer),
+		Experiment:   experiment,
+		Demographics: presenter.NewDemographics(demographics, printer),
+		Texts: struct {
+			Title       string
+			Demographic string
+			Prompt      string
+			Actions     string
+			Add         string
+			ComingSoon  string
+		}{
+			Title:       title,
+			Demographic: printer.Sprint("Demographic"),
+			Prompt:      printer.Sprint("Prompt"),
+			Actions:     printer.Sprint("Actions"),
+			Add:         printer.Sprint("Add Demographic"),
+			ComingSoon:  printer.Sprint("Coming Soon"),
+		},
 	}
 
 	srv.render(w, page)

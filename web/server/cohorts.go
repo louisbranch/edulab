@@ -130,6 +130,7 @@ func (srv *Server) createCohort(w http.ResponseWriter, r *http.Request, experime
 	description := r.FormValue("description")
 
 	cohort := &edulab.Cohort{
+		PublicID:     srv.newPublicID([]int{3}),
 		ExperimentID: experiment.ID,
 		Name:         name,
 		Description:  description,
