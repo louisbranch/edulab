@@ -1,0 +1,39 @@
+app = "edulab"
+primary_region = "yyz"
+
+[build]
+
+[env]
+  PORT = "80"
+
+[http_service]
+  internal_port = 80  # Matches the PORT environment variable above
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[vm]]
+  memory = "1gb"
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 256
+
+[[services]]
+  internal_port = 80
+  protocol = "tcp"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80  # Expose HTTP on port 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443  # Expose HTTPS on port 443
+
+  [[services.tcp_checks]]
+    grace_period = "1s"  # Wait 1s before the first check
+    interval = "15s"     # Run health checks every 15s
+    timeout = "2s"       # Fail if a connection takes more than 2s
+    restart_limit = 0    # Allow unlimited restarts
