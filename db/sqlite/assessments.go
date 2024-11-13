@@ -3,8 +3,9 @@ package sqlite
 import (
 	"strconv"
 
-	"github.com/louisbranch/edulab"
 	"github.com/pkg/errors"
+
+	"github.com/louisbranch/edulab"
 )
 
 func (db *DB) CreateAssessment(a *edulab.Assessment) error {
