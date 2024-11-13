@@ -37,8 +37,13 @@ func main() {
 	var db edulab.Database
 	var err error
 
+	dburl := os.Getenv("DATABASE_URL")
 	dbuser := os.Getenv("POSTGRES_USER")
-	if dbuser == "" {
+
+	if dburl != "" {
+		log.Println("using database url")
+		db, err = postgres.New(dburl)
+	} else if dbuser == "" {
 		log.Println("using sqlite database")
 		db, err = sqlite.New("edulab.db")
 	} else {
