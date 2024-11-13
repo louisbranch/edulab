@@ -143,7 +143,7 @@ func (srv *Server) editAssessment(w http.ResponseWriter, r *http.Request,
 			Save:                   printer.Sprintf("Save"),
 			Add:                    printer.Sprintf("Add Question"),
 			Empty:                  printer.Sprintf("No questions yet"),
-			Preview:                printer.Sprintf("Preview Assessment"),
+			Preview:                printer.Sprintf("Preview"),
 			ComingSoon:             printer.Sprintf("Coming Soon"),
 		},
 	}

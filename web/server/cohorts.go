@@ -142,7 +142,7 @@ func (srv *Server) createCohort(w http.ResponseWriter, r *http.Request, experime
 		return
 	}
 
-	http.Redirect(w, r, "/edulab/experiments/"+experiment.PublicID+"/cohorts", http.StatusSeeOther)
+	http.Redirect(w, r, "/experiments/"+experiment.PublicID+"/cohorts", http.StatusSeeOther)
 }
 
 func (srv *Server) updateCohort(w http.ResponseWriter, r *http.Request, experiment edulab.Experiment, pid string) {
@@ -167,7 +167,7 @@ func (srv *Server) updateCohort(w http.ResponseWriter, r *http.Request, experime
 		return
 	}
 
-	http.Redirect(w, r, "/edulab/experiments/"+experiment.PublicID+"/cohorts/", http.StatusSeeOther)
+	http.Redirect(w, r, "/experiments/"+experiment.PublicID+"/cohorts/", http.StatusSeeOther)
 }
 
 func (srv *Server) showCohort(w http.ResponseWriter, r *http.Request, experiment edulab.Experiment, pid string) {

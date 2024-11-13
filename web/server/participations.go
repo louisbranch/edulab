@@ -66,7 +66,7 @@ func (srv *Server) participationsHandler(w http.ResponseWriter, r *http.Request,
 		http.SetCookie(w, &http.Cookie{
 			Name:   "access_token",
 			Value:  token,
-			Path:   "/edulab/",
+			Path:   "/",
 			MaxAge: 24 * 60 * 60 * 180, // 180 days
 		})
 	}

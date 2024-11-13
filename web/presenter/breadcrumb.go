@@ -3,12 +3,13 @@ package presenter
 import (
 	"fmt"
 	"html/template"
-	"math"
 	"strings"
 
 	"github.com/louisbranch/edulab"
 	"golang.org/x/text/message"
 )
+
+const breadcrumbMaxLen = 20
 
 type Breadcrumb struct {
 	URL  string
@@ -16,49 +17,52 @@ type Breadcrumb struct {
 }
 
 func HomeBreadcrumbs(printer *message.Printer) template.HTML {
-	return RenderBreadcrumbs([]Breadcrumb{
-		{URL: "/edulab/", Name: printer.Sprintf("Home")},
+	return renderBreadcrumbs([]Breadcrumb{
+		{URL: "/", Name: printer.Sprintf("Home")},
 	})
 }
 
 func ExperimentBreadcrumb(e edulab.Experiment, printer *message.Printer) template.HTML {
 	// truncate name for breadcrumbs
-	name := e.Name[:int(math.Min(20, float64(len(e.Name))))] + "..."
+	name := e.Name
+	if len(e.Name) > breadcrumbMaxLen {
+		name = e.Name[:breadcrumbMaxLen] + "..."
+	}
 
-	return RenderBreadcrumbs([]Breadcrumb{
-		{URL: "/edulab/", Name: printer.Sprintf("Home")},
-		{URL: fmt.Sprintf("/edulab/experiments/%s", e.PublicID), Name: name},
+	return renderBreadcrumbs([]Breadcrumb{
+		{URL: "/", Name: printer.Sprintf("Home")},
+		{URL: fmt.Sprintf("/experiments/%s", e.PublicID), Name: name},
 	})
 }
 
 func AssessmentsBreadcrumb(e edulab.Experiment, printer *message.Printer) template.HTML {
-	return RenderBreadcrumbs([]Breadcrumb{
-		{URL: "/edulab/", Name: printer.Sprintf("Home")},
-		{URL: fmt.Sprintf("/edulab/experiments/%s", e.PublicID), Name: e.Name},
-		{URL: fmt.Sprintf("/edulab/experiments/%s/assessments/", e.PublicID), Name: printer.Sprintf("Assessments")},
+	return renderBreadcrumbs([]Breadcrumb{
+		{URL: "/", Name: printer.Sprintf("Home")},
+		{URL: fmt.Sprintf("/experiments/%s", e.PublicID), Name: e.Name},
+		{URL: fmt.Sprintf("/experiments/%s/assessments/", e.PublicID), Name: printer.Sprintf("Assessments")},
 	})
 }
 
 func AssessmentBreadcrumb(e edulab.Experiment, a edulab.Assessment, printer *message.Printer) template.HTML {
 	ap := NewAssessment(a, printer)
 
-	return RenderBreadcrumbs([]Breadcrumb{
-		{URL: "/edulab/", Name: printer.Sprintf("Home")},
-		{URL: fmt.Sprintf("/edulab/experiments/%s", e.PublicID), Name: e.Name},
-		{URL: fmt.Sprintf("/edulab/experiments/%s/assessments/", e.PublicID), Name: printer.Sprintf("Assessments")},
-		{URL: fmt.Sprintf("/edulab/experiments/%s/assessments/%s", e.PublicID, a.PublicID), Name: ap.Type()},
+	return renderBreadcrumbs([]Breadcrumb{
+		{URL: "/", Name: printer.Sprintf("Home")},
+		{URL: fmt.Sprintf("/experiments/%s", e.PublicID), Name: e.Name},
+		{URL: fmt.Sprintf("/experiments/%s/assessments/", e.PublicID), Name: printer.Sprintf("Assessments")},
+		{URL: fmt.Sprintf("/experiments/%s/assessments/%s", e.PublicID, a.PublicID), Name: ap.Type()},
 	})
 }
 
 func CohortBreadcrumb(e edulab.Experiment, printer *message.Printer) template.HTML {
-	return RenderBreadcrumbs([]Breadcrumb{
-		{URL: "/edulab/", Name: printer.Sprintf("Home")},
-		{URL: fmt.Sprintf("/edulab/experiments/%s", e.PublicID), Name: e.Name},
-		{URL: fmt.Sprintf("/edulab/experiments/%s/cohorts/", e.PublicID), Name: printer.Sprintf("Cohorts")},
+	return renderBreadcrumbs([]Breadcrumb{
+		{URL: "/", Name: printer.Sprintf("Home")},
+		{URL: fmt.Sprintf("/experiments/%s", e.PublicID), Name: e.Name},
+		{URL: fmt.Sprintf("/experiments/%s/cohorts/", e.PublicID), Name: printer.Sprintf("Cohorts")},
 	})
 }
 
-func RenderBreadcrumbs(breadcrumbs []Breadcrumb) template.HTML {
+func renderBreadcrumbs(breadcrumbs []Breadcrumb) template.HTML {
 	var sb strings.Builder
 	sb.WriteString(`<nav class="breadcrumb">`)
 	for i, breadcrumb := range breadcrumbs {

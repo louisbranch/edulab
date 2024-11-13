@@ -2,7 +2,7 @@
 {{ .Breadcrumbs }}
 <h2>{{ .Assessment.Type }}</h2>
 
-<form class="pure-form pure-form-stacked" method="post" action="/edulab/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}">
+<form class="pure-form pure-form-stacked" method="post" action="/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}">
     <fieldset>
         <legend>{{ .Texts.Description }}</legend>
         <div class="pure-form-message-inline">{{ .Texts.DescriptionHelp }}</div>
@@ -25,7 +25,7 @@
                 <tr>
                  <td>{{ .Text }}</td>
                  <td>
-                    <a href="/edulab/experiments/{{ $.Experiment.PublicID }}/assessments/{{ $.Assessment.PublicID }}/questions/{{ .ID }}">{{ $.Texts.Edit }}</a>
+                    <a href="/experiments/{{ $.Experiment.PublicID }}/assessments/{{ $.Assessment.PublicID }}/questions/{{ .ID }}">{{ $.Texts.Edit }}</a>
                  </td>
                 </tr>
           {{ end }}
@@ -35,8 +35,8 @@
 {{ end }}
 
 <div class="pure-button-group">
-  <a href="/edulab/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/preview" class="pure-button">{{ .Texts.Preview }}</a>
-  <a href="/edulab/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/questions/new" class="pure-button pure-button-primary">{{ .Texts.Add }}</a>
+  <a href="/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/preview" class="pure-button">{{ .Texts.Preview }}</a>
+  <a href="/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/questions/new" class="pure-button pure-button-primary">{{ .Texts.Add }}</a>
 </div>
 
 

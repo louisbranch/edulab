@@ -1,22 +1,22 @@
 {{ define "content" }}
 {{ .Breadcrumbs }}
-<h2>{{ .Experiment.Name }}</h2>
+<h2>{{ truncate .Experiment.Name }}</h2>
 <div class="pure-menu">
     <ul class="pure-menu-list">
         <li class="pure-menu-item">
-            <a href="/edulab/experiments/{{ .Experiment.PublicID }}/edit" class="pure-menu-link">{{ .Texts.EditSettings }}</a>
+            <a href="/experiments/{{ .Experiment.PublicID }}/edit" class="pure-menu-link">{{ .Texts.EditSettings }}</a>
         </li>
         <li class="pure-menu-item">
-            <a href="/edulab/experiments/{{ .Experiment.PublicID }}/demographics" class="pure-menu-link">{{ .Texts.Demographics }}</a>
+            <a href="/experiments/{{ .Experiment.PublicID }}/demographics" class="pure-menu-link">{{ .Texts.Demographics }}</a>
         </li>
         <li class="pure-menu-item">
-            <a href="/edulab/experiments/{{ .Experiment.PublicID }}/assessments" class="pure-menu-link">{{ .Texts.Assessments }}</a>
+            <a href="/experiments/{{ .Experiment.PublicID }}/assessments" class="pure-menu-link">{{ .Texts.Assessments }}</a>
         </li>
         <li class="pure-menu-item">
-            <a href="/edulab/experiments/{{ .Experiment.PublicID }}/cohorts" class="pure-menu-link">{{ .Texts.Cohorts }}</a>
+            <a href="/experiments/{{ .Experiment.PublicID }}/cohorts" class="pure-menu-link">{{ .Texts.Cohorts }}</a>
         </li>
         <li class="pure-menu-item">
-            <a href="/edulab/experiments/{{ .Experiment.PublicID }}/publish" class="pure-menu-link">{{ .Texts.Publish }}</a>
+            <a href="/experiments/{{ .Experiment.PublicID }}/publish" class="pure-menu-link">{{ .Texts.Publish }}</a>
         </li>
     </ul>
 </div>

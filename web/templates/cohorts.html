@@ -15,7 +15,7 @@
                 <tr>
                  <td>{{ .Name }}</td>
                  <td>
-                    <a href="/edulab/experiments/{{ $.Experiment.PublicID }}/cohorts/{{ .PublicID }}">{{ $.Texts.Edit }}</a>
+                    <a href="/experiments/{{ $.Experiment.PublicID }}/cohorts/{{ .PublicID }}">{{ $.Texts.Edit }}</a>
                  </td>
                 </tr>
           {{ end }}
@@ -25,7 +25,7 @@
 {{ end }}
 
 <div class="pure-button-group">
-  <a href="/edulab/experiments/{{ .Experiment.PublicID }}/cohorts/new" class="pure-button pure-button-primary">{{ .Texts.AddCohort }}</a>
+  <a href="/experiments/{{ .Experiment.PublicID }}/cohorts/new" class="pure-button pure-button-primary">{{ .Texts.AddCohort }}</a>
 </div>
 
 {{ end }}
