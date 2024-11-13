@@ -5,6 +5,7 @@ primary_region = "yyz"
 
 [env]
   PORT = "80"
+  FILES_PATH = "/var/www"
 
 [http_service]
   internal_port = 80  # Matches the PORT environment variable above
