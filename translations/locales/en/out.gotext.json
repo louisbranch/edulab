@@ -186,9 +186,30 @@
             "fuzzy": true
         },
         {
-            "id": "Prompt",
-            "message": "Prompt",
-            "translation": "Prompt",
+            "id": "Description",
+            "message": "Description",
+            "translation": "Description",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Optional. Markdown supported.",
+            "message": "Optional. Markdown supported.",
+            "translation": "Optional. Markdown supported.",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "e.g. Gauge your current knowledge about the causes of Earth's...",
+            "message": "e.g. Gauge your current knowledge about the causes of Earth's...",
+            "translation": "e.g. Gauge your current knowledge about the causes of Earth's...",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Save",
+            "message": "Save",
+            "translation": "Save",
             "translatorComment": "Copied from source.",
             "fuzzy": true
         },
@@ -225,6 +246,31 @@
             "message": "Back",
             "translation": "Back",
             "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "{Name} - {Type}",
+            "message": "{Name} - {Type}",
+            "translation": "{Name} - {Type}",
+            "translatorComment": "Copied from source.",
+            "placeholders": [
+                {
+                    "id": "Name",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "experiment.Name"
+                },
+                {
+                    "id": "Type",
+                    "string": "%[2]s",
+                    "type": "github.com/louisbranch/edulab.AssessmentType",
+                    "underlyingType": "string",
+                    "argNum": 2,
+                    "expr": "assessment.Type"
+                }
+            ],
             "fuzzy": true
         },
         {
@@ -266,13 +312,6 @@
             "id": "Not visible to participants.",
             "message": "Not visible to participants.",
             "translation": "Not visible to participants.",
-            "translatorComment": "Copied from source.",
-            "fuzzy": true
-        },
-        {
-            "id": "Description",
-            "message": "Description",
-            "translation": "Description",
             "translatorComment": "Copied from source.",
             "fuzzy": true
         },
@@ -339,6 +378,13 @@
             "id": "Add Demographic",
             "message": "Add Demographic",
             "translation": "Add Demographic",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Next",
+            "message": "Next",
+            "translation": "Next",
             "translatorComment": "Copied from source.",
             "fuzzy": true
         },
@@ -440,9 +486,9 @@
             "fuzzy": true
         },
         {
-            "id": "Publish",
-            "message": "Publish",
-            "translation": "Publish",
+            "id": "Participation Links",
+            "message": "Participation Links",
+            "translation": "Participation Links",
             "translatorComment": "Copied from source.",
             "fuzzy": true
         },
@@ -475,9 +521,16 @@
             "fuzzy": true
         },
         {
-            "id": "Publish Experiment",
-            "message": "Publish Experiment",
-            "translation": "Publish Experiment",
+            "id": "Thank you for participating!",
+            "message": "Thank you for participating!",
+            "translation": "Thank you for participating!",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Your participation has been successfully recorded.\n\nYou can now close this page.",
+            "message": "Your participation has been successfully recorded.\n\nYou can now close this page.",
+            "translation": "Your participation has been successfully recorded.\n\nYou can now close this page.",
             "translatorComment": "Copied from source.",
             "fuzzy": true
         },

@@ -14,7 +14,7 @@
             <tr>
                 <td>{{ add $i 1 }}</td>
                 <td><a href="/experiments/{{ $el.PublicID }}">{{ truncate $el.Name }}</a></td>
-                <td>{{ .Participants }}</td>
+                <td>{{ .ParticipantsCount }}</td>
                 <td>{{ .ElapsedTime }}</td>
             </tr>
             {{ end }}

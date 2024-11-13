@@ -6,11 +6,12 @@ import (
 )
 
 type Experiment struct {
-	ID          string
-	PublicID    string
-	Name        string
-	Description string
-	CreatedAt   time.Time
+	ID                string
+	PublicID          string
+	Name              string
+	Description       string
+	CreatedAt         time.Time
+	ParticipantsCount int
 }
 
 type AssessmentType string

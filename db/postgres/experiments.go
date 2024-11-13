@@ -36,9 +36,12 @@ func (db *DB) UpdateExperiment(e edulab.Experiment) error {
 func (db *DB) FindExperiments() ([]edulab.Experiment, error) {
 	var experiments []edulab.Experiment
 
-	query := `SELECT id, public_id, name, description, created_at 
-		FROM experiments
-		ORDER BY created_at DESC LIMIT 10`
+	query := `SELECT e.id, e.public_id, e.name, e.description, e.created_at,
+	COUNT(participants.id) AS p
+	FROM experiments AS e
+	LEFT JOIN participants ON participants.experiment_id = e.id
+	GROUP BY e.id
+	ORDER BY e.created_at DESC LIMIT 10`
 
 	rows, err := db.Query(query)
 	if err != nil {
@@ -48,7 +51,8 @@ func (db *DB) FindExperiments() ([]edulab.Experiment, error) {
 
 	for rows.Next() {
 		e := edulab.Experiment{}
-		err = rows.Scan(&e.ID, &e.PublicID, &e.Name, &e.Description, &e.CreatedAt)
+		err = rows.Scan(&e.ID, &e.PublicID, &e.Name, &e.Description,
+			&e.CreatedAt, &e.ParticipantsCount)
 		if err != nil {
 			return nil, errors.Wrap(err, "scan experiments")
 		}

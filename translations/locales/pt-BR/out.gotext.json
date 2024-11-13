@@ -142,8 +142,23 @@
             "translation": ""
         },
         {
-            "id": "Prompt",
-            "message": "Prompt",
+            "id": "Description",
+            "message": "Description",
+            "translation": ""
+        },
+        {
+            "id": "Optional. Markdown supported.",
+            "message": "Optional. Markdown supported.",
+            "translation": ""
+        },
+        {
+            "id": "e.g. Gauge your current knowledge about the causes of Earth's...",
+            "message": "e.g. Gauge your current knowledge about the causes of Earth's...",
+            "translation": ""
+        },
+        {
+            "id": "Save",
+            "message": "Save",
             "translation": ""
         },
         {
@@ -170,6 +185,29 @@
             "id": "Back",
             "message": "Back",
             "translation": "Voltar"
+        },
+        {
+            "id": "{Name} - {Type}",
+            "message": "{Name} - {Type}",
+            "translation": "",
+            "placeholders": [
+                {
+                    "id": "Name",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "experiment.Name"
+                },
+                {
+                    "id": "Type",
+                    "string": "%[2]s",
+                    "type": "github.com/louisbranch/edulab.AssessmentType",
+                    "underlyingType": "string",
+                    "argNum": 2,
+                    "expr": "assessment.Type"
+                }
+            ]
         },
         {
             "id": "Add Cohort",
@@ -199,11 +237,6 @@
         {
             "id": "Not visible to participants.",
             "message": "Not visible to participants.",
-            "translation": ""
-        },
-        {
-            "id": "Description",
-            "message": "Description",
             "translation": ""
         },
         {
@@ -254,6 +287,11 @@
         {
             "id": "Add Demographic",
             "message": "Add Demographic",
+            "translation": ""
+        },
+        {
+            "id": "Next",
+            "message": "Next",
             "translation": ""
         },
         {
@@ -332,8 +370,8 @@
             "translation": ""
         },
         {
-            "id": "Publish",
-            "message": "Publish",
+            "id": "Participation Links",
+            "message": "Participation Links",
             "translation": ""
         },
         {
@@ -357,8 +395,13 @@
             "translation": ""
         },
         {
-            "id": "Publish Experiment",
-            "message": "Publish Experiment",
+            "id": "Thank you for participating!",
+            "message": "Thank you for participating!",
+            "translation": ""
+        },
+        {
+            "id": "Your participation has been successfully recorded.\n\nYou can now close this page.",
+            "message": "Your participation has been successfully recorded.\n\nYou can now close this page.",
             "translation": ""
         },
         {
