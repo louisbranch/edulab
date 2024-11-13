@@ -1,6 +1,9 @@
 package edulab
 
-import "time"
+import (
+	"encoding/json"
+	"time"
+)
 
 type Experiment struct {
 	ID          string
@@ -69,6 +72,22 @@ type DemographicOption struct {
 	Text          string
 }
 
+type Participant struct {
+	ID           string
+	PublicID     string
+	ExperimentID string
+	CohortID     string
+	AccessToken  string
+}
+
+type Participation struct {
+	ExperimentID  string
+	AssessmentID  string
+	ParticipantID string
+	Answers       json.RawMessage `json:"answers"`
+	Demographics  json.RawMessage `json:"demographics"`
+}
+
 type Database interface {
 	CreateExperiment(*Experiment) error
 	UpdateExperiment(Experiment) error
@@ -96,4 +115,14 @@ type Database interface {
 
 	CreateDemographicOption(*DemographicOption) error
 	FindDemographicOptions(experimentID string) ([]DemographicOption, error)
+
+	CreateParticipant(*Participant) error
+	FindParticipant(experimentID string, accessToken string) (Participant, error)
+	FindParticipants(experimentID string) ([]Participant, error)
+
+	CreateParticipation(*Participation) error
+	UpdateParticipation(Participation) error
+	FindParticipation(experimentID string, assessmentID string, participantID string) (Participation, error)
+	FindParticipationsByParticipant(experimentID string, participantID string) ([]Participation, error)
+	FindParticipationsByAssessment(experimentID string, assessmentID string) ([]Participation, error)
 }

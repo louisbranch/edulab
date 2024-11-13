@@ -78,7 +78,8 @@ func (db *DB) FindDemographicOptions(experimentID string) ([]edulab.DemographicO
 	query := `SELECT o.id, o.demographic_id, o.text
 	FROM demographic_options AS o
 	JOIN demographics AS d ON o.demographic_id = d.id
-	WHERE d.experiment_id = ?`
+	WHERE d.experiment_id = ?
+	ORDER BY d.created_at DESC`
 
 	rows, err := db.Query(query, experimentID)
 	if err != nil {

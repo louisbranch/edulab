@@ -111,7 +111,7 @@ func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
 	form := r.PostForm
 
 	experiment := &edulab.Experiment{
-		PublicID:    srv.newPublicID([]int{3, 3}),
+		PublicID:    srv.newPublicID(3, 3),
 		Name:        form.Get("name"),
 		Description: form.Get("description"),
 	}
