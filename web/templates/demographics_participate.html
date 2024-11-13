@@ -2,10 +2,12 @@
 {{ .Breadcrumbs }}
 <h2>{{ .Texts.Title }}</h2>
 
-<form class="pure-form pure-form-stacked" action="/edulab/demographics" method="post">
+<form class="pure-form pure-form-stacked" action="/edulab/demographics/" method="post">
 
-    <input type="hidden" name="experiment_id" value="{{ .Experiment.ID }}">
-    <input type="hidden" name="participant_id" value="{{ .Participant.ID }}">
+    <input type="hidden" name="experiment_id" value="{{ .Experiment.PublicID }}">
+    <input type="hidden" name="assessment_id" value="{{ .Assessment.PublicID }}">
+    <input type="hidden" name="cohort_id" value="{{ .Cohort.PublicID }}">
+    <input type="hidden" name="participant_access_token" value="{{ .Participant.AccessToken }}">
 
 {{ range $i, $demographic := .Demographics }}
     <fieldset>
@@ -15,10 +17,10 @@
             {{ if eq $demographic.Type "single" }}
                 <div class="pure-g pure-g-middle">
                     <div class="pure-u-2-24">
-                        <input type="radio" name="demographic{{$i}}_option" id="demographic{{$i}}_option_{{$j}}" value="{{$option.ID}}">
+                        <input type="radio" name="{{ $demographic.ID }}" id="demographic_{{$i}}_option_{{$j}}" value="{{$option.ID}}" required>
                     </div>
                     <div class="pure-u-22-24">
-                        <label for="demographic{{$i}}_option_{{$j}}">
+                        <label for="demographic_{{$i}}_option_{{$j}}">
                             {{markdown $option.Text }}
                         </label>
                     </div>
@@ -26,10 +28,10 @@
             {{ else if eq $demographic.Type "multiple" }}
                 <div class="pure-g pure-g-middle">
                     <div class="pure-u-2-24">
-                        <input type="checkbox" name="demographic{{$i}}_option[]" id="demographic{{$i}}_option_{{$j}}" value="{{$option.ID}}">
+                        <input type="checkbox" name="{{ $demographic.ID }}[]" id="demographic_{{$i}}_option_{{$j}}" value="{{$option.ID}}">
                     </div>
                     <div class="pure-u-22-24">
-                        <label for="demographic{{$i}}_option_{{$j}}">
+                        <label for="demographic_{{$i}}_option_{{$j}}">
                             {{markdown $option.Text }}
                         </label>
                     </div>
@@ -37,7 +39,7 @@
             {{ end }}
         {{ end }}
         {{ if eq $demographic.Type "text" }}
-            <textarea class="pure-input-1" rows="5"></textarea>
+            <textarea class="pure-input-1" rows="5" name="{{ $demographic.ID }}"></textarea>
         {{ end }}
     </div>
     </fieldset>

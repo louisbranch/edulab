@@ -2,16 +2,20 @@ package server
 
 import (
 	"database/sql"
+	"encoding/json"
+	"errors"
 	"fmt"
 	"html/template"
 	"log"
 	"net/http"
+	"sort"
 	"strings"
 
 	"github.com/louisbranch/edulab"
 	"github.com/louisbranch/edulab/web/presenter"
 )
 
+// participationsHandler handles the participations subroutes in an experiment for the participant.
 func (srv *Server) participationsHandler(w http.ResponseWriter, r *http.Request,
 	segments []string) {
 
@@ -68,7 +72,7 @@ func (srv *Server) participationsHandler(w http.ResponseWriter, r *http.Request,
 	}
 
 	participant, err := srv.DB.FindParticipant(experiment.ID, token)
-	if err == sql.ErrNoRows {
+	if errors.Is(err, sql.ErrNoRows) {
 		participant = edulab.Participant{
 			PublicID:     srv.newPublicID(3),
 			ExperimentID: experiment.ID,
@@ -113,110 +117,15 @@ func (srv *Server) participationsHandler(w http.ResponseWriter, r *http.Request,
 		}
 
 		if len(demographics) > 0 {
-			srv.participateDemographics(w, r, experiment, participant, demographics)
+			srv.showDemographics(w, r, experiment, cohort, participant, assessment, demographics)
 			return
 		}
 	}
 
-	srv.participateAssessment(w, r, experiment, participant, assessment)
+	srv.showAssessment(w, r, experiment, cohort, participant, assessment)
 }
 
-func (srv *Server) participateAssessment(w http.ResponseWriter, r *http.Request,
-	experiment edulab.Experiment, participant edulab.Participant,
-	assessment edulab.Assessment) {
-
-	printer, page := srv.i18n(w, r)
-
-	questions, err := srv.DB.FindQuestions(assessment.ID)
-	if err != nil {
-		srv.renderError(w, r, err)
-		return
-	}
-
-	choices, err := srv.DB.FindQuestionChoices(assessment.ID)
-	if err != nil {
-		srv.renderError(w, r, err)
-		return
-	}
-
-	qp := presenter.GroupQuestions(questions, choices)
-
-	page.Title = printer.Sprintf("%s - %s", experiment.Name, assessment.Type)
-	page.Partials = []string{"assessment_participate"}
-	page.Content = struct {
-		Experiment  edulab.Experiment
-		Participant edulab.Participant
-		Assessment  presenter.Assessment
-		Questions   []presenter.Question
-		Texts       interface{}
-	}{
-		Experiment:  experiment,
-		Participant: participant,
-		Assessment:  presenter.NewAssessment(assessment, printer),
-		Questions:   qp,
-		Texts: struct {
-			Submit string
-		}{
-			Submit: printer.Sprintf("Submit"),
-		},
-	}
-
-	srv.render(w, page)
-}
-
-func (srv *Server) participateDemographics(w http.ResponseWriter, r *http.Request,
-	experiment edulab.Experiment, participant edulab.Participant, demographics []edulab.Demographic) {
-
-	printer, page := srv.i18n(w, r)
-
-	dp := make(map[string]presenter.Demographic)
-	for _, d := range demographics {
-		dp[d.ID] = presenter.Demographic{
-			Demographic: d,
-		}
-	}
-
-	options, err := srv.DB.FindDemographicOptions(experiment.ID)
-	if err != nil {
-		srv.renderError(w, r, err)
-		return
-	}
-
-	for _, o := range options {
-		d, ok := dp[o.DemographicID]
-		if !ok {
-			log.Printf("[ERROR] web/server/assessments.go: demographic not found: %s", o.DemographicID)
-			continue
-		}
-		d.Options = append(d.Options, o)
-		dp[o.DemographicID] = d
-	}
-
-	page.Title = printer.Sprintf("Demographics")
-	page.Partials = []string{"demographics_participate"}
-	page.Content = struct {
-		Breadcrumbs  template.HTML
-		Experiment   edulab.Experiment
-		Participant  edulab.Participant
-		Demographics []presenter.Demographic
-		Texts        interface{}
-	}{
-		Breadcrumbs:  presenter.ExperimentBreadcrumb(experiment, printer),
-		Experiment:   experiment,
-		Participant:  participant,
-		Demographics: presenter.SortDemographics(demographics, dp),
-		Texts: struct {
-			Title  string
-			Submit string
-		}{
-			Title:  printer.Sprintf("Demographics"),
-			Submit: printer.Sprintf("Submit"),
-		},
-	}
-
-	srv.render(w, page)
-}
-
+// participationCompleted displays the participation completion page.
 func (srv *Server) participationCompleted(w http.ResponseWriter, r *http.Request,
 	experiment edulab.Experiment, participant edulab.Participant,
 	assessment edulab.Assessment) {
@@ -244,4 +153,28 @@ func (srv *Server) participationCompleted(w http.ResponseWriter, r *http.Request
 	}
 
 	srv.render(w, page)
+}
+
+// marshalToSortedRawMessage marshals a map to a JSON raw message with sorted keys.
+// Used to serialize participation data for storage.
+func marshalToSortedRawMessage(data map[string][]string) (json.RawMessage, error) {
+	// Extract and sort the keys
+	keys := make([]string, 0, len(data))
+	for key := range data {
+		keys = append(keys, key)
+	}
+	sort.Strings(keys)
+
+	// Create a temporary ordered map
+	orderedData := make(map[string][]string, len(data))
+	for _, key := range keys {
+		orderedData[key] = data[key]
+	}
+
+	// Marshal the ordered map to JSON and return as json.RawMessage
+	jsonData, err := json.Marshal(orderedData)
+	if err != nil {
+		return nil, err
+	}
+	return json.RawMessage(jsonData), nil
 }

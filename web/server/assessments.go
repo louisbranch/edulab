@@ -9,6 +9,7 @@ import (
 	"github.com/louisbranch/edulab/web/presenter"
 )
 
+// assessmentsHandler handles the assessments subroutes in an experiment for the instructor.
 func (srv *Server) assessmentsHandler(w http.ResponseWriter, r *http.Request,
 	experiment edulab.Experiment, segments []string) {
 
@@ -44,6 +45,7 @@ func (srv *Server) assessmentsHandler(w http.ResponseWriter, r *http.Request,
 	}
 }
 
+// listAssessments lists the assessments for an experiment to the instructor.
 func (srv *Server) listAssessments(w http.ResponseWriter, r *http.Request,
 	experiment edulab.Experiment) {
 
@@ -92,6 +94,7 @@ func (srv *Server) listAssessments(w http.ResponseWriter, r *http.Request,
 	srv.render(w, page)
 }
 
+// editAssessment displays the assessment editor to the instructor.
 func (srv *Server) editAssessment(w http.ResponseWriter, r *http.Request,
 	experiment edulab.Experiment, assessment edulab.Assessment) {
 
@@ -148,6 +151,7 @@ func (srv *Server) editAssessment(w http.ResponseWriter, r *http.Request,
 	srv.render(w, page)
 }
 
+// previewAssessment displays the assessment preview to the instructor.
 func (srv *Server) previewAssessment(w http.ResponseWriter, r *http.Request,
 	experiment edulab.Experiment, assessment edulab.Assessment) {
 
@@ -193,4 +197,50 @@ func (srv *Server) previewAssessment(w http.ResponseWriter, r *http.Request,
 
 	srv.render(w, page)
 
+}
+
+// showAssessment displays the assessment to the participant.
+func (srv *Server) showAssessment(w http.ResponseWriter, r *http.Request,
+	experiment edulab.Experiment, cohort edulab.Cohort,
+	participant edulab.Participant, assessment edulab.Assessment) {
+
+	printer, page := srv.i18n(w, r)
+
+	questions, err := srv.DB.FindQuestions(assessment.ID)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	choices, err := srv.DB.FindQuestionChoices(assessment.ID)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	qp := presenter.GroupQuestions(questions, choices)
+
+	page.Title = printer.Sprintf("%s - %s", experiment.Name, assessment.Type)
+	page.Partials = []string{"assessment_participate"}
+	page.Content = struct {
+		edulab.Experiment
+		edulab.Cohort
+		edulab.Participant
+		presenter.Assessment
+		Questions []presenter.Question
+		Texts     interface{}
+	}{
+		Experiment:  experiment,
+		Cohort:      cohort,
+		Participant: participant,
+		Assessment:  presenter.NewAssessment(assessment, printer),
+		Questions:   qp,
+		Texts: struct {
+			Submit string
+		}{
+			Submit: printer.Sprintf("Submit"),
+		},
+	}
+
+	srv.render(w, page)
 }

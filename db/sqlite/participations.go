@@ -1,6 +1,8 @@
 package sqlite
 
 import (
+	"database/sql"
+
 	"github.com/pkg/errors"
 
 	"github.com/louisbranch/edulab"
@@ -20,16 +22,37 @@ func (db *DB) CreateParticipation(p *edulab.Participation) error {
 	return nil
 }
 
+func (db *DB) UpdateParticipation(p edulab.Participation) error {
+	q := `UPDATE participations SET answers = ?, demographics = ?
+	WHERE experiment_id = ? AND assessment_id = ? AND participant_id = ?`
+
+	_, err := db.Exec(q, p.Answers, p.Demographics, p.ExperimentID, p.AssessmentID, p.ParticipantID)
+	if err != nil {
+		return errors.Wrap(err, "update participation")
+	}
+
+	return nil
+}
+
 func (db *DB) FindParticipation(experimentID, assessmentID, participantID string) (edulab.Participation, error) {
 	var p edulab.Participation
 
 	query := `SELECT experiment_id, assessment_id, participant_id, answers, demographics
 	FROM participations WHERE experiment_id = ? AND assessment_id = ? AND participant_id = ?`
 
+	var answers, demographics sql.NullString
+
 	err := db.QueryRow(query, experimentID, assessmentID, participantID).
-		Scan(&p.ExperimentID, &p.AssessmentID, &p.ParticipantID, &p.Answers, &p.Demographics)
+		Scan(&p.ExperimentID, &p.AssessmentID, &p.ParticipantID, &answers, &demographics)
 	if err != nil {
 		return p, errors.Wrap(err, "query participation")
+	}
+
+	if answers.Valid {
+		p.Answers = []byte(answers.String)
+	}
+	if demographics.Valid {
+		p.Demographics = []byte(demographics.String)
 	}
 
 	return p, nil
@@ -53,10 +76,19 @@ func (db *DB) FindParticipationsByParticipant(experimentID, participantID string
 			ParticipantID: participantID,
 		}
 
-		err = rows.Scan(&p.AssessmentID, &p.Answers, &p.Demographics)
+		var answers, demographics sql.NullString
+		err = rows.Scan(&p.AssessmentID, &answers, &demographics)
 		if err != nil {
 			return nil, errors.Wrap(err, "scan participation")
 		}
+
+		if answers.Valid {
+			p.Answers = []byte(answers.String)
+		}
+		if demographics.Valid {
+			p.Demographics = []byte(demographics.String)
+		}
+
 		participations = append(participations, p)
 	}
 
@@ -82,10 +114,20 @@ func (db *DB) FindParticipationsByAssessment(experimentID, assessmentID string) 
 			AssessmentID: assessmentID,
 		}
 
-		err = rows.Scan(&p.ParticipantID, &p.Answers, &p.Demographics)
+		var answers, demographics sql.NullString
+
+		err = rows.Scan(&p.ParticipantID, &answers, &demographics)
 		if err != nil {
 			return nil, errors.Wrap(err, "scan participation")
 		}
+
+		if answers.Valid {
+			p.Answers = []byte(answers.String)
+		}
+		if demographics.Valid {
+			p.Demographics = []byte(demographics.String)
+		}
+
 		participations = append(participations, p)
 	}
 
