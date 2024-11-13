@@ -25,6 +25,7 @@ func (srv *Server) NewServeMux() *http.ServeMux {
 	// Dynamic routes
 	mux.Handle("/edulab/experiments/", http.StripPrefix("/edulab/experiments/", http.HandlerFunc(srv.experimentsHandler)))
 	mux.HandleFunc("/edulab/demographics/", srv.participateDemographics)
+	mux.HandleFunc("/edulab/assessments/", srv.participateAssessments)
 
 	mux.HandleFunc("/edulab/about/", srv.about)
 	mux.HandleFunc("/edulab/guide/", srv.guide)

@@ -172,7 +172,6 @@ func (srv *Server) showDemographics(w http.ResponseWriter, r *http.Request,
 	page.Title = printer.Sprintf("Demographics")
 	page.Partials = []string{"demographics_participate"}
 	page.Content = struct {
-		Breadcrumbs template.HTML
 		edulab.Experiment
 		edulab.Participant
 		edulab.Assessment
@@ -180,18 +179,17 @@ func (srv *Server) showDemographics(w http.ResponseWriter, r *http.Request,
 		Demographics []presenter.Demographic
 		Texts        interface{}
 	}{
-		Breadcrumbs:  presenter.ExperimentBreadcrumb(experiment, printer),
 		Experiment:   experiment,
 		Assessment:   assessment,
 		Participant:  participant,
 		Cohort:       cohort,
 		Demographics: presenter.SortDemographics(demographics, dp),
 		Texts: struct {
-			Title  string
-			Submit string
+			Title string
+			Next  string
 		}{
-			Title:  printer.Sprintf("Demographics"),
-			Submit: printer.Sprintf("Submit"),
+			Title: printer.Sprintf("Demographics"),
+			Next:  printer.Sprintf("Next"),
 		},
 	}
 
@@ -287,6 +285,101 @@ func (srv *Server) participateDemographics(w http.ResponseWriter, r *http.Reques
 			srv.renderError(w, r, err)
 			return
 		}
+	}
+
+	http.Redirect(w, r, fmt.Sprintf("/edulab/%s-%s-%s", eid, cid, aid), http.StatusTemporaryRedirect)
+}
+
+func (srv *Server) participateAssessments(w http.ResponseWriter, r *http.Request) {
+	log.Print("[DEBUG] Request to participate in assessments")
+
+	if r.Method != "POST" {
+		srv.renderNotFound(w, r)
+		return
+	}
+
+	err := r.ParseForm()
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	form := r.PostForm
+
+	eid := form.Get("experiment_id")
+	aid := form.Get("assessment_id")
+	cid := form.Get("cohort_id")
+	token := form.Get("participant_access_token")
+
+	inputs := make(map[string][]string)
+
+	for key, values := range form {
+		found := false
+
+		for _, ignore := range []string{"experiment_id", "assessment_id", "cohort_id", "participant_access_token"} {
+			if key == ignore {
+				found = true
+				break
+			}
+		}
+
+		if !found {
+			inputs[key] = values
+		}
+	}
+
+	answers, err := marshalToSortedRawMessage(inputs)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	experiment, err := srv.DB.FindExperiment(eid)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	assessment, err := srv.DB.FindAssessment(experiment.ID, aid)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	participant, err := srv.DB.FindParticipant(experiment.ID, token)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	participation, err := srv.DB.FindParticipation(experiment.ID, assessment.ID, participant.ID)
+	if err != nil && !errors.Is(err, sql.ErrNoRows) {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	if errors.Is(err, sql.ErrNoRows) {
+		participation = edulab.Participation{
+			ExperimentID:  experiment.ID,
+			AssessmentID:  assessment.ID,
+			ParticipantID: participant.ID,
+			Answers:       answers,
+		}
+
+		err = srv.DB.CreateParticipation(&participation)
+		if err != nil {
+			srv.renderError(w, r, err)
+			return
+		}
+	} else {
+		participation.Answers = answers
+
+		err = srv.DB.UpdateParticipation(participation)
+		if err != nil {
+			srv.renderError(w, r, err)
+			return
+		}
+
 	}
 
 	http.Redirect(w, r, fmt.Sprintf("/edulab/%s-%s-%s", eid, cid, aid), http.StatusTemporaryRedirect)

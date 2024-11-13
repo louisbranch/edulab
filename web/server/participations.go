@@ -105,7 +105,7 @@ func (srv *Server) participationsHandler(w http.ResponseWriter, r *http.Request,
 	}
 
 	if len(participation.Answers) > 0 {
-		srv.participationCompleted(w, r, experiment, participant, assessment)
+		srv.participationFinished(w, r, experiment, participant, assessment)
 		return
 	}
 
@@ -125,15 +125,16 @@ func (srv *Server) participationsHandler(w http.ResponseWriter, r *http.Request,
 	srv.showAssessment(w, r, experiment, cohort, participant, assessment)
 }
 
-// participationCompleted displays the participation completion page.
-func (srv *Server) participationCompleted(w http.ResponseWriter, r *http.Request,
+// participationFinished displays the participation finished page.
+func (srv *Server) participationFinished(w http.ResponseWriter, r *http.Request,
 	experiment edulab.Experiment, participant edulab.Participant,
 	assessment edulab.Assessment) {
 
 	printer, page := srv.i18n(w, r)
 
-	page.Title = printer.Sprintf("Participation Completed")
-	page.Partials = []string{"participation_completed"}
+	title := printer.Sprintf("Thank you for participating!")
+	page.Title = title
+	page.Partials = []string{"participation_finished"}
 	page.Content = struct {
 		Breadcrumbs template.HTML
 		Experiment  edulab.Experiment
@@ -146,9 +147,11 @@ func (srv *Server) participationCompleted(w http.ResponseWriter, r *http.Request
 		Participant: participant,
 		Assessment:  assessment,
 		Texts: struct {
-			Title string
+			Title   string
+			Message string
 		}{
-			Title: printer.Sprintf("Assessment Participation Completed"),
+			Title:   title,
+			Message: printer.Sprintf("Your participation has been successfully recorded.\n\nYou can now close this page."),
 		},
 	}
 
