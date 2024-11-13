@@ -17,16 +17,11 @@ import (
 
 // participationsHandler handles the participations subroutes in an experiment for the participant.
 func (srv *Server) participationsHandler(w http.ResponseWriter, r *http.Request,
-	segments []string) {
+	pid string) {
 
 	log.Print("[DEBUG] Routing participations")
 
-	if len(segments) < 1 {
-		srv.renderNotFound(w, r)
-		return
-	}
-
-	pids := strings.Split(segments[0], "-")
+	pids := strings.Split(pid, "-")
 	if len(pids) != 3 {
 		srv.renderNotFound(w, r)
 		return

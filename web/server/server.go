@@ -49,12 +49,14 @@ func (srv *Server) index(w http.ResponseWriter, r *http.Request) {
 	segments := strings.Split(strings.Trim(path, "/"), "/")
 
 	if len(segments) > 1 {
-		srv.participationsHandler(w, r, segments[1:])
+		srv.renderNotFound(w, r)
 		return
 	}
 
-	if r.Method != "GET" {
-		w.WriteHeader(http.StatusMethodNotAllowed)
+	pid := segments[0]
+
+	if pid != "" {
+		srv.participationsHandler(w, r, pid)
 		return
 	}
 
