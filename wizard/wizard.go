@@ -88,7 +88,7 @@ func Experiment(db edulab.Database) error {
 	}
 
 	experiment := edulab.Experiment{
-		PublicID: "NCC-1701",
+		PublicID: "E1",
 		Name:     "Earth's Seasons",
 		Description: `This experiment gauges students' understanding of the Earth's seasons.
 One cohort will attend a traditional lecture, while the other will attend a workshop.`,
@@ -103,7 +103,7 @@ One cohort will attend a traditional lecture, while the other will attend a work
 	assessmentsTypes := []edulab.AssessmentType{edulab.AssessmentTypePre, edulab.AssessmentTypePos}
 	for i, assessmentType := range assessmentsTypes {
 		assessment := edulab.Assessment{
-			PublicID:     fmt.Sprintf("A-%d", i),
+			PublicID:     fmt.Sprintf("A%d", i+1),
 			ExperimentID: experiment.ID,
 			Type:         assessmentType,
 		}
@@ -225,7 +225,7 @@ One cohort will attend a traditional lecture, while the other will attend a work
 	cohorts := []string{"Baseline", "Workshop"}
 	for i, cohort := range cohorts {
 		err = db.CreateCohort(&edulab.Cohort{
-			PublicID:     fmt.Sprintf("C-%d", i),
+			PublicID:     fmt.Sprintf("C%d", i+1),
 			ExperimentID: experiment.ID,
 			Name:         cohort,
 		})

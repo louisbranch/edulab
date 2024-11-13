@@ -1,9 +1,9 @@
 package server
 
 import (
-	"fmt"
 	"math/rand"
 	"net/http"
+	"strings"
 
 	"github.com/louisbranch/edulab"
 	"github.com/louisbranch/edulab/web"
@@ -34,10 +34,12 @@ func (srv *Server) NewServeMux() *http.ServeMux {
 }
 
 func (srv *Server) index(w http.ResponseWriter, r *http.Request) {
-	name := r.URL.Path[len("/edulab/"):]
 
-	if name != "" {
-		fmt.Printf("404: %s\n", name)
+	path := r.URL.Path
+	segments := strings.Split(strings.Trim(path, "/"), "/")
+
+	if len(segments) > 1 {
+		srv.participationsHandler(w, r, segments[1:])
 		return
 	}
 
@@ -72,7 +74,7 @@ Compare cohorts, **measure learning gains**, and adapt strategies to elevate stu
 
 var alphanum = []rune("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
-func (srv *Server) newPublicID(lens []int) string {
+func (srv *Server) newPublicID(lens ...int) string {
 	sum := 0
 	for _, l := range lens {
 		sum += l
