@@ -1,7 +1,7 @@
 {{ define "content" }}
 {{ .Breadcrumbs }}
 <h2>{{ .Edit }}</h2>
-<form method="post" action="/edulab/experiments/{{ .Experiment.PublicID }}" class="pure-form pure-form-stacked">
+<form method="post" action="/experiments/{{ .Experiment.PublicID }}" class="pure-form pure-form-stacked">
     <fieldset>
         <div class="pure-control-group">
             <label for="name">{{ .Name }}</label>

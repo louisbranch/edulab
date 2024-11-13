@@ -72,7 +72,7 @@ func (srv *Server) listDemographics(w http.ResponseWriter, r *http.Request,
 			Actions:     printer.Sprintf("Actions"),
 			Add:         printer.Sprintf("Add Demographic"),
 			ComingSoon:  printer.Sprintf("Coming Soon"),
-			Preview:     printer.Sprintf("Preview Questions"),
+			Preview:     printer.Sprintf("Preview"),
 		},
 	}
 
@@ -287,7 +287,7 @@ func (srv *Server) participateDemographics(w http.ResponseWriter, r *http.Reques
 		}
 	}
 
-	http.Redirect(w, r, fmt.Sprintf("/edulab/%s-%s-%s", eid, cid, aid), http.StatusTemporaryRedirect)
+	http.Redirect(w, r, fmt.Sprintf("/%s-%s-%s", eid, cid, aid), http.StatusTemporaryRedirect)
 }
 
 func (srv *Server) participateAssessments(w http.ResponseWriter, r *http.Request) {
@@ -382,5 +382,5 @@ func (srv *Server) participateAssessments(w http.ResponseWriter, r *http.Request
 
 	}
 
-	http.Redirect(w, r, fmt.Sprintf("/edulab/%s-%s-%s", eid, cid, aid), http.StatusTemporaryRedirect)
+	http.Redirect(w, r, fmt.Sprintf("/%s-%s-%s", eid, cid, aid), http.StatusTemporaryRedirect)
 }

@@ -69,6 +69,7 @@ func (h *HTML) parse(names ...string) (tpl *template.Template, err error) {
 		"add":      add,
 		"marshal":  marshal,
 		"markdown": markdown,
+		"truncate": truncate,
 	}
 
 	if !ok {
@@ -104,4 +105,17 @@ func markdown(input string) template.HTML {
 		return ""
 	}
 	return template.HTML(buf.String()) // Safe because goldmark escapes HTML
+}
+
+func truncate(s string, length ...int) string {
+	maxLen := 20
+	if len(length) > 0 {
+		maxLen = length[0]
+	}
+
+	if len(s) > maxLen {
+		return s[:maxLen] + "..."
+	}
+
+	return s
 }

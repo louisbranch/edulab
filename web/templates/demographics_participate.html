@@ -1,7 +1,7 @@
 {{ define "content" }}
 <h2>{{ .Texts.Title }}</h2>
 
-<form class="pure-form pure-form-stacked" action="/edulab/demographics/" method="post">
+<form class="pure-form pure-form-stacked" action="/demographics/" method="post">
 
     <input type="hidden" name="experiment_id" value="{{ .Experiment.PublicID }}">
     <input type="hidden" name="assessment_id" value="{{ .Assessment.PublicID }}">

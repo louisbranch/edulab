@@ -2,7 +2,7 @@
 {{ .Breadcrumbs }}
 
 <h2>{{ .Texts.NewQuestion }}</h2>
-<form method="post" action="/edulab/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/questions" class="pure-form pure-form-stacked">
+<form method="post" action="/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/questions" class="pure-form pure-form-stacked">
     <fieldset>
         <div class="pure-control-group">
             <label for="text">{{ .Texts.Text }}</label>

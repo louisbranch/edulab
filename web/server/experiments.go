@@ -92,9 +92,7 @@ func (srv *Server) newExperimentForm(w http.ResponseWriter, r *http.Request) {
 		DescriptionHelp:        printer.Sprintf("Optional. Not visible to participants."),
 		DescriptionPlaceholder: printer.Sprintf("e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop..."),
 		Create:                 printer.Sprintf("Create"),
-		Breadcrumbs: presenter.RenderBreadcrumbs(
-			[]presenter.Breadcrumb{{URL: "/edulab/", Name: printer.Sprintf("Home")}},
-		),
+		Breadcrumbs:            presenter.HomeBreadcrumbs(printer),
 	}
 
 	srv.render(w, page)
@@ -122,7 +120,7 @@ func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	uri := fmt.Sprintf("/edulab/experiments/%s", experiment.PublicID)
+	uri := fmt.Sprintf("/experiments/%s", experiment.PublicID)
 	http.Redirect(w, r, uri, http.StatusFound)
 }
 
@@ -233,6 +231,6 @@ func (srv *Server) updateExperiment(w http.ResponseWriter, r *http.Request, expe
 		return
 	}
 
-	uri := fmt.Sprintf("/edulab/experiments/%s", experiment.PublicID)
+	uri := fmt.Sprintf("/experiments/%s", experiment.PublicID)
 	http.Redirect(w, r, uri, http.StatusFound)
 }

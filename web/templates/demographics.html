@@ -24,8 +24,8 @@
 {{ end }}
 
 <div class="pure-button-group">
-  <a href="/edulab/experiments/{{ .Experiment.PublicID }}/demographics/new" class="pure-button pure-button-primary" disabled>{{ .Texts.Add }} ({{ .Texts.ComingSoon }})</a>
-  <a href="/edulab/experiments/{{ .Experiment.PublicID }}/demographics/preview" class="pure-button pure-button-link">{{ .Texts.Preview }}</a>
+  <a href="/experiments/{{ .Experiment.PublicID }}/demographics/preview" class="pure-button">{{ .Texts.Preview }}</a>
+  <a href="/experiments/{{ .Experiment.PublicID }}/demographics/new" class="pure-button" disabled>{{ .Texts.Add }} ({{ .Texts.ComingSoon }})</a>
 </div>
 
 {{ end }}

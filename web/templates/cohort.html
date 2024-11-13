@@ -3,7 +3,7 @@
 
 <h2>{{ .Texts.Title }}</h2>
 
-<form method="post" action="/edulab/experiments/{{ .Experiment.PublicID }}/cohorts/{{ .Cohort.PublicID }}" class="pure-form pure-form-stacked">
+<form method="post" action="/experiments/{{ .Experiment.PublicID }}/cohorts/{{ .Cohort.PublicID }}" class="pure-form pure-form-stacked">
     <fieldset>
         <div class="pure-control-group">
             <label for="name">{{ .Texts.Name }}</label>
