@@ -3,17 +3,19 @@ package server
 import (
 	"database/sql"
 	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 	"strings"
 
 	"github.com/louisbranch/edulab"
+	"github.com/louisbranch/edulab/web/presenter"
 )
 
 func (srv *Server) participationsHandler(w http.ResponseWriter, r *http.Request,
 	segments []string) {
 
-	log.Print("[DEBUG] web/server/participations.go: handling participations")
+	log.Print("[DEBUG] Routing participations")
 
 	if len(segments) < 1 {
 		srv.renderNotFound(w, r)
@@ -46,6 +48,9 @@ func (srv *Server) participationsHandler(w http.ResponseWriter, r *http.Request,
 		return
 	}
 
+	log.Printf("[DEBUG] Initiated participation for experiment %s, cohort %s, assessment %s",
+		experiment.PublicID, cohort.PublicID, assessment.PublicID)
+
 	var token string
 	at, err := r.Cookie("access_token")
 	if err == nil {
@@ -77,5 +82,166 @@ func (srv *Server) participationsHandler(w http.ResponseWriter, r *http.Request,
 		}
 	}
 
-	fmt.Fprintf(w, "Participation: %s, %s, %s", experiment.Name, cohort.Name, assessment.Type)
+	participations, err := srv.DB.FindParticipationsByParticipant(experiment.ID, participant.ID)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	var participation edulab.Participation
+
+	for _, p := range participations {
+		if p.AssessmentID == assessment.ID {
+			participation = p
+			break
+		}
+		if len(p.Demographics) > 0 {
+			participation.Demographics = p.Demographics
+		}
+	}
+
+	if len(participation.Answers) > 0 {
+		srv.participationCompleted(w, r, experiment, participant, assessment)
+		return
+	}
+
+	if participation.Demographics == nil {
+		demographics, err := srv.DB.FindDemographics(experiment.ID)
+		if err != nil {
+			srv.renderError(w, r, err)
+			return
+		}
+
+		if len(demographics) > 0 {
+			srv.participateDemographics(w, r, experiment, participant, demographics)
+			return
+		}
+	}
+
+	srv.participateAssessment(w, r, experiment, participant, assessment)
+}
+
+func (srv *Server) participateAssessment(w http.ResponseWriter, r *http.Request,
+	experiment edulab.Experiment, participant edulab.Participant,
+	assessment edulab.Assessment) {
+
+	printer, page := srv.i18n(w, r)
+
+	questions, err := srv.DB.FindQuestions(assessment.ID)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	choices, err := srv.DB.FindQuestionChoices(assessment.ID)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	qp := presenter.GroupQuestions(questions, choices)
+
+	page.Title = printer.Sprintf("%s - %s", experiment.Name, assessment.Type)
+	page.Partials = []string{"assessment_participate"}
+	page.Content = struct {
+		Experiment  edulab.Experiment
+		Participant edulab.Participant
+		Assessment  presenter.Assessment
+		Questions   []presenter.Question
+		Texts       interface{}
+	}{
+		Experiment:  experiment,
+		Participant: participant,
+		Assessment:  presenter.NewAssessment(assessment, printer),
+		Questions:   qp,
+		Texts: struct {
+			Submit string
+		}{
+			Submit: printer.Sprintf("Submit"),
+		},
+	}
+
+	srv.render(w, page)
+}
+
+func (srv *Server) participateDemographics(w http.ResponseWriter, r *http.Request,
+	experiment edulab.Experiment, participant edulab.Participant, demographics []edulab.Demographic) {
+
+	printer, page := srv.i18n(w, r)
+
+	dp := make(map[string]presenter.Demographic)
+	for _, d := range demographics {
+		dp[d.ID] = presenter.Demographic{
+			Demographic: d,
+		}
+	}
+
+	options, err := srv.DB.FindDemographicOptions(experiment.ID)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	for _, o := range options {
+		d, ok := dp[o.DemographicID]
+		if !ok {
+			log.Printf("[ERROR] web/server/assessments.go: demographic not found: %s", o.DemographicID)
+			continue
+		}
+		d.Options = append(d.Options, o)
+		dp[o.DemographicID] = d
+	}
+
+	page.Title = printer.Sprintf("Demographics")
+	page.Partials = []string{"demographics_participate"}
+	page.Content = struct {
+		Breadcrumbs  template.HTML
+		Experiment   edulab.Experiment
+		Participant  edulab.Participant
+		Demographics []presenter.Demographic
+		Texts        interface{}
+	}{
+		Breadcrumbs:  presenter.ExperimentBreadcrumb(experiment, printer),
+		Experiment:   experiment,
+		Participant:  participant,
+		Demographics: presenter.SortDemographics(demographics, dp),
+		Texts: struct {
+			Title  string
+			Submit string
+		}{
+			Title:  printer.Sprintf("Demographics"),
+			Submit: printer.Sprintf("Submit"),
+		},
+	}
+
+	srv.render(w, page)
+}
+
+func (srv *Server) participationCompleted(w http.ResponseWriter, r *http.Request,
+	experiment edulab.Experiment, participant edulab.Participant,
+	assessment edulab.Assessment) {
+
+	printer, page := srv.i18n(w, r)
+
+	page.Title = printer.Sprintf("Participation Completed")
+	page.Partials = []string{"participation_completed"}
+	page.Content = struct {
+		Breadcrumbs template.HTML
+		Experiment  edulab.Experiment
+		Participant edulab.Participant
+		Assessment  edulab.Assessment
+		Texts       interface{}
+	}{
+		Breadcrumbs: presenter.ExperimentBreadcrumb(experiment, printer),
+		Experiment:  experiment,
+		Participant: participant,
+		Assessment:  assessment,
+		Texts: struct {
+			Title string
+		}{
+			Title: printer.Sprintf("Assessment Participation Completed"),
+		},
+	}
+
+	srv.render(w, page)
 }

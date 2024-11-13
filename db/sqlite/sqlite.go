@@ -93,6 +93,7 @@ func New(path string) (*DB, error) {
 		experiment_id INTEGER NOT NULL,
 		text TEXT NOT NULL CHECK(text <> ''),
 		type TEXT CHECK(type IN ('multiple', 'single', 'text')),
+		created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 		FOREIGN KEY (experiment_id) REFERENCES experiments(id) ON DELETE CASCADE
 	);`,
 		`
@@ -112,6 +113,17 @@ func New(path string) (*DB, error) {
 		created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 		FOREIGN KEY (experiment_id) REFERENCES experiments(id) ON DELETE CASCADE,
 		FOREIGN KEY (cohort_id) REFERENCES cohorts(id) ON DELETE CASCADE
+	);`,
+		`
+	CREATE TABLE IF NOT EXISTS participations (
+		experiment_id INTEGER NOT NULL,
+		assessment_id INTEGER NOT NULL,
+		participant_id INTEGER NOT NULL,
+		answers TEXT,
+		demographics TEXT,
+		FOREIGN KEY (experiment_id) REFERENCES experiments(id) ON DELETE CASCADE,
+		FOREIGN KEY (assessment_id) REFERENCES assessments(id) ON DELETE CASCADE,
+		FOREIGN KEY (participant_id) REFERENCES participants(id) ON DELETE CASCADE
 	);`,
 	}
 

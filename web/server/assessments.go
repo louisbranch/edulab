@@ -27,7 +27,7 @@ func (srv *Server) assessmentsHandler(w http.ResponseWriter, r *http.Request,
 	}
 
 	if len(segments) == 1 {
-		srv.showAssessment(w, r, experiment, assessment)
+		srv.editAssessment(w, r, experiment, assessment)
 		return
 	}
 
@@ -92,7 +92,7 @@ func (srv *Server) listAssessments(w http.ResponseWriter, r *http.Request,
 	srv.render(w, page)
 }
 
-func (srv *Server) showAssessment(w http.ResponseWriter, r *http.Request,
+func (srv *Server) editAssessment(w http.ResponseWriter, r *http.Request,
 	experiment edulab.Experiment, assessment edulab.Assessment) {
 
 	questions, err := srv.DB.FindQuestions(assessment.ID)
@@ -104,7 +104,7 @@ func (srv *Server) showAssessment(w http.ResponseWriter, r *http.Request,
 	printer, page := srv.i18n(w, r)
 
 	page.Title = printer.Sprintf("Assessment")
-	page.Partials = []string{"assessment"}
+	page.Partials = []string{"assessment_edit"}
 	page.Content = struct {
 		Breadcrumbs template.HTML
 		Experiment  edulab.Experiment
@@ -117,21 +117,31 @@ func (srv *Server) showAssessment(w http.ResponseWriter, r *http.Request,
 		Assessment:  presenter.NewAssessment(assessment, printer),
 		Questions:   questions,
 		Texts: struct {
-			Questions string
-			Text      string
-			Actions   string
-			Edit      string
-			Add       string
-			Empty     string
-			Preview   string
+			Description            string
+			DescriptionHelp        string
+			DescriptionPlaceholder string
+			Questions              string
+			Text                   string
+			Actions                string
+			Edit                   string
+			Save                   string
+			Add                    string
+			Empty                  string
+			Preview                string
+			ComingSoon             string
 		}{
-			Questions: printer.Sprintf("Questions"),
-			Text:      printer.Sprintf("Text"),
-			Actions:   printer.Sprintf("Actions"),
-			Edit:      printer.Sprintf("Edit"),
-			Add:       printer.Sprintf("Add Question"),
-			Empty:     printer.Sprintf("No questions yet"),
-			Preview:   printer.Sprintf("Preview Questions"),
+			Description:            printer.Sprintf("Description"),
+			DescriptionHelp:        printer.Sprintf("Optional. Markdown supported."),
+			DescriptionPlaceholder: printer.Sprintf("e.g. Gauge your current knowledge about the causes of Earth's..."),
+			Questions:              printer.Sprintf("Questions"),
+			Text:                   printer.Sprintf("Text"),
+			Actions:                printer.Sprintf("Actions"),
+			Edit:                   printer.Sprintf("Edit"),
+			Save:                   printer.Sprintf("Save"),
+			Add:                    printer.Sprintf("Add Question"),
+			Empty:                  printer.Sprintf("No questions yet"),
+			Preview:                printer.Sprintf("Preview Assessment"),
+			ComingSoon:             printer.Sprintf("Coming Soon"),
 		},
 	}
 
@@ -147,29 +157,13 @@ func (srv *Server) previewAssessment(w http.ResponseWriter, r *http.Request,
 		return
 	}
 
-	qp := make(map[string]presenter.Question)
-	for _, q := range questions {
-
-		qp[q.ID] = presenter.Question{
-			Question: q,
-		}
-	}
-
 	choices, err := srv.DB.FindQuestionChoices(assessment.ID)
 	if err != nil {
 		srv.renderError(w, r, err)
 		return
 	}
 
-	for _, c := range choices {
-		q, ok := qp[c.QuestionID]
-		if !ok {
-			log.Printf("[ERROR] web/server/assessments.go: question not found: %s", c.QuestionID)
-			continue
-		}
-		q.Choices = append(q.Choices, c)
-		qp[c.QuestionID] = q
-	}
+	qp := presenter.GroupQuestions(questions, choices)
 
 	printer, page := srv.i18n(w, r)
 
@@ -185,7 +179,7 @@ func (srv *Server) previewAssessment(w http.ResponseWriter, r *http.Request,
 		Breadcrumbs: presenter.AssessmentBreadcrumb(experiment, assessment, printer),
 		Experiment:  experiment,
 		Assessment:  presenter.NewAssessment(assessment, printer),
-		Questions:   presenter.SortQuestions(questions, qp),
+		Questions:   qp,
 		Texts: struct {
 			Questions string
 			Submit    string

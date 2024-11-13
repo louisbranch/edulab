@@ -199,7 +199,10 @@ One cohort will attend a traditional lecture, while the other will attend a work
 		}
 	}
 
-	for category, options := range demographics {
+	demographics_order := []string{gender, ageGroup, yearOfStudy, stemMajor}
+
+	for _, category := range demographics_order {
+		options := demographics[category]
 		d := edulab.Demographic{
 			ExperimentID: experiment.ID,
 			Text:         category,

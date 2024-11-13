@@ -2,7 +2,7 @@
 {{ .Breadcrumbs }}
 <h2>{{ .Assessment.Type }}</h2>
 {{ if .Assessment.Description }}
-<p>{{ .Assessment.Description }}</p>
+{{ markdown .Assessment.Description }}
 {{ end }}
 
 <form class="pure-form pure-form-stacked">

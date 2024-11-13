@@ -1,9 +1,15 @@
 {{ define "content" }}
 {{ .Breadcrumbs }}
 <h2>{{ .Assessment.Type }}</h2>
-{{ if .Assessment.Description }}
-<p>{{ .Assessment.Description }}</p>
-{{ end }}
+
+<form class="pure-form pure-form-stacked" method="post" action="/edulab/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}">
+    <fieldset>
+        <legend>{{ .Texts.Description }}</legend>
+        <div class="pure-form-message-inline">{{ .Texts.DescriptionHelp }}</div>
+        <textarea name="description" rows="5" class="pure-input-1" placeholder="{{ .Texts.DescriptionPlaceholder }}">{{ .Assessment.Description }}</textarea>
+    </fieldset>
+    <button type="submit" class="pure-button pure-button-primary" disabled>{{ .Texts.Save }} ({{ .Texts.ComingSoon }})</button>
+</form>
 
 <h3>{{ .Texts.Questions }}</h3>
 {{ if .Questions }}
@@ -29,8 +35,8 @@
 {{ end }}
 
 <div class="pure-button-group">
+  <a href="/edulab/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/preview" class="pure-button">{{ .Texts.Preview }}</a>
   <a href="/edulab/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/questions/new" class="pure-button pure-button-primary">{{ .Texts.Add }}</a>
-  <a href="/edulab/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/preview" class="pure-button pure-button-link">{{ .Texts.Preview }}</a>
 </div>
 
 
