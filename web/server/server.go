@@ -23,13 +23,13 @@ func (srv *Server) NewServeMux() *http.ServeMux {
 	mux.Handle("/assets/", http.StripPrefix("/assets/", srv.Assets))
 
 	// Dynamic routes
-	mux.Handle("/experiments/", http.StripPrefix("/experiments/", http.HandlerFunc(srv.experimentsHandler)))
-	mux.HandleFunc("/demographics/", srv.participateDemographics)
-	mux.HandleFunc("/assessments/", srv.participateAssessments)
+	mux.Handle("/experiments", http.StripPrefix("/experiments/", http.HandlerFunc(srv.experimentsHandler)))
+	mux.HandleFunc("/demographics", srv.participateDemographics)
+	mux.HandleFunc("/assessments", srv.participateAssessments)
 
-	mux.HandleFunc("/about/", srv.about)
-	mux.HandleFunc("/guide/", srv.guide)
-	mux.HandleFunc("/faq/", srv.faq)
+	mux.HandleFunc("/about", srv.about)
+	mux.HandleFunc("/guide", srv.guide)
+	mux.HandleFunc("/faq", srv.faq)
 	mux.HandleFunc("/", srv.index)
 
 	return mux
