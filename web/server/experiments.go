@@ -207,7 +207,7 @@ func (srv *Server) showExperiment(w http.ResponseWriter, r *http.Request, experi
 			Demographics: printer.Sprintf("Demographics"),
 			Assessments:  printer.Sprintf("Assessments"),
 			Cohorts:      printer.Sprintf("Cohorts"),
-			Publish:      printer.Sprintf("Publish"),
+			Publish:      printer.Sprintf("Participation Links"),
 		},
 	}
 

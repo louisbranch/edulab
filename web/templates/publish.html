@@ -2,4 +2,15 @@
 {{ .Breadcrumbs }}
 <h2>{{ .Title }}</h2>
 
+{{ range $assessment := .Assessments }}
+    <h3>{{ $assessment.Type }}</h3>
+
+    {{ range $cohort := $.Cohorts }}
+        <h4>{{ $cohort.Name }}</h4>
+        <div class="pure-form">
+        <input type="text" value="{{ $.Domain}}{{ $.Experiment.PublicID }}-{{ $cohort.PublicID}}-{{ $assessment.PublicID }}" readonly class="pure-input-1">
+        </div>
+    {{ end }}
+{{ end }}
+
 {{ end }}

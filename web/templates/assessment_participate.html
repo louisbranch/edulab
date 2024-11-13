@@ -1,6 +1,6 @@
 {{ define "content" }}
 
-<form class="pure-form pure-form-stacked" action="/assessments/" method="post">
+<form class="pure-form pure-form-stacked" action="/assessments" method="post">
 
     <input type="hidden" name="experiment_id" value="{{ .Experiment.PublicID }}">
     <input type="hidden" name="assessment_id" value="{{ .Assessment.PublicID }}">
