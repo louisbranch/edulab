@@ -31,13 +31,6 @@ func (srv *Server) about(w http.ResponseWriter, r *http.Request) {
 	srv.render(w, page)
 }
 
-func (srv *Server) astro(w http.ResponseWriter, r *http.Request) {
-	_, page := srv.i18n(w, r)
-	page.Layout = "astro"
-
-	srv.render(w, page)
-}
-
 func (srv *Server) guide(w http.ResponseWriter, r *http.Request) {
 	printer, page := srv.i18n(w, r)
 

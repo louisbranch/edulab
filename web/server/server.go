@@ -20,18 +20,17 @@ func (srv *Server) NewServeMux() *http.ServeMux {
 	mux := http.NewServeMux()
 
 	// Static assets
-	mux.Handle("/edulab/assets/", http.StripPrefix("/edulab/assets/", srv.Assets))
+	mux.Handle("/assets/", http.StripPrefix("/assets/", srv.Assets))
 
 	// Dynamic routes
-	mux.Handle("/edulab/experiments/", http.StripPrefix("/edulab/experiments/", http.HandlerFunc(srv.experimentsHandler)))
-	mux.HandleFunc("/edulab/demographics/", srv.participateDemographics)
-	mux.HandleFunc("/edulab/assessments/", srv.participateAssessments)
+	mux.Handle("/experiments/", http.StripPrefix("/experiments/", http.HandlerFunc(srv.experimentsHandler)))
+	mux.HandleFunc("/demographics/", srv.participateDemographics)
+	mux.HandleFunc("/assessments/", srv.participateAssessments)
 
-	mux.HandleFunc("/edulab/about/", srv.about)
-	mux.HandleFunc("/edulab/guide/", srv.guide)
-	mux.HandleFunc("/edulab/faq/", srv.faq)
-	mux.HandleFunc("/edulab/", srv.index)
-	mux.HandleFunc("/", srv.astro)
+	mux.HandleFunc("/about/", srv.about)
+	mux.HandleFunc("/guide/", srv.guide)
+	mux.HandleFunc("/faq/", srv.faq)
+	mux.HandleFunc("/", srv.index)
 
 	return mux
 }
