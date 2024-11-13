@@ -11,8 +11,7 @@ import (
 
 type Experiment struct {
 	edulab.Experiment
-	ElapsedTime  string
-	Participants int
+	ElapsedTime string
 }
 
 func ExperimentsList(experiments []edulab.Experiment, printer *message.Printer) []Experiment {
@@ -38,7 +37,7 @@ func ExperimentsList(experiments []edulab.Experiment, printer *message.Printer) 
 			elapsed = printer.Sprintf("%d days ago", days)
 		}
 
-		list = append(list, Experiment{experiment, elapsed, 0})
+		list = append(list, Experiment{experiment, elapsed})
 	}
 
 	return list

@@ -2,22 +2,17 @@
 <div class="hero">
     <h2>{{ .Tagline }}</h2>
     <p>{{markdown .Introduction }}</p>
-
 </div>
 <nav>
     <ul>
         <li>
-            <form action="/experiments/new" method="get">
-                <button class="pure-button pure-button-primary" type="submit">{{ .NewExperiment }}</button>
-            </form>
+            <a class="pure-button" href="/experiments/new">{{ .NewExperiment }}</a>
         </li>
         <li>
             <a class="pure-button pure-button-link" href="/guide">{{ .EducatorsGuide }}</a>
         </li>
         <li>
             <a class="pure-button pure-button-link" href="/experiments">{{ .PreviousExperiments }}</a>
-        </li>
-        <li>
         </li>
     </ul>
 </nav>

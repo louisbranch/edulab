@@ -42,185 +42,194 @@ var messageKeyToIndex = map[string]int{
 	"%d days ago":                    9,
 	"%d hours ago":                   8,
 	"%d mins ago":                    7,
-	"18 to 20":                       90,
-	"21 to 23":                       91,
-	"24 to 26":                       92,
-	"About":                          57,
+	"%s - %s":                        31,
+	"18 to 20":                       95,
+	"21 to 23":                       96,
+	"24 to 26":                       97,
+	"About":                          61,
 	"Actions":                        15,
 	"Add Assessment":                 16,
-	"Add Cohort":                     28,
-	"Add Demographic":                42,
-	"Add Question":                   23,
-	"Age Group":                      88,
+	"Add Cohort":                     32,
+	"Add Demographic":                45,
+	"Add Question":                   26,
+	"Age Group":                      93,
 	"Assessment":                     21,
 	"Assessments":                    4,
-	"Back":                           27,
-	"Choices":                        63,
-	"Cohort: %s":                     38,
+	"Back":                           30,
+	"Choices":                        68,
+	"Cohort: %s":                     41,
 	"Cohorts":                        5,
 	"Coming Soon":                    20,
-	"Correct":                        70,
-	"Create":                         37,
-	"Created":                        48,
-	"Demographic":                    41,
-	"Demographics":                   40,
-	"Description":                    34,
-	"Earth & Environmental Sciences": 102,
+	"Correct":                        75,
+	"Create":                         40,
+	"Created":                        52,
+	"Demographic":                    44,
+	"Demographics":                   43,
+	"Description":                    22,
+	"Earth & Environmental Sciences": 107,
 	"Edit":                           18,
-	"Edit Experiment":                51,
-	"Edit Experiment: %s":            50,
-	"Edit Settings":                  53,
-	"EduLab":                         55,
-	"EduLab - Empowering Educators":  74,
-	"EduLab brings **data-driven** experimentation into the classroom, empowering you to evaluate and refine teaching methods across distinct **cohorts**.\n\nBy running controlled pre- and post-assessments, you gain **evidence-based insights** into how different teaching approaches impact learning outcomes.\n\nCompare cohorts, **measure learning gains**, and adapt strategies to elevate student engagement—all supported by real-time educational data.": 76,
-	"Educator's Guide": 77,
-	"Edulab":           56,
-	"Empowering Educators Through Evidence-Based Insights": 75,
-	"Engineering":                104,
-	"Experiment: %s":             52,
-	"Experiments":                46,
-	"FAQ":                        58,
-	"Female":                     85,
-	"Frequently Asked Questions": 82,
-	"Gender":                     83,
+	"Edit Experiment":                55,
+	"Edit Experiment: %s":            54,
+	"Edit Settings":                  57,
+	"EduLab":                         59,
+	"EduLab - Empowering Educators":  79,
+	"EduLab brings **data-driven** experimentation into the classroom, empowering you to evaluate and refine teaching methods across distinct **cohorts**.\n\nBy running controlled pre- and post-assessments, you gain **evidence-based insights** into how different teaching approaches impact learning outcomes.\n\nCompare cohorts, **measure learning gains**, and adapt strategies to elevate student engagement—all supported by real-time educational data.": 81,
+	"Educator's Guide": 82,
+	"Edulab":           60,
+	"Empowering Educators Through Evidence-Based Insights": 80,
+	"Engineering":                109,
+	"Experiment: %s":             56,
+	"Experiments":                50,
+	"FAQ":                        62,
+	"Female":                     90,
+	"Frequently Asked Questions": 87,
+	"Gender":                     88,
 	"Home":                       3,
-	"If you would like to contribute to the project, for example, adding more translations, get in touch:": 80,
-	"Internal Server Error": 72,
+	"If you would like to contribute to the project, for example, adding more translations, get in touch:": 85,
+	"Internal Server Error": 77,
 	"Less than one min ago": 6,
-	"Life Sciences":         101,
-	"Male":                  84,
-	"Markdown supported":    61,
-	"Markdown supported. Empty choices will be ignored.": 64,
-	"Mathematics & Computer Science":                     103,
+	"Life Sciences":         106,
+	"Male":                  89,
+	"Markdown supported":    66,
+	"Markdown supported. Empty choices will be ignored.": 69,
+	"Mathematics & Computer Science":                     108,
 	"Multiple Choice":                                    11,
-	"Name":                                               29,
-	"New Cohort":                                         31,
-	"New Experiment":                                     43,
-	"New Question":                                       60,
+	"Name":                                               33,
+	"New Cohort":                                         35,
+	"New Experiment":                                     47,
+	"New Question":                                       65,
+	"Next":                                               46,
 	"No assessments yet":                                 17,
-	"No available experiments":                           49,
-	"No cohorts found":                                   30,
-	"No questions yet":                                   24,
-	"Non-binary":                                         86,
-	"Not visible to participants.":                       33,
-	"Optional. Not visible to participants.":             36,
-	"Other":                                              105,
-	"Page Not Found":                                     73,
-	"Participants":                                       47,
-	"Physical Sciences":                                  100,
+	"No available experiments":                           53,
+	"No cohorts found":                                   34,
+	"No questions yet":                                   27,
+	"Non-binary":                                         91,
+	"Not visible to participants.":                       37,
+	"Optional. Markdown supported.":                      23,
+	"Optional. Not visible to participants.":             39,
+	"Other":                                              110,
+	"Page Not Found":                                     78,
+	"Participants":                                       51,
+	"Participation Links":                                58,
+	"Physical Sciences":                                  105,
 	"Post-Assessment":                                    1,
 	"Pre-Assessment":                                     0,
-	"Prefer not to say":                                  87,
+	"Prefer not to say":                                  92,
 	"Preview":                                            19,
-	"Preview Assessment":                                 25,
-	"Previous Experiments":                               78,
-	"Prompt":                                             22,
-	"Publish":                                            54,
-	"Publish Experiment":                                 59,
-	"Question: %s":                                       71,
+	"Preview Assessment":                                 28,
+	"Previous Experiments":                               83,
+	"Question: %s":                                       76,
 	"Questions":                                          14,
-	"References":                                         79,
-	"STEM Major":                                         99,
+	"References":                                         84,
+	"STEM Major":                                         104,
+	"Save":                                               25,
 	"Single Choice":                                      10,
-	"Source Code":                                        81,
-	"Submit":                                             26,
+	"Source Code":                                        86,
+	"Submit":                                             29,
 	"Text":                                               12,
+	"Thank you for participating!":                       63,
 	"Type":                                               13,
-	"Under 18":                                           89,
+	"Under 18":                                           94,
 	"Unknown Assessment Type":                            2,
-	"Update":                                             39,
-	"Year 1":                                             94,
-	"Year 2":                                             95,
-	"Year 3":                                             96,
-	"Year 4":                                             97,
-	"Year 5+":                                            98,
-	"Year of Study":                                      93,
-	"e.g. Baseline":                                      32,
-	"e.g. Cohort attending lecture-based instruction": 35,
-	"e.g. Earth's Seasons":                            44,
-	"e.g. The Earth's elliptical orbit":               67,
-	"e.g. The Earth's revolution":                     69,
-	"e.g. The Earth's rotation":                       68,
-	"e.g. The distance from the Sun":                  66,
-	"e.g. The tilt of Earth's axis":                   65,
-	"e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop...": 45,
-	"e.g. What is the best explanation for the cause of Earth's seasons?":                                                      62,
+	"Update":                                             42,
+	"Year 1":                                             99,
+	"Year 2":                                             100,
+	"Year 3":                                             101,
+	"Year 4":                                             102,
+	"Year 5+":                                            103,
+	"Year of Study":                                      98,
+	"Your participation has been successfully recorded.\n\nYou can now close this page.": 64,
+	"e.g. Baseline": 36,
+	"e.g. Cohort attending lecture-based instruction":                  38,
+	"e.g. Earth's Seasons":                                             48,
+	"e.g. Gauge your current knowledge about the causes of Earth's...": 24,
+	"e.g. The Earth's elliptical orbit":                                72,
+	"e.g. The Earth's revolution":                                      74,
+	"e.g. The Earth's rotation":                                        73,
+	"e.g. The distance from the Sun":                                   71,
+	"e.g. The tilt of Earth's axis":                                    70,
+	"e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop...": 49,
+	"e.g. What is the best explanation for the cause of Earth's seasons?":                                                      67,
 }
 
-var enIndex = []uint32{ // 107 elements
+var enIndex = []uint32{ // 112 elements
 	// Entry 0 - 1F
 	0x00000000, 0x0000000f, 0x0000001f, 0x00000037,
 	0x0000003c, 0x00000048, 0x00000050, 0x00000066,
 	0x00000075, 0x00000085, 0x00000094, 0x000000a2,
 	0x000000b2, 0x000000b7, 0x000000bc, 0x000000c6,
 	0x000000ce, 0x000000dd, 0x000000f0, 0x000000f5,
-	0x000000fd, 0x00000109, 0x00000114, 0x0000011b,
-	0x00000128, 0x00000139, 0x0000014c, 0x00000153,
-	0x00000158, 0x00000163, 0x00000168, 0x00000179,
+	0x000000fd, 0x00000109, 0x00000114, 0x00000120,
+	0x0000013e, 0x0000017f, 0x00000184, 0x00000191,
+	0x000001a2, 0x000001b5, 0x000001bc, 0x000001c1,
 	// Entry 20 - 3F
-	0x00000184, 0x00000192, 0x000001af, 0x000001bb,
-	0x000001eb, 0x00000212, 0x00000219, 0x00000227,
-	0x0000022e, 0x0000023b, 0x00000247, 0x00000257,
-	0x00000266, 0x0000027b, 0x000002f4, 0x00000300,
-	0x0000030d, 0x00000315, 0x0000032e, 0x00000345,
-	0x00000355, 0x00000367, 0x00000375, 0x0000037d,
-	0x00000384, 0x0000038b, 0x00000391, 0x00000395,
-	0x000003a8, 0x000003b5, 0x000003c8, 0x0000040c,
+	0x000001cf, 0x000001da, 0x000001df, 0x000001f0,
+	0x000001fb, 0x00000209, 0x00000226, 0x00000256,
+	0x0000027d, 0x00000284, 0x00000292, 0x00000299,
+	0x000002a6, 0x000002b2, 0x000002c2, 0x000002c7,
+	0x000002d6, 0x000002eb, 0x00000364, 0x00000370,
+	0x0000037d, 0x00000385, 0x0000039e, 0x000003b5,
+	0x000003c5, 0x000003d7, 0x000003e5, 0x000003f9,
+	0x00000400, 0x00000407, 0x0000040d, 0x00000411,
 	// Entry 40 - 5F
-	0x00000414, 0x00000447, 0x00000465, 0x00000484,
-	0x000004a6, 0x000004c0, 0x000004dc, 0x000004e4,
-	0x000004f4, 0x0000050a, 0x00000519, 0x00000537,
-	0x0000056c, 0x0000072a, 0x0000073b, 0x00000750,
-	0x0000075b, 0x000007c0, 0x000007cc, 0x000007e7,
-	0x000007ee, 0x000007f3, 0x000007fa, 0x00000805,
-	0x00000817, 0x00000821, 0x0000082a, 0x00000833,
-	0x0000083c, 0x00000845, 0x00000853, 0x0000085a,
+	0x0000042e, 0x0000047f, 0x0000048c, 0x0000049f,
+	0x000004e3, 0x000004eb, 0x0000051e, 0x0000053c,
+	0x0000055b, 0x0000057d, 0x00000597, 0x000005b3,
+	0x000005bb, 0x000005cb, 0x000005e1, 0x000005f0,
+	0x0000060e, 0x00000643, 0x00000801, 0x00000812,
+	0x00000827, 0x00000832, 0x00000897, 0x000008a3,
+	0x000008be, 0x000008c5, 0x000008ca, 0x000008d1,
+	0x000008dc, 0x000008ee, 0x000008f8, 0x00000901,
 	// Entry 60 - 7F
-	0x00000861, 0x00000868, 0x0000086f, 0x00000877,
-	0x00000882, 0x00000894, 0x000008a2, 0x000008c1,
-	0x000008e0, 0x000008ec, 0x000008f2,
-} // Size: 452 bytes
+	0x0000090a, 0x00000913, 0x0000091c, 0x0000092a,
+	0x00000931, 0x00000938, 0x0000093f, 0x00000946,
+	0x0000094e, 0x00000959, 0x0000096b, 0x00000979,
+	0x00000998, 0x000009b7, 0x000009c3, 0x000009c9,
+} // Size: 472 bytes
 
-const enData string = "" + // Size: 2290 bytes
+const enData string = "" + // Size: 2505 bytes
 	"\x02Pre-Assessment\x02Post-Assessment\x02Unknown Assessment Type\x02Home" +
 	"\x02Assessments\x02Cohorts\x02Less than one min ago\x02%[1]d mins ago" +
 	"\x02%[1]d hours ago\x02%[1]d days ago\x02Single Choice\x02Multiple Choic" +
 	"e\x02Text\x02Type\x02Questions\x02Actions\x02Add Assessment\x02No assess" +
-	"ments yet\x02Edit\x02Preview\x02Coming Soon\x02Assessment\x02Prompt\x02A" +
-	"dd Question\x02No questions yet\x02Preview Assessment\x02Submit\x02Back" +
-	"\x02Add Cohort\x02Name\x02No cohorts found\x02New Cohort\x02e.g. Baselin" +
-	"e\x02Not visible to participants.\x02Description\x02e.g. Cohort attendin" +
-	"g lecture-based instruction\x02Optional. Not visible to participants." +
-	"\x02Create\x02Cohort: %[1]s\x02Update\x02Demographics\x02Demographic\x02" +
-	"Add Demographic\x02New Experiment\x02e.g. Earth's Seasons\x02e.g. This e" +
-	"xperiment will compare 2 cohorts of students. One attending a traditiona" +
-	"l lecture and the other a workshop...\x02Experiments\x02Participants\x02" +
-	"Created\x02No available experiments\x02Edit Experiment: %[1]s\x02Edit Ex" +
-	"periment\x02Experiment: %[1]s\x02Edit Settings\x02Publish\x02EduLab\x02E" +
-	"dulab\x02About\x02FAQ\x02Publish Experiment\x02New Question\x02Markdown " +
-	"supported\x02e.g. What is the best explanation for the cause of Earth's " +
-	"seasons?\x02Choices\x02Markdown supported. Empty choices will be ignored" +
-	".\x02e.g. The tilt of Earth's axis\x02e.g. The distance from the Sun\x02" +
-	"e.g. The Earth's elliptical orbit\x02e.g. The Earth's rotation\x02e.g. T" +
-	"he Earth's revolution\x02Correct\x02Question: %[1]s\x02Internal Server E" +
-	"rror\x02Page Not Found\x02EduLab - Empowering Educators\x02Empowering Ed" +
-	"ucators Through Evidence-Based Insights\x02EduLab brings **data-driven**" +
-	" experimentation into the classroom, empowering you to evaluate and refi" +
-	"ne teaching methods across distinct **cohorts**.\x0a\x0aBy running contr" +
-	"olled pre- and post-assessments, you gain **evidence-based insights** in" +
-	"to how different teaching approaches impact learning outcomes.\x0a\x0aCo" +
-	"mpare cohorts, **measure learning gains**, and adapt strategies to eleva" +
-	"te student engagement—all supported by real-time educational data.\x02Ed" +
-	"ucator's Guide\x02Previous Experiments\x02References\x02If you would lik" +
-	"e to contribute to the project, for example, adding more translations, g" +
-	"et in touch:\x02Source Code\x02Frequently Asked Questions\x02Gender\x02M" +
-	"ale\x02Female\x02Non-binary\x02Prefer not to say\x02Age Group\x02Under 1" +
-	"8\x0218 to 20\x0221 to 23\x0224 to 26\x02Year of Study\x02Year 1\x02Year" +
-	" 2\x02Year 3\x02Year 4\x02Year 5+\x02STEM Major\x02Physical Sciences\x02" +
-	"Life Sciences\x02Earth & Environmental Sciences\x02Mathematics & Compute" +
-	"r Science\x02Engineering\x02Other"
+	"ments yet\x02Edit\x02Preview\x02Coming Soon\x02Assessment\x02Description" +
+	"\x02Optional. Markdown supported.\x02e.g. Gauge your current knowledge a" +
+	"bout the causes of Earth's...\x02Save\x02Add Question\x02No questions ye" +
+	"t\x02Preview Assessment\x02Submit\x02Back\x02%[1]s - %[2]s\x02Add Cohort" +
+	"\x02Name\x02No cohorts found\x02New Cohort\x02e.g. Baseline\x02Not visib" +
+	"le to participants.\x02e.g. Cohort attending lecture-based instruction" +
+	"\x02Optional. Not visible to participants.\x02Create\x02Cohort: %[1]s" +
+	"\x02Update\x02Demographics\x02Demographic\x02Add Demographic\x02Next\x02" +
+	"New Experiment\x02e.g. Earth's Seasons\x02e.g. This experiment will comp" +
+	"are 2 cohorts of students. One attending a traditional lecture and the o" +
+	"ther a workshop...\x02Experiments\x02Participants\x02Created\x02No avail" +
+	"able experiments\x02Edit Experiment: %[1]s\x02Edit Experiment\x02Experim" +
+	"ent: %[1]s\x02Edit Settings\x02Participation Links\x02EduLab\x02Edulab" +
+	"\x02About\x02FAQ\x02Thank you for participating!\x02Your participation h" +
+	"as been successfully recorded.\x0a\x0aYou can now close this page.\x02Ne" +
+	"w Question\x02Markdown supported\x02e.g. What is the best explanation fo" +
+	"r the cause of Earth's seasons?\x02Choices\x02Markdown supported. Empty " +
+	"choices will be ignored.\x02e.g. The tilt of Earth's axis\x02e.g. The di" +
+	"stance from the Sun\x02e.g. The Earth's elliptical orbit\x02e.g. The Ear" +
+	"th's rotation\x02e.g. The Earth's revolution\x02Correct\x02Question: %[1" +
+	"]s\x02Internal Server Error\x02Page Not Found\x02EduLab - Empowering Edu" +
+	"cators\x02Empowering Educators Through Evidence-Based Insights\x02EduLab" +
+	" brings **data-driven** experimentation into the classroom, empowering y" +
+	"ou to evaluate and refine teaching methods across distinct **cohorts**." +
+	"\x0a\x0aBy running controlled pre- and post-assessments, you gain **evid" +
+	"ence-based insights** into how different teaching approaches impact lear" +
+	"ning outcomes.\x0a\x0aCompare cohorts, **measure learning gains**, and a" +
+	"dapt strategies to elevate student engagement—all supported by real-time" +
+	" educational data.\x02Educator's Guide\x02Previous Experiments\x02Refere" +
+	"nces\x02If you would like to contribute to the project, for example, add" +
+	"ing more translations, get in touch:\x02Source Code\x02Frequently Asked " +
+	"Questions\x02Gender\x02Male\x02Female\x02Non-binary\x02Prefer not to say" +
+	"\x02Age Group\x02Under 18\x0218 to 20\x0221 to 23\x0224 to 26\x02Year of" +
+	" Study\x02Year 1\x02Year 2\x02Year 3\x02Year 4\x02Year 5+\x02STEM Major" +
+	"\x02Physical Sciences\x02Life Sciences\x02Earth & Environmental Sciences" +
+	"\x02Mathematics & Computer Science\x02Engineering\x02Other"
 
-var pt_BRIndex = []uint32{ // 107 elements
+var pt_BRIndex = []uint32{ // 112 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000000, 0x00000000, 0x00000000,
 	0x00000008, 0x00000008, 0x00000008, 0x00000008,
@@ -229,8 +238,9 @@ var pt_BRIndex = []uint32{ // 107 elements
 	0x00000008, 0x00000008, 0x00000008, 0x00000008,
 	0x00000008, 0x00000008, 0x00000008, 0x00000008,
 	0x00000008, 0x00000008, 0x00000008, 0x00000008,
-	0x0000000f, 0x0000000f, 0x00000014, 0x00000014,
+	0x00000008, 0x00000008, 0x00000008, 0x0000000f,
 	// Entry 20 - 3F
+	0x0000000f, 0x0000000f, 0x00000014, 0x00000014,
 	0x00000014, 0x00000014, 0x00000014, 0x00000014,
 	0x00000014, 0x00000014, 0x00000014, 0x00000014,
 	0x00000014, 0x00000014, 0x00000014, 0x00000014,
@@ -238,21 +248,21 @@ var pt_BRIndex = []uint32{ // 107 elements
 	0x00000032, 0x00000039, 0x00000058, 0x00000058,
 	0x00000058, 0x00000058, 0x00000058, 0x00000058,
 	0x0000005f, 0x0000005f, 0x00000065, 0x00000065,
-	0x00000065, 0x00000065, 0x00000065, 0x00000065,
 	// Entry 40 - 5F
 	0x00000065, 0x00000065, 0x00000065, 0x00000065,
 	0x00000065, 0x00000065, 0x00000065, 0x00000065,
-	0x00000065, 0x0000007e, 0x00000096, 0x00000096,
-	0x000000d6, 0x000002f3, 0x000002f3, 0x0000030b,
-	0x00000318, 0x00000385, 0x00000393, 0x00000393,
-	0x00000393, 0x00000393, 0x00000393, 0x00000393,
+	0x00000065, 0x00000065, 0x00000065, 0x00000065,
+	0x00000065, 0x00000065, 0x0000007e, 0x00000096,
+	0x00000096, 0x000000d6, 0x000002f3, 0x000002f3,
+	0x0000030b, 0x00000318, 0x00000385, 0x00000393,
 	0x00000393, 0x00000393, 0x00000393, 0x00000393,
 	0x00000393, 0x00000393, 0x00000393, 0x00000393,
 	// Entry 60 - 7F
 	0x00000393, 0x00000393, 0x00000393, 0x00000393,
 	0x00000393, 0x00000393, 0x00000393, 0x00000393,
-	0x00000393, 0x00000393, 0x00000393,
-} // Size: 452 bytes
+	0x00000393, 0x00000393, 0x00000393, 0x00000393,
+	0x00000393, 0x00000393, 0x00000393, 0x00000393,
+} // Size: 472 bytes
 
 const pt_BRData string = "" + // Size: 915 bytes
 	"\x02Início\x02Voltar\x02Nome\x02Novo Experimento\x02Experimentos\x02Cria" +
@@ -270,4 +280,4 @@ const pt_BRData string = "" + // Size: 915 bytes
 	"para o projeto, por exemplo, adicionando mais traduções, entre em contat" +
 	"o:\x02Código Fonte"
 
-	// Total table size 4109 bytes (4KiB); checksum: 52440AED
+	// Total table size 4364 bytes (4KiB); checksum: F09555A
