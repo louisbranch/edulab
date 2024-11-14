@@ -28,6 +28,15 @@ func NewComparison(r *Result, assessmentQuestions []AssessmentQuestions,
 		data:    make(map[string][]float64),
 	}
 
+	cohortLabels := []string{"base", "intervention"}
+	if len(cohorts) != 2 {
+		cohortLabels = []string{}
+		for _, cohortID := range cohorts {
+			cohort := r.cohorts[cohortID]
+			cohortLabels = append(cohortLabels, strings.ToLower(cohort.Name))
+		}
+	}
+
 	// Populate score for each assignment question
 	for _, val := range assessmentQuestions {
 
@@ -43,10 +52,10 @@ func NewComparison(r *Result, assessmentQuestions []AssessmentQuestions,
 			return nil, err
 		}
 
-		for _, cohortID := range cohorts {
-			cohort := r.cohorts[cohortID]
+		for i, cohortID := range cohorts {
+			label := cohortLabels[i]
 
-			header := fmt.Sprintf("%s_%s", assessement.Type, strings.ToLower(cohort.Name))
+			header := fmt.Sprintf("%s_%s", assessement.Type, label)
 			c.headers = append(c.headers, header)
 
 			score := scores[cohortID]
@@ -81,8 +90,6 @@ func (c *Comparison) ToCSV(filePath string) error {
 	if err := writer.Write(c.headers); err != nil {
 		return err
 	}
-
-	log.Printf("rows %d", c.rows)
 
 	// Write rows
 	for i := 0; i < c.rows; i++ {
