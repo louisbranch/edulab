@@ -16,7 +16,7 @@ import (
 func (srv *Server) demographicsHandler(w http.ResponseWriter, r *http.Request,
 	experiment edulab.Experiment, segments []string) {
 
-	log.Print("[DEBUG] web/server/demographics.go: handling demographics")
+	log.Print("[DEBUG] Routing demographics")
 
 	if len(segments) < 1 {
 		srv.listDemographics(w, r, experiment)
