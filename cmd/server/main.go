@@ -66,7 +66,11 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = wizard.Experiment(db)
+	experiments := os.Getenv("EXPERIMENTS_PATH")
+	if experiments == "" {
+		experiments = "experiments"
+	}
+	err = wizard.ImportExperimentsFromYAML(db, experiments)
 	if err != nil {
 		log.Fatal(err)
 	}

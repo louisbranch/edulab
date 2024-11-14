@@ -1,0 +1,107 @@
+public_id: E1
+name: Earth's Seasons
+description: |
+  This experiment gauges students' understanding of the Earth's seasons.
+  One cohort will attend a traditional lecture, while the other will attend a workshop.
+assessments:
+  - public_id: A1
+    type: pre
+    questions:
+      - text: "What is the primary cause of the **seasons** on Earth?"
+        type: single
+        choices:
+          - text: "The **distance** between the Earth and the Sun changes throughout the year."
+            is_correct: false
+          - text: "The Earth's **axis** is **tilted** as it **orbits** the Sun."
+            is_correct: true
+          - text: "The **speed** of Earth's orbit changes throughout the year."
+            is_correct: false
+          - text: "Different parts of Earth receive **sunlight** based on its **rotation**."
+            is_correct: false
+      - text: "Which of the following statements are **true** about Earth's **orbit** and **seasons**? _(Select all that apply)_"
+        type: multiple
+        choices:
+          - text: "Earth is **closer** to the Sun in summer."
+            is_correct: false
+          - text: "Earth's **tilt** causes different parts of Earth to receive varying amounts of **sunlight**."
+            is_correct: true
+          - text: "Earth's **distance** from the Sun varies greatly, causing seasons."
+            is_correct: false
+          - text: "The **tilt** of Earth's axis remains **constant** relative to its orbit."
+            is_correct: true
+      - text: "In your own words, describe why it is **warmer** in **summer** than in **winter**. *(Maximum 100 characters)*"
+        type: text
+      - text: "When it is **summer** in the **Northern Hemisphere**, what season is it in the **Southern Hemisphere**?"
+        type: single
+        choices:
+          - text: "Winter"
+            is_correct: true
+          - text: "Spring"
+            is_correct: false
+          - text: "Summer"
+            is_correct: false
+          - text: "Autumn"
+            is_correct: false
+      - text: "How does the **tilt** of the Earth affect the **intensity** and **duration** of **sunlight** received at different locations on Earth? _(Select all that apply)_"
+        type: multiple
+        choices:
+          - text: "The **tilt** changes which hemisphere is tilted towards the **Sun**, affecting sunlight **intensity**."
+            is_correct: true
+          - text: "The **tilt** causes Earth to be **closer** to the Sun during different seasons."
+            is_correct: false
+          - text: "The **tilt** affects the **angle** and **duration** of sunlight, influencing **temperatures** and **day length**."
+            is_correct: true
+  - public_id: A2
+    type: post
+    questions:
+      - text: "What is the primary cause of the **seasons** on Earth?"
+        type: single
+        choices:
+          - text: "The **distance** between the Earth and the Sun changes throughout the year."
+            is_correct: false
+          - text: "The Earth's **axis** is **tilted** as it **orbits** the Sun."
+            is_correct: true
+          - text: "The **speed** of Earth's orbit changes throughout the year."
+            is_correct: false
+          - text: "Different parts of Earth receive **sunlight** based on its **rotation**."
+            is_correct: false
+      - text: "Which of the following statements are **true** about Earth's **orbit** and **seasons**? _(Select all that apply)_"
+        type: multiple
+        choices:
+          - text: "Earth is **closer** to the Sun in summer."
+            is_correct: false
+          - text: "Earth's **tilt** causes different parts of Earth to receive varying amounts of **sunlight**."
+            is_correct: true
+          - text: "Earth's **distance** from the Sun varies greatly, causing seasons."
+            is_correct: false
+          - text: "The **tilt** of Earth's axis remains **constant** relative to its orbit."
+            is_correct: true
+      - text: "In your own words, describe why it is **warmer** in **summer** than in **winter**. *(Maximum 100 characters)*"
+        type: text
+      - text: "When it is **summer** in the **Northern Hemisphere**, what season is it in the **Southern Hemisphere**?"
+        type: single
+        choices:
+          - text: "Winter"
+            is_correct: true
+          - text: "Spring"
+            is_correct: false
+          - text: "Summer"
+            is_correct: false
+          - text: "Autumn"
+            is_correct: false
+      - text: "How does the **tilt** of the Earth affect the **intensity** and **duration** of **sunlight** received at different locations on Earth? _(Select all that apply)_"
+        type: multiple
+        choices:
+          - text: "The **tilt** changes which hemisphere is tilted towards the **Sun**, affecting sunlight **intensity**."
+            is_correct: true
+          - text: "The **tilt** causes Earth to be **closer** to the Sun during different seasons."
+            is_correct: false
+          - text: "The **tilt** affects the **angle** and **duration** of sunlight, influencing **temperatures** and **day length**."
+            is_correct: true
+cohorts:
+  - public_id: C1
+    name: Baseline
+    description: Students participating in the traditional lecture format.
+  - public_id: C2
+    name: Workshop
+    description: Students participating in the interactive workshop format.
