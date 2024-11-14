@@ -65,17 +65,32 @@ func (r *Result) scoreMultipleAnswer(questionID string, answerIDs []string) floa
 	}
 
 	// Calculate ratio of correct answers given
-	totalCorrect := len(correctSet)
-	if totalCorrect == 0 {
+	total := len(correctSet)
+	if total == 0 {
 		return 0.0
 	}
-	correctCount := 0
+
+	correct := 0
+	wrong := 0
 	for _, answerID := range answerIDs {
 		if correctSet[answerID] {
-			correctCount++
+			correct++
+		} else {
+			wrong++
 		}
 	}
-	return float64(correctCount) / float64(totalCorrect)
+
+	// Calculate the points per correct answer
+	points := 1.0 / float64(total)
+
+	// Calculate score based on correct and incorrect answers
+	score := float64(correct)*points - float64(wrong)*points
+
+	// Ensure score is not negative
+	if score < 0 {
+		return 0
+	}
+	return score
 }
 
 // getCorrectChoices retrieves the correct choices for a question.

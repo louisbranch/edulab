@@ -111,73 +111,74 @@ func generateAnswers(db edulab.Database, assessment edulab.Assessment,
 	if err != nil {
 		return nil, errors.Wrap(err, "could not find questions for assessment")
 	}
+	allChoices, err := db.FindQuestionChoices(assessment.ID)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not find question choices")
+	}
 
-	answers := make(map[string]interface{})
+	answers := make(map[string][]string)
 
 	for _, question := range questions {
-		choices, err := db.FindQuestionChoices(question.ID)
-		if err != nil {
-			return nil, errors.Wrap(err, "could not find question choices")
-		}
 
-		// Determine if the participant answers correctly based on the probability
-		isCorrect := rand.Float64() < correctProbability
-		var selectedChoices []string
-
-		if isCorrect {
-			// Select only the correct choices
-			for _, choice := range choices {
-				if choice.IsCorrect {
-					selectedChoices = append(selectedChoices, choice.ID)
-				}
-			}
-		} else {
-			// Apply bias to select common incorrect choices
-			commonIncorrectChoices := getCommonIncorrectChoices(choices)
-			if rand.Float64() < biasFactor && len(commonIncorrectChoices) > 0 {
-				// Pick from common incorrect choices if bias applies
-				selectedChoices = []string{commonIncorrectChoices[rand.Intn(len(commonIncorrectChoices))]}
-			} else {
-				// Otherwise, pick randomly from other incorrect choices
-				selectedChoices = randomIncorrectChoices(choices)
+		var choices []edulab.QuestionChoice
+		for _, choice := range allChoices {
+			if choice.QuestionID == question.ID {
+				choices = append(choices, choice)
 			}
 		}
 
 		// Add selected choices to answers map
-		answers[question.ID] = selectedChoices
+		answers[question.ID] = selectChoices(question.Type, choices, correctProbability, biasFactor)
 	}
 
 	return json.Marshal(answers)
 }
 
-// Helper function to identify common incorrect choices
-func getCommonIncorrectChoices(choices []edulab.QuestionChoice) []string {
-	var commonIncorrectChoices []string
-	for _, choice := range choices {
-		if !choice.IsCorrect && isCommonMisconception(choice) {
-			commonIncorrectChoices = append(commonIncorrectChoices, choice.ID)
-		}
-	}
-	return commonIncorrectChoices
-}
+func selectChoices(inputType edulab.InputType, choices []edulab.QuestionChoice,
+	correctProbability float64, biasFactor float64) []string {
+	var correctChoices, incorrectChoices, selectedChoices []string
 
-// Function to tag certain choices as common misconceptions
-func isCommonMisconception(choice edulab.QuestionChoice) bool {
-	// Example: Tag choices with known misconceptions (customize as needed)
-	return choice.Text == "The **distance** between the Earth and the Sun changes throughout the year."
-}
-
-// Helper to pick a random incorrect choice (excluding common ones)
-func randomIncorrectChoices(choices []edulab.QuestionChoice) []string {
-	var incorrectChoices []string
+	// Separate choices into correct and incorrect lists
 	for _, choice := range choices {
-		if !choice.IsCorrect {
+		if choice.IsCorrect {
+			correctChoices = append(correctChoices, choice.ID)
+		} else {
 			incorrectChoices = append(incorrectChoices, choice.ID)
 		}
 	}
-	// Pick one random incorrect choice
-	if len(incorrectChoices) > 0 {
-		return []string{incorrectChoices[rand.Intn(len(incorrectChoices))]}
+
+	switch inputType {
+	case edulab.InputSingle:
+		// Single choice: Use correctProbability to pick correct vs. incorrect
+		if rand.Float64() < correctProbability {
+			// Pick the correct choice
+			if len(correctChoices) > 0 {
+				selectedChoices = append(selectedChoices, correctChoices[0])
+			}
+		} else {
+			// Pick an incorrect choice based on biasFactor
+			if rand.Float64() < biasFactor && len(incorrectChoices) > 0 {
+				selectedChoices = append(selectedChoices, incorrectChoices[rand.Intn(len(incorrectChoices))])
+			} else if len(incorrectChoices) > 0 {
+				selectedChoices = append(selectedChoices, incorrectChoices[rand.Intn(len(incorrectChoices))])
+			}
+		}
+
+	case edulab.InputMultiple:
+		// Multiple choice: Use correctProbability to pick all correct or a mix
+		if rand.Float64() < correctProbability {
+			// Pick all correct choices
+			selectedChoices = append(selectedChoices, correctChoices...)
+		} else {
+			// Pick a random subset of correct and/or incorrect choices based on biasFactor
+			numChoices := rand.Intn(len(choices) + 1) // Pick any number of choices from 0 to all
+			allChoices := append(correctChoices, incorrectChoices...)
+			rand.Shuffle(len(allChoices), func(i, j int) {
+				allChoices[i], allChoices[j] = allChoices[j], allChoices[i]
+			})
+			selectedChoices = append(selectedChoices, allChoices[:numChoices]...)
+		}
 	}
-	return nil
+
+	return selectedChoices
 }

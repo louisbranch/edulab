@@ -106,7 +106,7 @@ cohorts:
     name: Workshop
     description: Students participating in the interactive workshop format.
 bootstrap_config:
-  participants: 120
+  participants: 100
   assessments:
     - correct_probabilities: [0.3, 0.3]
       bias_factor: 0.7

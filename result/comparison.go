@@ -3,8 +3,11 @@ package result
 import (
 	"encoding/csv"
 	"encoding/json"
+	"fmt"
+	"log"
 	"os"
 	"strconv"
+	"strings"
 )
 
 type Comparison struct {
@@ -12,17 +15,33 @@ type Comparison struct {
 	data    map[string]map[string]float64 // Participant ID -> [header -> score]
 }
 
+type AssessmentQuestions struct {
+	AssessmentID string
+	QuestionID   string
+}
+
 // NewComparison initializes a Comparison struct with scores across specified cohorts and assessments.
-func NewComparison(r *Result, assessmentQuestions map[string]string, cohorts []string) (*Comparison, error) {
+func NewComparison(r *Result, assessmentQuestions []AssessmentQuestions,
+	cohorts []string) (*Comparison, error) {
 	c := &Comparison{
 		headers: []string{},
 		data:    map[string]map[string]float64{},
 	}
 
 	// Create headers and populate scores for each participant
-	for _, cohortID := range cohorts {
-		for assessmentID, questionID := range assessmentQuestions {
-			header := cohortID + "_" + assessmentID + "_" + questionID
+	for _, val := range assessmentQuestions {
+		assessmentID := val.AssessmentID
+		questionID := val.QuestionID
+
+		assessment := r.assessments[assessmentID]
+		question := r.questions[questionID]
+
+		log.Printf("[DEBUG] Comparing question %s: %q\n", questionID, question.Text)
+
+		for _, cohortID := range cohorts {
+			cohort := r.cohorts[cohortID]
+
+			header := fmt.Sprintf("%s_%s", assessment.Type, strings.ToLower(cohort.Name))
 			c.headers = append(c.headers, header)
 
 			// Get scores for the question
