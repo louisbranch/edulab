@@ -80,7 +80,8 @@ func (db *DB) FindQuestionChoices(assessmentID string) ([]edulab.QuestionChoice,
 	query := `SELECT qc.id, qc.question_id, qc.text, qc.is_correct
 		FROM question_choices AS qc
 		JOIN questions AS q ON qc.question_id = q.id
-		WHERE q.assessment_id = $1`
+		WHERE q.assessment_id = $1
+		ORDER BY qc.id ASC`
 
 	rows, err := db.Query(query, assessmentID)
 	if err != nil {
