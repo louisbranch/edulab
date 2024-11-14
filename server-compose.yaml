@@ -12,6 +12,7 @@ services:
       - LETSENCRYPT_HOST=your_domain
       - PORT=80
       - FILES_PATH=/var/www
+      - EXPERIMENTS_PATH=/var/experiments
       - POSTGRES_USER=development
       - POSTGRES_PASSWORD=development
       - POSTGRES_HOSTNAME=postgres
