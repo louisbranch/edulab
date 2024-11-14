@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"math/rand"
+	"sort"
 
 	"github.com/pkg/errors"
 
@@ -128,7 +129,9 @@ func generateAnswers(db edulab.Database, assessment edulab.Assessment,
 		}
 
 		// Add selected choices to answers map
-		answers[question.ID] = selectChoices(question.Type, choices, correctProbability, biasFactor)
+		selected := selectChoices(question.Type, choices, correctProbability, biasFactor)
+		sort.Strings(selected)
+		answers[question.ID] = selected
 	}
 
 	return json.Marshal(answers)

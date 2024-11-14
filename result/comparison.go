@@ -2,7 +2,6 @@ package result
 
 import (
 	"encoding/csv"
-	"encoding/json"
 	"fmt"
 	"log"
 	"os"
@@ -12,7 +11,8 @@ import (
 
 type Comparison struct {
 	headers []string
-	data    map[string]map[string]float64 // Participant ID -> [header -> score]
+	data    map[string][]float64 // header -> scores
+	rows    int
 }
 
 type AssessmentQuestions struct {
@@ -25,37 +25,40 @@ func NewComparison(r *Result, assessmentQuestions []AssessmentQuestions,
 	cohorts []string) (*Comparison, error) {
 	c := &Comparison{
 		headers: []string{},
-		data:    map[string]map[string]float64{},
+		data:    make(map[string][]float64),
 	}
 
-	// Create headers and populate scores for each participant
+	// Populate score for each assignment question
 	for _, val := range assessmentQuestions {
-		assessmentID := val.AssessmentID
-		questionID := val.QuestionID
 
-		assessment := r.assessments[assessmentID]
+		assessement := r.assessments[val.AssessmentID]
+
+		questionID := val.QuestionID
 		question := r.questions[questionID]
 
 		log.Printf("[DEBUG] Comparing question %s: %q\n", questionID, question.Text)
 
+		scores, err := r.QuestionScore(questionID)
+		if err != nil {
+			return nil, err
+		}
+
 		for _, cohortID := range cohorts {
 			cohort := r.cohorts[cohortID]
 
-			header := fmt.Sprintf("%s_%s", assessment.Type, strings.ToLower(cohort.Name))
+			header := fmt.Sprintf("%s_%s", assessement.Type, strings.ToLower(cohort.Name))
 			c.headers = append(c.headers, header)
 
-			// Get scores for the question
-			scores, err := r.QuestionScore(questionID)
-			if err != nil {
-				return nil, err
+			score := scores[cohortID]
+			if _, ok := c.data[header]; ok {
+				return nil, fmt.Errorf("%s already exists", header)
 			}
 
-			// Add scores to the data map for each participant
-			for participantID, score := range scores {
-				if _, exists := c.data[participantID]; !exists {
-					c.data[participantID] = map[string]float64{}
-				}
-				c.data[participantID][header] = score
+			c.data[header] = score
+
+			n := len(score)
+			if n > c.rows {
+				c.rows = n
 			}
 		}
 	}
@@ -79,44 +82,22 @@ func (c *Comparison) ToCSV(filePath string) error {
 		return err
 	}
 
+	log.Printf("rows %d", c.rows)
+
 	// Write rows
-	for _, row := range c.data {
-		record := make([]string, len(c.headers))
-		hasScores := false
-		for i, header := range c.headers {
-			if score, exists := row[header]; exists {
-				record[i] = strconv.FormatFloat(score, 'f', 2, 64)
-				hasScores = true
+	for i := 0; i < c.rows; i++ {
+		records := make([]string, len(c.headers))
+		for j, header := range c.headers {
+			scores := c.data[header]
+			if len(scores) < i {
+				records[j] = ""
 			} else {
-				record[i] = "" // Leave blank if no score
+				records[j] = strconv.FormatFloat(scores[i], 'f', 2, 64)
 			}
 		}
-		if hasScores {
-			writer.Write(record)
-		}
+
+		writer.Write(records)
 	}
+
 	return nil
-}
-
-// ToJSON exports the comparison data to a JSON file.
-func (c *Comparison) ToJSON(filePath string) error {
-	file, err := os.Create(filePath)
-	if err != nil {
-		return err
-	}
-	defer file.Close()
-
-	// JSON data structure: map of participant scores by headers
-	jsonData := map[string]map[string]float64{}
-	for participantID, scores := range c.data {
-		jsonData[participantID] = scores
-	}
-
-	encoder := json.NewEncoder(file)
-	return encoder.Encode(jsonData)
-}
-
-// GetData returns the comparison data for direct use in Go.
-func (c *Comparison) GetData() map[string]map[string]float64 {
-	return c.data
 }
