@@ -70,9 +70,9 @@ func main() {
 	if experiments == "" {
 		experiments = "experiments"
 	}
-	err = wizard.ImportExperimentsFromYAML(db, experiments)
+	err = wizard.ImportYAML(db, experiments)
 	if err != nil {
-		log.Fatal(err)
+		log.Printf("[WARN] Could not import experiments: %v\n", err)
 	}
 
 	srv := &server.Server{
