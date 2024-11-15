@@ -3,6 +3,7 @@ package wizard
 import (
 	"encoding/json"
 	"fmt"
+	"hash/fnv"
 	"log"
 	"math/rand"
 	"sort"
@@ -129,7 +130,7 @@ func generateAnswers(db edulab.Database, assessment edulab.Assessment,
 		}
 
 		// Add selected choices to answers map
-		selected := selectChoices(question.Type, choices, correctProbability, biasFactor)
+		selected := selectChoices(question, choices, correctProbability, biasFactor)
 		sort.Strings(selected)
 		answers[question.ID] = selected
 	}
@@ -137,8 +138,9 @@ func generateAnswers(db edulab.Database, assessment edulab.Assessment,
 	return json.Marshal(answers)
 }
 
-func selectChoices(inputType edulab.InputType, choices []edulab.QuestionChoice,
+func selectChoices(question edulab.Question, choices []edulab.QuestionChoice,
 	correctProbability float64, biasFactor float64) []string {
+
 	var correctChoices, incorrectChoices, selectedChoices []string
 
 	// Separate choices into correct and incorrect lists
@@ -150,8 +152,10 @@ func selectChoices(inputType edulab.InputType, choices []edulab.QuestionChoice,
 		}
 	}
 
-	switch inputType {
-	case edulab.InputSingle:
+	seededRand := rand.New(rand.NewSource(hashStringToSeed(question.ID)))
+
+	switch question.Type {
+	case "single":
 		// Single choice: Use correctProbability to pick correct vs. incorrect
 		if rand.Float64() < correctProbability {
 			// Pick the correct choice
@@ -159,21 +163,23 @@ func selectChoices(inputType edulab.InputType, choices []edulab.QuestionChoice,
 				selectedChoices = append(selectedChoices, correctChoices[0])
 			}
 		} else {
-			// Pick an incorrect choice based on biasFactor
+			// Pick a "biased" incorrect choice using seeded random for consistency
 			if rand.Float64() < biasFactor && len(incorrectChoices) > 0 {
-				selectedChoices = append(selectedChoices, incorrectChoices[rand.Intn(len(incorrectChoices))])
+				// Seeded random generator to consistently select the same preferred incorrect choice per question
+				selectedChoices = append(selectedChoices, incorrectChoices[seededRand.Intn(len(incorrectChoices))])
 			} else if len(incorrectChoices) > 0 {
+				// Use any random incorrect choice with the global random generator
 				selectedChoices = append(selectedChoices, incorrectChoices[rand.Intn(len(incorrectChoices))])
 			}
 		}
 
-	case edulab.InputMultiple:
+	case "multiple":
 		// Multiple choice: Use correctProbability to pick all correct or a mix
 		if rand.Float64() < correctProbability {
 			// Pick all correct choices
 			selectedChoices = append(selectedChoices, correctChoices...)
 		} else {
-			// Pick a random subset of correct and/or incorrect choices based on biasFactor
+			// Pick a random subset of correct and/or incorrect choices
 			numChoices := rand.Intn(len(choices) + 1) // Pick any number of choices from 0 to all
 			allChoices := append(correctChoices, incorrectChoices...)
 			rand.Shuffle(len(allChoices), func(i, j int) {
@@ -184,4 +190,11 @@ func selectChoices(inputType edulab.InputType, choices []edulab.QuestionChoice,
 	}
 
 	return selectedChoices
+}
+
+// Helper function to convert a string (question ID) to a consistent seed value
+func hashStringToSeed(s string) int64 {
+	h := fnv.New32a()
+	h.Write([]byte(s))
+	return int64(h.Sum32())
 }

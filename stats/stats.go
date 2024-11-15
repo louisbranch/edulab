@@ -97,9 +97,9 @@ func computePValue(beta0, beta1 float64, gains, interventions []float64) float64
 	tStatistic := beta1 / standardError
 
 	// Print values for debugging
-	fmt.Printf("Residual Sum of Squares: %.5f\n", sumSquaredResiduals)
-	fmt.Printf("Standard Error: %.5f\n", standardError)
-	fmt.Printf("t-Statistic: %.5f\n", tStatistic)
+	fmt.Printf("Residual Sum of Squares: %.8f\n", sumSquaredResiduals)
+	fmt.Printf("Standard Error: %.8f\n", standardError)
+	fmt.Printf("t-Statistic: %.8f\n", tStatistic)
 
 	// Calculate p-value based on the t-distribution
 	tDist := distuv.StudentsT{
@@ -133,11 +133,11 @@ func main() {
 
 	// Perform linear regression
 	beta0, beta1, rSquared := linearRegression(gains, interventions)
-	fmt.Printf("Intercept (beta0): %.5f, Slope (beta1): %.5f, R-squared: %.5f\n", beta0, beta1, rSquared)
+	fmt.Printf("Intercept (beta0): %.8f, Slope (beta1): %.8f, R-squared: %.8f\n", beta0, beta1, rSquared)
 
 	// Calculate p-value for the slope
 	pValue := computePValue(beta0, beta1, gains, interventions)
-	fmt.Printf("P-value for the intervention coefficient: %.5f\n", pValue)
+	fmt.Printf("P-value for the intervention coefficient: %.8f\n", pValue)
 
 	// Interpret the p-value
 	alpha := 0.2
