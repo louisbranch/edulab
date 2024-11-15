@@ -54,30 +54,28 @@ func (srv *Server) demographicsResult(w http.ResponseWriter, r *http.Request,
 		return
 	}
 
-	dp := presenter.NewDemographics(demographics, options)
+	participants, err := srv.DB.FindParticipants(experiment.ID)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	participations, err := srv.DB.FindParticipations(experiment.ID)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	dr, err := presenter.NewDemographicsResult(demographics, options, participants, participations)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
 
 	if r.Header.Get("Content-type") == "application/json" {
 
-		participants, err := srv.DB.FindParticipants(experiment.ID)
-		if err != nil {
-			srv.renderError(w, r, err)
-			return
-		}
-
-		participations, err := srv.DB.FindParticipations(experiment.ID)
-		if err != nil {
-			srv.renderError(w, r, err)
-			return
-		}
-
-		answers, err := dp.Values(participants, participations)
-		if err != nil {
-			srv.renderError(w, r, err)
-			return
-		}
-
 		w.Header().Set("Content-Type", "application/json")
-		err = json.NewEncoder(w).Encode(answers)
+		err = json.NewEncoder(w).Encode(dr.Data)
 		if err != nil {
 			srv.renderError(w, r, err)
 			return
@@ -92,22 +90,20 @@ func (srv *Server) demographicsResult(w http.ResponseWriter, r *http.Request,
 	page.Title = title
 	page.Partials = []string{"results_demographics"}
 	page.Content = struct {
-		Breadcrumbs  template.HTML
-		Experiment   edulab.Experiment
-		Demographics presenter.Demographics
-		Texts        interface{}
+		Breadcrumbs template.HTML
+		Experiment  edulab.Experiment
+		Results     presenter.DemographicsResult
+		Texts       interface{}
 	}{
-		Breadcrumbs:  presenter.ExperimentBreadcrumb(experiment, printer),
-		Experiment:   experiment,
-		Demographics: dp,
+		Breadcrumbs: presenter.ExperimentBreadcrumb(experiment, printer),
+		Experiment:  experiment,
+		Results:     dr,
 		Texts: struct {
 			Title        string
-			Labels       [][]string
 			Options      string
 			Participants string
 		}{
 			Title:        title,
-			Labels:       dp.Labels(),
 			Options:      printer.Sprintf("Options"),
 			Participants: printer.Sprintf("Participants"),
 		},

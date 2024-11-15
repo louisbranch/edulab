@@ -1,7 +1,7 @@
 {{ define "content" }}
 {{ .Breadcrumbs }}
 <h2>{{ .Texts.Title }}</h2>
-{{ range $i, $demographic := .Demographics }}
+{{ range $i, $demographic := .Results.Demographics }}
     <h3>{{ $demographic.Text }}</h3>
     <div style="position: relative; height: 50vh;">
         <canvas id="demographics-{{ $i }}"></canvas>
@@ -11,7 +11,7 @@
 <script>
   (function(window){
 
-    const labels = {{ .Texts.Labels }};
+    const labels = {{ .Results.Categories }};
 
     // Initialize ChartJS settings
     Chart.register(ChartDataLabels);

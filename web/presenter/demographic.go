@@ -7,13 +7,26 @@ import (
 	"github.com/louisbranch/edulab"
 )
 
-type Demographics []Demographic
+type Demographic struct {
+	edulab.Demographic
+	Options []edulab.DemographicOption
+}
 
-func (d Demographics) Labels() [][]string {
+type DemographicsResult struct {
+	Demographics   []Demographic
+	participants   []edulab.Participant
+	participations []edulab.Participation
+	Categories     [][]string
+	Cohorts        []string
+	//Data           [][][]int // [category][cohort][count]
+	Data [][]int // [category][count]
+}
+
+func (dr DemographicsResult) categories() [][]string {
 	var labels [][]string
-	for _, dd := range d {
+	for _, d := range dr.Demographics {
 		var dl []string
-		for _, o := range dd.Options {
+		for _, o := range d.Options {
 			dl = append(dl, o.Text)
 		}
 		labels = append(labels, dl)
@@ -21,12 +34,30 @@ func (d Demographics) Labels() [][]string {
 	return labels
 }
 
-func (d Demographics) Values(participants []edulab.Participant,
-	participations []edulab.Participation) ([][]int, error) {
+func NewDemographicsResult(ds []edulab.Demographic, dos []edulab.DemographicOption,
+	participants []edulab.Participant, participations []edulab.Participation) (DemographicsResult, error) {
+
+	dr := DemographicsResult{
+		Demographics:   NewDemographics(ds, dos),
+		participants:   participants,
+		participations: participations,
+	}
+	data, err := dr.data()
+	if err != nil {
+		return dr, err
+	}
+
+	dr.Categories = dr.categories()
+	dr.Data = data
+
+	return dr, nil
+}
+
+func (dr DemographicsResult) data() ([][]int, error) {
 
 	// Filter and cast to map[string][]string
 	result := make(map[string][]string)
-	for _, p := range participations {
+	for _, p := range dr.participations {
 		if p.Demographics == nil {
 			continue
 		}
@@ -65,10 +96,10 @@ func (d Demographics) Values(participants []edulab.Participant,
 
 	var values [][]int
 
-	for _, dd := range d {
-		dv := make([]int, len(dd.Options))
-		for i, o := range dd.Options {
-			for _, v := range result[dd.ID] {
+	for _, d := range dr.Demographics {
+		dv := make([]int, len(d.Options))
+		for i, o := range d.Options {
+			for _, v := range result[d.ID] {
 				if v == o.ID {
 					dv[i]++
 				}
@@ -81,12 +112,7 @@ func (d Demographics) Values(participants []edulab.Participant,
 	return values, nil
 }
 
-type Demographic struct {
-	edulab.Demographic
-	Options []edulab.DemographicOption
-}
-
-func NewDemographics(ds []edulab.Demographic, dos []edulab.DemographicOption) Demographics {
+func NewDemographics(ds []edulab.Demographic, dos []edulab.DemographicOption) []Demographic {
 	var do []Demographic
 	for _, d := range ds {
 		nd := Demographic{
