@@ -12,7 +12,7 @@
   (function(window){
 
     const labels = {{ .Results.Categories }};
-    const cohorts = {{ .Results.Cohorts }};
+    const cohorts = {{ if .Results.Cohorts }}{{ .Results.Cohorts }}{{ else }}[]{{ end }};
 
     const colors = [
         "#00CFFF", // Primary
@@ -32,6 +32,21 @@
     Chart.defaults.backgroundColor = '#00CFFF';
     Chart.defaults.borderColor = null;
     Chart.defaults.color = '#fff';
+    ChartDataLabels.afterDraw = function(chart, args, options) {
+        if (chart.data.datasets.map((d) => d.data.length).reduce((p, a) => p + a, 0) === 0) {
+            // No data is present
+            const ctx = chart.ctx;
+            const width = chart.width;
+            const height = chart.height;
+
+            ctx.save();
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = `${window.getComputedStyle(document.body).color}`;
+            ctx.fillText({{ .Texts.Empty }}, width / 2, height / 2);
+            ctx.restore();
+        }
+    };
 
     // Shared options between charts
     const options = {
@@ -81,7 +96,7 @@
             data: {
                 labels: labels[i],
                 datasets: datasets
-                },
+            },
             options: options
         });
         charts.push(chart);

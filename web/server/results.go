@@ -109,10 +109,12 @@ func (srv *Server) demographicsResult(w http.ResponseWriter, r *http.Request,
 			Title        string
 			Options      string
 			Participants string
+			Empty        string
 		}{
 			Title:        title,
 			Options:      printer.Sprintf("Options"),
 			Participants: printer.Sprintf("Participants"),
+			Empty:        printer.Sprintf("No data available yet"),
 		},
 	}
 
