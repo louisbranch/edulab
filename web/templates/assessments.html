@@ -25,11 +25,13 @@
           {{ end }}
     </table>
 {{ else }}
-    <p>{{ .Texts.NoAssessments }}</p>
+    <p>{{ .Texts.Empty }}</p>
 {{ end }}
 
 <div class="pure-button-group">
-  <a href="/experiments/{{ .Experiment.PublicID }}/assessments/new" class="pure-button pure-button-primary" disabled>{{ .Texts.Add }} ({{ .Texts.ComingSoon }})</a>
+  <a href="/experiments/{{ .Experiment.PublicID }}/assessments/new" class="pure-button pure-button-primary" disabled>
+    <i class="fa fa-plus"></i> {{ .Texts.Add }} ({{ .Texts.ComingSoon }})
+  </a>
 </div>
 
 {{ end }}

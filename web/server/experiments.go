@@ -8,6 +8,7 @@ import (
 
 	"github.com/louisbranch/edulab"
 	"github.com/louisbranch/edulab/web/presenter"
+	"github.com/louisbranch/edulab/wizard"
 )
 
 func (srv *Server) experimentsHandler(w http.ResponseWriter, r *http.Request) {
@@ -122,6 +123,12 @@ func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
 	}
 
 	err = srv.DB.CreateExperiment(experiment)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	err = wizard.Demographics(srv.DB, *experiment)
 	if err != nil {
 		srv.renderError(w, r, err)
 		return

@@ -7,7 +7,7 @@ import (
 	"github.com/louisbranch/edulab"
 )
 
-func demographics(db edulab.Database, experiment edulab.Experiment) error {
+func Demographics(db edulab.Database, experiment edulab.Experiment) error {
 
 	printer := message.NewPrinter(language.English)
 
