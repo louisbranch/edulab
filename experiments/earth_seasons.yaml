@@ -113,5 +113,5 @@ bootstrap_config:
     - correct_probabilities: [0.7, 0.85]
       bias_factor: 0.3
   demographics:
-    cluster_probability: 0.7
-    outlier_probability: 0.1
+    probabilities: [0.7, 0.25, 0.05] # Probabilities for the first three options
+    outlier_probability: 0.1         # 10% chance of overriding with a random outlier

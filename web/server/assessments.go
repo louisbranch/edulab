@@ -21,6 +21,11 @@ func (srv *Server) assessmentsHandler(w http.ResponseWriter, r *http.Request,
 	}
 
 	pid := segments[0]
+	if pid == "new" {
+		srv.newAssessment(w, r, experiment)
+		return
+	}
+
 	assessment, err := srv.DB.FindAssessment(experiment.ID, pid)
 	if err != nil {
 		srv.renderError(w, r, err)
@@ -88,6 +93,46 @@ func (srv *Server) listAssessments(w http.ResponseWriter, r *http.Request,
 			Edit:       printer.Sprintf("Edit"),
 			Preview:    printer.Sprintf("Preview"),
 			ComingSoon: printer.Sprintf("Coming Soon"),
+		},
+	}
+
+	srv.render(w, page)
+}
+
+// newAssessment displays the assessment editor to the instructor.
+func (srv *Server) newAssessment(w http.ResponseWriter, r *http.Request,
+	experiment edulab.Experiment) {
+
+	printer, page := srv.i18n(w, r)
+
+	title := printer.Sprintf("New Assessment")
+	page.Title = title
+	page.Partials = []string{"assessment_new"}
+	page.Content = struct {
+		Breadcrumbs template.HTML
+		Experiment  edulab.Experiment
+		Types       [][]string
+		Texts       interface{}
+	}{
+		Breadcrumbs: presenter.ExperimentBreadcrumb(experiment, printer),
+		Experiment:  experiment,
+		Types:       presenter.AssessmentTypes(printer),
+		Texts: struct {
+			Title                  string
+			Description            string
+			DescriptionHelp        string
+			DescriptionPlaceholder string
+			Type                   string
+			Submit                 string
+			ComingSoon             string
+		}{
+			Title:                  title,
+			Description:            printer.Sprintf("Description"),
+			DescriptionHelp:        printer.Sprintf("Optional. Markdown supported."),
+			DescriptionPlaceholder: printer.Sprintf("e.g. Gauge your current knowledge about the causes of Earth's..."),
+			Type:                   printer.Sprintf("Type"),
+			Submit:                 printer.Sprintf("Create"),
+			ComingSoon:             printer.Sprintf("Coming Soon"),
 		},
 	}
 
