@@ -43,7 +43,7 @@ func (s *Server) i18n(w http.ResponseWriter, r *http.Request) (*message.Printer,
 		{Code: "pt-BR", Name: "Pt"},
 	}
 	for i, l := range languages {
-		url := r.URL
+		url := *r.URL
 		query := url.Query()
 		query.Set("lang", l.Code)
 		url.RawQuery = query.Encode()
