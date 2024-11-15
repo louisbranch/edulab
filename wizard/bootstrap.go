@@ -15,7 +15,13 @@ import (
 
 type BootstrapConfig struct {
 	Participants      int                `yaml:"participants"` // Total number of participants to create
-	AssessmentConfigs []AssessmentConfig `yaml:"assessments"`  // Configuration for each assessment in the experiment
+	AssessmentConfigs []AssessmentConfig `yaml:"assessments"`  // Configuration for each assessment
+	DemographicConfig DemographicConfig  `yaml:"demographics"` // Configuration for demographics
+}
+
+type DemographicConfig struct {
+	ClusterProbability float64 `yaml:"cluster_probability"` // Probability of choosing from a primary cluster
+	OutlierProbability float64 `yaml:"outlier_probability"` // Probability of choosing an outlier
 }
 
 type AssessmentConfig struct {
@@ -60,6 +66,25 @@ func bootstrapParticipants(db edulab.Database, config BootstrapConfig,
 		}
 	}
 
+	// Fetch demographics for the experiment
+	demographics, err := db.FindDemographics(experiment.ID)
+	if err != nil {
+		return errors.Wrap(err, "could not find demographics for experiment")
+	}
+	demographicOptions := make(map[string][]edulab.DemographicOption)
+
+	options, err := db.FindDemographicOptions(experiment.ID)
+	if err != nil {
+		return errors.Wrapf(err, "could not find options for experiment %s", experiment.ID)
+	}
+	for _, option := range options {
+		id := option.DemographicID
+		demographicOptions[id] = append(demographicOptions[id], option)
+	}
+
+	// Assume a single demographics config to apply to all fields
+	demographicConfig := config.DemographicConfig
+
 	for i := len(participants); i < config.Participants; i++ {
 		cohort := cohorts[i%numCohorts] // Distribute participants evenly across cohorts
 		participant := edulab.Participant{
@@ -72,6 +97,20 @@ func bootstrapParticipants(db edulab.Database, config BootstrapConfig,
 		// Create the participant in the database
 		if err := db.CreateParticipant(&participant); err != nil {
 			return errors.Wrap(err, "could not create participant")
+		}
+
+		// Generate demographics for each participant
+		demographicResponses := make(map[string]string)
+		for _, demographic := range demographics {
+			options := demographicOptions[demographic.ID]
+			selectedOption := selectDemographicOption(options, demographicConfig)
+			demographicResponses[demographic.ID] = selectedOption.ID
+		}
+
+		// Serialize demographics to JSON
+		demographicsJSON, err := json.Marshal(demographicResponses)
+		if err != nil {
+			return errors.Wrap(err, "could not marshal demographic responses to JSON")
 		}
 
 		for j, assessment := range assessments {
@@ -92,6 +131,10 @@ func bootstrapParticipants(db edulab.Database, config BootstrapConfig,
 				AssessmentID:  assessment.ID,
 				ParticipantID: participant.ID,
 				Answers:       answers,
+			}
+
+			if j == 0 {
+				participation.Demographics = demographicsJSON
 			}
 
 			if err := db.CreateParticipation(&participation); err != nil {
@@ -190,6 +233,35 @@ func selectChoices(question edulab.Question, choices []edulab.QuestionChoice,
 	}
 
 	return selectedChoices
+}
+
+func selectDemographicOption(options []edulab.DemographicOption,
+	config DemographicConfig) edulab.DemographicOption {
+	if len(options) == 0 {
+		return edulab.DemographicOption{} // No options available
+	}
+
+	// Shuffle options to simulate randomness in each selection
+	rand.Shuffle(len(options), func(i, j int) {
+		options[i], options[j] = options[j], options[i]
+	})
+
+	// Clustered selection: Choose the first option with `clusterProbability`
+	if rand.Float64() < config.ClusterProbability {
+		return options[0]
+	}
+
+	// Outlier selection: Choose a random option as an outlier
+	if rand.Float64() < config.OutlierProbability {
+		return options[rand.Intn(len(options))]
+	}
+
+	// Default: Pick a random option within the clustered group
+	clusterSize := int(float64(len(options)) * config.ClusterProbability)
+	if clusterSize < 1 {
+		clusterSize = 1 // Ensure at least one option in the cluster
+	}
+	return options[rand.Intn(clusterSize)]
 }
 
 // Helper function to convert a string (question ID) to a consistent seed value
