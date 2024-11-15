@@ -8,7 +8,9 @@
         <div class="pure-form-message-inline">{{ .Texts.DescriptionHelp }}</div>
         <textarea name="description" rows="5" class="pure-input-1" placeholder="{{ .Texts.DescriptionPlaceholder }}">{{ .Assessment.Description }}</textarea>
     </fieldset>
-    <button type="submit" class="pure-button pure-button-primary" disabled>{{ .Texts.Save }} ({{ .Texts.ComingSoon }})</button>
+    <button type="submit" class="pure-button pure-button-primary" disabled>
+      <i class="fa fa-edit"></i>{{ .Texts.Update }} ({{ .Texts.ComingSoon }})
+    </button>
 </form>
 
 <h3>{{ .Texts.Questions }}</h3>
@@ -41,7 +43,7 @@
     <i class="fa fa-eye"></i> {{ .Texts.Preview }}
   </a>
   <a href="/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/questions/new" class="pure-button pure-button-primary">
-    <i class="fa fa-plus-circle"></i> {{ .Texts.Add }}
+    <i class="fa fa-plus"></i> {{ .Texts.Add }}
   </a>
 </div>
 

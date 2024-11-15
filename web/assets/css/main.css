@@ -154,6 +154,12 @@ nav ul li a {
     line-height: 1.5em;
 }
 
+.pure-warning {
+    padding: 1em;
+    border: 1px solid var(--highlight-color);
+    font-weight: bold;
+}
+
 /* Form Styles */
 .pure-form input[type="text"],
 .pure-form textarea {

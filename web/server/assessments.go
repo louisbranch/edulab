@@ -172,7 +172,7 @@ func (srv *Server) editAssessment(w http.ResponseWriter, r *http.Request,
 			Text                   string
 			Actions                string
 			Edit                   string
-			Save                   string
+			Update                 string
 			Add                    string
 			Empty                  string
 			Preview                string
@@ -185,7 +185,7 @@ func (srv *Server) editAssessment(w http.ResponseWriter, r *http.Request,
 			Text:                   printer.Sprintf("Text"),
 			Actions:                printer.Sprintf("Actions"),
 			Edit:                   printer.Sprintf("Edit"),
-			Save:                   printer.Sprintf("Save"),
+			Update:                 printer.Sprintf("Update"),
 			Add:                    printer.Sprintf("Add Question"),
 			Empty:                  printer.Sprintf("No questions yet"),
 			Preview:                printer.Sprintf("Preview"),
@@ -281,9 +281,12 @@ func (srv *Server) showAssessment(w http.ResponseWriter, r *http.Request,
 		Assessment:  presenter.NewAssessment(assessment, printer),
 		Questions:   qp,
 		Texts: struct {
-			Submit string
+			Submit  string
+			Warning string
 		}{
 			Submit: printer.Sprintf("Submit"),
+			Warning: printer.Sprintf(`Warning: This assessment doesn't have any questions yet.
+Please contact your instructor for assistance.`),
 		},
 	}
 
