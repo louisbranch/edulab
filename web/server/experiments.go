@@ -61,6 +61,9 @@ func (srv *Server) experimentsHandler(w http.ResponseWriter, r *http.Request) {
 		case "publish":
 			srv.publishHandler(w, r, experiment)
 			return
+		case "results":
+			srv.resultsHandler(w, r, experiment, segments[2:])
+			return
 		default:
 			srv.renderNotFound(w, r)
 			return

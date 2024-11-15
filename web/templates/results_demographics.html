@@ -1,0 +1,103 @@
+{{ define "content" }}
+
+{{ range $i, $demographic := .Demographics }}
+    <h3>{{ $demographic.Text }}</h3>
+    <div style="position: relative; height: 50vh;">
+        <canvas id="demographics-{{ $i }}"></canvas>
+    </div>
+{{ end }}
+
+<script>
+  (function(window){
+
+    const labels = {{ .Texts.Labels }};
+
+    // Initialize ChartJS settings
+    Chart.register(ChartDataLabels);
+    Chart.defaults.backgroundColor = '#e6b12c';
+    Chart.defaults.borderColor = null;
+    Chart.defaults.color = '#fff';
+
+    // Shared options between charts
+    const options = {
+        responsive: true,
+        indexAxis: 'y',
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            },
+            datalabels: {
+                color: '#131a2e',
+                formatter: function(value, context) {
+                    const data = context.dataset.data;
+                    const sum = data.reduce((partialSum, a) => partialSum + a, 0);
+                    const perc = data[context.dataIndex] / sum;
+                    return "" + Math.round(perc*100) + "%";
+                }
+            }
+        },
+        scales: {
+            y: {
+                title: {
+                    display: true,
+                    text: {{ .Texts.Options }}
+                }
+            },
+            x: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: {{ .Texts.Participants }}
+                },
+                ticks: {
+                    stepSize: 1
+                }
+            }
+        }
+    };
+
+    var charts = [];
+    var canvases = document.querySelectorAll('canvas')
+    for (var i = 0; i < canvases.length; i++) {
+        var el = canvases[i];
+        var chart = new Chart(canvases[i], {
+            type: 'bar',
+            data: {
+                labels: labels[i],
+                 datasets: [{
+                    borderWidth: 1,
+                    backgroundColor: '#e6b12c',
+                 }]
+                },
+            options: options
+        });
+        charts.push(chart);
+    }
+
+    function fetchData(){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    for (var i = 0; i < data.length; i++) {
+                        var chart = charts[i];
+                        chart.config.data.datasets[0].data = data[i];
+                        chart.update();
+                    }
+                }
+            }
+        };
+        xhr.open("GET", window.location.pathname, true);
+        xhr.setRequestHeader("Content-type", "application/json");
+        xhr.send();
+    }
+
+    fetchData();
+    window.setInterval(fetchData, 5*1000); // Fetch every 5s;
+
+    })(window);
+
+</script>
+{{ end }}
