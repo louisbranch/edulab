@@ -25,7 +25,9 @@
 {{ end }}
 
 <div class="pure-button-group">
-  <a href="/experiments/{{ .Experiment.PublicID }}/cohorts/new" class="pure-button pure-button-primary">{{ .Texts.AddCohort }}</a>
+  <a href="/experiments/{{ .Experiment.PublicID }}/cohorts/new" class="pure-button pure-button-primary">
+    <i class="fa fa-plus"></i> {{ .Texts.Add }}
+  </a>
 </div>
 
 {{ end }}

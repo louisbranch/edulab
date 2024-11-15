@@ -12,7 +12,7 @@ import (
 func (srv *Server) cohortsHandler(w http.ResponseWriter, r *http.Request,
 	experiment edulab.Experiment, segments []string) {
 
-	log.Print("[DEBUG] web/server/cohorts.go: handling cohorts")
+	log.Print("[DEBUG] Routing Cohorts")
 
 	if len(segments) < 1 {
 		if r.Method == http.MethodPost {
@@ -64,13 +64,13 @@ func (srv *Server) listCohorts(w http.ResponseWriter, r *http.Request, experimen
 		Experiment:  experiment,
 		Cohorts:     cohorts,
 		Texts: struct {
-			AddCohort string
+			Add       string
 			Name      string
 			Actions   string
 			Edit      string
 			NoCohorts string
 		}{
-			AddCohort: printer.Sprintf("Add Cohort"),
+			Add:       printer.Sprintf("Add Cohort"),
 			Name:      printer.Sprintf("Name"),
 			Actions:   printer.Sprintf("Actions"),
 			Edit:      printer.Sprintf("Edit"),
