@@ -1,6 +1,8 @@
 package server
 
 import (
+	"database/sql"
+	"errors"
 	"fmt"
 	"net/http"
 
@@ -20,6 +22,11 @@ func (srv *Server) render(w http.ResponseWriter, page web.Page) {
 }
 
 func (srv *Server) renderError(w http.ResponseWriter, r *http.Request, err error) {
+	if errors.Is(err, sql.ErrNoRows) {
+		srv.renderNotFound(w, r)
+		return
+	}
+
 	printer, page := srv.i18n(w, r)
 	page.Title = printer.Sprintf("Internal Server Error")
 	page.Content = err
