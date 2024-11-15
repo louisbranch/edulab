@@ -137,7 +137,7 @@ func create(db edulab.Database, experimentData Experiment) error {
 	}
 
 	// Import demographics
-	err = demographics(db, experiment)
+	err = Demographics(db, experiment)
 	if err != nil {
 		return errors.Wrap(err, "could not create demographics")
 	}

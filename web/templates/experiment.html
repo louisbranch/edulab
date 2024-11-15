@@ -28,6 +28,11 @@
                 <i class="fa fa-link"></i> {{ .Texts.Publish }}
             </a>
         </li>
+        <li class="pure-menu-item">
+            <a href="/experiments/{{ .Experiment.PublicID }}/results/demographics" class="pure-menu-link">
+                <i class="fa fa-chart-bar"></i> {{ .Texts.Results }}
+            </a>
+        </li>
     </ul>
 </div>
 {{ end }}

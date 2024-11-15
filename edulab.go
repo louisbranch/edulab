@@ -83,6 +83,7 @@ type Participant struct {
 
 type Participation struct {
 	ExperimentID  string
+	CohortID      string
 	AssessmentID  string
 	ParticipantID string
 	Answers       json.RawMessage `json:"answers"`
@@ -124,6 +125,7 @@ type Database interface {
 	CreateParticipation(*Participation) error
 	UpdateParticipation(Participation) error
 	FindParticipation(experimentID string, assessmentID string, participantID string) (Participation, error)
+	FindParticipations(experimentID string) ([]Participation, error)
 	FindParticipationsByParticipant(experimentID string, participantID string) ([]Participation, error)
 	FindParticipationsByAssessment(experimentID string, assessmentID string) ([]Participation, error)
 }

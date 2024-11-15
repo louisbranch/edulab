@@ -8,6 +8,7 @@ import (
 
 	"github.com/louisbranch/edulab"
 	"github.com/louisbranch/edulab/web/presenter"
+	"github.com/louisbranch/edulab/wizard"
 )
 
 func (srv *Server) experimentsHandler(w http.ResponseWriter, r *http.Request) {
@@ -61,6 +62,9 @@ func (srv *Server) experimentsHandler(w http.ResponseWriter, r *http.Request) {
 		case "publish":
 			srv.publishHandler(w, r, experiment)
 			return
+		case "results":
+			srv.resultsHandler(w, r, experiment, segments[2:])
+			return
 		default:
 			srv.renderNotFound(w, r)
 			return
@@ -76,23 +80,27 @@ func (srv *Server) newExperimentForm(w http.ResponseWriter, r *http.Request) {
 	page.Title = printer.Sprintf("New Experiment")
 	page.Partials = []string{"experiment_new"}
 	page.Content = struct {
-		Title                  string
-		Name                   string
-		NamePlaceholder        string
-		Description            string
-		DescriptionHelp        string
-		DescriptionPlaceholder string
-		Create                 string
-		Breadcrumbs            template.HTML
+		Breadcrumbs template.HTML
+		Texts       interface{}
 	}{
-		Title:                  printer.Sprintf("New Experiment"),
-		Name:                   printer.Sprintf("Name"),
-		NamePlaceholder:        printer.Sprintf("e.g. Earth's Seasons"),
-		Description:            printer.Sprintf("Description"),
-		DescriptionHelp:        printer.Sprintf("Optional. Not visible to participants."),
-		DescriptionPlaceholder: printer.Sprintf("e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop..."),
-		Create:                 printer.Sprintf("Create"),
-		Breadcrumbs:            presenter.HomeBreadcrumbs(printer),
+		Breadcrumbs: presenter.HomeBreadcrumbs(printer),
+		Texts: struct {
+			Title                  string
+			Name                   string
+			NamePlaceholder        string
+			Description            string
+			DescriptionHelp        string
+			DescriptionPlaceholder string
+			Create                 string
+		}{
+			Title:                  printer.Sprintf("New Experiment"),
+			Name:                   printer.Sprintf("Name"),
+			NamePlaceholder:        printer.Sprintf("e.g. Earth's Seasons"),
+			Description:            printer.Sprintf("Description"),
+			DescriptionHelp:        printer.Sprintf("Optional. Not visible to participants."),
+			DescriptionPlaceholder: printer.Sprintf("e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop..."),
+			Create:                 printer.Sprintf("Create"),
+		},
 	}
 
 	srv.render(w, page)
@@ -120,6 +128,12 @@ func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	err = wizard.Demographics(srv.DB, *experiment)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
 	uri := fmt.Sprintf("/experiments/%s", experiment.PublicID)
 	http.Redirect(w, r, uri, http.StatusFound)
 }
@@ -135,21 +149,25 @@ func (srv *Server) listExperiments(w http.ResponseWriter, r *http.Request) {
 	page.Title = printer.Sprintf("Experiments")
 	page.Partials = []string{"experiments"}
 	page.Content = struct {
-		Breadcrumbs  template.HTML
-		Title        string
-		Experiments  []presenter.Experiment
-		Name         string
-		Participants string
-		Created      string
-		None         string
+		Breadcrumbs template.HTML
+		Experiments []presenter.Experiment
+		Texts       interface{}
 	}{
-		Breadcrumbs:  presenter.HomeBreadcrumbs(printer),
-		Title:        printer.Sprintf("Experiments"),
-		Experiments:  presenter.ExperimentsList(experiments, printer),
-		Name:         printer.Sprintf("Name"),
-		Participants: printer.Sprintf("Participants"),
-		Created:      printer.Sprintf("Created"),
-		None:         printer.Sprintf("No available experiments"),
+		Breadcrumbs: presenter.HomeBreadcrumbs(printer),
+		Experiments: presenter.ExperimentsList(experiments, printer),
+		Texts: struct {
+			Title        string
+			Name         string
+			Participants string
+			Created      string
+			None         string
+		}{
+			Title:        printer.Sprintf("Experiments"),
+			Name:         printer.Sprintf("Name"),
+			Participants: printer.Sprintf("Participants"),
+			Created:      printer.Sprintf("Created"),
+			None:         printer.Sprintf("No available experiments"),
+		},
 	}
 	srv.render(w, page)
 }
@@ -160,25 +178,29 @@ func (srv *Server) editExperiment(w http.ResponseWriter, r *http.Request, experi
 	page.Title = printer.Sprintf("Edit Experiment: %s", experiment.Name)
 	page.Partials = []string{"experiment_edit"}
 	page.Content = struct {
-		Edit                   string
-		Name                   string
-		NamePlaceholder        string
-		Description            string
-		DescriptionHelp        string
-		DescriptionPlaceholder string
-		Experiment             edulab.Experiment
-		Update                 string
-		Breadcrumbs            template.HTML
+		Breadcrumbs template.HTML
+		Experiment  edulab.Experiment
+		Texts       interface{}
 	}{
-		Edit:                   printer.Sprintf("Edit Experiment"),
-		Name:                   printer.Sprintf("Name"),
-		NamePlaceholder:        printer.Sprintf("e.g. Earth's Seasons"),
-		Description:            printer.Sprintf("Description"),
-		DescriptionHelp:        printer.Sprintf("Optional. Not visible to participants."),
-		DescriptionPlaceholder: printer.Sprintf("e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop..."),
-		Experiment:             experiment,
-		Update:                 printer.Sprintf("Update"),
-		Breadcrumbs:            presenter.ExperimentBreadcrumb(experiment, printer),
+		Breadcrumbs: presenter.ExperimentBreadcrumb(experiment, printer),
+		Experiment:  experiment,
+		Texts: struct {
+			Edit                   string
+			Name                   string
+			NamePlaceholder        string
+			Description            string
+			DescriptionHelp        string
+			DescriptionPlaceholder string
+			Update                 string
+		}{
+			Edit:                   printer.Sprintf("Edit Experiment"),
+			Name:                   printer.Sprintf("Name"),
+			NamePlaceholder:        printer.Sprintf("e.g. Earth's Seasons"),
+			Description:            printer.Sprintf("Description"),
+			DescriptionHelp:        printer.Sprintf("Optional. Not visible to participants."),
+			DescriptionPlaceholder: printer.Sprintf("e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop..."),
+			Update:                 printer.Sprintf("Update"),
+		},
 	}
 
 	srv.render(w, page)
@@ -202,12 +224,14 @@ func (srv *Server) showExperiment(w http.ResponseWriter, r *http.Request, experi
 			Assessments  string
 			Cohorts      string
 			Publish      string
+			Results      string
 		}{
 			EditSettings: printer.Sprintf("Edit Settings"),
 			Demographics: printer.Sprintf("Demographics"),
 			Assessments:  printer.Sprintf("Assessments"),
 			Cohorts:      printer.Sprintf("Cohorts"),
 			Publish:      printer.Sprintf("Participation Links"),
+			Results:      printer.Sprintf("Results"),
 		},
 	}
 

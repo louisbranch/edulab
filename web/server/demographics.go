@@ -65,6 +65,7 @@ func (srv *Server) listDemographics(w http.ResponseWriter, r *http.Request,
 			Add         string
 			ComingSoon  string
 			Preview     string
+			Empty       string
 		}{
 			Title:       title,
 			Demographic: printer.Sprintf("Demographic"),
@@ -73,6 +74,7 @@ func (srv *Server) listDemographics(w http.ResponseWriter, r *http.Request,
 			Add:         printer.Sprintf("Add Demographic"),
 			ComingSoon:  printer.Sprintf("Coming Soon"),
 			Preview:     printer.Sprintf("Preview"),
+			Empty:       printer.Sprintf("No demographics have been added yet."),
 		},
 	}
 

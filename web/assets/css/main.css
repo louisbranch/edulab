@@ -16,6 +16,10 @@
         --highlight-color: #007ACC;
         --button-hover-text-color: #FFFFFF;
     }
+    
+    canvas {
+        filter: invert(1) hue-rotate(180deg);
+    }
 }
 
 /* Global Styles */

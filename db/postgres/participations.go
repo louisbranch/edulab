@@ -56,10 +56,22 @@ func (db *DB) FindParticipation(experimentID, assessmentID, participantID string
 	return p, nil
 }
 
-func (db *DB) FindParticipationsByParticipant(experimentID, participantID string) ([]edulab.Participation, error) {
-	var participations []edulab.Participation
+func (db *DB) FindParticipations(experimentID string) ([]edulab.Participation, error) {
 
-	query := `SELECT assessment_id, answers, demographics
+	query := `SELECT experiment_id, assessment_id, participant_id, answers, demographics
+		FROM participations WHERE experiment_id = $1`
+
+	rows, err := db.Query(query, experimentID)
+	if err != nil {
+		return nil, errors.Wrap(err, "query participations")
+	}
+	defer rows.Close()
+
+	return db.findParticipations(rows)
+}
+
+func (db *DB) FindParticipationsByParticipant(experimentID, participantID string) ([]edulab.Participation, error) {
+	query := `SELECT experiment_id, assessment_id, participant_id, answers, demographics
 		FROM participations WHERE experiment_id = $1 AND participant_id = $2`
 
 	rows, err := db.Query(query, experimentID, participantID)
@@ -68,35 +80,11 @@ func (db *DB) FindParticipationsByParticipant(experimentID, participantID string
 	}
 	defer rows.Close()
 
-	for rows.Next() {
-		p := edulab.Participation{
-			ExperimentID:  experimentID,
-			ParticipantID: participantID,
-		}
-
-		var answers, demographics sql.NullString
-		err = rows.Scan(&p.AssessmentID, &answers, &demographics)
-		if err != nil {
-			return nil, errors.Wrap(err, "scan participation")
-		}
-
-		if answers.Valid {
-			p.Answers = []byte(answers.String)
-		}
-		if demographics.Valid {
-			p.Demographics = []byte(demographics.String)
-		}
-
-		participations = append(participations, p)
-	}
-
-	return participations, nil
+	return db.findParticipations(rows)
 }
 
 func (db *DB) FindParticipationsByAssessment(experimentID, assessmentID string) ([]edulab.Participation, error) {
-	var participations []edulab.Participation
-
-	query := `SELECT participant_id, answers, demographics
+	query := `SELECT experiment_id, assessment_id, participant_id, answers, demographics
 		FROM participations WHERE experiment_id = $1 AND assessment_id = $2`
 
 	rows, err := db.Query(query, experimentID, assessmentID)
@@ -105,15 +93,17 @@ func (db *DB) FindParticipationsByAssessment(experimentID, assessmentID string) 
 	}
 	defer rows.Close()
 
+	return db.findParticipations(rows)
+}
+
+func (db *DB) findParticipations(rows *sql.Rows) ([]edulab.Participation, error) {
+	var participations []edulab.Participation
+
 	for rows.Next() {
-		p := edulab.Participation{
-			ExperimentID: experimentID,
-			AssessmentID: assessmentID,
-		}
+		p := edulab.Participation{}
 
 		var answers, demographics sql.NullString
-
-		err = rows.Scan(&p.ParticipantID, &answers, &demographics)
+		err := rows.Scan(&p.ExperimentID, &p.AssessmentID, &p.ParticipantID, &answers, &demographics)
 		if err != nil {
 			return nil, errors.Wrap(err, "scan participation")
 		}
