@@ -7,15 +7,16 @@ import (
 	"github.com/louisbranch/edulab"
 )
 
-// QuestionScore calculates the score for each participant for a given question and returns a map from participantID to score.
-func (r *Result) QuestionScore(questionID string) (map[string]float64, error) {
+// QuestionScore calculates the score for each participation for a given question
+// and returns a map from cohortID to score.
+func (r *Result) QuestionScore(questionID string) (map[string][]float64, error) {
 	question, exists := r.questions[questionID]
 	if !exists {
 		return nil, errors.New("question not found")
 	}
 
-	// Map to store scores by participant ID
-	scores := make(map[string]float64)
+	// Map to store scores by cohort ID
+	scores := make(map[string][]float64)
 	for participantID, participations := range r.participation {
 		for _, participation := range participations {
 			// Deserialize answers for this participation
@@ -30,13 +31,24 @@ func (r *Result) QuestionScore(questionID string) (map[string]float64, error) {
 				continue // Skip if participant didn't answer this question
 			}
 
+			participant := r.participants[participantID]
+			cohortID := participant.CohortID
+
 			// Score the answer based on question type
+			var score float64
 			switch question.Type {
 			case edulab.InputSingle:
-				scores[participantID] = r.scoreSingleAnswer(questionID, answerIDs)
+				score = r.scoreSingleAnswer(questionID, answerIDs)
 			case edulab.InputMultiple:
-				scores[participantID] = r.scoreMultipleAnswer(questionID, answerIDs)
+				score = r.scoreMultipleAnswer(questionID, answerIDs)
 			}
+
+			// Append score to cohort's list of scores
+			if _, exists := scores[cohortID]; !exists {
+				scores[cohortID] = []float64{}
+			}
+
+			scores[cohortID] = append(scores[cohortID], score)
 		}
 	}
 	return scores, nil
@@ -65,17 +77,32 @@ func (r *Result) scoreMultipleAnswer(questionID string, answerIDs []string) floa
 	}
 
 	// Calculate ratio of correct answers given
-	totalCorrect := len(correctSet)
-	if totalCorrect == 0 {
+	total := len(correctSet)
+	if total == 0 {
 		return 0.0
 	}
-	correctCount := 0
+
+	correct := 0
+	wrong := 0
 	for _, answerID := range answerIDs {
 		if correctSet[answerID] {
-			correctCount++
+			correct++
+		} else {
+			wrong++
 		}
 	}
-	return float64(correctCount) / float64(totalCorrect)
+
+	// Calculate the points per correct answer
+	points := 1.0 / float64(total)
+
+	// Calculate score based on correct and incorrect answers
+	score := float64(correct)*points - float64(wrong)*points
+
+	// Ensure score is not negative
+	if score < 0 {
+		return 0
+	}
+	return score
 }
 
 // getCorrectChoices retrieves the correct choices for a question.

@@ -3,18 +3,12 @@ package main
 import (
 	"fmt"
 	"log"
-	"math/rand"
-	"net/http"
 	"os"
-	"path/filepath"
-	"time"
 
 	"github.com/louisbranch/edulab"
 	"github.com/louisbranch/edulab/db/postgres"
 	"github.com/louisbranch/edulab/db/sqlite"
-	"github.com/louisbranch/edulab/web/html"
-	"github.com/louisbranch/edulab/web/server"
-	"github.com/louisbranch/edulab/wizard"
+	"github.com/louisbranch/edulab/result"
 )
 
 func main() {
@@ -66,23 +60,25 @@ func main() {
 		log.Fatal(err)
 	}
 
-	experiments := os.Getenv("EXPERIMENTS_PATH")
-	if experiments == "" {
-		experiments = "experiments"
-	}
-	err = wizard.ImportYAML(db, experiments)
+	res, err := result.New(db, "1")
 	if err != nil {
-		log.Printf("[WARN] Could not import experiments: %v\n", err)
+		log.Fatal(err)
 	}
 
-	srv := &server.Server{
-		DB:       db,
-		Template: html.New(filepath.Join(files, "templates")),
-		Assets:   http.FileServer(http.Dir(filepath.Join(files, "assets"))),
-		Random:   rand.New(rand.NewSource(time.Now().UnixNano())),
+	aq := []result.AssessmentQuestions{
+		{AssessmentID: "1", QuestionID: "2"},
+		{AssessmentID: "2", QuestionID: "7"},
 	}
-	mux := srv.NewServeMux()
 
-	log.Printf("Server listening on port %s\n", port)
-	log.Fatal(http.ListenAndServe(":"+port, mux))
+	cmp, err := result.NewComparison(res, aq, []string{"1", "2"})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = cmp.ToCSV("comparison.csv")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	log.Println("Comparison data exported to comparison.csv")
 }

@@ -105,3 +105,13 @@ cohorts:
   - public_id: C2
     name: Workshop
     description: Students participating in the interactive workshop format.
+bootstrap_config:
+  participants: 0
+  assessments:
+    - correct_probabilities: [0.3, 0.3]
+      bias_factor: 0.5
+    - correct_probabilities: [0.7, 0.85]
+      bias_factor: 0.3
+  demographics:
+    cluster_probability: 0.7
+    outlier_probability: 0.1

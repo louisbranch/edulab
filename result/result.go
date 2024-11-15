@@ -6,6 +6,7 @@ type Result struct {
 	db            edulab.Database
 	experimentID  string
 	participants  map[string]edulab.Participant
+	assessments   map[string]edulab.Assessment
 	cohorts       map[string]edulab.Cohort
 	questions     map[string]edulab.Question
 	choices       map[string][]edulab.QuestionChoice
@@ -18,6 +19,7 @@ func New(db edulab.Database, experimentID string) (*Result, error) {
 		db:            db,
 		experimentID:  experimentID,
 		participants:  make(map[string]edulab.Participant),
+		assessments:   make(map[string]edulab.Assessment),
 		cohorts:       make(map[string]edulab.Cohort),
 		questions:     make(map[string]edulab.Question),
 		choices:       make(map[string][]edulab.QuestionChoice),
@@ -48,16 +50,24 @@ func New(db edulab.Database, experimentID string) (*Result, error) {
 		return nil, err
 	}
 	for _, a := range assessments {
+		r.assessments[a.ID] = a
+
 		questions, err := db.FindQuestions(a.ID)
 		if err != nil {
 			return nil, err
 		}
+		allChoices, err := db.FindQuestionChoices(a.ID)
+		if err != nil {
+			return nil, err
+		}
 		for _, q := range questions {
-			r.questions[q.ID] = q
-			choices, err := db.FindQuestionChoices(q.ID)
-			if err != nil {
-				return nil, err
+			var choices []edulab.QuestionChoice
+			for _, choice := range allChoices {
+				if choice.QuestionID == q.ID {
+					choices = append(choices, choice)
+				}
 			}
+			r.questions[q.ID] = q
 			r.choices[q.ID] = choices
 		}
 	}

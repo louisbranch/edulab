@@ -42,7 +42,8 @@ func (db *DB) FindParticipants(experimentID string) ([]edulab.Participant, error
 	var participants []edulab.Participant
 
 	query := `SELECT id, public_id, experiment_id, cohort_id, access_token
-		FROM participants WHERE experiment_id = $1`
+		FROM participants WHERE experiment_id = $1
+		ORDER BY id`
 
 	rows, err := db.Query(query, experimentID)
 	if err != nil {

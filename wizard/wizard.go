@@ -5,11 +5,12 @@ import (
 )
 
 type Experiment struct {
-	PublicID    string       `yaml:"public_id"`
-	Name        string       `yaml:"name"`
-	Description string       `yaml:"description"`
-	Assessments []Assessment `yaml:"assessments"`
-	Cohorts     []Cohort     `yaml:"cohorts"`
+	PublicID        string          `yaml:"public_id"`
+	Name            string          `yaml:"name"`
+	Description     string          `yaml:"description"`
+	Assessments     []Assessment    `yaml:"assessments"`
+	Cohorts         []Cohort        `yaml:"cohorts"`
+	BootstrapConfig BootstrapConfig `yaml:"bootstrap_config,omitempty"`
 }
 
 type Assessment struct {
