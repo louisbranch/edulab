@@ -1,13 +1,13 @@
 {{ define "content" }}
 {{ .Breadcrumbs }}
-<h2>{{ .Title }}</h2>  
+<h2>{{ .Texts.Title }}</h2>  
 {{ if .Experiments }}
     <table class="pure-table pure-table-horizontal">
         <thead>
             <th>#</th>
-            <th>{{ .Name }}</th>
-            <th>{{ .Participants }}</th>
-            <th>{{ .Created }}</th>
+            <th>{{ .Texts.Name }}</th>
+            <th>{{ .Texts.Participants }}</th>
+            <th>{{ .Texts.Created }}</th>
         </thead>
         <tbody>
             {{ range $i, $el := .Experiments }}
@@ -21,6 +21,6 @@
         </tbody>
     </table>
 {{ else }}
-    <p>{{ .None }}</p>
+    <p>{{ .Texts.None }}</p>
 {{ end }}
 {{ end }}

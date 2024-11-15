@@ -3,6 +3,7 @@ package server
 import (
 	"encoding/json"
 	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 
@@ -85,28 +86,30 @@ func (srv *Server) demographicsResult(w http.ResponseWriter, r *http.Request,
 		return
 	}
 
-	i18n, page := srv.i18n(w, r)
+	printer, page := srv.i18n(w, r)
 
-	title := i18n.Sprintf("Demographics")
+	title := printer.Sprintf("Demographics Results")
 	page.Title = title
 	page.Partials = []string{"results_demographics"}
 	page.Content = struct {
-		Title        string
+		Breadcrumbs  template.HTML
 		Experiment   edulab.Experiment
 		Demographics presenter.Demographics
 		Texts        interface{}
 	}{
-		Title:        title,
+		Breadcrumbs:  presenter.ExperimentBreadcrumb(experiment, printer),
 		Experiment:   experiment,
 		Demographics: dp,
 		Texts: struct {
+			Title        string
 			Labels       [][]string
 			Options      string
 			Participants string
 		}{
+			Title:        title,
 			Labels:       dp.Labels(),
-			Options:      i18n.Sprintf("Options"),
-			Participants: i18n.Sprintf("Participants"),
+			Options:      printer.Sprintf("Options"),
+			Participants: printer.Sprintf("Participants"),
 		},
 	}
 
