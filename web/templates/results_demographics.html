@@ -53,6 +53,9 @@
         responsive: true,
         indexAxis: 'x',
         maintainAspectRatio: false,
+        hover: {
+            mode: false
+        },
         plugins: {
             legend: {
                 display: true
@@ -60,18 +63,25 @@
             datalabels: {
                 color: '#131a2e',
                 formatter: function(value, context) {
-                    const data = context.dataset.data;
-                    const sum = data.reduce((partialSum, a) => partialSum + a, 0);
-                    const perc = data[context.dataIndex] / sum;
-                    return "" + Math.round(perc*100) + "%";
+                    return value === 0 ? '' : value;
                 }
             }
         },
         scales: {
+            x: {
+                stacked: true,
+                ticks: {
+                    beginAtZero: true
+                }
+            },
             y: {
+                stacked: true,
                 title: {
                     display: true,
                     text: {{ .Texts.Participants }}
+                },
+                ticks: {
+                    stepSize: 1
                 }
             }
         }

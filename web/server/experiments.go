@@ -108,6 +108,8 @@ func (srv *Server) newExperimentForm(w http.ResponseWriter, r *http.Request) {
 
 func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
 
+	printer, _ := srv.i18n(w, r)
+
 	err := r.ParseForm()
 	if err != nil {
 		srv.renderError(w, r, err)
@@ -117,7 +119,7 @@ func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
 	form := r.PostForm
 
 	experiment := &edulab.Experiment{
-		PublicID:    srv.newPublicID(3, 3),
+		PublicID:    srv.newPublicID(2),
 		Name:        form.Get("name"),
 		Description: form.Get("description"),
 	}
@@ -132,6 +134,44 @@ func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		srv.renderError(w, r, err)
 		return
+	}
+
+	types := []edulab.AssessmentType{
+		edulab.AssessmentTypePre,
+		edulab.AssessmentTypePost,
+	}
+
+	for _, t := range types {
+		assessment := &edulab.Assessment{
+			PublicID:     srv.newPublicID(2),
+			Type:         t,
+			ExperimentID: experiment.ID,
+		}
+
+		err = srv.DB.CreateAssessment(assessment)
+		if err != nil {
+			srv.renderError(w, r, err)
+			return
+		}
+	}
+
+	cohorts := []string{
+		printer.Sprintf("Base"),
+		printer.Sprintf("Intervention"),
+	}
+
+	for _, name := range cohorts {
+		cohort := &edulab.Cohort{
+			PublicID:     srv.newPublicID(2),
+			Name:         name,
+			ExperimentID: experiment.ID,
+		}
+
+		err = srv.DB.CreateCohort(cohort)
+		if err != nil {
+			srv.renderError(w, r, err)
+			return
+		}
 	}
 
 	uri := fmt.Sprintf("/experiments/%s", experiment.PublicID)

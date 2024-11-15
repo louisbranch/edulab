@@ -20,8 +20,8 @@ type BootstrapConfig struct {
 }
 
 type DemographicConfig struct {
-	ClusterProbability float64 `yaml:"cluster_probability"` // Probability of choosing from a primary cluster
-	OutlierProbability float64 `yaml:"outlier_probability"` // Probability of choosing an outlier
+	Probabilities      []float64 `yaml:"probabilities"`       // Probabilities for each option in order
+	OutlierProbability float64   `yaml:"outlier_probability"` // Probability of overriding with a random outlier
 }
 
 type AssessmentConfig struct {
@@ -103,7 +103,8 @@ func bootstrapParticipants(db edulab.Database, config BootstrapConfig,
 		demographicResponses := make(map[string]string)
 		for _, demographic := range demographics {
 			options := demographicOptions[demographic.ID]
-			selectedOption := selectDemographicOption(options, demographicConfig)
+			selectedOption := weightedRandomChoice(options, demographicConfig.Probabilities,
+				demographicConfig.OutlierProbability)
 			demographicResponses[demographic.ID] = selectedOption.ID
 		}
 
@@ -235,33 +236,46 @@ func selectChoices(question edulab.Question, choices []edulab.QuestionChoice,
 	return selectedChoices
 }
 
-func selectDemographicOption(options []edulab.DemographicOption,
-	config DemographicConfig) edulab.DemographicOption {
+func weightedRandomChoice(options []edulab.DemographicOption,
+	probabilities []float64, outlierProbability float64) edulab.DemographicOption {
 	if len(options) == 0 {
 		return edulab.DemographicOption{} // No options available
 	}
 
-	// Shuffle options to simulate randomness in each selection
-	rand.Shuffle(len(options), func(i, j int) {
-		options[i], options[j] = options[j], options[i]
-	})
-
-	// Clustered selection: Choose the first option with `clusterProbability`
-	if rand.Float64() < config.ClusterProbability {
-		return options[0]
+	// Ensure probabilities match the number of options, default to 0 for extra options
+	if len(probabilities) < len(options) {
+		diff := len(options) - len(probabilities)
+		probabilities = append(probabilities, make([]float64, diff)...)
 	}
 
-	// Outlier selection: Choose a random option as an outlier
-	if rand.Float64() < config.OutlierProbability {
+	// Normalize probabilities to sum to 1
+	total := 0.0
+	for _, p := range probabilities {
+		total += p
+	}
+	if total > 0 {
+		for i := range probabilities {
+			probabilities[i] /= total
+		}
+	}
+
+	// Outlier check: override with a random outlier if probability is met
+	if rand.Float64() < outlierProbability {
 		return options[rand.Intn(len(options))]
 	}
 
-	// Default: Pick a random option within the clustered group
-	clusterSize := int(float64(len(options)) * config.ClusterProbability)
-	if clusterSize < 1 {
-		clusterSize = 1 // Ensure at least one option in the cluster
+	// Weighted random selection
+	r := rand.Float64()
+	cumulative := 0.0
+	for i, option := range options {
+		cumulative += probabilities[i]
+		if r < cumulative {
+			return option
+		}
 	}
-	return options[rand.Intn(clusterSize)]
+
+	// Fallback (should not be reached if probabilities are normalized)
+	return options[0]
 }
 
 // Helper function to convert a string (question ID) to a consistent seed value

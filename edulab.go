@@ -17,8 +17,8 @@ type Experiment struct {
 type AssessmentType string
 
 const (
-	AssessmentTypePre AssessmentType = "pre"
-	AssessmentTypePos AssessmentType = "post"
+	AssessmentTypePre  AssessmentType = "pre"
+	AssessmentTypePost AssessmentType = "post"
 )
 
 type Assessment struct {

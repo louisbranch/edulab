@@ -1,0 +1,27 @@
+{{ define "content" }}
+{{ .Breadcrumbs }}
+<h2>{{ .Texts.Title }}</h2>
+
+<form class="pure-form pure-form-stacked" method="post" action="/experiments/{{ .Experiment.PublicID }}/assessments/">
+    <fieldset>
+        <legend>{{ .Texts.Description }}</legend>
+        <div class="pure-form-message-inline">{{ .Texts.DescriptionHelp }}</div>
+        <textarea name="description" rows="5" class="pure-input-1" placeholder="{{ .Texts.DescriptionPlaceholder }}"></textarea>
+    </fieldset>
+    <fieldset>
+        <legend>{{ .Texts.Type }}</legend>
+        {{ range $i, $type := .Types }}
+            <label for="type_{{ index $type 0 }}">
+                <input type="radio" name="type" id="type_{{ index $type 0 }}" value="{{ index $type 0 }}"
+                    required {{ if eq $i 0}}checked{{end}}>
+                {{ index $type 1 }}
+            </label>
+        {{ end }}
+    </fieldset>
+    <button type="submit" class="pure-button pure-button-primary" disabled>
+        <i class="fa fa-plus"></i>
+        {{ .Texts.Submit }} {{ .Texts.ComingSoon }}
+    </button>
+</form>
+
+{{ end }}
