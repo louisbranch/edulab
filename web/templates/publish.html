@@ -1,9 +1,14 @@
 {{ define "content" }}
 {{ .Breadcrumbs }}
-<h2>{{ .Title }}</h2>
+<h2>{{ .Texts.Title }}</h2>
 
 {{ range $assessment := .Assessments }}
     <h3>{{ $assessment.Type }}</h3>
+    {{ if eq $assessment.QuestionsCount 0 }}
+        <div class="pure-warning">
+            {{ $.Texts.Warning }}
+        </div>
+    {{ end }}
 
     {{ range $cohort := $.Cohorts }}
         <h4>{{ $cohort.Name }}</h4>

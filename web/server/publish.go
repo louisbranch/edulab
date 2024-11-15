@@ -35,19 +35,26 @@ func (srv *Server) publishHandler(w http.ResponseWriter, r *http.Request,
 	page.Title = title
 	page.Partials = []string{"publish"}
 	page.Content = struct {
-		Title       string
 		Breadcrumbs template.HTML
 		Domain      string
 		edulab.Experiment
 		Cohorts     []edulab.Cohort
 		Assessments []presenter.Assessment
+		Texts       interface{}
 	}{
-		Title:       title,
 		Breadcrumbs: presenter.ExperimentBreadcrumb(experiment, printer),
 		Domain:      domain,
 		Experiment:  experiment,
 		Cohorts:     cohorts,
 		Assessments: presenter.NewAssessments(assessments, printer),
+		Texts: struct {
+			Title   string
+			Warning string
+		}{
+			Title: title,
+			Warning: printer.Sprintf(`Warning: This assessment doesn't have any questions yet.
+Please add questions before sharing the link with participants.`),
+		},
 	}
 
 	srv.render(w, page)
