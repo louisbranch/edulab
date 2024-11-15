@@ -24,7 +24,9 @@
 {{ end }}
 
 <div class="pure-button-group">
-  <a href="/experiments/{{ .Experiment.PublicID }}/demographics/preview" class="pure-button">{{ .Texts.Preview }}</a>
+  <a href="/experiments/{{ .Experiment.PublicID }}/demographics/preview" class="pure-button">
+    <i class="fa fa-eye"></i> {{ .Texts.Preview }}
+  </a>
   <a href="/experiments/{{ .Experiment.PublicID }}/demographics/new" class="pure-button" disabled>{{ .Texts.Add }} ({{ .Texts.ComingSoon }})</a>
 </div>
 

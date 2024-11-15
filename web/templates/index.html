@@ -6,13 +6,19 @@
 <nav>
     <ul>
         <li>
-            <a class="pure-button" href="/experiments/new">{{ .NewExperiment }}</a>
+            <a class="pure-button" href="/experiments/new">
+                <i class="fa fa-flask"></i> {{ .NewExperiment }}
+            </a>
         </li>
         <li>
-            <a class="pure-button pure-button-link" href="/guide">{{ .EducatorsGuide }}</a>
+            <a class="pure-button pure-button-link" href="/guide">
+                <i class="fa fa-chalkboard-teacher"></i> {{ .EducatorsGuide }}
+            </a>
         </li>
         <li>
-            <a class="pure-button pure-button-link" href="/experiments">{{ .PreviousExperiments }}</a>
+            <a class="pure-button pure-button-link" href="/experiments">
+                <i class="fa fa-history"></i> {{ .PreviousExperiments }}
+            </a>
         </li>
     </ul>
 </nav>

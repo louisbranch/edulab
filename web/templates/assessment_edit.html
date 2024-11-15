@@ -25,7 +25,9 @@
                 <tr>
                  <td>{{ .Text }}</td>
                  <td>
-                    <a href="/experiments/{{ $.Experiment.PublicID }}/assessments/{{ $.Assessment.PublicID }}/questions/{{ .ID }}">{{ $.Texts.Edit }}</a>
+                    <a href="/experiments/{{ $.Experiment.PublicID }}/assessments/{{ $.Assessment.PublicID }}/questions/{{ .ID }}">
+                      {{ $.Texts.Edit }}
+                    </a>
                  </td>
                 </tr>
           {{ end }}
@@ -35,8 +37,12 @@
 {{ end }}
 
 <div class="pure-button-group">
-  <a href="/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/preview" class="pure-button">{{ .Texts.Preview }}</a>
-  <a href="/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/questions/new" class="pure-button pure-button-primary">{{ .Texts.Add }}</a>
+  <a href="/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/preview" class="pure-button">
+    <i class="fa fa-eye"></i> {{ .Texts.Preview }}
+  </a>
+  <a href="/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/questions/new" class="pure-button pure-button-primary">
+    <i class="fa fa-plus-circle"></i> {{ .Texts.Add }}
+  </a>
 </div>
 
 
