@@ -21,7 +21,8 @@ func (d Demographics) Labels() [][]string {
 	return labels
 }
 
-func (d Demographics) Values(participations []edulab.Participation) ([][]int, error) {
+func (d Demographics) Values(participants []edulab.Participant,
+	participations []edulab.Participation) ([][]int, error) {
 
 	// Filter and cast to map[string][]string
 	result := make(map[string][]string)

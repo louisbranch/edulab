@@ -14,14 +14,14 @@
 
     // Initialize ChartJS settings
     Chart.register(ChartDataLabels);
-    Chart.defaults.backgroundColor = '#e6b12c';
+    Chart.defaults.backgroundColor = '#00CFFF';
     Chart.defaults.borderColor = null;
     Chart.defaults.color = '#fff';
 
     // Shared options between charts
     const options = {
         responsive: true,
-        indexAxis: 'y',
+        indexAxis: 'x',
         maintainAspectRatio: false,
         plugins: {
             legend: {
@@ -41,17 +41,7 @@
             y: {
                 title: {
                     display: true,
-                    text: {{ .Texts.Options }}
-                }
-            },
-            x: {
-                beginAtZero: true,
-                title: {
-                    display: true,
                     text: {{ .Texts.Participants }}
-                },
-                ticks: {
-                    stepSize: 1
                 }
             }
         }
@@ -67,7 +57,7 @@
                 labels: labels[i],
                  datasets: [{
                     borderWidth: 1,
-                    backgroundColor: '#e6b12c',
+                    backgroundColor: '#00CFFF'
                  }]
                 },
             options: options

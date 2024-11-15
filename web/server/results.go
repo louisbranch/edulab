@@ -57,13 +57,19 @@ func (srv *Server) demographicsResult(w http.ResponseWriter, r *http.Request,
 
 	if r.Header.Get("Content-type") == "application/json" {
 
+		participants, err := srv.DB.FindParticipants(experiment.ID)
+		if err != nil {
+			srv.renderError(w, r, err)
+			return
+		}
+
 		participations, err := srv.DB.FindParticipations(experiment.ID)
 		if err != nil {
 			srv.renderError(w, r, err)
 			return
 		}
 
-		answers, err := dp.Values(participations)
+		answers, err := dp.Values(participants, participations)
 		if err != nil {
 			srv.renderError(w, r, err)
 			return
