@@ -42,6 +42,12 @@ func (s *Server) listResults(w http.ResponseWriter, _ *http.Request,
 func (srv *Server) demographicsResult(w http.ResponseWriter, r *http.Request,
 	experiment edulab.Experiment) {
 
+	cohorts, err := srv.DB.FindCohorts(experiment.ID)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
 	demographics, err := srv.DB.FindDemographics(experiment.ID)
 	if err != nil {
 		srv.renderError(w, r, err)
@@ -66,7 +72,8 @@ func (srv *Server) demographicsResult(w http.ResponseWriter, r *http.Request,
 		return
 	}
 
-	dr, err := presenter.NewDemographicsResult(demographics, options, participants, participations)
+	dr, err := presenter.NewDemographicsResult(demographics, options, cohorts,
+		participants, participations)
 	if err != nil {
 		srv.renderError(w, r, err)
 		return

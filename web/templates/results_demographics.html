@@ -12,6 +12,20 @@
   (function(window){
 
     const labels = {{ .Results.Categories }};
+    const cohorts = {{ .Results.Cohorts }};
+
+    const colors = [
+        "#00CFFF", // Primary
+        "#FF8C00", // Secondary 1
+        "#FF00A6", // Secondary 2
+        "#008000", // Accent 1
+        "#800080", // Accent 2
+        "#FFD700", // Accent 3
+        "#0055FF", // Accent 4
+        "#FF4500", // Accent 5
+        "#4B0082", // Accent 6
+        "#40E0D0", // Accent 7
+    ]
 
     // Initialize ChartJS settings
     Chart.register(ChartDataLabels);
@@ -26,7 +40,7 @@
         maintainAspectRatio: false,
         plugins: {
             legend: {
-                display: false
+                display: true
             },
             datalabels: {
                 color: '#131a2e',
@@ -48,6 +62,16 @@
         }
     };
 
+    var datasets = [];
+    for (var i = 0; i < cohorts.length; i++) {
+        datasets.push({
+            label: cohorts[i],
+            data: [],
+            backgroundColor: colors[i],
+            borderWidth: 1
+        });
+    }
+
     var charts = [];
     var canvases = document.querySelectorAll('canvas')
     for (var i = 0; i < canvases.length; i++) {
@@ -56,10 +80,7 @@
             type: 'bar',
             data: {
                 labels: labels[i],
-                 datasets: [{
-                    borderWidth: 1,
-                    backgroundColor: '#00CFFF'
-                 }]
+                datasets: datasets
                 },
             options: options
         });
@@ -74,7 +95,9 @@
                     var data = JSON.parse(xhr.responseText);
                     for (var i = 0; i < data.length; i++) {
                         var chart = charts[i];
-                        chart.config.data.datasets[0].data = data[i];
+                        for (var j = 0; j < data[i].length; j++) {
+                            chart.config.data.datasets[j].data = data[i][j];
+                        }
                         chart.update();
                     }
                 }

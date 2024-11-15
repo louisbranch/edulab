@@ -83,6 +83,7 @@ type Participant struct {
 
 type Participation struct {
 	ExperimentID  string
+	CohortID      string
 	AssessmentID  string
 	ParticipantID string
 	Answers       json.RawMessage `json:"answers"`
