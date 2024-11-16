@@ -2,6 +2,9 @@
 {{ .Breadcrumbs }}
 <h2>{{ .Texts.Title }}</h2>
 
+{{ if .Texts.Error }}
+  <div class="pure-warning">{{ .Texts.Error }}</div>
+{{ else }}
 <div id="chartsContainer">
     <!-- Charts will be dynamically added here -->
 </div>
@@ -32,6 +35,14 @@
       .then(data => {
         const chartsContainer = document.getElementById('chartsContainer');
 
+        if (data == null || data.length == 0) {
+            var noData = document.createElement('h3');
+            noData.innerHTML = 'No data available yet';
+
+            chartsContainer.appendChild(noData);
+        }
+
+
         data.forEach((item, index) => {
             if (item.pValue == 1) {
                 return;
@@ -43,7 +54,7 @@
 
           // Create a section for each question
           const sectionDiv = document.createElement('div');
-          sectionDiv.innerHTML = `<h3>Question ${index + 1}</h3>`;
+          sectionDiv.innerHTML = `<h3>${item.question}</h3>`;
           chartsContainer.appendChild(sectionDiv);
 
           // Bar chart for Pre vs. Post Scores with Learning Gain
@@ -140,4 +151,6 @@
       .catch(error => console.error('Error loading JSON data:', error));
 
   </script>
+{{ end }}
+
 {{ end }}
