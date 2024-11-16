@@ -30,6 +30,9 @@ func (srv *Server) resultsHandler(w http.ResponseWriter, r *http.Request,
 	case "demographics":
 		srv.demographicsResult(w, r, experiment)
 		return
+	case "assessments":
+		srv.assessmentsResult(w, r, experiment)
+		return
 	case "gains":
 		srv.gainsResult(w, r, experiment)
 		return
@@ -121,6 +124,49 @@ func (srv *Server) demographicsResult(w http.ResponseWriter, r *http.Request,
 		}{
 			Title:        title,
 			Options:      printer.Sprintf("Options"),
+			Participants: printer.Sprintf("Participants"),
+			Empty:        printer.Sprintf("No data available yet"),
+		},
+	}
+
+	srv.render(w, page)
+}
+
+func (srv *Server) assessmentsResult(w http.ResponseWriter, r *http.Request,
+	experiment edulab.Experiment) {
+
+	if r.Header.Get("Content-type") == "application/json" {
+
+		w.Header().Set("Content-Type", "application/json")
+		err := json.NewEncoder(w).Encode(struct{}{})
+		if err != nil {
+			srv.renderError(w, r, err)
+			return
+		}
+
+		return
+	}
+
+	printer, page := srv.i18n(w, r)
+
+	title := printer.Sprintf("Assessments Results")
+	page.Title = title
+	page.Partials = []string{"results_assessments"}
+	page.Content = struct {
+		Breadcrumbs template.HTML
+		Experiment  edulab.Experiment
+		Texts       interface{}
+	}{
+		Breadcrumbs: presenter.ExperimentBreadcrumb(experiment, printer),
+		Experiment:  experiment,
+		Texts: struct {
+			Title        string
+			Choices      string
+			Participants string
+			Empty        string
+		}{
+			Title:        title,
+			Choices:      printer.Sprintf("Choices"),
 			Participants: printer.Sprintf("Participants"),
 			Empty:        printer.Sprintf("No data available yet"),
 		},

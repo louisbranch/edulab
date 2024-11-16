@@ -268,7 +268,6 @@ func (srv *Server) showExperiment(w http.ResponseWriter, r *http.Request, experi
 			Publish       string
 			Results       string
 			LearningGains string
-			ComingSoon    string
 		}{
 			Experiment:    printer.Sprintf("Experiment %s", experiment.Name),
 			Settings:      printer.Sprintf("Settings"),
@@ -279,7 +278,6 @@ func (srv *Server) showExperiment(w http.ResponseWriter, r *http.Request, experi
 			Publish:       printer.Sprintf("Participation Links"),
 			Results:       printer.Sprintf("Results"),
 			LearningGains: printer.Sprintf("Learning Gains"),
-			ComingSoon:    printer.Sprintf("Coming soon"),
 		},
 	}
 

@@ -1,0 +1,141 @@
+{{ define "content" }}
+{{ .Breadcrumbs }}
+<h2>{{ .Texts.Title }}</h2>
+
+<script>
+  (function(window){
+
+    return;
+
+    const labels = [];
+    const cohorts = [];
+
+    const colors = [
+        "#00CFFF", // Primary
+        "#FF8C00", // Secondary 1
+        "#FF00A6", // Secondary 2
+        "#008000", // Accent 1
+        "#800080", // Accent 2
+        "#FFD700", // Accent 3
+        "#0055FF", // Accent 4
+        "#FF4500", // Accent 5
+        "#4B0082", // Accent 6
+        "#40E0D0", // Accent 7
+    ]
+
+    // Initialize ChartJS settings
+    Chart.register(ChartDataLabels);
+    Chart.defaults.backgroundColor = '#00CFFF';
+    Chart.defaults.borderColor = null;
+    Chart.defaults.color = '#fff';
+    ChartDataLabels.afterDraw = function(chart, args, options) {
+        var sum = chart.data.datasets.map((d) => d.data.map((i) => i).reduce((p, a) => p + a, 0)).reduce((p, a) => p + a, 0);
+        window.console.log(sum);
+        
+        if (sum === 0) {
+            // No data is present
+            const ctx = chart.ctx;
+            const width = chart.width;
+            const height = chart.height;
+
+            ctx.save();
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = `${window.getComputedStyle(document.body).color}`;
+            ctx.fillText({{ .Texts.Empty }}, width / 2, height / 2);
+            ctx.restore();
+        }
+    };
+
+    // Shared options between charts
+    const options = {
+        responsive: true,
+        indexAxis: 'x',
+        maintainAspectRatio: false,
+        hover: {
+            mode: false
+        },
+        plugins: {
+            legend: {
+                display: true
+            },
+            datalabels: {
+                color: '#131a2e',
+                formatter: function(value, context) {
+                    return value === 0 ? '' : value;
+                }
+            }
+        },
+        scales: {
+            x: {
+                stacked: true,
+                ticks: {
+                    beginAtZero: true
+                }
+            },
+            y: {
+                stacked: true,
+                title: {
+                    display: true,
+                    text: {{ .Texts.Participants }}
+                },
+                ticks: {
+                    stepSize: 1
+                }
+            }
+        }
+    };
+
+    var datasets = [];
+    for (var i = 0; i < cohorts.length; i++) {
+        datasets.push({
+            label: cohorts[i],
+            data: [],
+            backgroundColor: colors[i],
+            borderWidth: 1
+        });
+    }
+
+    var charts = [];
+    var canvases = document.querySelectorAll('canvas')
+    for (var i = 0; i < canvases.length; i++) {
+        var el = canvases[i];
+        var chart = new Chart(canvases[i], {
+            type: 'bar',
+            data: {
+                labels: labels[i],
+                datasets: datasets
+            },
+            options: options
+        });
+        charts.push(chart);
+    }
+
+    function fetchData(){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    for (var i = 0; i < data.length; i++) {
+                        var chart = charts[i];
+                        for (var j = 0; j < data[i].length; j++) {
+                            chart.config.data.datasets[j].data = data[i][j];
+                        }
+                        chart.update();
+                    }
+                }
+            }
+        };
+        xhr.open("GET", window.location.pathname, true);
+        xhr.setRequestHeader("Content-type", "application/json");
+        xhr.send();
+    }
+
+    fetchData();
+    window.setInterval(fetchData, 5*1000); // Fetch every 5s;
+
+    })(window);
+
+</script>
+{{ end }}
