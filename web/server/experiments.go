@@ -156,7 +156,7 @@ func (srv *Server) createExperiment(w http.ResponseWriter, r *http.Request) {
 	}
 
 	cohorts := []string{
-		printer.Sprintf("Base"),
+		printer.Sprintf("Control"),
 		printer.Sprintf("Intervention"),
 	}
 

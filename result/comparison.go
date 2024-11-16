@@ -30,7 +30,7 @@ func NewComparison(r *Result, assessmentQuestions []AssessmentQuestions,
 		data:    make(map[string][]float64),
 	}
 
-	cohortLabels := []string{"base", "intervention"}
+	cohortLabels := []string{"control", "intervention"}
 	if len(cohorts) != 2 {
 		cohortLabels = []string{}
 		for _, cohortID := range cohorts {
@@ -114,19 +114,19 @@ func (c *Comparison) ToCSV(filePath string) error {
 func (c *Comparison) ToStatsData() []stats.Data {
 	var data []stats.Data
 	for i := 0; i < c.rows; i++ {
-		if len(c.data["pre_base"]) <= i || len(c.data["post_base"]) <= i ||
+		if len(c.data["pre_control"]) <= i || len(c.data["post_control"]) <= i ||
 			len(c.data["pre_intervention"]) <= i || len(c.data["post_intervention"]) <= i {
 			break
 		}
 
-		preBase := c.data["pre_base"][i]
-		postBase := c.data["post_base"][i]
+		preControl := c.data["pre_control"][i]
+		postControl := c.data["post_control"][i]
 		preIntervention := c.data["pre_intervention"][i]
 		postIntervention := c.data["post_intervention"][i]
 
 		data = append(data, stats.Data{
-			PreBase:          preBase,
-			PostBase:         postBase,
+			PreControl:       preControl,
+			PostControl:      postControl,
 			PreIntervention:  preIntervention,
 			PostIntervention: postIntervention,
 		})

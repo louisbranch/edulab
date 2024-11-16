@@ -4,17 +4,17 @@
         {
             "id": "Pre-Assessment",
             "message": "Pre-Assessment",
-            "translation": ""
+            "translation": "Pré-avaliação"
         },
         {
             "id": "Post-Assessment",
             "message": "Post-Assessment",
-            "translation": ""
+            "translation": "Pós-avaliação"
         },
         {
             "id": "Unknown Assessment Type",
             "message": "Unknown Assessment Type",
-            "translation": ""
+            "translation": "Tipo de avaliação desconhecido"
         },
         {
             "id": "Home",
@@ -24,22 +24,22 @@
         {
             "id": "Assessments",
             "message": "Assessments",
-            "translation": ""
+            "translation": "Avaliações"
         },
         {
             "id": "Cohorts",
             "message": "Cohorts",
-            "translation": ""
+            "translation": "Coortes"
         },
         {
             "id": "Less than one min ago",
             "message": "Less than one min ago",
-            "translation": ""
+            "translation": "Menos de um minuto atrás"
         },
         {
             "id": "{Min} mins ago",
             "message": "{Min} mins ago",
-            "translation": "",
+            "translation": "Há {Min} minutos",
             "placeholders": [
                 {
                     "id": "Min",
@@ -54,7 +54,7 @@
         {
             "id": "{Hr} hours ago",
             "message": "{Hr} hours ago",
-            "translation": "",
+            "translation": "Há {Hr} horas",
             "placeholders": [
                 {
                     "id": "Hr",
@@ -69,7 +69,7 @@
         {
             "id": "{Days} days ago",
             "message": "{Days} days ago",
-            "translation": "",
+            "translation": "Há {Days} dias",
             "placeholders": [
                 {
                     "id": "Days",
@@ -84,102 +84,112 @@
         {
             "id": "Single Choice",
             "message": "Single Choice",
-            "translation": ""
+            "translation": "Escolha única"
         },
         {
             "id": "Multiple Choice",
             "message": "Multiple Choice",
-            "translation": ""
+            "translation": "Escolha múltipla"
         },
         {
             "id": "Text",
             "message": "Text",
-            "translation": ""
+            "translation": "Texto"
         },
         {
             "id": "Type",
             "message": "Type",
-            "translation": ""
+            "translation": "Tipo"
         },
         {
             "id": "Questions",
             "message": "Questions",
-            "translation": ""
+            "translation": "Perguntas"
         },
         {
             "id": "Actions",
             "message": "Actions",
-            "translation": ""
+            "translation": "Ações"
         },
         {
             "id": "Add Assessment",
             "message": "Add Assessment",
-            "translation": ""
+            "translation": "Adicionar Avaliação"
         },
         {
             "id": "No assessments yet",
             "message": "No assessments yet",
-            "translation": ""
+            "translation": "Nenhuma avaliação ainda"
         },
         {
             "id": "Edit",
             "message": "Edit",
-            "translation": ""
+            "translation": "Editar"
         },
         {
             "id": "Preview",
             "message": "Preview",
-            "translation": ""
+            "translation": "Visualizar"
         },
         {
             "id": "Coming Soon",
             "message": "Coming Soon",
-            "translation": ""
+            "translation": "Em breve"
         },
         {
-            "id": "Assessment",
-            "message": "Assessment",
-            "translation": ""
+            "id": "New Assessment",
+            "message": "New Assessment",
+            "translation": "Nova Avaliação"
         },
         {
             "id": "Description",
             "message": "Description",
-            "translation": ""
+            "translation": "Descrição"
         },
         {
             "id": "Optional. Markdown supported.",
             "message": "Optional. Markdown supported.",
-            "translation": ""
+            "translation": "Opcional. Suporta Markdown."
         },
         {
             "id": "e.g. Gauge your current knowledge about the causes of Earth's...",
             "message": "e.g. Gauge your current knowledge about the causes of Earth's...",
-            "translation": ""
+            "translation": "Ex.: Avalie seu conhecimento atual sobre as causas das estações da Terra..."
         },
         {
-            "id": "Save",
-            "message": "Save",
-            "translation": ""
+            "id": "Create",
+            "message": "Create",
+            "translation": "Criar"
+        },
+        {
+            "id": "Assessment",
+            "message": "Assessment",
+            "translation": "Avaliação"
+        },
+        {
+            "id": "Update",
+            "message": "Update",
+            "translation": "Atualizar"
         },
         {
             "id": "Add Question",
             "message": "Add Question",
-            "translation": ""
+            "translation": "Adicionar Pergunta"
         },
         {
             "id": "No questions yet",
             "message": "No questions yet",
-            "translation": ""
+            "translation": "Nenhuma pergunta ainda"
         },
         {
             "id": "Preview Assessment",
             "message": "Preview Assessment",
-            "translation": ""
+            "translation": "Visualizar Avaliação"
         },
         {
             "id": "Submit",
             "message": "Submit",
-            "translation": ""
+            "translation": "Enviar"
         },
         {
             "id": "Back",
@@ -189,7 +199,7 @@
         {
             "id": "{Name} - {Type}",
             "message": "{Name} - {Type}",
-            "translation": "",
+            "translation": "{Name} - {Type}",
             "placeholders": [
                 {
                     "id": "Name",
@@ -210,9 +220,14 @@
             ]
         },
         {
+            "id": "Warning: This assessment doesn't have any questions yet.\nPlease contact your instructor for assistance.",
+            "message": "Warning: This assessment doesn't have any questions yet.\nPlease contact your instructor for assistance.",
+            "translation": "Aviso: Esta avaliação ainda não tem perguntas.\nPor favor, entre em contato com seu instrutor para assistência."
+        },
+        {
             "id": "Add Cohort",
             "message": "Add Cohort",
-            "translation": ""
+            "translation": "Adicionar Coorte"
         },
         {
             "id": "Name",
@@ -222,42 +237,37 @@
         {
             "id": "No cohorts found",
             "message": "No cohorts found",
-            "translation": ""
+            "translation": "Nenhuma coorte encontrada"
         },
         {
             "id": "New Cohort",
             "message": "New Cohort",
-            "translation": ""
+            "translation": "Nova Coorte"
         },
         {
-            "id": "e.g. Baseline",
-            "message": "e.g. Baseline",
-            "translation": ""
+            "id": "e.g. Control",
+            "message": "e.g. Control",
+            "translation": "Ex.: Controle"
         },
         {
             "id": "Not visible to participants.",
             "message": "Not visible to participants.",
-            "translation": ""
+            "translation": "Não visível para os participantes."
         },
         {
             "id": "e.g. Cohort attending lecture-based instruction",
             "message": "e.g. Cohort attending lecture-based instruction",
-            "translation": ""
+            "translation": "Ex.: Coorte assistindo a uma instrução baseada em palestras"
         },
         {
             "id": "Optional. Not visible to participants.",
             "message": "Optional. Not visible to participants.",
-            "translation": ""
-        },
-        {
-            "id": "Create",
-            "message": "Create",
-            "translation": ""
+            "translation": "Opcional. Não visível para os participantes."
         },
         {
             "id": "Cohort: {Name}",
             "message": "Cohort: {Name}",
-            "translation": "",
+            "translation": "Coorte: {Name}",
             "placeholders": [
                 {
                     "id": "Name",
@@ -270,29 +280,29 @@
             ]
         },
         {
-            "id": "Update",
-            "message": "Update",
-            "translation": ""
-        },
-        {
             "id": "Demographics",
             "message": "Demographics",
-            "translation": ""
+            "translation": "Demografia"
         },
         {
             "id": "Demographic",
             "message": "Demographic",
-            "translation": ""
+            "translation": "Demográfico"
         },
         {
             "id": "Add Demographic",
             "message": "Add Demographic",
-            "translation": ""
+            "translation": "Adicionar Demografia"
+        },
+        {
+            "id": "No demographics have been added yet.",
+            "message": "No demographics have been added yet.",
+            "translation": "Nenhuma demografia foi adicionada ainda."
         },
         {
             "id": "Next",
             "message": "Next",
-            "translation": ""
+            "translation": "Próximo"
         },
         {
             "id": "New Experiment",
@@ -302,12 +312,22 @@
         {
             "id": "e.g. Earth's Seasons",
             "message": "e.g. Earth's Seasons",
-            "translation": ""
+            "translation": "Ex.: Estações do Ano"
         },
         {
             "id": "e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop...",
             "message": "e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop...",
-            "translation": ""
+            "translation": "Ex.: Este experimento irá comparar 2 coortes de estudantes. Uma assistindo a uma aula tradicional e a outra a um workshop..."
+        },
+        {
+            "id": "Control",
+            "message": "Control",
+            "translation": "Controle"
+        },
+        {
+            "id": "Intervention",
+            "message": "Intervention",
+            "translation": "Intervenção"
         },
         {
             "id": "Experiments",
@@ -317,7 +337,7 @@
         {
             "id": "Participants",
             "message": "Participants",
-            "translation": ""
+            "translation": "Participantes"
         },
         {
             "id": "Created",
@@ -327,12 +347,12 @@
         {
             "id": "No available experiments",
             "message": "No available experiments",
-            "translation": "Nehnum experimento disponível"
+            "translation": "Nenhum experimento disponível"
         },
         {
             "id": "Edit Experiment: {Name}",
             "message": "Edit Experiment: {Name}",
-            "translation": "",
+            "translation": "Editar Experimento: {Name}",
             "placeholders": [
                 {
                     "id": "Name",
@@ -347,12 +367,12 @@
         {
             "id": "Edit Experiment",
             "message": "Edit Experiment",
-            "translation": ""
+            "translation": "Editar Experimento"
         },
         {
             "id": "Experiment: {Name}",
             "message": "Experiment: {Name}",
-            "translation": "",
+            "translation": "Experimento: {Name}",
             "placeholders": [
                 {
                     "id": "Name",
@@ -365,24 +385,44 @@
             ]
         },
         {
-            "id": "Edit Settings",
-            "message": "Edit Settings",
-            "translation": ""
+            "id": "Experiment {Name}",
+            "message": "Experiment {Name}",
+            "translation": "Experimento {Name}",
+            "placeholders": [
+                {
+                    "id": "Name",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "experiment.Name"
+                }
+            ]
+        },
+        {
+            "id": "Settings",
+            "message": "Settings",
+            "translation": "Configurações"
         },
         {
             "id": "Participation Links",
             "message": "Participation Links",
-            "translation": ""
+            "translation": "Links de Participação"
+        },
+        {
+            "id": "Results",
+            "message": "Results",
+            "translation": "Resultados"
+        },
+        {
+            "id": "Learning Gains",
+            "message": "Learning Gains",
+            "translation": "Ganhos de Aprendizado"
         },
         {
             "id": "EduLab",
             "message": "EduLab",
             "translation": "EduLab"
-        },
-        {
-            "id": "Edulab",
-            "message": "Edulab",
-            "translation": ""
         },
         {
             "id": "About",
@@ -392,77 +432,82 @@
         {
             "id": "FAQ",
             "message": "FAQ",
-            "translation": ""
+            "translation": "Ajuda"
+        },
+        {
+            "id": "Warning: This assessment doesn't have any questions yet.\nPlease add questions before sharing the link with participants.",
+            "message": "Warning: This assessment doesn't have any questions yet.\nPlease add questions before sharing the link with participants.",
+            "translation": "Aviso: Esta avaliação ainda não possui perguntas.\nAdicione perguntas antes de compartilhar o link com os participantes."
         },
         {
             "id": "Thank you for participating!",
             "message": "Thank you for participating!",
-            "translation": ""
+            "translation": "Obrigado por participar!"
         },
         {
             "id": "Your participation has been successfully recorded.\n\nYou can now close this page.",
             "message": "Your participation has been successfully recorded.\n\nYou can now close this page.",
-            "translation": ""
+            "translation": "Sua participação foi registrada com sucesso.\n\nAgora você pode fechar esta página."
         },
         {
             "id": "New Question",
             "message": "New Question",
-            "translation": ""
+            "translation": "Nova Pergunta"
         },
         {
             "id": "Markdown supported",
             "message": "Markdown supported",
-            "translation": ""
+            "translation": "Markdown suportado"
         },
         {
             "id": "e.g. What is the best explanation for the cause of Earth's seasons?",
             "message": "e.g. What is the best explanation for the cause of Earth's seasons?",
-            "translation": ""
+            "translation": "Ex.: Qual é a melhor explicação para a causa das estações da Terra?"
         },
         {
             "id": "Choices",
             "message": "Choices",
-            "translation": ""
+            "translation": "Opções"
         },
         {
             "id": "Markdown supported. Empty choices will be ignored.",
             "message": "Markdown supported. Empty choices will be ignored.",
-            "translation": ""
+            "translation": "Markdown suportado. Opções vazias serão ignoradas."
         },
         {
             "id": "e.g. The tilt of Earth's axis",
             "message": "e.g. The tilt of Earth's axis",
-            "translation": ""
+            "translation": "Ex.: A inclinação do eixo da Terra"
         },
         {
             "id": "e.g. The distance from the Sun",
             "message": "e.g. The distance from the Sun",
-            "translation": ""
+            "translation": "Ex.: A distância do Sol"
         },
         {
             "id": "e.g. The Earth's elliptical orbit",
             "message": "e.g. The Earth's elliptical orbit",
-            "translation": ""
+            "translation": "Ex.: A órbita elíptica da Terra"
         },
         {
             "id": "e.g. The Earth's rotation",
             "message": "e.g. The Earth's rotation",
-            "translation": ""
+            "translation": "Ex.: A rotação da Terra"
         },
         {
             "id": "e.g. The Earth's revolution",
             "message": "e.g. The Earth's revolution",
-            "translation": ""
+            "translation": "Ex.: A revolução da Terra"
         },
         {
             "id": "Correct",
             "message": "Correct",
-            "translation": ""
+            "translation": "Correto"
         },
         {
             "id": "Question: {Text}",
             "message": "Question: {Text}",
-            "translation": "",
+            "translation": "Pergunta: {Text}",
             "placeholders": [
                 {
                     "id": "Text",
@@ -485,9 +530,64 @@
             "translation": "Página Não Encontrada"
         },
         {
+            "id": "Demographics Results",
+            "message": "Demographics Results",
+            "translation": "Resultados Demográficos"
+        },
+        {
+            "id": "Options",
+            "message": "Options",
+            "translation": "Opções"
+        },
+        {
+            "id": "No data available yet",
+            "message": "No data available yet",
+            "translation": "Nenhum dado disponível ainda"
+        },
+        {
+            "id": "Assessments Results",
+            "message": "Assessments Results",
+            "translation": "Resultados das Avaliações"
+        },
+        {
+            "id": "Gains Results",
+            "message": "Gains Results",
+            "translation": "Resultados dos Ganhos"
+        },
+        {
+            "id": "Average Correct Answers by Cohort",
+            "message": "Average Correct Answers by Cohort",
+            "translation": "Média de Respostas Corretas por Coorte"
+        },
+        {
+            "id": "Learning Gain by Cohort (Post - Pre)",
+            "message": "Learning Gain by Cohort (Post - Pre)",
+            "translation": "Ganho de Aprendizado por Coorte (Pós - Pré)"
+        },
+        {
+            "id": "Pre",
+            "message": "Pre",
+            "translation": "Pré"
+        },
+        {
+            "id": "Post",
+            "message": "Post",
+            "translation": "Pós"
+        },
+        {
+            "id": "No participation data available yet",
+            "message": "No participation data available yet",
+            "translation": "Nenhum dado de participação disponível ainda"
+        },
+        {
+            "id": "No comparison pairs available yet",
+            "message": "No comparison pairs available yet",
+            "translation": "Nenhum par de comparação disponível ainda"
+        },
+        {
             "id": "EduLab - Empowering Educators",
             "message": "EduLab - Empowering Educators",
-            "translation": ""
+            "translation": "EduLab - Capacitando Educadores"
         },
         {
             "id": "Empowering Educators Through Evidence-Based Insights",
@@ -497,12 +597,12 @@
         {
             "id": "EduLab brings **data-driven** experimentation into the classroom, empowering you to evaluate and refine teaching methods across distinct **cohorts**.\n\nBy running controlled pre- and post-assessments, you gain **evidence-based insights** into how different teaching approaches impact learning outcomes.\n\nCompare cohorts, **measure learning gains**, and adapt strategies to elevate student engagement—all supported by real-time educational data.",
             "message": "EduLab brings **data-driven** experimentation into the classroom, empowering you to evaluate and refine teaching methods across distinct **cohorts**.\n\nBy running controlled pre- and post-assessments, you gain **evidence-based insights** into how different teaching approaches impact learning outcomes.\n\nCompare cohorts, **measure learning gains**, and adapt strategies to elevate student engagement—all supported by real-time educational data.",
-            "translation": "O EduLab traz experimentação **orientada por dados** para a sala de aula, permitindo que você avalie e refine métodos de ensino em diferentes **coortes**.\n\n Com a realização de avaliações controladas antes e depois das aulas, você obtém **perspectivas baseadas em evidências** sobre como diferentes abordagens impactam os resultados de aprendizagem.\n\nCompare coortes, meça os **ganhos de aprendizado** e adapte suas estratégias para elevar o engajamento dos alunos—tudo isso com o suporte de dados educacionais em tempo real."
+            "translation": "O EduLab traz experimentação **baseada em dados** para a sala de aula, capacitando você a avaliar e refinar métodos de ensino em diferentes **coortes**.\n\nAo realizar avaliações controladas antes e depois das aulas, você obtém **insights baseados em evidências** sobre como diferentes abordagens de ensino impactam os resultados de aprendizagem.\n\nCompare coortes, **meça ganhos de aprendizado** e adapte estratégias para aumentar o engajamento dos alunos—tudo com o suporte de dados educacionais em tempo real."
         },
         {
             "id": "Educator's Guide",
             "message": "Educator's Guide",
-            "translation": ""
+            "translation": "Guia do Educador"
         },
         {
             "id": "Previous Experiments",
@@ -515,6 +615,11 @@
             "translation": "Referências"
         },
         {
+            "id": "This project was created as part of the course, Physical Science in Contemporary Society, at the University of Toronto with the intention of being a free resource for educators.",
+            "message": "This project was created as part of the course, Physical Science in Contemporary Society, at the University of Toronto with the intention of being a free resource for educators.",
+            "translation": "Este projeto foi criado como parte do curso Ciência Física na Sociedade Contemporânea, na Universidade de Toronto, com a intenção de ser um recurso gratuito para educadores."
+        },
+        {
             "id": "If you would like to contribute to the project, for example, adding more translations, get in touch:",
             "message": "If you would like to contribute to the project, for example, adding more translations, get in touch:",
             "translation": "Se você gostaria de contribuir para o projeto, por exemplo, adicionando mais traduções, entre em contato:"
@@ -525,124 +630,134 @@
             "translation": "Código Fonte"
         },
         {
+            "id": "### Introduction\nEduLab is designed to help educators incorporate scientific methods into their teaching strategies. This guide provides step-by-step instructions on using the platform to evaluate and refine your teaching methods with evidence-based insights.\n\n---\n\n### Step 1: Set Up an Experiment\n1. **Define Your Teaching Interventions**  \n   Identify the different teaching methods or approaches you want to compare (e.g., traditional lecture vs. interactive workshops).\n   \n2. **Create Cohorts**  \n   Use EduLab's cohort feature to group students who will experience specific teaching interventions. For example:\n   - **Control**: Traditional lecture method.\n   - **Intervention**: Interactive workshop approach.\n\n3. **Develop Assessments**  \n   Design a set of pre- and post-assessment questions to measure the effectiveness of each teaching method. Ensure these questions align with the learning objectives.\n\n---\n\n### Step 2: Conduct Pre-Assessment\n- Share the pre-assessment link with your cohorts before introducing any teaching intervention. \n- Encourage students to complete the assessment to establish a baseline for their knowledge.\n\n---\n\n### Step 3: Implement Your Teaching Interventions\n- Conduct your planned teaching methods for each cohort.\n- Ensure that the interventions are distinct and well-documented for accurate comparisons.\n\n---\n\n### Step 4: Conduct Post-Assessment\n- After completing the intervention, share the post-assessment link with the same cohorts.\n- Collect responses to measure the knowledge gained through each teaching method.\n\n---\n\n### Step 5: Analyze Results\n- Use EduLab's **Learning Gain Analysis** to compare pre- and post-assessment scores within and across cohorts. This allows you to:\n  - Identify which teaching method led to higher learning gains.\n  - Understand how different demographic groups responded to the interventions.\n  \n- Utilize the demographic data to tailor future teaching methods to meet the diverse needs of your students.\n\n---\n\n### Step 6: Iterate and Refine\n- Based on the results, refine your teaching strategies to optimize learning outcomes. Repeat the process to continually improve your methods.",
+            "message": "### Introduction\nEduLab is designed to help educators incorporate scientific methods into their teaching strategies. This guide provides step-by-step instructions on using the platform to evaluate and refine your teaching methods with evidence-based insights.\n\n---\n\n### Step 1: Set Up an Experiment\n1. **Define Your Teaching Interventions**  \n   Identify the different teaching methods or approaches you want to compare (e.g., traditional lecture vs. interactive workshops).\n   \n2. **Create Cohorts**  \n   Use EduLab's cohort feature to group students who will experience specific teaching interventions. For example:\n   - **Control**: Traditional lecture method.\n   - **Intervention**: Interactive workshop approach.\n\n3. **Develop Assessments**  \n   Design a set of pre- and post-assessment questions to measure the effectiveness of each teaching method. Ensure these questions align with the learning objectives.\n\n---\n\n### Step 2: Conduct Pre-Assessment\n- Share the pre-assessment link with your cohorts before introducing any teaching intervention. \n- Encourage students to complete the assessment to establish a baseline for their knowledge.\n\n---\n\n### Step 3: Implement Your Teaching Interventions\n- Conduct your planned teaching methods for each cohort.\n- Ensure that the interventions are distinct and well-documented for accurate comparisons.\n\n---\n\n### Step 4: Conduct Post-Assessment\n- After completing the intervention, share the post-assessment link with the same cohorts.\n- Collect responses to measure the knowledge gained through each teaching method.\n\n---\n\n### Step 5: Analyze Results\n- Use EduLab's **Learning Gain Analysis** to compare pre- and post-assessment scores within and across cohorts. This allows you to:\n  - Identify which teaching method led to higher learning gains.\n  - Understand how different demographic groups responded to the interventions.\n  \n- Utilize the demographic data to tailor future teaching methods to meet the diverse needs of your students.\n\n---\n\n### Step 6: Iterate and Refine\n- Based on the results, refine your teaching strategies to optimize learning outcomes. Repeat the process to continually improve your methods.",
+            "translation": "### Introdução\nO EduLab foi projetado para ajudar educadores a incorporar métodos científicos em suas estratégias de ensino. Este guia fornece instruções passo a passo sobre como usar a plataforma para avaliar e refinar seus métodos de ensino com insights baseados em evidências.\n\n---\n\n### Etapa 1: Configurar um Experimento\n1. **Defina Suas Intervenções de Ensino**  \n   Identifique os diferentes métodos ou abordagens de ensino que você deseja comparar (ex.: aula tradicional vs. workshops interativos).\n\n2. **Crie Coortes**  \n   Use o recurso de coortes do EduLab para agrupar estudantes que experimentarão intervenções de ensino específicas. Por exemplo:\n   - **Controle**: Método de aula tradicional.\n   - **Intervenção**: Abordagem de workshop interativo.\n\n3. **Desenvolva Avaliações**  \n   Projete um conjunto de perguntas de pré e pós-avaliação para medir a eficácia de cada método de ensino. Certifique-se de que essas perguntas estejam alinhadas com os objetivos de aprendizagem.\n\n---\n\n### Etapa 2: Realizar a Pré-Avaliação\n- Compartilhe o link da pré-avaliação com suas coortes antes de introduzir qualquer intervenção de ensino. \n- Incentive os estudantes a completar a avaliação para estabelecer uma linha de base de conhecimento.\n\n---\n\n### Etapa 3: Implemente Suas Intervenções de Ensino\n- Conduza os métodos de ensino planejados para cada coorte.\n- Certifique-se de que as intervenções sejam distintas e bem documentadas para comparações precisas.\n\n---\n\n### Etapa 4: Realizar a Pós-Avaliação\n- Após concluir a intervenção, compartilhe o link da pós-avaliação com as mesmas coortes.\n- Colete respostas para medir o conhecimento adquirido por meio de cada método de ensino.\n\n---\n\n### Etapa 5: Analisar os Resultados\n- Use a **Análise de Ganho de Aprendizado** do EduLab para comparar os resultados das pré e pós-avaliações dentro e entre coortes. Isso permite que você:\n  - Identifique qual método de ensino gerou maiores ganhos de aprendizado.\n  - Compreenda como diferentes grupos demográficos responderam às intervenções.\n  \n- Utilize os dados demográficos para adaptar futuros métodos de ensino às diversas necessidades de seus estudantes.\n\n---\n\n### Etapa 6: Iterar e Refinar\n- Com base nos resultados, refine suas estratégias de ensino para otimizar os resultados de aprendizagem. Repita o processo para melhorar continuamente seus métodos."
+        },
+        {
             "id": "Frequently Asked Questions",
             "message": "Frequently Asked Questions",
-            "translation": ""
+            "translation": "Perguntas Frequentes"
+        },
+        {
+            "id": "### How is data privacy ensured on EduLab?  \nEduLab anonymizes all student data, ensuring no personally identifiable information is stored or shared. The platform also complies with data protection standards.\n\n---\n\n### Can I customize the assessments?  \nYes, you can create and edit multiple-choice questions to align with your specific learning objectives.\n\n---\n\n### What types of demographic data can I collect?  \nEduLab allows you to collect data on gender, age group, year of study, and major, helping you understand how different factors influence learning outcomes.\n\n---\n\n### How do I interpret the learning gain analysis?  \nLearning gains are calculated as the difference between pre- and post-assessment scores, normalized to account for the initial baseline. Higher gains indicate more effective teaching methods.\n\n---\n\n### Is the platform open-source?  \nYes, EduLab provides access to its open-source code, allowing you to customize the platform to fit your needs.\n\n---\n\n### Can I use EduLab for non-science subjects?  \nAbsolutely! While EduLab is designed with science education in mind, its features are applicable across disciplines.",
+            "message": "### How is data privacy ensured on EduLab?  \nEduLab anonymizes all student data, ensuring no personally identifiable information is stored or shared. The platform also complies with data protection standards.\n\n---\n\n### Can I customize the assessments?  \nYes, you can create and edit multiple-choice questions to align with your specific learning objectives.\n\n---\n\n### What types of demographic data can I collect?  \nEduLab allows you to collect data on gender, age group, year of study, and major, helping you understand how different factors influence learning outcomes.\n\n---\n\n### How do I interpret the learning gain analysis?  \nLearning gains are calculated as the difference between pre- and post-assessment scores, normalized to account for the initial baseline. Higher gains indicate more effective teaching methods.\n\n---\n\n### Is the platform open-source?  \nYes, EduLab provides access to its open-source code, allowing you to customize the platform to fit your needs.\n\n---\n\n### Can I use EduLab for non-science subjects?  \nAbsolutely! While EduLab is designed with science education in mind, its features are applicable across disciplines.",
+            "translation": "### Como a privacidade dos dados é garantida no EduLab?  \nO EduLab anonimiza todos os dados dos estudantes, garantindo que nenhuma informação pessoalmente identificável seja armazenada ou compartilhada. A plataforma também está em conformidade com os padrões de proteção de dados.\n\n---\n\n### Posso personalizar as avaliações?  \nSim, você pode criar e editar perguntas de múltipla escolha para alinhá-las aos seus objetivos específicos de aprendizado.\n\n---\n\n### Que tipos de dados demográficos posso coletar?  \nO EduLab permite a coleta de dados como gênero, faixa etária, ano de estudo e área de formação, ajudando você a entender como diferentes fatores influenciam os resultados de aprendizado.\n\n---\n\n### Como interpreto a análise de ganho de aprendizado?  \nOs ganhos de aprendizado são calculados como a diferença entre as pontuações de pré e pós-avaliação, normalizados para levar em conta a linha de base inicial. Ganhos mais altos indicam métodos de ensino mais eficazes.\n\n---\n\n### A plataforma é de código aberto?  \nSim, o EduLab oferece acesso ao seu código aberto, permitindo que você personalize a plataforma de acordo com suas necessidades.\n\n---\n\n### Posso usar o EduLab para disciplinas não relacionadas às ciências?  \nCom certeza! Embora o EduLab seja projetado com foco na educação científica, seus recursos são aplicáveis a outras disciplinas."
         },
         {
             "id": "Gender",
             "message": "Gender",
-            "translation": ""
+            "translation": "Gênero"
         },
         {
             "id": "Male",
             "message": "Male",
-            "translation": ""
+            "translation": "Masculino"
         },
         {
             "id": "Female",
             "message": "Female",
-            "translation": ""
+            "translation": "Feminino"
         },
         {
             "id": "Non-binary",
             "message": "Non-binary",
-            "translation": ""
+            "translation": "Não binário"
         },
         {
             "id": "Prefer not to say",
             "message": "Prefer not to say",
-            "translation": ""
+            "translation": "Prefiro não dizer"
         },
         {
             "id": "Age Group",
             "message": "Age Group",
-            "translation": ""
+            "translation": "Faixa Etária"
         },
         {
             "id": "Under 18",
             "message": "Under 18",
-            "translation": ""
+            "translation": "Menor de 18 anos"
         },
         {
             "id": "18 to 20",
             "message": "18 to 20",
-            "translation": ""
+            "translation": "18 a 20 anos"
         },
         {
             "id": "21 to 23",
             "message": "21 to 23",
-            "translation": ""
+            "translation": "21 a 23 anos"
         },
         {
             "id": "24 to 26",
             "message": "24 to 26",
-            "translation": ""
+            "translation": "24 a 26 anos"
         },
         {
             "id": "Year of Study",
             "message": "Year of Study",
-            "translation": ""
+            "translation": "Ano de Estudo"
         },
         {
             "id": "Year 1",
             "message": "Year 1",
-            "translation": ""
+            "translation": "Ano 1"
         },
         {
             "id": "Year 2",
             "message": "Year 2",
-            "translation": ""
+            "translation": "Ano 2"
         },
         {
             "id": "Year 3",
             "message": "Year 3",
-            "translation": ""
+            "translation": "Ano 3"
         },
         {
             "id": "Year 4",
             "message": "Year 4",
-            "translation": ""
+            "translation": "Ano 4"
         },
         {
             "id": "Year 5+",
             "message": "Year 5+",
-            "translation": ""
+            "translation": "Ano 5+"
         },
         {
             "id": "STEM Major",
             "message": "STEM Major",
-            "translation": ""
+            "translation": "Curso STEM"
         },
         {
             "id": "Physical Sciences",
             "message": "Physical Sciences",
-            "translation": ""
+            "translation": "Ciências Físicas"
         },
         {
             "id": "Life Sciences",
             "message": "Life Sciences",
-            "translation": ""
+            "translation": "Ciências Biológicas"
         },
         {
             "id": "Earth \u0026 Environmental Sciences",
             "message": "Earth \u0026 Environmental Sciences",
-            "translation": ""
+            "translation": "Ciências da Terra e Ambientais"
         },
         {
             "id": "Mathematics \u0026 Computer Science",
             "message": "Mathematics \u0026 Computer Science",
-            "translation": ""
+            "translation": "Matemática e Ciência da Computação"
         },
         {
             "id": "Engineering",
             "message": "Engineering",
-            "translation": ""
+            "translation": "Engenharia"
         },
         {
             "id": "Other",
             "message": "Other",
-            "translation": ""
+            "translation": "Outro"
         }
     ]
 }
