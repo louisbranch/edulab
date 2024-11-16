@@ -2,7 +2,6 @@ package presenter
 
 import (
 	"encoding/json"
-	"fmt"
 
 	"github.com/louisbranch/edulab"
 )
@@ -78,8 +77,7 @@ func (dr DemographicsResult) data() ([][][]int, error) {
 		// Unmarshal into a map of interface{}
 		var tempMap map[string]interface{}
 		if err := json.Unmarshal(p.Demographics, &tempMap); err != nil {
-			fmt.Println("Error unmarshalling JSON:", err)
-			return nil, err
+			continue
 		}
 
 		for demographicID, values := range tempMap {
