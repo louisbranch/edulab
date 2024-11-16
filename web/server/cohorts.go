@@ -12,7 +12,7 @@ import (
 func (srv *Server) cohortsHandler(w http.ResponseWriter, r *http.Request,
 	experiment edulab.Experiment, segments []string) {
 
-	log.Print("[DEBUG] Routing Cohorts")
+	log.Print("[DEBUG] Routing cohorts")
 
 	if len(segments) < 1 {
 		if r.Method == http.MethodPost {

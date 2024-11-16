@@ -1,11 +1,12 @@
 {{ define "content" }}
 {{ .Breadcrumbs }}
-<h2>{{ truncate .Experiment.Name }}</h2>
+<h2>{{ truncate .Texts.Experiment 30 }}</h2>
+<h3>{{ .Texts.Settings }}</h3>
 <div class="pure-menu">
     <ul class="pure-menu-list">
         <li class="pure-menu-item">
             <a href="/experiments/{{ .Experiment.PublicID }}/edit" class="pure-menu-link">
-                <i class="fa fa-cog"></i> {{ .Texts.EditSettings }}
+                <i class="fa fa-cog"></i> {{ .Texts.Edit }}
             </a>
         </li>
         <li class="pure-menu-item">
@@ -24,13 +25,29 @@
             </a>
         </li>
         <li class="pure-menu-item">
-            <a href="/experiments/{{ .Experiment.PublicID }}/publish" class="pure-menu-link">
+            <a href="/experiments/{{ .Experiment.PublicID }}/participate" class="pure-menu-link">
                 <i class="fa fa-link"></i> {{ .Texts.Publish }}
             </a>
         </li>
+    </ul>
+</div>
+<hr>
+<h3>{{ .Texts.Results }}</h3>
+<div class="pure-menu">
+    <ul class="pure-menu-list">
         <li class="pure-menu-item">
             <a href="/experiments/{{ .Experiment.PublicID }}/results/demographics" class="pure-menu-link">
-                <i class="fa fa-chart-bar"></i> {{ .Texts.Results }}
+                <i class="fa fa-chart-pie"></i> {{ .Texts.Demographics }}
+            </a>
+        </li>
+        <li class="pure-menu-item">
+            <a href="#" class="pure-menu-link">
+                <i class="fa fa-chart-bar"></i> {{ .Texts.Assessments }} ({{ .Texts.ComingSoon }})
+            </a>
+        </li>
+        <li class="pure-menu-item">
+            <a href="/experiments/{{ .Experiment.PublicID }}/results/gains" class="pure-menu-link">
+                <i class="fa fa-chart-line"></i> {{ .Texts.LearningGains }}
             </a>
         </li>
     </ul>

@@ -10,10 +10,10 @@ import (
 	"github.com/louisbranch/edulab/web/presenter"
 )
 
-func (srv *Server) publishHandler(w http.ResponseWriter, r *http.Request,
+func (srv *Server) participateHandler(w http.ResponseWriter, r *http.Request,
 	experiment edulab.Experiment) {
 
-	log.Print("[DEBUG] web/server/publish.go: handling publish")
+	log.Print("[DEBUG] Routing participate")
 
 	printer, page := srv.i18n(w, r)
 
@@ -33,7 +33,7 @@ func (srv *Server) publishHandler(w http.ResponseWriter, r *http.Request,
 
 	title := printer.Sprintf("Participation Links")
 	page.Title = title
-	page.Partials = []string{"publish"}
+	page.Partials = []string{"participate"}
 	page.Content = struct {
 		Breadcrumbs template.HTML
 		Domain      string

@@ -1,8 +1,7 @@
-package main
+package stats
 
 import (
 	"encoding/csv"
-	"flag"
 	"fmt"
 	"math"
 	"os"
@@ -21,7 +20,7 @@ type Data struct {
 }
 
 // Function to read data from CSV file
-func readCSV(filePath string) ([]Data, error) {
+func ReadCSV(filePath string) ([]Data, error) {
 	file, err := os.Open(filePath)
 	if err != nil {
 		return nil, err
@@ -52,7 +51,7 @@ func readCSV(filePath string) ([]Data, error) {
 }
 
 // Calculate learning gains for base and intervention groups
-func calculateLearningGains(data []Data) (gains []float64, interventions []float64) {
+func CalculateLearningGains(data []Data) (gains []float64, interventions []float64) {
 	for _, d := range data {
 		gainBase := d.PostBase - d.PreBase
 		gainIntervention := d.PostIntervention - d.PreIntervention
@@ -63,7 +62,7 @@ func calculateLearningGains(data []Data) (gains []float64, interventions []float
 }
 
 // Linear regression function with Gonum
-func linearRegression(gains, interventions []float64) (beta0, beta1, rSquared float64) {
+func LinearRegression(gains, interventions []float64) (beta0, beta1, rSquared float64) {
 	weights := make([]float64, len(gains)) // Equal weights
 	for i := range weights {
 		weights[i] = 1.0
@@ -75,7 +74,7 @@ func linearRegression(gains, interventions []float64) (beta0, beta1, rSquared fl
 	return beta0, beta1, rSquared
 }
 
-func computePValue(beta0, beta1 float64, gains, interventions []float64) float64 {
+func ComputePValue(beta0, beta1 float64, gains, interventions []float64) float64 {
 	// Calculate residuals using both intercept (beta0) and slope (beta1)
 	residuals := make([]float64, len(gains))
 	var sumSquaredResiduals float64
@@ -109,41 +108,4 @@ func computePValue(beta0, beta1 float64, gains, interventions []float64) float64
 	}
 	pValue := 2 * (1 - tDist.CDF(math.Abs(tStatistic))) // Two-tailed test
 	return pValue
-}
-
-func main() {
-	// Use flag to accept the CSV file path as a command-line argument
-	filePath := flag.String("file", "", "Path to the CSV file containing data")
-	flag.Parse()
-
-	if *filePath == "" {
-		fmt.Println("Please provide a file path using the -file flag.")
-		return
-	}
-
-	// Load the CSV data
-	data, err := readCSV(*filePath)
-	if err != nil {
-		fmt.Println("Error reading CSV:", err)
-		return
-	}
-
-	// Calculate learning gains
-	gains, interventions := calculateLearningGains(data)
-
-	// Perform linear regression
-	beta0, beta1, rSquared := linearRegression(gains, interventions)
-	fmt.Printf("Intercept (beta0): %.8f, Slope (beta1): %.8f, R-squared: %.8f\n", beta0, beta1, rSquared)
-
-	// Calculate p-value for the slope
-	pValue := computePValue(beta0, beta1, gains, interventions)
-	fmt.Printf("P-value for the intervention coefficient: %.8f\n", pValue)
-
-	// Interpret the p-value
-	alpha := 0.2
-	if pValue < alpha {
-		fmt.Println("The intervention effect is statistically significant (p < alpha).")
-	} else {
-		fmt.Println("The intervention effect is not statistically significant (p >= alpha).")
-	}
 }
