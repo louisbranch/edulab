@@ -8,22 +8,23 @@ import (
 )
 
 type Result struct {
-	db            edulab.Database
-	experimentID  string
-	participants  map[string]edulab.Participant
-	assessments   map[string]edulab.Assessment
-	cohorts       map[string]edulab.Cohort
-	questions     map[string]edulab.Question
-	choices       map[string][]edulab.QuestionChoice
-	participation map[string][]edulab.Participation // Map from participantID to their Participation records
+	db             edulab.Database
+	experimentID   string
+	participants   map[string]edulab.Participant
+	assessments    map[string]edulab.Assessment
+	cohorts        map[string]edulab.Cohort
+	questions      map[string]edulab.Question
+	choices        map[string][]edulab.QuestionChoice
+	participation  map[string][]edulab.Participation // Map from participantID to their Participation records
+	participations []edulab.Participation
 }
 
 func (r *Result) Valid() bool {
-	return len(r.cohorts) > 1 && len(r.assessments) > 1
+	return len(r.participations) > 1
 }
 
-func (r *Result) Participation() bool {
-	return len(r.participation) > 0
+func (r *Result) Participations() int {
+	return len(r.participations)
 }
 
 func (r *Result) ComparisonPairs() ([]string, [][]AssessmentQuestions) {
@@ -85,20 +86,36 @@ func (r *Result) ComparisonPairs() ([]string, [][]AssessmentQuestions) {
 // New initializes a new Result instance, loading data into memory.
 func New(db edulab.Database, experimentID string) (*Result, error) {
 	r := &Result{
-		db:            db,
-		experimentID:  experimentID,
-		participants:  make(map[string]edulab.Participant),
-		assessments:   make(map[string]edulab.Assessment),
-		cohorts:       make(map[string]edulab.Cohort),
-		questions:     make(map[string]edulab.Question),
-		choices:       make(map[string][]edulab.QuestionChoice),
-		participation: make(map[string][]edulab.Participation),
+		db:             db,
+		experimentID:   experimentID,
+		participants:   make(map[string]edulab.Participant),
+		assessments:    make(map[string]edulab.Assessment),
+		cohorts:        make(map[string]edulab.Cohort),
+		questions:      make(map[string]edulab.Question),
+		choices:        make(map[string][]edulab.QuestionChoice),
+		participation:  make(map[string][]edulab.Participation),
+		participations: []edulab.Participation{},
 	}
+
+	// Load participation data
+	participations, err := db.FindParticipations(experimentID)
+	if err != nil {
+		return nil, err
+	}
+
+	r.participations = participations
+
+	return r, nil
+}
+
+func (r *Result) Load() error {
+	experimentID := r.experimentID
+	db := r.db
 
 	// Load participants
 	participants, err := db.FindParticipants(experimentID)
 	if err != nil {
-		return nil, err
+		return err
 	}
 	for _, p := range participants {
 		r.participants[p.ID] = p
@@ -107,7 +124,7 @@ func New(db edulab.Database, experimentID string) (*Result, error) {
 	// Load cohorts
 	cohorts, err := db.FindCohorts(experimentID)
 	if err != nil {
-		return nil, err
+		return err
 	}
 	for _, c := range cohorts {
 		r.cohorts[c.ID] = c
@@ -116,18 +133,18 @@ func New(db edulab.Database, experimentID string) (*Result, error) {
 	// Load questions
 	assessments, err := db.FindAssessments(experimentID)
 	if err != nil {
-		return nil, err
+		return err
 	}
 	for _, a := range assessments {
 		r.assessments[a.ID] = a
 
 		questions, err := db.FindQuestions(a.ID)
 		if err != nil {
-			return nil, err
+			return err
 		}
 		allChoices, err := db.FindQuestionChoices(a.ID)
 		if err != nil {
-			return nil, err
+			return err
 		}
 		for _, q := range questions {
 			var choices []edulab.QuestionChoice
@@ -141,14 +158,12 @@ func New(db edulab.Database, experimentID string) (*Result, error) {
 		}
 	}
 
-	// Load participation data
-	for _, p := range participants {
-		participations, err := db.FindParticipationsByParticipant(experimentID, p.ID)
-		if err != nil {
-			return nil, err
+	for _, p := range r.participations {
+		if _, ok := r.participation[p.ParticipantID]; !ok {
+			r.participation[p.ParticipantID] = make([]edulab.Participation, 0)
 		}
-		r.participation[p.ID] = participations
+		r.participation[p.ParticipantID] = append(r.participation[p.ParticipantID], p)
 	}
 
-	return r, nil
+	return nil
 }

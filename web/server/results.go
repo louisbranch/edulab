@@ -16,6 +16,16 @@ import (
 	"gonum.org/v1/gonum/stat"
 )
 
+// Naive cache for learning gains results
+// TODO: Implement a proper cache
+type cached struct {
+	experimentID   string
+	participations int
+	payload        []byte
+}
+
+var gainsCache = make(map[string]cached)
+
 func (srv *Server) resultsHandler(w http.ResponseWriter, r *http.Request,
 	experiment edulab.Experiment, segments []string) {
 
@@ -164,11 +174,13 @@ func (srv *Server) assessmentsResult(w http.ResponseWriter, r *http.Request,
 			Choices      string
 			Participants string
 			Empty        string
+			ComingSoon   string
 		}{
 			Title:        title,
 			Choices:      printer.Sprintf("Choices"),
 			Participants: printer.Sprintf("Participants"),
 			Empty:        printer.Sprintf("No data available yet"),
+			ComingSoon:   printer.Sprintf("Coming soon"),
 		},
 	}
 
@@ -224,7 +236,17 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 	page.Partials = []string{"results_gains"}
 	page.Content = content
 
-	// FIXME: This is a temporary solution to avoid a panic
+	cache, ok := gainsCache[experiment.ID]
+	if ok && cache.participations == res.Participations() {
+		if r.Header.Get("Content-type") != "application/json" {
+			srv.render(w, page)
+			return
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.Write(cache.payload)
+		return
+	}
+
 	if !res.Valid() {
 		content.Texts.Error = printer.Sprintf("No data available yet")
 		page.Content = content
@@ -232,10 +254,9 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 		return
 	}
 
-	if !res.Participation() {
-		content.Texts.Error = printer.Sprintf("No participation data available yet")
-		page.Content = content
-		srv.render(w, page)
+	err = res.Load()
+	if err != nil {
+		srv.renderError(w, r, err)
 		return
 	}
 
@@ -338,9 +359,18 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	err = json.NewEncoder(w).Encode(payload)
+	// Encode the payload into a []byte
+	response, err := json.Marshal(payload)
 	if err != nil {
 		srv.renderError(w, r, err)
 		return
 	}
+
+	gainsCache[experiment.ID] = cached{
+		experimentID:   experiment.ID,
+		participations: res.Participations(),
+		payload:        response,
+	}
+
+	w.Write(response)
 }
