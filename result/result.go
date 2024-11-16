@@ -1,6 +1,11 @@
 package result
 
-import "github.com/louisbranch/edulab"
+import (
+	"sort"
+	"strconv"
+
+	"github.com/louisbranch/edulab"
+)
 
 type Result struct {
 	db            edulab.Database
@@ -11,6 +16,70 @@ type Result struct {
 	questions     map[string]edulab.Question
 	choices       map[string][]edulab.QuestionChoice
 	participation map[string][]edulab.Participation // Map from participantID to their Participation records
+}
+
+func (r *Result) Valid() bool {
+	return len(r.cohorts) > 1 && len(r.assessments) > 1
+}
+
+func (r *Result) Participation() bool {
+	return len(r.participation) > 0
+}
+
+func (r *Result) ComparisonPairs() ([]string, [][]AssessmentQuestions) {
+
+	cohortIDs := make([]string, 0, len(r.cohorts))
+	for id := range r.cohorts {
+		cohortIDs = append(cohortIDs, id)
+	}
+
+	sort.Slice(cohortIDs, func(i, j int) bool {
+		return cohortIDs[i] < cohortIDs[j]
+	})
+
+	questions := make(map[string][]AssessmentQuestions)
+
+	for _, q := range r.questions {
+		mq := questions[q.Text]
+		a := AssessmentQuestions{
+			AssessmentID: q.AssessmentID,
+			QuestionID:   q.ID,
+		}
+
+		mq = append(mq, a)
+		questions[q.Text] = mq
+	}
+
+	var items [][]AssessmentQuestions
+	for _, mq := range questions {
+		if len(mq) < 2 {
+			continue
+		}
+
+		sort.Slice(mq, func(i, j int) bool {
+			a1, _ := strconv.Atoi(mq[i].AssessmentID)
+			a2, _ := strconv.Atoi(mq[i].AssessmentID)
+
+			if a1 != a2 {
+				return a1 < a2
+			}
+
+			q1, _ := strconv.Atoi(mq[i].QuestionID)
+			q2, _ := strconv.Atoi(mq[j].QuestionID)
+
+			return q1 < q2
+		})
+
+		items = append(items, mq)
+	}
+
+	sort.Slice(items, func(i, j int) bool {
+		a1, a2 := items[i][0].AssessmentID, items[j][0].AssessmentID
+		q1, q2 := items[i][0].QuestionID, items[j][0].QuestionID
+		return a1 < a2 || (a1 == a2 && q1 < q2)
+	})
+
+	return cohortIDs, items
 }
 
 // New initializes a new Result instance, loading data into memory.

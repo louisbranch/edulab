@@ -1,0 +1,143 @@
+{{ define "content" }}
+{{ .Breadcrumbs }}
+<h2>{{ .Texts.Title }}</h2>
+
+<div id="chartsContainer">
+    <!-- Charts will be dynamically added here -->
+</div>
+
+<script>
+    const colors = [
+        "#00CFFF", // Primary
+        "#FF8C00", // Secondary 1
+        "#FF00A6", // Secondary 2
+        "#008000", // Accent 1
+        "#800080", // Accent 2
+        "#FFD700", // Accent 3
+        "#0055FF", // Accent 4
+        "#FF4500", // Accent 5
+        "#4B0082", // Accent 6
+        "#40E0D0", // Accent 7
+    ]
+
+    Chart.defaults.backgroundColor = '#00CFFF';
+    Chart.defaults.borderColor = null;
+    Chart.defaults.color = '#fff';
+
+    fetch(window.location.href, {
+        headers: {
+            "Content-type": "application/json"
+        }
+    }).then(response => response.json())
+      .then(data => {
+        const chartsContainer = document.getElementById('chartsContainer');
+
+        data.forEach((item, index) => {
+            if (item.pValue == 1) {
+                return;
+            }
+
+          // Calculate learning gain (post - pre)
+          const gainBase = item.postBase - item.preBase;
+          const gainIntervention = item.postIntervention - item.preIntervention;
+
+          // Create a section for each question
+          const sectionDiv = document.createElement('div');
+          sectionDiv.innerHTML = `<h3>Question ${index + 1}</h3>`;
+          chartsContainer.appendChild(sectionDiv);
+
+          // Bar chart for Pre vs. Post Scores with Learning Gain
+          var title = document.createElement('h4');
+            title.innerHTML = 'Average Correct Answers by Cohort';
+            sectionDiv.appendChild(title);
+          const prePostCanvas = document.createElement('canvas');
+          prePostCanvas.id = `prepost-chart-${index}`;
+          sectionDiv.appendChild(prePostCanvas);
+
+          const prePostCtx = prePostCanvas.getContext('2d');
+          new Chart(prePostCtx, {
+            type: 'bar',
+            data: {
+              labels: ['Pre', 'Post'],
+              datasets: [
+                {
+                  label: 'Base',
+                  data: [item.preBase, item.postBase],
+                  backgroundColor: colors[0]
+                },
+                {
+                  label: 'Intervention',
+                  data: [item.preIntervention,  item.postIntervention],
+                  backgroundColor: colors[1]
+                }
+              ]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              },
+              plugins: {
+                tooltip: {
+                  callbacks: {
+                    label: function (context) {
+                      const label = context.dataset.label || '';
+                      const value = context.raw;
+                      return `${label}: ${value.toFixed(3)}`;
+                    }
+                  }
+                }
+              }
+            }
+          });
+
+          // Bar chart for Learning Gains
+          var title = document.createElement('h4');
+          title.innerHTML = 'Learning Gain by Cohort (Post - Pre)';
+            sectionDiv.appendChild(title);
+          const gainCanvas = document.createElement('canvas');
+          gainCanvas.id = `gain-chart-${index}`;
+          sectionDiv.appendChild(gainCanvas);
+
+          const gainCtx = gainCanvas.getContext('2d');
+          new Chart(gainCtx, {
+            type: 'bar',
+            data: {
+              labels: ['Base', 'Intervention'],
+              datasets: [
+                {
+                  data: [gainBase, gainIntervention],
+                  backgroundColor: colors,
+                  borderWidth: 1
+                }
+              ]
+            },
+            options: {
+              plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                  callbacks: {
+                    label: function (context) {
+                      const label = context.dataset.label || '';
+                      const value = context.raw;
+                      return `${label}: ${value.toFixed(3)}`;
+                    }
+                  }
+                }
+              },
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        });
+      })
+      .catch(error => console.error('Error loading JSON data:', error));
+
+  </script>
+{{ end }}

@@ -100,10 +100,10 @@ assessments:
             is_correct: true
 cohorts:
   - public_id: C1
-    name: Baseline
+    name: Base
     description: Students participating in the traditional lecture format.
   - public_id: C2
-    name: Workshop
+    name: Intervention
     description: Students participating in the interactive workshop format.
 bootstrap_config:
   participants: 0

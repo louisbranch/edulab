@@ -7,6 +7,8 @@ import (
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/louisbranch/edulab/stats"
 )
 
 type Comparison struct {
@@ -107,4 +109,22 @@ func (c *Comparison) ToCSV(filePath string) error {
 	}
 
 	return nil
+}
+
+func (c *Comparison) ToStatsData() []stats.Data {
+	var data []stats.Data
+	for i := 0; i < c.rows; i++ {
+		preBase := c.data["pre_base"][i]
+		postBase := c.data["post_base"][i]
+		preIntervention := c.data["pre_intervention"][i]
+		postIntervention := c.data["post_intervention"][i]
+
+		data = append(data, stats.Data{
+			PreBase:          preBase,
+			PostBase:         postBase,
+			PreIntervention:  preIntervention,
+			PostIntervention: postIntervention,
+		})
+	}
+	return data
 }
