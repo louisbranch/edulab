@@ -164,11 +164,13 @@ func (srv *Server) assessmentsResult(w http.ResponseWriter, r *http.Request,
 			Choices      string
 			Participants string
 			Empty        string
+			ComingSoon   string
 		}{
 			Title:        title,
 			Choices:      printer.Sprintf("Choices"),
 			Participants: printer.Sprintf("Participants"),
 			Empty:        printer.Sprintf("No data available yet"),
+			ComingSoon:   printer.Sprintf("Coming soon"),
 		},
 	}
 

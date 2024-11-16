@@ -95,6 +95,12 @@ func New(db edulab.Database, experimentID string) (*Result, error) {
 		participation: make(map[string][]edulab.Participation),
 	}
 
+	// Load participation data
+	participations, err := db.FindParticipations(experimentID)
+	if err != nil {
+		return nil, err
+	}
+
 	// Load participants
 	participants, err := db.FindParticipants(experimentID)
 	if err != nil {
@@ -141,13 +147,11 @@ func New(db edulab.Database, experimentID string) (*Result, error) {
 		}
 	}
 
-	// Load participation data
-	for _, p := range participants {
-		participations, err := db.FindParticipationsByParticipant(experimentID, p.ID)
-		if err != nil {
-			return nil, err
+	for _, p := range participations {
+		if _, ok := r.participation[p.ParticipantID]; !ok {
+			r.participation[p.ParticipantID] = make([]edulab.Participation, 0)
 		}
-		r.participation[p.ID] = participations
+		r.participation[p.ParticipantID] = append(r.participation[p.ParticipantID], p)
 	}
 
 	return r, nil

@@ -2,6 +2,12 @@
 {{ .Breadcrumbs }}
 <h2>{{ .Texts.Title }}</h2>
 
+{{ if .Texts.ComingSoon }}
+<div class="alert alert-warning" role="alert">
+    {{ .Texts.ComingSoon }}
+</div>
+{{ else }}
+
 <script>
   (function(window){
 
@@ -138,4 +144,5 @@
     })(window);
 
 </script>
+{{ end }}
 {{ end }}
