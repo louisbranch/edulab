@@ -7,6 +7,7 @@ import (
 	"log"
 	"math"
 	"net/http"
+	"strings"
 
 	"github.com/louisbranch/edulab"
 	"github.com/louisbranch/edulab/result"
@@ -28,6 +29,9 @@ func (srv *Server) resultsHandler(w http.ResponseWriter, r *http.Request,
 	switch segments[0] {
 	case "demographics":
 		srv.demographicsResult(w, r, experiment)
+		return
+	case "assessments":
+		srv.assessmentsResult(w, r, experiment)
 		return
 	case "gains":
 		srv.gainsResult(w, r, experiment)
@@ -128,6 +132,49 @@ func (srv *Server) demographicsResult(w http.ResponseWriter, r *http.Request,
 	srv.render(w, page)
 }
 
+func (srv *Server) assessmentsResult(w http.ResponseWriter, r *http.Request,
+	experiment edulab.Experiment) {
+
+	if r.Header.Get("Content-type") == "application/json" {
+
+		w.Header().Set("Content-Type", "application/json")
+		err := json.NewEncoder(w).Encode(struct{}{})
+		if err != nil {
+			srv.renderError(w, r, err)
+			return
+		}
+
+		return
+	}
+
+	printer, page := srv.i18n(w, r)
+
+	title := printer.Sprintf("Assessments Results")
+	page.Title = title
+	page.Partials = []string{"results_assessments"}
+	page.Content = struct {
+		Breadcrumbs template.HTML
+		Experiment  edulab.Experiment
+		Texts       interface{}
+	}{
+		Breadcrumbs: presenter.ExperimentBreadcrumb(experiment, printer),
+		Experiment:  experiment,
+		Texts: struct {
+			Title        string
+			Choices      string
+			Participants string
+			Empty        string
+		}{
+			Title:        title,
+			Choices:      printer.Sprintf("Choices"),
+			Participants: printer.Sprintf("Participants"),
+			Empty:        printer.Sprintf("No data available yet"),
+		},
+	}
+
+	srv.render(w, page)
+}
+
 func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 	experiment edulab.Experiment) {
 
@@ -137,22 +184,76 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 		return
 	}
 
+	printer, page := srv.i18n(w, r)
+
+	type texts struct {
+		Title string
+		Error string
+	}
+
+	content := struct {
+		Breadcrumbs template.HTML
+		Experiment  edulab.Experiment
+		Texts       texts
+	}{
+		Breadcrumbs: presenter.ExperimentBreadcrumb(experiment, printer),
+		Experiment:  experiment,
+		Texts: texts{
+			Title: printer.Sprintf("Gains Results"),
+		},
+	}
+
+	title := printer.Sprintf("Gains Results")
+	page.Title = title
+	page.Partials = []string{"results_gains"}
+	page.Content = content
+
 	// FIXME: This is a temporary solution to avoid a panic
 	if !res.Valid() {
-		err := fmt.Errorf("experiment needs at least 2 cohorts and 2 assessments")
-		srv.renderError(w, r, err)
+		content.Texts.Error = printer.Sprintf("No data available yet")
+		page.Content = content
+		srv.render(w, page)
 		return
 	}
 
 	if !res.Participation() {
-		err := fmt.Errorf("no participation data available yet")
-		srv.renderError(w, r, err)
+		content.Texts.Error = printer.Sprintf("No participation data available yet")
+		page.Content = content
+		srv.render(w, page)
 		return
 	}
 
 	cohorts, items := res.ComparisonPairs()
+	if len(items) == 0 {
+		content.Texts.Error = printer.Sprintf("No comparison pairs available yet")
+		page.Content = content
+		srv.render(w, page)
+		return
+	}
+
+	questions, err := srv.DB.FindQuestions(items[0][0].AssessmentID)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	labels := make([]string, len(questions))
+	for i, q := range questions {
+		s := q.Text
+
+		for _, char := range []rune{'\n', '\r', '\t', '*', '_'} {
+			s = strings.ReplaceAll(s, string(char), "")
+		}
+
+		if len(s) <= 200 {
+			labels[i] = s
+			continue
+		}
+		labels[i] = s[:200] + "..."
+	}
 
 	type chart struct {
+		Question         string  `json:"question"`
 		PreBase          float64 `json:"preBase"`
 		PostBase         float64 `json:"postBase"`
 		PreIntervention  float64 `json:"preIntervention"`
@@ -166,7 +267,12 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 	if r.Header.Get("Content-type") == "application/json" {
 		var payload []chart
 
-		for _, item := range items {
+		for i, item := range items {
+			var label string
+			if len(labels) > i {
+				label = labels[i]
+			}
+
 			comparison, err := result.NewComparison(res, item, cohorts)
 			if err != nil {
 				srv.renderError(w, r, err)
@@ -198,6 +304,7 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 			}
 
 			payload = append(payload, chart{
+				Question:         label,
 				PreBase:          stat.Mean(preBase, nil),
 				PostBase:         stat.Mean(postBase, nil),
 				PreIntervention:  stat.Mean(preIntervention, nil),
@@ -218,27 +325,6 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 		}
 
 		return
-	}
-
-	printer, page := srv.i18n(w, r)
-
-	title := printer.Sprintf("Gains Results")
-	page.Title = title
-	page.Partials = []string{"results_gains"}
-	page.Content = struct {
-		Breadcrumbs template.HTML
-		Experiment  edulab.Experiment
-		Texts       interface{}
-	}{
-		Breadcrumbs: presenter.ExperimentBreadcrumb(experiment, printer),
-		Experiment:  experiment,
-		Texts: struct {
-			Title string
-			Empty string
-		}{
-			Title: title,
-			Empty: printer.Sprintf("No data available yet"),
-		},
 	}
 
 	srv.render(w, page)
