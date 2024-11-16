@@ -2,7 +2,7 @@ package stats
 
 import (
 	"encoding/csv"
-	"fmt"
+	"log"
 	"math"
 	"os"
 	"strconv"
@@ -96,9 +96,9 @@ func ComputePValue(beta0, beta1 float64, gains, interventions []float64) float64
 	tStatistic := beta1 / standardError
 
 	// Print values for debugging
-	fmt.Printf("Residual Sum of Squares: %.8f\n", sumSquaredResiduals)
-	fmt.Printf("Standard Error: %.8f\n", standardError)
-	fmt.Printf("t-Statistic: %.8f\n", tStatistic)
+	log.Printf("[DEBUG] Residual Sum of Squares: %.8f\n", sumSquaredResiduals)
+	log.Printf("[DEBUG] Standard Error: %.8f\n", standardError)
+	log.Printf("[DEBUG] t-Statistic: %.8f\n", tStatistic)
 
 	// Calculate p-value based on the t-distribution
 	tDist := distuv.StudentsT{

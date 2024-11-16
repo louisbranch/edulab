@@ -821,6 +821,13 @@
             "fuzzy": true
         },
         {
+            "id": "This project was created as part of the course, Physical Science in Contemporary Society, at the University of Toronto with the intention of being a free resource for educators.",
+            "message": "This project was created as part of the course, Physical Science in Contemporary Society, at the University of Toronto with the intention of being a free resource for educators.",
+            "translation": "This project was created as part of the course, Physical Science in Contemporary Society, at the University of Toronto with the intention of being a free resource for educators.",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
             "id": "If you would like to contribute to the project, for example, adding more translations, get in touch:",
             "message": "If you would like to contribute to the project, for example, adding more translations, get in touch:",
             "translation": "If you would like to contribute to the project, for example, adding more translations, get in touch:",
