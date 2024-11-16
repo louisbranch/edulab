@@ -559,13 +559,6 @@
             "fuzzy": true
         },
         {
-            "id": "Edulab",
-            "message": "Edulab",
-            "translation": "Edulab",
-            "translatorComment": "Copied from source.",
-            "fuzzy": true
-        },
-        {
             "id": "About",
             "message": "About",
             "translation": "About",

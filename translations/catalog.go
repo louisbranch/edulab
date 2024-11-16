@@ -39,141 +39,140 @@ func init() {
 }
 
 var messageKeyToIndex = map[string]int{
-	"\n### Introduction\nEduLab is designed to help educators incorporate scientific methods into their teaching strategies. This guide provides step-by-step instructions on using the platform to evaluate and refine your teaching methods with evidence-based insights.\n\n---\n\n### Step 1: Set Up an Experiment\n1. **Define Your Teaching Interventions**  \n   Identify the different teaching methods or approaches you want to compare (e.g., traditional lecture vs. interactive workshops).\n   \n2. **Create Cohorts**  \n   Use EduLab's cohort feature to group students who will experience specific teaching interventions. For example:\n   - **Control**: Traditional lecture method.\n   - **Intervention**: Interactive workshop approach.\n\n3. **Develop Assessments**  \n   Design a set of pre- and post-assessment questions to measure the effectiveness of each teaching method. Ensure these questions align with the learning objectives.\n\n---\n\n### Step 2: Conduct Pre-Assessment\n- Share the pre-assessment link with your cohorts before introducing any teaching intervention. \n- Encourage students to complete the assessment to establish a baseline for their knowledge.\n\n---\n\n### Step 3: Implement Your Teaching Interventions\n- Conduct your planned teaching methods for each cohort.\n- Ensure that the interventions are distinct and well-documented for accurate comparisons.\n\n---\n\n### Step 4: Conduct Post-Assessment\n- After completing the intervention, share the post-assessment link with the same cohorts.\n- Collect responses to measure the knowledge gained through each teaching method.\n\n---\n\n### Step 5: Analyze Results\n- Use EduLab's **Learning Gain Analysis** to compare pre- and post-assessment scores within and across cohorts. This allows you to:\n  - Identify which teaching method led to higher learning gains.\n  - Understand how different demographic groups responded to the interventions.\n  \n- Utilize the demographic data to tailor future teaching methods to meet the diverse needs of your students.\n\n---\n\n### Step 6: Iterate and Refine\n- Based on the results, refine your teaching strategies to optimize learning outcomes. Repeat the process to continually improve your methods.": 106,
-	"### How is data privacy ensured on EduLab?  \nEduLab anonymizes all student data, ensuring no personally identifiable information is stored or shared. The platform also complies with data protection standards.\n\n---\n\n### Can I customize the assessments?  \nYes, you can create and edit multiple-choice questions to align with your specific learning objectives.\n\n---\n\n### What types of demographic data can I collect?  \nEduLab allows you to collect data on gender, age group, year of study, and major, helping you understand how different factors influence learning outcomes.\n\n---\n\n### How do I interpret the learning gain analysis?  \nLearning gains are calculated as the difference between pre- and post-assessment scores, normalized to account for the initial baseline. Higher gains indicate more effective teaching methods.\n\n---\n\n### Is the platform open-source?  \nYes, EduLab provides access to its open-source code, allowing you to customize the platform to fit your needs.\n\n---\n\n### Can I use EduLab for non-science subjects?  \nAbsolutely! While EduLab is designed with science education in mind, its features are applicable across disciplines.":                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     108,
+	"\n### Introduction\nEduLab is designed to help educators incorporate scientific methods into their teaching strategies. This guide provides step-by-step instructions on using the platform to evaluate and refine your teaching methods with evidence-based insights.\n\n---\n\n### Step 1: Set Up an Experiment\n1. **Define Your Teaching Interventions**  \n   Identify the different teaching methods or approaches you want to compare (e.g., traditional lecture vs. interactive workshops).\n   \n2. **Create Cohorts**  \n   Use EduLab's cohort feature to group students who will experience specific teaching interventions. For example:\n   - **Control**: Traditional lecture method.\n   - **Intervention**: Interactive workshop approach.\n\n3. **Develop Assessments**  \n   Design a set of pre- and post-assessment questions to measure the effectiveness of each teaching method. Ensure these questions align with the learning objectives.\n\n---\n\n### Step 2: Conduct Pre-Assessment\n- Share the pre-assessment link with your cohorts before introducing any teaching intervention. \n- Encourage students to complete the assessment to establish a baseline for their knowledge.\n\n---\n\n### Step 3: Implement Your Teaching Interventions\n- Conduct your planned teaching methods for each cohort.\n- Ensure that the interventions are distinct and well-documented for accurate comparisons.\n\n---\n\n### Step 4: Conduct Post-Assessment\n- After completing the intervention, share the post-assessment link with the same cohorts.\n- Collect responses to measure the knowledge gained through each teaching method.\n\n---\n\n### Step 5: Analyze Results\n- Use EduLab's **Learning Gain Analysis** to compare pre- and post-assessment scores within and across cohorts. This allows you to:\n  - Identify which teaching method led to higher learning gains.\n  - Understand how different demographic groups responded to the interventions.\n  \n- Utilize the demographic data to tailor future teaching methods to meet the diverse needs of your students.\n\n---\n\n### Step 6: Iterate and Refine\n- Based on the results, refine your teaching strategies to optimize learning outcomes. Repeat the process to continually improve your methods.": 105,
+	"### How is data privacy ensured on EduLab?  \nEduLab anonymizes all student data, ensuring no personally identifiable information is stored or shared. The platform also complies with data protection standards.\n\n---\n\n### Can I customize the assessments?  \nYes, you can create and edit multiple-choice questions to align with your specific learning objectives.\n\n---\n\n### What types of demographic data can I collect?  \nEduLab allows you to collect data on gender, age group, year of study, and major, helping you understand how different factors influence learning outcomes.\n\n---\n\n### How do I interpret the learning gain analysis?  \nLearning gains are calculated as the difference between pre- and post-assessment scores, normalized to account for the initial baseline. Higher gains indicate more effective teaching methods.\n\n---\n\n### Is the platform open-source?  \nYes, EduLab provides access to its open-source code, allowing you to customize the platform to fit your needs.\n\n---\n\n### Can I use EduLab for non-science subjects?  \nAbsolutely! While EduLab is designed with science education in mind, its features are applicable across disciplines.":                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     107,
 	"%d days ago":                       9,
 	"%d hours ago":                      8,
 	"%d mins ago":                       7,
 	"%s - %s":                           33,
-	"18 to 20":                          116,
-	"21 to 23":                          117,
-	"24 to 26":                          118,
-	"About":                             68,
+	"18 to 20":                          115,
+	"21 to 23":                          116,
+	"24 to 26":                          117,
+	"About":                             67,
 	"Actions":                           15,
 	"Add Assessment":                    16,
 	"Add Cohort":                        35,
 	"Add Demographic":                   46,
 	"Add Question":                      28,
-	"Age Group":                         114,
+	"Age Group":                         113,
 	"Assessment":                        26,
 	"Assessments":                       4,
-	"Assessments Results":               90,
-	"Average Correct Answers by Cohort": 92,
+	"Assessments Results":               89,
+	"Average Correct Answers by Cohort": 91,
 	"Back":                              32,
-	"Choices":                           76,
+	"Choices":                           75,
 	"Cohort: %s":                        43,
 	"Cohorts":                           5,
 	"Coming Soon":                       20,
 	"Control":                           52,
-	"Correct":                           83,
+	"Correct":                           82,
 	"Create":                            25,
 	"Created":                           56,
 	"Demographic":                       45,
 	"Demographics":                      44,
-	"Demographics Results":              87,
+	"Demographics Results":              86,
 	"Description":                       22,
-	"Earth & Environmental Sciences":    128,
+	"Earth & Environmental Sciences":    127,
 	"Edit":                              18,
 	"Edit Experiment":                   59,
 	"Edit Experiment: %s":               58,
 	"EduLab":                            66,
-	"EduLab - Empowering Educators":     98,
-	"EduLab brings **data-driven** experimentation into the classroom, empowering you to evaluate and refine teaching methods across distinct **cohorts**.\n\nBy running controlled pre- and post-assessments, you gain **evidence-based insights** into how different teaching approaches impact learning outcomes.\n\nCompare cohorts, **measure learning gains**, and adapt strategies to elevate student engagement—all supported by real-time educational data.": 100,
-	"Educator's Guide": 101,
-	"Edulab":           67,
-	"Empowering Educators Through Evidence-Based Insights": 99,
-	"Engineering":                130,
+	"EduLab - Empowering Educators":     97,
+	"EduLab brings **data-driven** experimentation into the classroom, empowering you to evaluate and refine teaching methods across distinct **cohorts**.\n\nBy running controlled pre- and post-assessments, you gain **evidence-based insights** into how different teaching approaches impact learning outcomes.\n\nCompare cohorts, **measure learning gains**, and adapt strategies to elevate student engagement—all supported by real-time educational data.": 99,
+	"Educator's Guide": 100,
+	"Empowering Educators Through Evidence-Based Insights": 98,
+	"Engineering":                129,
 	"Experiment %s":              61,
 	"Experiment: %s":             60,
 	"Experiments":                54,
-	"FAQ":                        69,
-	"Female":                     111,
-	"Frequently Asked Questions": 107,
-	"Gains Results":              91,
-	"Gender":                     109,
+	"FAQ":                        68,
+	"Female":                     110,
+	"Frequently Asked Questions": 106,
+	"Gains Results":              90,
+	"Gender":                     108,
 	"Home":                       3,
-	"If you would like to contribute to the project, for example, adding more translations, get in touch:": 104,
-	"Internal Server Error":                85,
+	"If you would like to contribute to the project, for example, adding more translations, get in touch:": 103,
+	"Internal Server Error":                84,
 	"Intervention":                         53,
-	"Learning Gain by Cohort (Post - Pre)": 93,
+	"Learning Gain by Cohort (Post - Pre)": 92,
 	"Learning Gains":                       65,
 	"Less than one min ago":                6,
-	"Life Sciences":                        127,
-	"Male":                                 110,
-	"Markdown supported":                   74,
-	"Markdown supported. Empty choices will be ignored.": 77,
-	"Mathematics & Computer Science":                     129,
+	"Life Sciences":                        126,
+	"Male":                                 109,
+	"Markdown supported":                   73,
+	"Markdown supported. Empty choices will be ignored.": 76,
+	"Mathematics & Computer Science":                     128,
 	"Multiple Choice":                                    11,
 	"Name":                                               36,
 	"New Assessment":                                     21,
 	"New Cohort":                                         38,
 	"New Experiment":                                     49,
-	"New Question":                                       73,
+	"New Question":                                       72,
 	"Next":                                               48,
 	"No assessments yet":                                 17,
 	"No available experiments":                           57,
 	"No cohorts found":                                   37,
-	"No comparison pairs available yet":                  97,
-	"No data available yet":                              89,
+	"No comparison pairs available yet":                  96,
+	"No data available yet":                              88,
 	"No demographics have been added yet.":               47,
-	"No participation data available yet":                96,
+	"No participation data available yet":                95,
 	"No questions yet":                                   29,
-	"Non-binary":                                         112,
+	"Non-binary":                                         111,
 	"Not visible to participants.":                       40,
 	"Optional. Markdown supported.":                      23,
 	"Optional. Not visible to participants.":             42,
-	"Options":                                            88,
-	"Other":                                              131,
-	"Page Not Found":                                     86,
+	"Options":                                            87,
+	"Other":                                              130,
+	"Page Not Found":                                     85,
 	"Participants":                                       55,
 	"Participation Links":                                63,
-	"Physical Sciences":                                  126,
-	"Post":                                               95,
+	"Physical Sciences":                                  125,
+	"Post":                                               94,
 	"Post-Assessment":                                    1,
-	"Pre":                                                94,
+	"Pre":                                                93,
 	"Pre-Assessment":                                     0,
-	"Prefer not to say":                                  113,
+	"Prefer not to say":                                  112,
 	"Preview":                                            19,
 	"Preview Assessment":                                 30,
-	"Previous Experiments":                               102,
-	"Question: %s":                                       84,
+	"Previous Experiments":                               101,
+	"Question: %s":                                       83,
 	"Questions":                                          14,
-	"References":                                         103,
+	"References":                                         102,
 	"Results":                                            64,
-	"STEM Major":                                         125,
+	"STEM Major":                                         124,
 	"Settings":                                           62,
 	"Single Choice":                                      10,
-	"Source Code":                                        105,
+	"Source Code":                                        104,
 	"Submit":                                             31,
 	"Text":                                               12,
-	"Thank you for participating!":                       71,
+	"Thank you for participating!":                       70,
 	"Type":                                               13,
-	"Under 18":                                           115,
+	"Under 18":                                           114,
 	"Unknown Assessment Type":                            2,
 	"Update":                                             27,
-	"Warning: This assessment doesn't have any questions yet.\nPlease add questions before sharing the link with participants.": 70,
+	"Warning: This assessment doesn't have any questions yet.\nPlease add questions before sharing the link with participants.": 69,
 	"Warning: This assessment doesn't have any questions yet.\nPlease contact your instructor for assistance.":                  34,
-	"Year 1":        120,
-	"Year 2":        121,
-	"Year 3":        122,
-	"Year 4":        123,
-	"Year 5+":       124,
-	"Year of Study": 119,
-	"Your participation has been successfully recorded.\n\nYou can now close this page.": 72,
+	"Year 1":        119,
+	"Year 2":        120,
+	"Year 3":        121,
+	"Year 4":        122,
+	"Year 5+":       123,
+	"Year of Study": 118,
+	"Your participation has been successfully recorded.\n\nYou can now close this page.": 71,
 	"e.g. Cohort attending lecture-based instruction":                                    41,
 	"e.g. Control":         39,
 	"e.g. Earth's Seasons": 50,
 	"e.g. Gauge your current knowledge about the causes of Earth's...": 24,
-	"e.g. The Earth's elliptical orbit":                                80,
-	"e.g. The Earth's revolution":                                      82,
-	"e.g. The Earth's rotation":                                        81,
-	"e.g. The distance from the Sun":                                   79,
-	"e.g. The tilt of Earth's axis":                                    78,
+	"e.g. The Earth's elliptical orbit":                                79,
+	"e.g. The Earth's revolution":                                      81,
+	"e.g. The Earth's rotation":                                        80,
+	"e.g. The distance from the Sun":                                   78,
+	"e.g. The tilt of Earth's axis":                                    77,
 	"e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop...": 51,
-	"e.g. What is the best explanation for the cause of Earth's seasons?":                                                      75,
+	"e.g. What is the best explanation for the cause of Earth's seasons?":                                                      74,
 }
 
-var enIndex = []uint32{ // 133 elements
+var enIndex = []uint32{ // 132 elements
 	// Entry 0 - 1F
 	0x00000000, 0x0000000f, 0x0000001f, 0x00000037,
 	0x0000003c, 0x00000048, 0x00000050, 0x00000066,
@@ -194,28 +193,27 @@ var enIndex = []uint32{ // 133 elements
 	0x00000470, 0x00000482, 0x00000493, 0x0000049c,
 	// Entry 40 - 5F
 	0x000004b0, 0x000004b8, 0x000004c7, 0x000004ce,
-	0x000004d5, 0x000004db, 0x000004df, 0x00000558,
-	0x00000575, 0x000005c6, 0x000005d3, 0x000005e6,
-	0x0000062a, 0x00000632, 0x00000665, 0x00000683,
-	0x000006a2, 0x000006c4, 0x000006de, 0x000006fa,
-	0x00000702, 0x00000712, 0x00000728, 0x00000737,
-	0x0000074c, 0x00000754, 0x0000076a, 0x0000077e,
-	0x0000078c, 0x000007ae, 0x000007d3, 0x000007d7,
+	0x000004d4, 0x000004d8, 0x00000551, 0x0000056e,
+	0x000005bf, 0x000005cc, 0x000005df, 0x00000623,
+	0x0000062b, 0x0000065e, 0x0000067c, 0x0000069b,
+	0x000006bd, 0x000006d7, 0x000006f3, 0x000006fb,
+	0x0000070b, 0x00000721, 0x00000730, 0x00000745,
+	0x0000074d, 0x00000763, 0x00000777, 0x00000785,
+	0x000007a7, 0x000007cc, 0x000007d0, 0x000007d5,
 	// Entry 60 - 7F
-	0x000007dc, 0x00000800, 0x00000822, 0x00000840,
-	0x00000875, 0x00000a33, 0x00000a44, 0x00000a59,
-	0x00000a64, 0x00000ac9, 0x00000ad5, 0x00001353,
-	0x0000136e, 0x000017e9, 0x000017f0, 0x000017f5,
-	0x000017fc, 0x00001807, 0x00001819, 0x00001823,
-	0x0000182c, 0x00001835, 0x0000183e, 0x00001847,
+	0x000007f9, 0x0000081b, 0x00000839, 0x0000086e,
+	0x00000a2c, 0x00000a3d, 0x00000a52, 0x00000a5d,
+	0x00000ac2, 0x00000ace, 0x0000134c, 0x00001367,
+	0x000017e2, 0x000017e9, 0x000017ee, 0x000017f5,
+	0x00001800, 0x00001812, 0x0000181c, 0x00001825,
+	0x0000182e, 0x00001837, 0x00001840, 0x0000184e,
 	0x00001855, 0x0000185c, 0x00001863, 0x0000186a,
-	0x00001871, 0x00001879, 0x00001884, 0x00001896,
+	0x00001872, 0x0000187d, 0x0000188f, 0x0000189d,
 	// Entry 80 - 9F
-	0x000018a4, 0x000018c3, 0x000018e2, 0x000018ee,
-	0x000018f4,
-} // Size: 556 bytes
+	0x000018bc, 0x000018db, 0x000018e7, 0x000018ed,
+} // Size: 552 bytes
 
-const enData string = "" + // Size: 6388 bytes
+const enData string = "" + // Size: 6381 bytes
 	"\x02Pre-Assessment\x02Post-Assessment\x02Unknown Assessment Type\x02Home" +
 	"\x02Assessments\x02Cohorts\x02Less than one min ago\x02%[1]d mins ago" +
 	"\x02%[1]d hours ago\x02%[1]d days ago\x02Single Choice\x02Multiple Choic" +
@@ -236,141 +234,234 @@ const enData string = "" + // Size: 6388 bytes
 	"ments\x02Participants\x02Created\x02No available experiments\x02Edit Exp" +
 	"eriment: %[1]s\x02Edit Experiment\x02Experiment: %[1]s\x02Experiment %[1" +
 	"]s\x02Settings\x02Participation Links\x02Results\x02Learning Gains\x02Ed" +
-	"uLab\x02Edulab\x02About\x02FAQ\x02Warning: This assessment doesn't have " +
-	"any questions yet.\x0aPlease add questions before sharing the link with " +
-	"participants.\x02Thank you for participating!\x02Your participation has " +
-	"been successfully recorded.\x0a\x0aYou can now close this page.\x02New Q" +
-	"uestion\x02Markdown supported\x02e.g. What is the best explanation for t" +
-	"he cause of Earth's seasons?\x02Choices\x02Markdown supported. Empty cho" +
-	"ices will be ignored.\x02e.g. The tilt of Earth's axis\x02e.g. The dista" +
-	"nce from the Sun\x02e.g. The Earth's elliptical orbit\x02e.g. The Earth'" +
-	"s rotation\x02e.g. The Earth's revolution\x02Correct\x02Question: %[1]s" +
-	"\x02Internal Server Error\x02Page Not Found\x02Demographics Results\x02O" +
-	"ptions\x02No data available yet\x02Assessments Results\x02Gains Results" +
-	"\x02Average Correct Answers by Cohort\x02Learning Gain by Cohort (Post -" +
-	" Pre)\x02Pre\x02Post\x02No participation data available yet\x02No compar" +
-	"ison pairs available yet\x02EduLab - Empowering Educators\x02Empowering " +
-	"Educators Through Evidence-Based Insights\x02EduLab brings **data-driven" +
-	"** experimentation into the classroom, empowering you to evaluate and re" +
-	"fine teaching methods across distinct **cohorts**.\x0a\x0aBy running con" +
-	"trolled pre- and post-assessments, you gain **evidence-based insights** " +
-	"into how different teaching approaches impact learning outcomes.\x0a\x0a" +
-	"Compare cohorts, **measure learning gains**, and adapt strategies to ele" +
-	"vate student engagement—all supported by real-time educational data.\x02" +
-	"Educator's Guide\x02Previous Experiments\x02References\x02If you would l" +
-	"ike to contribute to the project, for example, adding more translations," +
-	" get in touch:\x02Source Code\x04\x01\x0a\x00\xf8\x10\x02### Introductio" +
-	"n\x0aEduLab is designed to help educators incorporate scientific methods" +
-	" into their teaching strategies. This guide provides step-by-step instru" +
-	"ctions on using the platform to evaluate and refine your teaching method" +
-	"s with evidence-based insights.\x0a\x0a---\x0a\x0a### Step 1: Set Up an " +
-	"Experiment\x0a1. **Define Your Teaching Interventions**  \x0a   Identify" +
-	" the different teaching methods or approaches you want to compare (e.g.," +
-	" traditional lecture vs. interactive workshops).\x0a   \x0a2. **Create C" +
-	"ohorts**  \x0a   Use EduLab's cohort feature to group students who will " +
-	"experience specific teaching interventions. For example:\x0a   - **Contr" +
-	"ol**: Traditional lecture method.\x0a   - **Intervention**: Interactive " +
-	"workshop approach.\x0a\x0a3. **Develop Assessments**  \x0a   Design a se" +
-	"t of pre- and post-assessment questions to measure the effectiveness of " +
-	"each teaching method. Ensure these questions align with the learning obj" +
-	"ectives.\x0a\x0a---\x0a\x0a### Step 2: Conduct Pre-Assessment\x0a- Share" +
-	" the pre-assessment link with your cohorts before introducing any teachi" +
-	"ng intervention. \x0a- Encourage students to complete the assessment to " +
-	"establish a baseline for their knowledge.\x0a\x0a---\x0a\x0a### Step 3: " +
-	"Implement Your Teaching Interventions\x0a- Conduct your planned teaching" +
-	" methods for each cohort.\x0a- Ensure that the interventions are distinc" +
-	"t and well-documented for accurate comparisons.\x0a\x0a---\x0a\x0a### St" +
-	"ep 4: Conduct Post-Assessment\x0a- After completing the intervention, sh" +
-	"are the post-assessment link with the same cohorts.\x0a- Collect respons" +
-	"es to measure the knowledge gained through each teaching method.\x0a\x0a" +
-	"---\x0a\x0a### Step 5: Analyze Results\x0a- Use EduLab's **Learning Gain" +
-	" Analysis** to compare pre- and post-assessment scores within and across" +
-	" cohorts. This allows you to:\x0a  - Identify which teaching method led " +
-	"to higher learning gains.\x0a  - Understand how different demographic gr" +
-	"oups responded to the interventions.\x0a  \x0a- Utilize the demographic " +
-	"data to tailor future teaching methods to meet the diverse needs of your" +
-	" students.\x0a\x0a---\x0a\x0a### Step 6: Iterate and Refine\x0a- Based o" +
-	"n the results, refine your teaching strategies to optimize learning outc" +
-	"omes. Repeat the process to continually improve your methods.\x02Frequen" +
-	"tly Asked Questions\x02### How is data privacy ensured on EduLab?  \x0aE" +
-	"duLab anonymizes all student data, ensuring no personally identifiable i" +
-	"nformation is stored or shared. The platform also complies with data pro" +
-	"tection standards.\x0a\x0a---\x0a\x0a### Can I customize the assessments" +
-	"?  \x0aYes, you can create and edit multiple-choice questions to align w" +
-	"ith your specific learning objectives.\x0a\x0a---\x0a\x0a### What types " +
-	"of demographic data can I collect?  \x0aEduLab allows you to collect dat" +
-	"a on gender, age group, year of study, and major, helping you understand" +
-	" how different factors influence learning outcomes.\x0a\x0a---\x0a\x0a##" +
-	"# How do I interpret the learning gain analysis?  \x0aLearning gains are" +
-	" calculated as the difference between pre- and post-assessment scores, n" +
-	"ormalized to account for the initial baseline. Higher gains indicate mor" +
-	"e effective teaching methods.\x0a\x0a---\x0a\x0a### Is the platform open" +
-	"-source?  \x0aYes, EduLab provides access to its open-source code, allow" +
-	"ing you to customize the platform to fit your needs.\x0a\x0a---\x0a\x0a#" +
-	"## Can I use EduLab for non-science subjects?  \x0aAbsolutely! While Edu" +
-	"Lab is designed with science education in mind, its features are applica" +
-	"ble across disciplines.\x02Gender\x02Male\x02Female\x02Non-binary\x02Pre" +
-	"fer not to say\x02Age Group\x02Under 18\x0218 to 20\x0221 to 23\x0224 to" +
-	" 26\x02Year of Study\x02Year 1\x02Year 2\x02Year 3\x02Year 4\x02Year 5+" +
-	"\x02STEM Major\x02Physical Sciences\x02Life Sciences\x02Earth & Environm" +
-	"ental Sciences\x02Mathematics & Computer Science\x02Engineering\x02Other"
+	"uLab\x02About\x02FAQ\x02Warning: This assessment doesn't have any questi" +
+	"ons yet.\x0aPlease add questions before sharing the link with participan" +
+	"ts.\x02Thank you for participating!\x02Your participation has been succe" +
+	"ssfully recorded.\x0a\x0aYou can now close this page.\x02New Question" +
+	"\x02Markdown supported\x02e.g. What is the best explanation for the caus" +
+	"e of Earth's seasons?\x02Choices\x02Markdown supported. Empty choices wi" +
+	"ll be ignored.\x02e.g. The tilt of Earth's axis\x02e.g. The distance fro" +
+	"m the Sun\x02e.g. The Earth's elliptical orbit\x02e.g. The Earth's rotat" +
+	"ion\x02e.g. The Earth's revolution\x02Correct\x02Question: %[1]s\x02Inte" +
+	"rnal Server Error\x02Page Not Found\x02Demographics Results\x02Options" +
+	"\x02No data available yet\x02Assessments Results\x02Gains Results\x02Ave" +
+	"rage Correct Answers by Cohort\x02Learning Gain by Cohort (Post - Pre)" +
+	"\x02Pre\x02Post\x02No participation data available yet\x02No comparison " +
+	"pairs available yet\x02EduLab - Empowering Educators\x02Empowering Educa" +
+	"tors Through Evidence-Based Insights\x02EduLab brings **data-driven** ex" +
+	"perimentation into the classroom, empowering you to evaluate and refine " +
+	"teaching methods across distinct **cohorts**.\x0a\x0aBy running controll" +
+	"ed pre- and post-assessments, you gain **evidence-based insights** into " +
+	"how different teaching approaches impact learning outcomes.\x0a\x0aCompa" +
+	"re cohorts, **measure learning gains**, and adapt strategies to elevate " +
+	"student engagement—all supported by real-time educational data.\x02Educa" +
+	"tor's Guide\x02Previous Experiments\x02References\x02If you would like t" +
+	"o contribute to the project, for example, adding more translations, get " +
+	"in touch:\x02Source Code\x04\x01\x0a\x00\xf8\x10\x02### Introduction\x0a" +
+	"EduLab is designed to help educators incorporate scientific methods into" +
+	" their teaching strategies. This guide provides step-by-step instruction" +
+	"s on using the platform to evaluate and refine your teaching methods wit" +
+	"h evidence-based insights.\x0a\x0a---\x0a\x0a### Step 1: Set Up an Exper" +
+	"iment\x0a1. **Define Your Teaching Interventions**  \x0a   Identify the " +
+	"different teaching methods or approaches you want to compare (e.g., trad" +
+	"itional lecture vs. interactive workshops).\x0a   \x0a2. **Create Cohort" +
+	"s**  \x0a   Use EduLab's cohort feature to group students who will exper" +
+	"ience specific teaching interventions. For example:\x0a   - **Control**:" +
+	" Traditional lecture method.\x0a   - **Intervention**: Interactive works" +
+	"hop approach.\x0a\x0a3. **Develop Assessments**  \x0a   Design a set of " +
+	"pre- and post-assessment questions to measure the effectiveness of each " +
+	"teaching method. Ensure these questions align with the learning objectiv" +
+	"es.\x0a\x0a---\x0a\x0a### Step 2: Conduct Pre-Assessment\x0a- Share the " +
+	"pre-assessment link with your cohorts before introducing any teaching in" +
+	"tervention. \x0a- Encourage students to complete the assessment to estab" +
+	"lish a baseline for their knowledge.\x0a\x0a---\x0a\x0a### Step 3: Imple" +
+	"ment Your Teaching Interventions\x0a- Conduct your planned teaching meth" +
+	"ods for each cohort.\x0a- Ensure that the interventions are distinct and" +
+	" well-documented for accurate comparisons.\x0a\x0a---\x0a\x0a### Step 4:" +
+	" Conduct Post-Assessment\x0a- After completing the intervention, share t" +
+	"he post-assessment link with the same cohorts.\x0a- Collect responses to" +
+	" measure the knowledge gained through each teaching method.\x0a\x0a---" +
+	"\x0a\x0a### Step 5: Analyze Results\x0a- Use EduLab's **Learning Gain An" +
+	"alysis** to compare pre- and post-assessment scores within and across co" +
+	"horts. This allows you to:\x0a  - Identify which teaching method led to " +
+	"higher learning gains.\x0a  - Understand how different demographic group" +
+	"s responded to the interventions.\x0a  \x0a- Utilize the demographic dat" +
+	"a to tailor future teaching methods to meet the diverse needs of your st" +
+	"udents.\x0a\x0a---\x0a\x0a### Step 6: Iterate and Refine\x0a- Based on t" +
+	"he results, refine your teaching strategies to optimize learning outcome" +
+	"s. Repeat the process to continually improve your methods.\x02Frequently" +
+	" Asked Questions\x02### How is data privacy ensured on EduLab?  \x0aEduL" +
+	"ab anonymizes all student data, ensuring no personally identifiable info" +
+	"rmation is stored or shared. The platform also complies with data protec" +
+	"tion standards.\x0a\x0a---\x0a\x0a### Can I customize the assessments?  " +
+	"\x0aYes, you can create and edit multiple-choice questions to align with" +
+	" your specific learning objectives.\x0a\x0a---\x0a\x0a### What types of " +
+	"demographic data can I collect?  \x0aEduLab allows you to collect data o" +
+	"n gender, age group, year of study, and major, helping you understand ho" +
+	"w different factors influence learning outcomes.\x0a\x0a---\x0a\x0a### H" +
+	"ow do I interpret the learning gain analysis?  \x0aLearning gains are ca" +
+	"lculated as the difference between pre- and post-assessment scores, norm" +
+	"alized to account for the initial baseline. Higher gains indicate more e" +
+	"ffective teaching methods.\x0a\x0a---\x0a\x0a### Is the platform open-so" +
+	"urce?  \x0aYes, EduLab provides access to its open-source code, allowing" +
+	" you to customize the platform to fit your needs.\x0a\x0a---\x0a\x0a### " +
+	"Can I use EduLab for non-science subjects?  \x0aAbsolutely! While EduLab" +
+	" is designed with science education in mind, its features are applicable" +
+	" across disciplines.\x02Gender\x02Male\x02Female\x02Non-binary\x02Prefer" +
+	" not to say\x02Age Group\x02Under 18\x0218 to 20\x0221 to 23\x0224 to 26" +
+	"\x02Year of Study\x02Year 1\x02Year 2\x02Year 3\x02Year 4\x02Year 5+\x02" +
+	"STEM Major\x02Physical Sciences\x02Life Sciences\x02Earth & Environmenta" +
+	"l Sciences\x02Mathematics & Computer Science\x02Engineering\x02Other"
 
-var pt_BRIndex = []uint32{ // 133 elements
+var pt_BRIndex = []uint32{ // 132 elements
 	// Entry 0 - 1F
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000008, 0x00000008, 0x00000008, 0x00000008,
-	0x00000008, 0x00000008, 0x00000008, 0x00000008,
-	0x00000008, 0x00000008, 0x00000008, 0x00000008,
-	0x00000008, 0x00000008, 0x00000008, 0x00000008,
-	0x00000008, 0x00000008, 0x00000008, 0x00000008,
-	0x00000008, 0x00000008, 0x00000008, 0x00000008,
-	0x00000008, 0x00000008, 0x00000008, 0x00000008,
+	0x00000000, 0x00000011, 0x00000022, 0x00000043,
+	0x0000004b, 0x00000058, 0x00000060, 0x0000007a,
+	0x0000008c, 0x0000009c, 0x000000ab, 0x000000ba,
+	0x000000cc, 0x000000d2, 0x000000d7, 0x000000e1,
+	0x000000e9, 0x000000ff, 0x00000119, 0x00000120,
+	0x0000012b, 0x00000134, 0x00000145, 0x00000151,
+	0x0000016d, 0x000001bb, 0x000001c1, 0x000001cd,
+	0x000001d7, 0x000001ea, 0x00000201, 0x00000218,
 	// Entry 20 - 3F
-	0x00000008, 0x0000000f, 0x0000000f, 0x0000000f,
-	0x0000000f, 0x00000014, 0x00000014, 0x00000014,
-	0x00000014, 0x00000014, 0x00000014, 0x00000014,
-	0x00000014, 0x00000014, 0x00000014, 0x00000014,
-	0x00000014, 0x00000014, 0x00000025, 0x00000025,
-	0x00000025, 0x00000025, 0x00000025, 0x00000032,
-	0x00000032, 0x00000039, 0x00000058, 0x00000058,
-	0x00000058, 0x00000058, 0x0000006a, 0x0000006a,
+	0x0000021f, 0x00000226, 0x00000234, 0x000002a7,
+	0x000002b8, 0x000002bd, 0x000002d7, 0x000002e3,
+	0x000002f1, 0x00000316, 0x00000354, 0x00000383,
+	0x00000391, 0x0000039c, 0x000003a9, 0x000003be,
+	0x000003e7, 0x000003f0, 0x00000401, 0x00000418,
+	0x00000496, 0x0000049f, 0x000004ad, 0x000004ba,
+	0x000004c8, 0x000004cf, 0x000004ee, 0x00000508,
+	0x0000051b, 0x0000052e, 0x00000540, 0x00000550,
 	// Entry 40 - 5F
-	0x0000006a, 0x0000006a, 0x0000006a, 0x00000071,
-	0x00000071, 0x00000077, 0x00000077, 0x00000077,
-	0x00000077, 0x00000077, 0x00000077, 0x00000077,
-	0x00000077, 0x00000077, 0x00000077, 0x00000077,
-	0x00000077, 0x00000077, 0x00000077, 0x00000077,
-	0x00000077, 0x00000077, 0x00000090, 0x000000a8,
-	0x000000a8, 0x000000a8, 0x000000a8, 0x000000a8,
-	0x000000a8, 0x000000a8, 0x000000a8, 0x000000a8,
+	0x00000568, 0x00000573, 0x00000589, 0x00000590,
+	0x00000596, 0x0000059c, 0x00000617, 0x00000630,
+	0x00000686, 0x00000694, 0x000006a7, 0x000006f0,
+	0x000006f9, 0x0000072f, 0x00000754, 0x0000076d,
+	0x0000078f, 0x000007a9, 0x000007c5, 0x000007cd,
+	0x000007dd, 0x000007f6, 0x0000080e, 0x00000827,
+	0x00000830, 0x0000084e, 0x0000086a, 0x00000880,
+	0x000008a8, 0x000008d6, 0x000008db, 0x000008e0,
 	// Entry 60 - 7F
-	0x000000a8, 0x000000a8, 0x000000a8, 0x000000a8,
-	0x000000e8, 0x00000305, 0x00000305, 0x0000031d,
-	0x0000032a, 0x00000397, 0x000003a5, 0x000003a5,
-	0x000003a5, 0x000003a5, 0x000003a5, 0x000003a5,
-	0x000003a5, 0x000003a5, 0x000003a5, 0x000003a5,
-	0x000003a5, 0x000003a5, 0x000003a5, 0x000003a5,
-	0x000003a5, 0x000003a5, 0x000003a5, 0x000003a5,
-	0x000003a5, 0x000003a5, 0x000003a5, 0x000003a5,
+	0x00000910, 0x0000093d, 0x0000095d, 0x0000099d,
+	0x00000ba8, 0x00000bb9, 0x00000bd1, 0x00000bde,
+	0x00000c4b, 0x00000c59, 0x000015dd, 0x000015f2,
+	0x00001b6c, 0x00001b74, 0x00001b7e, 0x00001b87,
+	0x00001b95, 0x00001ba8, 0x00001bb6, 0x00001bc7,
+	0x00001bd4, 0x00001be1, 0x00001bee, 0x00001bfc,
+	0x00001c02, 0x00001c08, 0x00001c0e, 0x00001c14,
+	0x00001c1b, 0x00001c26, 0x00001c39, 0x00001c4f,
 	// Entry 80 - 9F
-	0x000003a5, 0x000003a5, 0x000003a5, 0x000003a5,
-	0x000003a5,
-} // Size: 556 bytes
+	0x00001c6f, 0x00001c96, 0x00001ca1, 0x00001ca7,
+} // Size: 552 bytes
 
-const pt_BRData string = "" + // Size: 933 bytes
-	"\x02Início\x02Voltar\x02Nome\x02Novo Experimento\x02Experimentos\x02Cria" +
-	"do\x02Nehnum experimento disponível\x02Experimento %[1]s\x02EduLab\x02So" +
-	"bre\x02Erro Interno do Servidor\x02Página Não Encontrada\x02Capacitando " +
-	"Educadores com Perspectivas Baseadas em Evidências\x02O EduLab traz expe" +
-	"rimentação **orientada por dados** para a sala de aula, permitindo que v" +
-	"ocê avalie e refine métodos de ensino em diferentes **coortes**.\x0a\x0a" +
-	" Com a realização de avaliações controladas antes e depois das aulas, vo" +
-	"cê obtém **perspectivas baseadas em evidências** sobre como diferentes a" +
-	"bordagens impactam os resultados de aprendizagem.\x0a\x0aCompare coortes" +
-	", meça os **ganhos de aprendizado** e adapte suas estratégias para eleva" +
-	"r o engajamento dos alunos—tudo isso com o suporte de dados educacionais" +
-	" em tempo real.\x02Experimentos Anteriores\x02Referências\x02Se você gos" +
-	"taria de contribuir para o projeto, por exemplo, adicionando mais traduç" +
-	"ões, entre em contato:\x02Código Fonte"
+const pt_BRData string = "" + // Size: 7335 bytes
+	"\x02Pré-avaliação\x02Pós-avaliação\x02Tipo de avaliação desconhecido\x02" +
+	"Início\x02Avaliações\x02Coortes\x02Menos de um minuto atrás\x02Há %[1]d " +
+	"minutos\x02Há %[1]d horas\x02Há %[1]d dias\x02Escolha única\x02Escolha m" +
+	"últipla\x02Texto\x02Tipo\x02Perguntas\x02Ações\x02Adicionar Avaliação" +
+	"\x02Nenhuma avaliação ainda\x02Editar\x02Visualizar\x02Em breve\x02Nova " +
+	"Avaliação\x02Descrição\x02Opcional. Suporta Markdown.\x02Ex.: Avalie seu" +
+	" conhecimento atual sobre as causas das estações da Terra...\x02Criar" +
+	"\x02Avaliação\x02Atualizar\x02Adicionar Pergunta\x02Nenhuma pergunta ain" +
+	"da\x02Visualizar Avaliação\x02Enviar\x02Voltar\x02%[1]s - %[2]s\x02Aviso" +
+	": Esta avaliação ainda não tem perguntas.\x0aPor favor, entre em contato" +
+	" com seu instrutor para assistência.\x02Adicionar Coorte\x02Nome\x02Nenh" +
+	"uma coorte encontrada\x02Nova Coorte\x02Ex.: Controle\x02Não visível par" +
+	"a os participantes.\x02Ex.: Coorte assistindo a uma instrução baseada em" +
+	" palestras\x02Opcional. Não visível para os participantes.\x02Coorte: %[" +
+	"1]s\x02Demografia\x02Demográfico\x02Adicionar Demografia\x02Nenhuma demo" +
+	"grafia foi adicionada ainda.\x02Próximo\x02Novo Experimento\x02Ex.: Esta" +
+	"ções do Ano\x02Ex.: Este experimento irá comparar 2 coortes de estudant" +
+	"es. Uma assistindo a uma aula tradicional e a outra a um workshop...\x02" +
+	"Controle\x02Intervenção\x02Experimentos\x02Participantes\x02Criado\x02Ne" +
+	"nhum experimento disponível\x02Editar Experimento: %[1]s\x02Editar Exper" +
+	"imento\x02Experimento: %[1]s\x02Experimento %[1]s\x02Configurações\x02Li" +
+	"nks de Participação\x02Resultados\x02Ganhos de Aprendizado\x02EduLab\x02" +
+	"Sobre\x02Ajuda\x02Aviso: Esta avaliação ainda não possui perguntas.\x0aA" +
+	"dicione perguntas antes de compartilhar o link com os participantes.\x02" +
+	"Obrigado por participar!\x02Sua participação foi registrada com sucesso." +
+	"\x0a\x0aAgora você pode fechar esta página.\x02Nova Pergunta\x02Markdown" +
+	" suportado\x02Ex.: Qual é a melhor explicação para a causa das estações " +
+	"da Terra?\x02Opções\x02Markdown suportado. Opções vazias serão ignoradas" +
+	".\x02Ex.: A inclinação do eixo da Terra\x02Ex.: A distância do Sol\x02Ex" +
+	".: A órbita elíptica da Terra\x02Ex.: A rotação da Terra\x02Ex.: A revol" +
+	"ução da Terra\x02Correto\x02Pergunta: %[1]s\x02Erro Interno do Servidor" +
+	"\x02Página Não Encontrada\x02Resultados Demográficos\x02Opções\x02Nenhum" +
+	" dado disponível ainda\x02Resultados das Avaliações\x02Resultados dos Ga" +
+	"nhos\x02Média de Respostas Corretas por Coorte\x02Ganho de Aprendizado p" +
+	"or Coorte (Pós - Pré)\x02Pré\x02Pós\x02Nenhum dado de participação dispo" +
+	"nível ainda\x02Nenhum par de comparação disponível ainda\x02EduLab - Cap" +
+	"acitando Educadores\x02Capacitando Educadores com Perspectivas Baseadas " +
+	"em Evidências\x02O EduLab traz experimentação **baseada em dados** para " +
+	"a sala de aula, capacitando você a avaliar e refinar métodos de ensino e" +
+	"m diferentes **coortes**.\x0a\x0aAo realizar avaliações controladas ante" +
+	"s e depois das aulas, você obtém **insights baseados em evidências** sob" +
+	"re como diferentes abordagens de ensino impactam os resultados de aprend" +
+	"izagem.\x0a\x0aCompare coortes, **meça ganhos de aprendizado** e adapte " +
+	"estratégias para aumentar o engajamento dos alunos—tudo com o suporte de" +
+	" dados educacionais em tempo real.\x02Guia do Educador\x02Experimentos A" +
+	"nteriores\x02Referências\x02Se você gostaria de contribuir para o projet" +
+	"o, por exemplo, adicionando mais traduções, entre em contato:\x02Código " +
+	"Fonte\x04\x01\x0a\x00\xfe\x12\x02### Introdução\x0aO EduLab foi projetad" +
+	"o para ajudar educadores a incorporar métodos científicos em suas estrat" +
+	"égias de ensino. Este guia fornece instruções passo a passo sobre como " +
+	"usar a plataforma para avaliar e refinar seus métodos de ensino com insi" +
+	"ghts baseados em evidências.\x0a\x0a---\x0a\x0a### Etapa 1: Configurar u" +
+	"m Experimento\x0a1. **Defina Suas Intervenções de Ensino**  \x0a   Ident" +
+	"ifique os diferentes métodos ou abordagens de ensino que você deseja com" +
+	"parar (ex.: aula tradicional vs. workshops interativos).\x0a\x0a2. **Cri" +
+	"e Coortes**  \x0a   Use o recurso de coortes do EduLab para agrupar estu" +
+	"dantes que experimentarão intervenções de ensino específicas. Por exempl" +
+	"o:\x0a   - **Controle**: Método de aula tradicional.\x0a   - **Intervenç" +
+	"ão**: Abordagem de workshop interativo.\x0a\x0a3. **Desenvolva Avaliaçõ" +
+	"es**  \x0a   Projete um conjunto de perguntas de pré e pós-avaliação par" +
+	"a medir a eficácia de cada método de ensino. Certifique-se de que essas " +
+	"perguntas estejam alinhadas com os objetivos de aprendizagem.\x0a\x0a---" +
+	"\x0a\x0a### Etapa 2: Realizar a Pré-Avaliação\x0a- Compartilhe o link da" +
+	" pré-avaliação com suas coortes antes de introduzir qualquer intervenção" +
+	" de ensino. \x0a- Incentive os estudantes a completar a avaliação para e" +
+	"stabelecer uma linha de base de conhecimento.\x0a\x0a---\x0a\x0a### Etap" +
+	"a 3: Implemente Suas Intervenções de Ensino\x0a- Conduza os métodos de e" +
+	"nsino planejados para cada coorte.\x0a- Certifique-se de que as interven" +
+	"ções sejam distintas e bem documentadas para comparações precisas.\x0a" +
+	"\x0a---\x0a\x0a### Etapa 4: Realizar a Pós-Avaliação\x0a- Após concluir " +
+	"a intervenção, compartilhe o link da pós-avaliação com as mesmas coortes" +
+	".\x0a- Colete respostas para medir o conhecimento adquirido por meio de " +
+	"cada método de ensino.\x0a\x0a---\x0a\x0a### Etapa 5: Analisar os Result" +
+	"ados\x0a- Use a **Análise de Ganho de Aprendizado** do EduLab para compa" +
+	"rar os resultados das pré e pós-avaliações dentro e entre coortes. Isso " +
+	"permite que você:\x0a  - Identifique qual método de ensino gerou maiores" +
+	" ganhos de aprendizado.\x0a  - Compreenda como diferentes grupos demográ" +
+	"ficos responderam às intervenções.\x0a  \x0a- Utilize os dados demográfi" +
+	"cos para adaptar futuros métodos de ensino às diversas necessidades de s" +
+	"eus estudantes.\x0a\x0a---\x0a\x0a### Etapa 6: Iterar e Refinar\x0a- Com" +
+	" base nos resultados, refine suas estratégias de ensino para otimizar os" +
+	" resultados de aprendizagem. Repita o processo para melhorar continuamen" +
+	"te seus métodos.\x02Perguntas Frequentes\x02### Como a privacidade dos d" +
+	"ados é garantida no EduLab?  \x0aO EduLab anonimiza todos os dados dos e" +
+	"studantes, garantindo que nenhuma informação pessoalmente identificável " +
+	"seja armazenada ou compartilhada. A plataforma também está em conformida" +
+	"de com os padrões de proteção de dados.\x0a\x0a---\x0a\x0a### Posso pers" +
+	"onalizar as avaliações?  \x0aSim, você pode criar e editar perguntas de " +
+	"múltipla escolha para alinhá-las aos seus objetivos específicos de apren" +
+	"dizado.\x0a\x0a---\x0a\x0a### Que tipos de dados demográficos posso cole" +
+	"tar?  \x0aO EduLab permite a coleta de dados como gênero, faixa etária, " +
+	"ano de estudo e área de formação, ajudando você a entender como diferent" +
+	"es fatores influenciam os resultados de aprendizado.\x0a\x0a---\x0a\x0a#" +
+	"## Como interpreto a análise de ganho de aprendizado?  \x0aOs ganhos de " +
+	"aprendizado são calculados como a diferença entre as pontuações de pré e" +
+	" pós-avaliação, normalizados para levar em conta a linha de base inicial" +
+	". Ganhos mais altos indicam métodos de ensino mais eficazes.\x0a\x0a---" +
+	"\x0a\x0a### A plataforma é de código aberto?  \x0aSim, o EduLab oferece " +
+	"acesso ao seu código aberto, permitindo que você personalize a plataform" +
+	"a de acordo com suas necessidades.\x0a\x0a---\x0a\x0a### Posso usar o Ed" +
+	"uLab para disciplinas não relacionadas às ciências?  \x0aCom certeza! Em" +
+	"bora o EduLab seja projetado com foco na educação científica, seus recur" +
+	"sos são aplicáveis a outras disciplinas.\x02Gênero\x02Masculino\x02Femin" +
+	"ino\x02Não binário\x02Prefiro não dizer\x02Faixa Etária\x02Menor de 18 a" +
+	"nos\x0218 a 20 anos\x0221 a 23 anos\x0224 a 26 anos\x02Ano de Estudo\x02" +
+	"Ano 1\x02Ano 2\x02Ano 3\x02Ano 4\x02Ano 5+\x02Curso STEM\x02Ciências Fís" +
+	"icas\x02Ciências Biológicas\x02Ciências da Terra e Ambientais\x02Matemát" +
+	"ica e Ciência da Computação\x02Engenharia\x02Outro"
 
-	// Total table size 8433 bytes (8KiB); checksum: 1F44AFA0
+	// Total table size 14820 bytes (14KiB); checksum: 5D6F4730
