@@ -107,7 +107,7 @@ func (srv *Server) newCohort(w http.ResponseWriter, r *http.Request, experiment 
 			Create                 string
 		}{
 			Name:                   printer.Sprintf("Name"),
-			NamePlaceholder:        printer.Sprintf("e.g. Baseline"),
+			NamePlaceholder:        printer.Sprintf("e.g. Control"),
 			NameHelp:               printer.Sprintf("Not visible to participants."),
 			Description:            printer.Sprintf("Description"),
 			DescriptionPlaceholder: printer.Sprintf("e.g. Cohort attending lecture-based instruction"),

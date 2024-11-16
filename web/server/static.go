@@ -59,7 +59,7 @@ EduLab is designed to help educators incorporate scientific methods into their t
    
 2. **Create Cohorts**  
    Use EduLab's cohort feature to group students who will experience specific teaching interventions. For example:
-   - **Base**: Traditional lecture method.
+   - **Control**: Traditional lecture method.
    - **Intervention**: Interactive workshop approach.
 
 3. **Develop Assessments**  

@@ -13,8 +13,8 @@ import (
 
 // Data struct to hold the pre- and post-intervention scores
 type Data struct {
-	PreBase          float64
-	PostBase         float64
+	PreControl       float64
+	PostControl      float64
 	PreIntervention  float64
 	PostIntervention float64
 }
@@ -35,14 +35,14 @@ func ReadCSV(filePath string) ([]Data, error) {
 
 	var data []Data
 	for _, record := range records[1:] { // Skip header row
-		preBase, _ := strconv.ParseFloat(record[0], 64)
+		preControl, _ := strconv.ParseFloat(record[0], 64)
 		preIntervention, _ := strconv.ParseFloat(record[1], 64)
-		postBase, _ := strconv.ParseFloat(record[2], 64)
+		postControl, _ := strconv.ParseFloat(record[2], 64)
 		postIntervention, _ := strconv.ParseFloat(record[3], 64)
 
 		data = append(data, Data{
-			PreBase:          preBase,
-			PostBase:         postBase,
+			PreControl:       preControl,
+			PostControl:      postControl,
 			PreIntervention:  preIntervention,
 			PostIntervention: postIntervention,
 		})
@@ -50,13 +50,13 @@ func ReadCSV(filePath string) ([]Data, error) {
 	return data, nil
 }
 
-// Calculate learning gains for base and intervention groups
+// Calculate learning gains for control and intervention groups
 func CalculateLearningGains(data []Data) (gains []float64, interventions []float64) {
 	for _, d := range data {
-		gainBase := d.PostBase - d.PreBase
+		gainControl := d.PostControl - d.PreControl
 		gainIntervention := d.PostIntervention - d.PreIntervention
-		gains = append(gains, gainBase, gainIntervention)
-		interventions = append(interventions, 0, 1) // 0 for base, 1 for intervention
+		gains = append(gains, gainControl, gainIntervention)
+		interventions = append(interventions, 0, 1) // 0 for control, 1 for intervention
 	}
 	return gains, interventions
 }

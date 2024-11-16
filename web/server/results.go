@@ -187,8 +187,12 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 	printer, page := srv.i18n(w, r)
 
 	type texts struct {
-		Title string
-		Error string
+		Title           string
+		Error           string
+		Empty           string
+		PlotTitles      []string
+		AssessmentTypes []string
+		CohortLabels    []string
 	}
 
 	content := struct {
@@ -200,6 +204,18 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 		Experiment:  experiment,
 		Texts: texts{
 			Title: printer.Sprintf("Gains Results"),
+			PlotTitles: []string{
+				printer.Sprintf("Average Correct Answers by Cohort"),
+				printer.Sprintf("Learning Gain by Cohort (Post - Pre)"),
+			},
+			AssessmentTypes: []string{
+				printer.Sprintf("Pre"),
+				printer.Sprintf("Post"),
+			},
+			CohortLabels: []string{
+				printer.Sprintf("Control"),
+				printer.Sprintf("Intervention"),
+			},
 		},
 	}
 
@@ -231,6 +247,11 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 		return
 	}
 
+	if r.Header.Get("Content-type") != "application/json" {
+		srv.render(w, page)
+		return
+	}
+
 	questions, err := srv.DB.FindQuestions(items[0][0].AssessmentID)
 	if err != nil {
 		srv.renderError(w, r, err)
@@ -254,8 +275,8 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 
 	type chart struct {
 		Question         string  `json:"question"`
-		PreBase          float64 `json:"preBase"`
-		PostBase         float64 `json:"postBase"`
+		PreControl       float64 `json:"preControl"`
+		PostControl      float64 `json:"postControl"`
 		PreIntervention  float64 `json:"preIntervention"`
 		PostIntervention float64 `json:"postIntervention"`
 		Beta0            float64 `json:"beta0"`
@@ -264,68 +285,62 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 		PValue           float64 `json:"pValue"`
 	}
 
-	if r.Header.Get("Content-type") == "application/json" {
-		var payload []chart
+	var payload []chart
 
-		for i, item := range items {
-			var label string
-			if len(labels) > i {
-				label = labels[i]
-			}
-
-			comparison, err := result.NewComparison(res, item, cohorts)
-			if err != nil {
-				srv.renderError(w, r, err)
-				return
-			}
-
-			data := comparison.ToStatsData()
-
-			gains, interventions := stats.CalculateLearningGains(data)
-
-			beta0, beta1, rSquared := stats.LinearRegression(gains, interventions)
-
-			pValue := stats.ComputePValue(beta0, beta1, gains, interventions)
-
-			if math.IsNaN(pValue) {
-				pValue = 1.0
-			}
-
-			if math.IsNaN(rSquared) {
-				rSquared = 0.0
-			}
-
-			var preBase, postBase, preIntervention, postIntervention []float64
-			for _, d := range data {
-				preBase = append(preBase, d.PreBase)
-				postBase = append(postBase, d.PostBase)
-				preIntervention = append(preIntervention, d.PreIntervention)
-				postIntervention = append(postIntervention, d.PostIntervention)
-			}
-
-			payload = append(payload, chart{
-				Question:         label,
-				PreBase:          stat.Mean(preBase, nil),
-				PostBase:         stat.Mean(postBase, nil),
-				PreIntervention:  stat.Mean(preIntervention, nil),
-				PostIntervention: stat.Mean(postIntervention, nil),
-				Beta0:            beta0,
-				Beta1:            beta1,
-				RSquared:         rSquared,
-				PValue:           pValue,
-			})
-
+	for i, item := range items {
+		var label string
+		if len(labels) > i {
+			label = labels[i]
 		}
 
-		w.Header().Set("Content-Type", "application/json")
-		err = json.NewEncoder(w).Encode(payload)
+		comparison, err := result.NewComparison(res, item, cohorts)
 		if err != nil {
 			srv.renderError(w, r, err)
 			return
 		}
 
-		return
+		data := comparison.ToStatsData()
+
+		gains, interventions := stats.CalculateLearningGains(data)
+
+		beta0, beta1, rSquared := stats.LinearRegression(gains, interventions)
+
+		pValue := stats.ComputePValue(beta0, beta1, gains, interventions)
+
+		if math.IsNaN(pValue) {
+			pValue = 1.0
+		}
+
+		if math.IsNaN(rSquared) {
+			rSquared = 0.0
+		}
+
+		var preControl, postControl, preIntervention, postIntervention []float64
+		for _, d := range data {
+			preControl = append(preControl, d.PreControl)
+			postControl = append(postControl, d.PostControl)
+			preIntervention = append(preIntervention, d.PreIntervention)
+			postIntervention = append(postIntervention, d.PostIntervention)
+		}
+
+		payload = append(payload, chart{
+			Question:         label,
+			PreControl:       stat.Mean(preControl, nil),
+			PostControl:      stat.Mean(postControl, nil),
+			PreIntervention:  stat.Mean(preIntervention, nil),
+			PostIntervention: stat.Mean(postIntervention, nil),
+			Beta0:            beta0,
+			Beta1:            beta1,
+			RSquared:         rSquared,
+			PValue:           pValue,
+		})
+
 	}
 
-	srv.render(w, page)
+	w.Header().Set("Content-Type", "application/json")
+	err = json.NewEncoder(w).Encode(payload)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
 }

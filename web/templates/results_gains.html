@@ -10,6 +10,12 @@
 </div>
 
 <script>
+  
+  const plotTitles = {{ .Texts.PlotTitles }};
+  const assessments = {{ .Texts.AssessmentTypes }};
+  const cohorts = {{ .Texts.CohortLabels }};
+  const empty = {{ .Texts.Empty }};
+
     const colors = [
         "#00CFFF", // Primary
         "#FF8C00", // Secondary 1
@@ -37,7 +43,7 @@
 
         if (data == null || data.length == 0) {
             var noData = document.createElement('h3');
-            noData.innerHTML = 'No data available yet';
+            noData.innerHTML = empty;
 
             chartsContainer.appendChild(noData);
         }
@@ -49,7 +55,7 @@
             }
 
           // Calculate learning gain (post - pre)
-          const gainBase = item.postBase - item.preBase;
+          const gainControl = item.postControl - item.preControl;
           const gainIntervention = item.postIntervention - item.preIntervention;
 
           // Create a section for each question
@@ -59,7 +65,7 @@
 
           // Bar chart for Pre vs. Post Scores with Learning Gain
           var title = document.createElement('h4');
-            title.innerHTML = 'Average Correct Answers by Cohort';
+            title.innerHTML = plotTitles[0];
             sectionDiv.appendChild(title);
           const prePostCanvas = document.createElement('canvas');
           prePostCanvas.id = `prepost-chart-${index}`;
@@ -69,15 +75,15 @@
           new Chart(prePostCtx, {
             type: 'bar',
             data: {
-              labels: ['Pre', 'Post'],
+              labels: assessments,
               datasets: [
                 {
-                  label: 'Base',
-                  data: [item.preBase, item.postBase],
+                  label: cohorts[0],
+                  data: [item.preControl, item.postControl],
                   backgroundColor: colors[0]
                 },
                 {
-                  label: 'Intervention',
+                  label: cohorts[1],
                   data: [item.preIntervention,  item.postIntervention],
                   backgroundColor: colors[1]
                 }
@@ -105,7 +111,7 @@
 
           // Bar chart for Learning Gains
           var title = document.createElement('h4');
-          title.innerHTML = 'Learning Gain by Cohort (Post - Pre)';
+          title.innerHTML = plotTitles[1];
             sectionDiv.appendChild(title);
           const gainCanvas = document.createElement('canvas');
           gainCanvas.id = `gain-chart-${index}`;
@@ -115,10 +121,10 @@
           new Chart(gainCtx, {
             type: 'bar',
             data: {
-              labels: ['Base', 'Intervention'],
+              labels: cohorts,
               datasets: [
                 {
-                  data: [gainBase, gainIntervention],
+                  data: [gainControl, gainIntervention],
                   backgroundColor: colors,
                   borderWidth: 1
                 }

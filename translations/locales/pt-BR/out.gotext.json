@@ -137,8 +137,8 @@
             "translation": ""
         },
         {
-            "id": "Assessment",
-            "message": "Assessment",
+            "id": "New Assessment",
+            "message": "New Assessment",
             "translation": ""
         },
         {
@@ -157,8 +157,18 @@
             "translation": ""
         },
         {
-            "id": "Save",
-            "message": "Save",
+            "id": "Create",
+            "message": "Create",
+            "translation": ""
+        },
+        {
+            "id": "Assessment",
+            "message": "Assessment",
+            "translation": ""
+        },
+        {
+            "id": "Update",
+            "message": "Update",
             "translation": ""
         },
         {
@@ -210,6 +220,11 @@
             ]
         },
         {
+            "id": "Warning: This assessment doesn't have any questions yet.\nPlease contact your instructor for assistance.",
+            "message": "Warning: This assessment doesn't have any questions yet.\nPlease contact your instructor for assistance.",
+            "translation": ""
+        },
+        {
             "id": "Add Cohort",
             "message": "Add Cohort",
             "translation": ""
@@ -230,8 +245,8 @@
             "translation": ""
         },
         {
-            "id": "e.g. Baseline",
-            "message": "e.g. Baseline",
+            "id": "e.g. Control",
+            "message": "e.g. Control",
             "translation": ""
         },
         {
@@ -250,11 +265,6 @@
             "translation": ""
         },
         {
-            "id": "Create",
-            "message": "Create",
-            "translation": ""
-        },
-        {
             "id": "Cohort: {Name}",
             "message": "Cohort: {Name}",
             "translation": "",
@@ -270,11 +280,6 @@
             ]
         },
         {
-            "id": "Update",
-            "message": "Update",
-            "translation": ""
-        },
-        {
             "id": "Demographics",
             "message": "Demographics",
             "translation": ""
@@ -287,6 +292,11 @@
         {
             "id": "Add Demographic",
             "message": "Add Demographic",
+            "translation": ""
+        },
+        {
+            "id": "No demographics have been added yet.",
+            "message": "No demographics have been added yet.",
             "translation": ""
         },
         {
@@ -307,6 +317,16 @@
         {
             "id": "e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop...",
             "message": "e.g. This experiment will compare 2 cohorts of students. One attending a traditional lecture and the other a workshop...",
+            "translation": ""
+        },
+        {
+            "id": "Control",
+            "message": "Control",
+            "translation": ""
+        },
+        {
+            "id": "Intervention",
+            "message": "Intervention",
             "translation": ""
         },
         {
@@ -365,13 +385,38 @@
             ]
         },
         {
-            "id": "Edit Settings",
-            "message": "Edit Settings",
+            "id": "Experiment {Name}",
+            "message": "Experiment {Name}",
+            "translation": "Experimento {Name}",
+            "placeholders": [
+                {
+                    "id": "Name",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "experiment.Name"
+                }
+            ]
+        },
+        {
+            "id": "Settings",
+            "message": "Settings",
             "translation": ""
         },
         {
             "id": "Participation Links",
             "message": "Participation Links",
+            "translation": ""
+        },
+        {
+            "id": "Results",
+            "message": "Results",
+            "translation": ""
+        },
+        {
+            "id": "Learning Gains",
+            "message": "Learning Gains",
             "translation": ""
         },
         {
@@ -392,6 +437,11 @@
         {
             "id": "FAQ",
             "message": "FAQ",
+            "translation": ""
+        },
+        {
+            "id": "Warning: This assessment doesn't have any questions yet.\nPlease add questions before sharing the link with participants.",
+            "message": "Warning: This assessment doesn't have any questions yet.\nPlease add questions before sharing the link with participants.",
             "translation": ""
         },
         {
@@ -485,6 +535,61 @@
             "translation": "Página Não Encontrada"
         },
         {
+            "id": "Demographics Results",
+            "message": "Demographics Results",
+            "translation": ""
+        },
+        {
+            "id": "Options",
+            "message": "Options",
+            "translation": ""
+        },
+        {
+            "id": "No data available yet",
+            "message": "No data available yet",
+            "translation": ""
+        },
+        {
+            "id": "Assessments Results",
+            "message": "Assessments Results",
+            "translation": ""
+        },
+        {
+            "id": "Gains Results",
+            "message": "Gains Results",
+            "translation": ""
+        },
+        {
+            "id": "Average Correct Answers by Cohort",
+            "message": "Average Correct Answers by Cohort",
+            "translation": ""
+        },
+        {
+            "id": "Learning Gain by Cohort (Post - Pre)",
+            "message": "Learning Gain by Cohort (Post - Pre)",
+            "translation": ""
+        },
+        {
+            "id": "Pre",
+            "message": "Pre",
+            "translation": ""
+        },
+        {
+            "id": "Post",
+            "message": "Post",
+            "translation": ""
+        },
+        {
+            "id": "No participation data available yet",
+            "message": "No participation data available yet",
+            "translation": ""
+        },
+        {
+            "id": "No comparison pairs available yet",
+            "message": "No comparison pairs available yet",
+            "translation": ""
+        },
+        {
             "id": "EduLab - Empowering Educators",
             "message": "EduLab - Empowering Educators",
             "translation": ""
@@ -525,8 +630,18 @@
             "translation": "Código Fonte"
         },
         {
+            "id": "### Introduction\nEduLab is designed to help educators incorporate scientific methods into their teaching strategies. This guide provides step-by-step instructions on using the platform to evaluate and refine your teaching methods with evidence-based insights.\n\n---\n\n### Step 1: Set Up an Experiment\n1. **Define Your Teaching Interventions**  \n   Identify the different teaching methods or approaches you want to compare (e.g., traditional lecture vs. interactive workshops).\n   \n2. **Create Cohorts**  \n   Use EduLab's cohort feature to group students who will experience specific teaching interventions. For example:\n   - **Control**: Traditional lecture method.\n   - **Intervention**: Interactive workshop approach.\n\n3. **Develop Assessments**  \n   Design a set of pre- and post-assessment questions to measure the effectiveness of each teaching method. Ensure these questions align with the learning objectives.\n\n---\n\n### Step 2: Conduct Pre-Assessment\n- Share the pre-assessment link with your cohorts before introducing any teaching intervention. \n- Encourage students to complete the assessment to establish a baseline for their knowledge.\n\n---\n\n### Step 3: Implement Your Teaching Interventions\n- Conduct your planned teaching methods for each cohort.\n- Ensure that the interventions are distinct and well-documented for accurate comparisons.\n\n---\n\n### Step 4: Conduct Post-Assessment\n- After completing the intervention, share the post-assessment link with the same cohorts.\n- Collect responses to measure the knowledge gained through each teaching method.\n\n---\n\n### Step 5: Analyze Results\n- Use EduLab's **Learning Gain Analysis** to compare pre- and post-assessment scores within and across cohorts. This allows you to:\n  - Identify which teaching method led to higher learning gains.\n  - Understand how different demographic groups responded to the interventions.\n  \n- Utilize the demographic data to tailor future teaching methods to meet the diverse needs of your students.\n\n---\n\n### Step 6: Iterate and Refine\n- Based on the results, refine your teaching strategies to optimize learning outcomes. Repeat the process to continually improve your methods.",
+            "message": "### Introduction\nEduLab is designed to help educators incorporate scientific methods into their teaching strategies. This guide provides step-by-step instructions on using the platform to evaluate and refine your teaching methods with evidence-based insights.\n\n---\n\n### Step 1: Set Up an Experiment\n1. **Define Your Teaching Interventions**  \n   Identify the different teaching methods or approaches you want to compare (e.g., traditional lecture vs. interactive workshops).\n   \n2. **Create Cohorts**  \n   Use EduLab's cohort feature to group students who will experience specific teaching interventions. For example:\n   - **Control**: Traditional lecture method.\n   - **Intervention**: Interactive workshop approach.\n\n3. **Develop Assessments**  \n   Design a set of pre- and post-assessment questions to measure the effectiveness of each teaching method. Ensure these questions align with the learning objectives.\n\n---\n\n### Step 2: Conduct Pre-Assessment\n- Share the pre-assessment link with your cohorts before introducing any teaching intervention. \n- Encourage students to complete the assessment to establish a baseline for their knowledge.\n\n---\n\n### Step 3: Implement Your Teaching Interventions\n- Conduct your planned teaching methods for each cohort.\n- Ensure that the interventions are distinct and well-documented for accurate comparisons.\n\n---\n\n### Step 4: Conduct Post-Assessment\n- After completing the intervention, share the post-assessment link with the same cohorts.\n- Collect responses to measure the knowledge gained through each teaching method.\n\n---\n\n### Step 5: Analyze Results\n- Use EduLab's **Learning Gain Analysis** to compare pre- and post-assessment scores within and across cohorts. This allows you to:\n  - Identify which teaching method led to higher learning gains.\n  - Understand how different demographic groups responded to the interventions.\n  \n- Utilize the demographic data to tailor future teaching methods to meet the diverse needs of your students.\n\n---\n\n### Step 6: Iterate and Refine\n- Based on the results, refine your teaching strategies to optimize learning outcomes. Repeat the process to continually improve your methods.",
+            "translation": ""
+        },
+        {
             "id": "Frequently Asked Questions",
             "message": "Frequently Asked Questions",
+            "translation": ""
+        },
+        {
+            "id": "### How is data privacy ensured on EduLab?  \nEduLab anonymizes all student data, ensuring no personally identifiable information is stored or shared. The platform also complies with data protection standards.\n\n---\n\n### Can I customize the assessments?  \nYes, you can create and edit multiple-choice questions to align with your specific learning objectives.\n\n---\n\n### What types of demographic data can I collect?  \nEduLab allows you to collect data on gender, age group, year of study, and major, helping you understand how different factors influence learning outcomes.\n\n---\n\n### How do I interpret the learning gain analysis?  \nLearning gains are calculated as the difference between pre- and post-assessment scores, normalized to account for the initial baseline. Higher gains indicate more effective teaching methods.\n\n---\n\n### Is the platform open-source?  \nYes, EduLab provides access to its open-source code, allowing you to customize the platform to fit your needs.\n\n---\n\n### Can I use EduLab for non-science subjects?  \nAbsolutely! While EduLab is designed with science education in mind, its features are applicable across disciplines.",
+            "message": "### How is data privacy ensured on EduLab?  \nEduLab anonymizes all student data, ensuring no personally identifiable information is stored or shared. The platform also complies with data protection standards.\n\n---\n\n### Can I customize the assessments?  \nYes, you can create and edit multiple-choice questions to align with your specific learning objectives.\n\n---\n\n### What types of demographic data can I collect?  \nEduLab allows you to collect data on gender, age group, year of study, and major, helping you understand how different factors influence learning outcomes.\n\n---\n\n### How do I interpret the learning gain analysis?  \nLearning gains are calculated as the difference between pre- and post-assessment scores, normalized to account for the initial baseline. Higher gains indicate more effective teaching methods.\n\n---\n\n### Is the platform open-source?  \nYes, EduLab provides access to its open-source code, allowing you to customize the platform to fit your needs.\n\n---\n\n### Can I use EduLab for non-science subjects?  \nAbsolutely! While EduLab is designed with science education in mind, its features are applicable across disciplines.",
             "translation": ""
         },
         {
