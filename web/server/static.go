@@ -40,9 +40,63 @@ func (srv *Server) guide(w http.ResponseWriter, r *http.Request) {
 	page.Content = struct {
 		Breadcrumbs template.HTML
 		Title       string
+		Texts       interface{}
 	}{
 		Breadcrumbs: presenter.HomeBreadcrumbs(printer),
 		Title:       title,
+		Texts: struct {
+			Guide string
+		}{
+			Guide: printer.Sprintf(`
+### Introduction
+EduLab is designed to help educators incorporate scientific methods into their teaching strategies. This guide provides step-by-step instructions on using the platform to evaluate and refine your teaching methods with evidence-based insights.
+
+---
+
+### Step 1: Set Up an Experiment
+1. **Define Your Teaching Interventions**  
+   Identify the different teaching methods or approaches you want to compare (e.g., traditional lecture vs. interactive workshops).
+   
+2. **Create Cohorts**  
+   Use EduLab's cohort feature to group students who will experience specific teaching interventions. For example:
+   - **Base**: Traditional lecture method.
+   - **Intervention**: Interactive workshop approach.
+
+3. **Develop Assessments**  
+   Design a set of pre- and post-assessment questions to measure the effectiveness of each teaching method. Ensure these questions align with the learning objectives.
+
+---
+
+### Step 2: Conduct Pre-Assessment
+- Share the pre-assessment link with your cohorts before introducing any teaching intervention. 
+- Encourage students to complete the assessment to establish a baseline for their knowledge.
+
+---
+
+### Step 3: Implement Your Teaching Interventions
+- Conduct your planned teaching methods for each cohort.
+- Ensure that the interventions are distinct and well-documented for accurate comparisons.
+
+---
+
+### Step 4: Conduct Post-Assessment
+- After completing the intervention, share the post-assessment link with the same cohorts.
+- Collect responses to measure the knowledge gained through each teaching method.
+
+---
+
+### Step 5: Analyze Results
+- Use EduLab's **Learning Gain Analysis** to compare pre- and post-assessment scores within and across cohorts. This allows you to:
+  - Identify which teaching method led to higher learning gains.
+  - Understand how different demographic groups responded to the interventions.
+  
+- Utilize the demographic data to tailor future teaching methods to meet the diverse needs of your students.
+
+---
+
+### Step 6: Iterate and Refine
+- Based on the results, refine your teaching strategies to optimize learning outcomes. Repeat the process to continually improve your methods.`),
+		},
 	}
 
 	srv.render(w, page)
@@ -57,9 +111,41 @@ func (srv *Server) faq(w http.ResponseWriter, r *http.Request) {
 	page.Content = struct {
 		Breadcrumbs template.HTML
 		Title       string
+		Texts       interface{}
 	}{
 		Breadcrumbs: presenter.HomeBreadcrumbs(printer),
 		Title:       title,
+		Texts: struct {
+			FAQ string
+		}{
+			FAQ: printer.Sprintf(`### How is data privacy ensured on EduLab?  
+EduLab anonymizes all student data, ensuring no personally identifiable information is stored or shared. The platform also complies with data protection standards.
+
+---
+
+### Can I customize the assessments?  
+Yes, you can create and edit multiple-choice questions to align with your specific learning objectives.
+
+---
+
+### What types of demographic data can I collect?  
+EduLab allows you to collect data on gender, age group, year of study, and major, helping you understand how different factors influence learning outcomes.
+
+---
+
+### How do I interpret the learning gain analysis?  
+Learning gains are calculated as the difference between pre- and post-assessment scores, normalized to account for the initial baseline. Higher gains indicate more effective teaching methods.
+
+---
+
+### Is the platform open-source?  
+Yes, EduLab provides access to its open-source code, allowing you to customize the platform to fit your needs.
+
+---
+
+### Can I use EduLab for non-science subjects?  
+Absolutely! While EduLab is designed with science education in mind, its features are applicable across disciplines.`),
+		},
 	}
 
 	srv.render(w, page)
