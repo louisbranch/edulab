@@ -114,6 +114,11 @@ func (c *Comparison) ToCSV(filePath string) error {
 func (c *Comparison) ToStatsData() []stats.Data {
 	var data []stats.Data
 	for i := 0; i < c.rows; i++ {
+		if len(c.data["pre_base"]) <= i || len(c.data["post_base"]) <= i ||
+			len(c.data["pre_intervention"]) <= i || len(c.data["post_intervention"]) <= i {
+			break
+		}
+
 		preBase := c.data["pre_base"][i]
 		postBase := c.data["post_base"][i]
 		preIntervention := c.data["pre_intervention"][i]
