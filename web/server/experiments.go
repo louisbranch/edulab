@@ -59,8 +59,8 @@ func (srv *Server) experimentsHandler(w http.ResponseWriter, r *http.Request) {
 		case "cohorts":
 			srv.cohortsHandler(w, r, experiment, segments[2:])
 			return
-		case "publish":
-			srv.publishHandler(w, r, experiment)
+		case "participate":
+			srv.participateHandler(w, r, experiment)
 			return
 		case "results":
 			srv.resultsHandler(w, r, experiment, segments[2:])
@@ -259,19 +259,27 @@ func (srv *Server) showExperiment(w http.ResponseWriter, r *http.Request, experi
 		Breadcrumbs: presenter.HomeBreadcrumbs(printer),
 		Experiment:  experiment,
 		Texts: struct {
-			EditSettings string
-			Demographics string
-			Assessments  string
-			Cohorts      string
-			Publish      string
-			Results      string
+			Experiment    string
+			Settings      string
+			Edit          string
+			Demographics  string
+			Assessments   string
+			Cohorts       string
+			Publish       string
+			Results       string
+			LearningGains string
+			ComingSoon    string
 		}{
-			EditSettings: printer.Sprintf("Edit Settings"),
-			Demographics: printer.Sprintf("Demographics"),
-			Assessments:  printer.Sprintf("Assessments"),
-			Cohorts:      printer.Sprintf("Cohorts"),
-			Publish:      printer.Sprintf("Participation Links"),
-			Results:      printer.Sprintf("Results"),
+			Experiment:    printer.Sprintf("Experiment %s", experiment.Name),
+			Settings:      printer.Sprintf("Settings"),
+			Edit:          printer.Sprintf("Edit Experiment"),
+			Demographics:  printer.Sprintf("Demographics"),
+			Assessments:   printer.Sprintf("Assessments"),
+			Cohorts:       printer.Sprintf("Cohorts"),
+			Publish:       printer.Sprintf("Participation Links"),
+			Results:       printer.Sprintf("Results"),
+			LearningGains: printer.Sprintf("Learning Gains"),
+			ComingSoon:    printer.Sprintf("Coming soon"),
 		},
 	}
 

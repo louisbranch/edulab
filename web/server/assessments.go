@@ -13,7 +13,7 @@ import (
 func (srv *Server) assessmentsHandler(w http.ResponseWriter, r *http.Request,
 	experiment edulab.Experiment, segments []string) {
 
-	log.Print("[DEBUG] web/server/assessments.go: handling assessments")
+	log.Print("[DEBUG] Routing assessments")
 
 	if len(segments) < 1 {
 		srv.listAssessments(w, r, experiment)
