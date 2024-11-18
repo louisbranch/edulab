@@ -95,6 +95,7 @@ type Database interface {
 	UpdateExperiment(Experiment) error
 	FindExperiments() ([]Experiment, error)
 	FindExperiment(publicID string) (Experiment, error)
+	DeleteExperiment(publicID string) error
 
 	CreateAssessment(*Assessment) error
 	FindAssessment(experimentID string, publicID string) (Assessment, error)

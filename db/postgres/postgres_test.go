@@ -2,9 +2,10 @@ package postgres
 
 import (
 	"testing"
+
+	"github.com/louisbranch/edulab"
 )
 
 func TestDBInterface(t *testing.T) {
-	// FIXME
-	// var _ edulab.Database = &DB{}
+	var _ edulab.Database = &DB{}
 }

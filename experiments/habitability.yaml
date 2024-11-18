@@ -1,4 +1,5 @@
 public_id: SO
+force_delete: true
 name: Habitable Zones
 description: |
   This experiment examines students' understanding of factors influencing habitable zones and exoplanet habitability.
@@ -53,7 +54,7 @@ assessments:
             is_correct: false
           - text: "Simultaneous detection of oxygen and methane in the atmosphere."
             is_correct: true
-          - text: "Detection of seasonal changes in surface vegetation."
+          - text: "Detection of seasonal changes in surface color."
             is_correct: false
   - public_id: CE
     type: post
@@ -104,7 +105,7 @@ assessments:
             is_correct: false
           - text: "Simultaneous detection of oxygen and methane in the atmosphere."
             is_correct: true
-          - text: "Detection of seasonal changes in surface vegetation."
+          - text: "Detection of seasonal changes in surface color."
             is_correct: false
 cohorts:
   - public_id: LA

@@ -79,3 +79,14 @@ func (db *DB) FindExperiment(pid string) (edulab.Experiment, error) {
 
 	return e, nil
 }
+
+func (db *DB) DeleteExperiment(pid string) error {
+	q := `DELETE FROM experiments WHERE public_id = $1`
+
+	_, err := db.Exec(q, pid)
+	if err != nil {
+		return errors.Wrap(err, "delete experiment")
+	}
+
+	return nil
+}
