@@ -81,7 +81,7 @@ func (db *DB) FindExperiment(pid string) (edulab.Experiment, error) {
 }
 
 func (db *DB) DeleteExperiment(pid string) error {
-	q := `DELETE FROM experiments WHERE public_id = $1`
+	q := `DELETE FROM experiments WHERE id = $1`
 
 	_, err := db.Exec(q, pid)
 	if err != nil {
