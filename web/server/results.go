@@ -128,11 +128,15 @@ func (srv *Server) demographicsResult(w http.ResponseWriter, r *http.Request,
 		Results:     dr,
 		Texts: struct {
 			Title        string
+			Download     string
+			ComingSoon   string
 			Options      string
 			Participants string
 			Empty        string
 		}{
 			Title:        title,
+			Download:     printer.Sprintf("Export as CSV"),
+			ComingSoon:   printer.Sprintf("Coming soon"),
 			Options:      printer.Sprintf("Options"),
 			Participants: printer.Sprintf("Participants"),
 			Empty:        printer.Sprintf("No data available yet"),
@@ -201,6 +205,8 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 	type texts struct {
 		Title           string
 		Error           string
+		Download        string
+		ComingSoon      string
 		Empty           string
 		PlotTitles      []string
 		AssessmentTypes []string
@@ -215,7 +221,9 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 		Breadcrumbs: presenter.ExperimentBreadcrumb(experiment, printer),
 		Experiment:  experiment,
 		Texts: texts{
-			Title: printer.Sprintf("Gains Results"),
+			Title:      printer.Sprintf("Gains Results"),
+			Download:   printer.Sprintf("Export as CSV"),
+			ComingSoon: printer.Sprintf("Coming soon"),
 			PlotTitles: []string{
 				printer.Sprintf("Average Correct Answers by Cohort"),
 				printer.Sprintf("Learning Gain by Cohort (Post - Pre)"),

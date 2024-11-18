@@ -220,3 +220,11 @@ footer .pure-menu.pure-menu-horizontal a.pure-menu-link {
 footer .pure-menu.pure-menu-horizontal a.pure-menu-link:hover {
     font-weight: normal;
 }
+
+/* Chart Styles */ 
+
+.chart-section canvas {
+    position: relative;
+    min-height: 200px;
+    max-height: 400px;
+}

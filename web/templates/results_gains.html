@@ -2,6 +2,10 @@
 {{ .Breadcrumbs }}
 <h2>{{ .Texts.Title }}</h2>
 
+<button id="download" class="pure-button pure-button-primary" disabled>
+    <i class="fas fa-download"></i> {{ .Texts.Download }} ({{ .Texts.ComingSoon }})
+</button>
+
 {{ if .Texts.Error }}
   <div class="pure-warning">{{ .Texts.Error }}</div>
 {{ else }}
@@ -48,7 +52,6 @@
             chartsContainer.appendChild(noData);
         }
 
-
         data.forEach((item, index) => {
             if (item.pValue == 1) {
                 return;
@@ -62,6 +65,8 @@
           const sectionDiv = document.createElement('div');
           sectionDiv.innerHTML = `<h3>${item.question}</h3>`;
           chartsContainer.appendChild(sectionDiv);
+
+          sectionDiv.classList.add('chart-section');
 
           // Bar chart for Pre vs. Post Scores with Learning Gain
           var title = document.createElement('h4');
@@ -90,6 +95,7 @@
               ]
             },
             options: {
+              maintainAspectRatio: false,
               scales: {
                 y: {
                   beginAtZero: true
@@ -152,6 +158,10 @@
               }
             }
           });
+
+          var pValue = document.createElement('p');
+          pValue.innerHTML = `p-value: ${item.pValue.toFixed(5)}`;
+          sectionDiv.appendChild(pValue);
         });
       })
       .catch(error => console.error('Error loading JSON data:', error));
