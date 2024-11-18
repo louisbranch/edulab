@@ -1,0 +1,40 @@
+{{ define "content" }}
+{{ .Breadcrumbs }}
+
+<h2>{{ .Texts.Title }}</h2>
+
+<form method="post" action="/experiments/{{ .Experiment.PublicID }}/assessments/{{ .Assessment.PublicID }}/questions/{{ .Question.ID }}" class="pure-form pure-form-stacked">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="text">{{ .Texts.Text }}</label>
+            <div class="pure-form-message-inline">{{ .Texts.TextHelp }}</div>
+            <textarea name="text" id="text" required placeholder="{{ .Texts.TextPlaceholder}}" class="pure-input-1" rows="4">{{ .Question.Text }}</textarea>
+        </div>
+        <div class="pure-control-group">
+            <label for="type">{{ .Texts.Type }}</label>
+            <select name="type" id="type" required>
+                {{ range .QuestionTypes }}
+                    <option value="{{ .Value }}" {{ if eq $.Question.Type .Value }}selected {{ end }}>{{ .Text }}</option>
+                {{ end }}
+            </select>
+        </div>
+        <div class="pure-control-group">
+            <label for="choices">{{ .Texts.Choices }}</label>
+            <div class="pure-form-message-inline">{{ .Texts.ChoicesHelp }}</div>
+        </div>
+
+        {{ range $i, $el := .Choices }}
+            <fieldset class="pure-group">
+                <textarea name="choices[]" placeholder="{{ $el }}" class="pure-input-1" rows="2">{{ index $el.Text }}</textarea>
+                <label for="correct_{{$i}}" class="pure-checkbox">
+                    <input type="checkbox" name="correct[]" id="correct_{{$i}}" value="{{ $i }}" {{ if $el.IsCorrect }} checked {{ end }}> {{ $.Texts.Correct }}
+                </label>
+            </fieldset>
+        {{ end }}
+
+    </fieldset>
+    <div class="pure-controls">
+        <button type="submit" class="pure-button pure-button-primary" disabled>{{ .Texts.Submit }} ({{ .Texts.ComingSoon }})</button>
+    </div>
+</form>
+{{ end }}

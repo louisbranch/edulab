@@ -36,19 +36,28 @@ func ExperimentBreadcrumb(e edulab.Experiment, printer *message.Printer) templat
 }
 
 func AssessmentsBreadcrumb(e edulab.Experiment, printer *message.Printer) template.HTML {
+	name := e.Name
+	if len(e.Name) > breadcrumbMaxLen {
+		name = e.Name[:breadcrumbMaxLen] + "..."
+	}
+
 	return renderBreadcrumbs([]Breadcrumb{
 		{URL: "/", Name: printer.Sprintf("Home")},
-		{URL: fmt.Sprintf("/experiments/%s", e.PublicID), Name: e.Name},
+		{URL: fmt.Sprintf("/experiments/%s", e.PublicID), Name: name},
 		{URL: fmt.Sprintf("/experiments/%s/assessments/", e.PublicID), Name: printer.Sprintf("Assessments")},
 	})
 }
 
 func AssessmentBreadcrumb(e edulab.Experiment, a edulab.Assessment, printer *message.Printer) template.HTML {
 	ap := NewAssessment(a, printer)
+	name := e.Name
+	if len(e.Name) > breadcrumbMaxLen {
+		name = e.Name[:breadcrumbMaxLen] + "..."
+	}
 
 	return renderBreadcrumbs([]Breadcrumb{
 		{URL: "/", Name: printer.Sprintf("Home")},
-		{URL: fmt.Sprintf("/experiments/%s", e.PublicID), Name: e.Name},
+		{URL: fmt.Sprintf("/experiments/%s", e.PublicID), Name: name},
 		{URL: fmt.Sprintf("/experiments/%s/assessments/", e.PublicID), Name: printer.Sprintf("Assessments")},
 		{URL: fmt.Sprintf("/experiments/%s/assessments/%s", e.PublicID, a.PublicID), Name: ap.Type()},
 	})
