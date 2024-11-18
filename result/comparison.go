@@ -51,7 +51,8 @@ func NewComparison(r *Result, assessmentQuestions []AssessmentQuestions,
 
 		scores, err := r.QuestionScore(questionID)
 		if err != nil {
-			return nil, err
+			log.Printf("[ERROR] Failed to calculate scores for question %s: %v\n", questionID, err)
+			continue
 		}
 
 		for i, cohortID := range cohorts {
