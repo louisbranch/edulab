@@ -1,0 +1,115 @@
+public_id: SO
+name: Habitable Zones
+description: |
+  This experiment examines students' understanding of factors influencing habitable zones and exoplanet habitability.
+  One cohort will receive standard lectures, while the other will engage in interactive workshops.
+assessments:
+  - public_id: RS
+    type: pre
+    questions:
+      - text: "What factors determine the boundaries of the **habitable zone** around a star?"
+        type: multiple
+        choices:
+          - text: "Distance from the star"
+            is_correct: true
+          - text: "Type of star (temperature and size)"
+            is_correct: true
+          - text: "Atmospheric composition"
+            is_correct: true
+          - text: "Orbital eccentricity"
+            is_correct: false
+          - text: "Magnetic field strength"
+            is_correct: false
+      - text: "What additional factors are necessary for a planet to support **life** as we know it? _(Select all that apply)_"
+        type: multiple
+        choices:
+          - text: "Presence of liquid water"
+            is_correct: true
+          - text: "Magnetic field"
+            is_correct: true
+          - text: "Geological activity (e.g., plate tectonics, volcanic outgassing)"
+            is_correct: true
+          - text: "Cloud coverage/albedo regulation"
+            is_correct: true
+          - text: "Stellar flares"
+            is_correct: false
+      - text: "Which of the following planets is most likely to support **life** as we know it?"
+        type: single
+        choices:
+          - text: "A gas giant within the habitable zone of a Sun-like star, with several large moons."
+            is_correct: false
+          - text: "A tidally locked planet within the habitable zone of a red dwarf star, with a thick atmosphere capable of redistributing heat and maintaining surface liquid water in the terminator zone."
+            is_correct: true
+          - text: "A planet with a dense atmosphere that blocks sunlight but maintains subsurface liquid water heated by geothermal or tidal forces."
+            is_correct: false
+          - text: "A Moon-sized planet outside the habitable zone of its star, with surface ice and volcanic activity creating pockets of subsurface liquid water."
+            is_correct: false
+      - text: "Which of the following would be the strongest evidence for **life** on an exoplanet?"
+        type: single
+        choices:
+          - text: "Detection of liquid water on the planet’s surface."
+            is_correct: false
+          - text: "High levels of carbon dioxide in the atmosphere."
+            is_correct: false
+          - text: "Simultaneous detection of oxygen and methane in the atmosphere."
+            is_correct: true
+          - text: "Detection of seasonal changes in surface vegetation."
+            is_correct: false
+  - public_id: CE
+    type: post
+    questions:
+      - text: "What factors determine the boundaries of the **habitable zone** around a star?"
+        type: multiple
+        choices:
+          - text: "Distance from the star"
+            is_correct: true
+          - text: "Type of star (temperature and size)"
+            is_correct: true
+          - text: "Atmospheric composition"
+            is_correct: true
+          - text: "Orbital eccentricity"
+            is_correct: false
+          - text: "Magnetic field strength"
+            is_correct: false
+      - text: "What additional factors are necessary for a planet to support **life** as we know it? _(Select all that apply)_"
+        type: multiple
+        choices:
+          - text: "Presence of liquid water"
+            is_correct: true
+          - text: "Magnetic field"
+            is_correct: true
+          - text: "Geological activity (e.g., plate tectonics, volcanic outgassing)"
+            is_correct: true
+          - text: "Cloud coverage/albedo regulation"
+            is_correct: true
+          - text: "Stellar flares"
+            is_correct: false
+      - text: "Which of the following planets is most likely to support **life** as we know it?"
+        type: single
+        choices:
+          - text: "A gas giant within the habitable zone of a Sun-like star, with several large moons."
+            is_correct: false
+          - text: "A tidally locked planet within the habitable zone of a red dwarf star, with a thick atmosphere capable of redistributing heat and maintaining surface liquid water in the terminator zone."
+            is_correct: true
+          - text: "A planet with a dense atmosphere that blocks sunlight but maintains subsurface liquid water heated by geothermal or tidal forces."
+            is_correct: false
+          - text: "A Moon-sized planet outside the habitable zone of its star, with surface ice and volcanic activity creating pockets of subsurface liquid water."
+            is_correct: false
+      - text: "Which of the following would be the strongest evidence for **life** on an exoplanet?"
+        type: single
+        choices:
+          - text: "Detection of liquid water on the planet’s surface."
+            is_correct: false
+          - text: "High levels of carbon dioxide in the atmosphere."
+            is_correct: false
+          - text: "Simultaneous detection of oxygen and methane in the atmosphere."
+            is_correct: true
+          - text: "Detection of seasonal changes in surface vegetation."
+            is_correct: false
+cohorts:
+  - public_id: LA
+    name: Control
+    description: Students participating in the traditional lecture format.
+  - public_id: AR
+    name: Intervention
+    description: Students participating in the interactive workshop format.

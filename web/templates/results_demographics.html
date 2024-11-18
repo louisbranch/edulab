@@ -1,6 +1,9 @@
 {{ define "content" }}
 {{ .Breadcrumbs }}
 <h2>{{ .Texts.Title }}</h2>
+<button id="download" class="pure-button pure-button-primary" disabled>
+    <i class="fas fa-download"></i> {{ .Texts.Download }} ({{ .Texts.ComingSoon }})
+</button>
 {{ range $i, $demographic := .Results.Demographics }}
     <h3>{{ $demographic.Text }}</h3>
     <div style="position: relative; height: 50vh;">
