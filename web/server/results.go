@@ -196,6 +196,7 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 
 	res, err := result.New(srv.DB, experiment.ID)
 	if err != nil {
+		log.Printf("[ERROR] Failed to create result: %v", err)
 		srv.renderError(w, r, err)
 		return
 	}
@@ -266,6 +267,7 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 
 	err = res.Load()
 	if err != nil {
+		log.Printf("[ERROR] Failed to load result: %v", err)
 		srv.renderError(w, r, err)
 		return
 	}
