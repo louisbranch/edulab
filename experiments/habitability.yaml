@@ -1,5 +1,4 @@
 public_id: SO
-force_delete: true
 name: Habitable Zones
 description: |
   This experiment examines students' understanding of factors influencing habitable zones and exoplanet habitability.
