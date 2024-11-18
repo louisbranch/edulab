@@ -97,17 +97,67 @@ func (srv *Server) showQuestion(w http.ResponseWriter, r *http.Request,
 		return
 	}
 
-	page.Title = printer.Sprintf("Question: %s", question.Text)
+	choices, err := srv.DB.FindQuestionChoices(question.AssessmentID)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	var qchoices []edulab.QuestionChoice
+	for _, choice := range choices {
+		if choice.QuestionID == question.ID {
+			qchoices = append(qchoices, choice)
+		}
+	}
+
+	page.Title = printer.Sprintf("Question: %s", question.Text[:min(len(question.Text), 20)])
 	page.Partials = []string{"question"}
 	page.Content = struct {
-		Breadcrumbs template.HTML
-		Experiment  edulab.Experiment
-		Assessment  edulab.Assessment
-		Question    edulab.Question
+		Breadcrumbs   template.HTML
+		Experiment    edulab.Experiment
+		Assessment    edulab.Assessment
+		Question      edulab.Question
+		Choices       []edulab.QuestionChoice
+		QuestionTypes []presenter.QuestionType
+		Texts         interface{}
 	}{
-		Experiment: experiment,
-		Assessment: assessment,
-		Question:   question,
+		Breadcrumbs:   presenter.AssessmentBreadcrumb(experiment, assessment, printer),
+		Experiment:    experiment,
+		Assessment:    assessment,
+		Question:      question,
+		Choices:       qchoices,
+		QuestionTypes: presenter.QuestionTypes(printer),
+		Texts: struct {
+			Title              string
+			Text               string
+			TextHelp           string
+			TextPlaceholder    string
+			Type               string
+			Choices            string
+			ChoicesHelp        string
+			ChoicePlaceholders []string
+			Correct            string
+			Submit             string
+			ComingSoon         string
+		}{
+			Title:           printer.Sprintf("Question"),
+			Text:            printer.Sprintf("Text"),
+			TextHelp:        printer.Sprintf("Markdown supported"),
+			TextPlaceholder: printer.Sprintf("e.g. What is the best explanation for the cause of Earth's seasons?"),
+			Type:            printer.Sprintf("Type"),
+			Choices:         printer.Sprintf("Choices"),
+			ChoicesHelp:     printer.Sprintf("Markdown supported. Empty choices will be ignored."),
+			ChoicePlaceholders: []string{
+				printer.Sprintf("e.g. The tilt of Earth's axis"),
+				printer.Sprintf("e.g. The distance from the Sun"),
+				printer.Sprintf("e.g. The Earth's elliptical orbit"),
+				printer.Sprintf("e.g. The Earth's rotation"),
+				printer.Sprintf("e.g. The Earth's revolution"),
+			},
+			Correct:    printer.Sprintf("Correct"),
+			Submit:     printer.Sprintf("Update"),
+			ComingSoon: printer.Sprintf("Coming soon"),
+		},
 	}
 
 	srv.render(w, page)

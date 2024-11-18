@@ -11,6 +11,7 @@ type Experiment struct {
 	Assessments     []Assessment    `yaml:"assessments"`
 	Cohorts         []Cohort        `yaml:"cohorts"`
 	BootstrapConfig BootstrapConfig `yaml:"bootstrap_config,omitempty"`
+	ForceDelete     bool            `yaml:"force_delete,omitempty"`
 }
 
 type Assessment struct {

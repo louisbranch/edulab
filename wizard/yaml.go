@@ -69,7 +69,13 @@ func create(db edulab.Database, experimentData Experiment) error {
 		return errors.Wrap(err, "could not find experiment")
 	}
 
-	if experiment.ID != "" {
+	if experimentData.PublicID != "" && experimentData.ForceDelete {
+		log.Printf("[INFO] Experiment %s already exists, deleting and recreating.\n", experimentData.PublicID)
+		err = db.DeleteExperiment(experiment.ID)
+		if err != nil {
+			return errors.Wrap(err, "could not delete experiment")
+		}
+	} else if experiment.PublicID != "" && !experimentData.ForceDelete {
 		log.Printf("[INFO] Experiment %s already exists, skipping creation.\n", experimentData.PublicID)
 		err = bootstrapParticipants(db, experimentData.BootstrapConfig, experiment)
 		if err != nil {
