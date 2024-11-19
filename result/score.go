@@ -19,6 +19,9 @@ func (r *Result) QuestionScore(questionID string) (map[string][]float64, error) 
 	scores := make(map[string][]float64)
 	for participantID, participations := range r.participation {
 		for _, participation := range participations {
+			if len(participation.Answers) == 0 {
+				continue
+			}
 			// Deserialize answers for this participation
 			var answers map[string][]string
 			if err := json.Unmarshal(participation.Answers, &answers); err != nil {

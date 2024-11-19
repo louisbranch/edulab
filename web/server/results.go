@@ -321,11 +321,6 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 	var payload []chart
 
 	for i, item := range items {
-		defer func() {
-			if r := recover(); r != nil {
-				log.Printf("[ERROR] Failed to process comparison: %v", r)
-			}
-		}()
 
 		var label string
 		if len(labels) > i {
