@@ -3,6 +3,7 @@ package result
 import (
 	"encoding/json"
 	"errors"
+	"sort"
 
 	"github.com/louisbranch/edulab"
 )
@@ -53,6 +54,12 @@ func (r *Result) QuestionScore(questionID string) (map[string][]float64, error) 
 
 			scores[cohortID] = append(scores[cohortID], score)
 		}
+	}
+
+	// Sort each slice in the map
+	for key, values := range scores {
+		sort.Float64s(values) // Sorts the slice in ascending order
+		scores[key] = values  // Update the map with the sorted slice
 	}
 	return scores, nil
 }
