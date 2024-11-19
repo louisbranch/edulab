@@ -60,7 +60,8 @@ func (db *DB) FindParticipation(experimentID, assessmentID, participantID string
 
 func (db *DB) FindParticipations(experimentID string) ([]edulab.Participation, error) {
 	query := `SELECT experiment_id, assessment_id, participant_id, answers, demographics
-	FROM participations WHERE experiment_id = ?`
+	FROM participations WHERE experiment_id = ?
+	ORDER BY assessment_id ASC, participant_id ASC`
 
 	rows, err := db.Query(query, experimentID)
 	if err != nil {
@@ -73,7 +74,8 @@ func (db *DB) FindParticipations(experimentID string) ([]edulab.Participation, e
 
 func (db *DB) FindParticipationsByParticipant(experimentID, participantID string) ([]edulab.Participation, error) {
 	query := `SELECT experiment_id, assessment_id, participant_id, answers, demographics
-	FROM participations WHERE experiment_id = ? AND participant_id = ?`
+	FROM participations WHERE experiment_id = ? AND participant_id = ?
+	ORDER BY assessment_id ASC`
 
 	rows, err := db.Query(query, experimentID, participantID)
 	if err != nil {
@@ -87,7 +89,8 @@ func (db *DB) FindParticipationsByParticipant(experimentID, participantID string
 func (db *DB) FindParticipationsByAssessment(experimentID, assessmentID string) ([]edulab.Participation, error) {
 
 	query := `SELECT experiment_id, assessment_id, participant_id, answers, demographics
-	FROM participations WHERE experiment_id = ? AND assessment_id = ?`
+	FROM participations WHERE experiment_id = ? AND assessment_id = ?
+	ORDER BY participant_id ASC;`
 
 	rows, err := db.Query(query, experimentID, assessmentID)
 	if err != nil {
