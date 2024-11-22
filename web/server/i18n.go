@@ -56,6 +56,7 @@ func (s *Server) i18n(w http.ResponseWriter, r *http.Request) (*message.Printer,
 		Website:   printer.Sprintf("EduLab"),
 		About:     printer.Sprintf("About"),
 		FAQ:       printer.Sprintf("FAQ"),
+		ToS:       printer.Sprintf("Terms"),
 		Languages: languages,
 	}
 

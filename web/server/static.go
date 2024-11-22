@@ -150,3 +150,61 @@ Absolutely! While EduLab is designed with science education in mind, its feature
 
 	srv.render(w, page)
 }
+
+func (srv *Server) tos(w http.ResponseWriter, r *http.Request) {
+	printer, page := srv.i18n(w, r)
+
+	title := printer.Sprintf("Terms of Service")
+	page.Title = title
+	page.Partials = []string{"tos"}
+	page.Content = struct {
+		Breadcrumbs template.HTML
+		Title       string
+		Texts       interface{}
+	}{
+		Breadcrumbs: presenter.HomeBreadcrumbs(printer),
+		Title:       title,
+		Texts: struct {
+			TOS string
+		}{
+			TOS: printer.Sprintf(`### 1. Purpose
+
+EduLab is a prototype platform designed for educational purposes only. It is not intended for commercial use. By using this platform, you agree to these Terms of Service.
+
+### 2. User-Generated Content
+
+* You retain ownership of any content you create or upload to EduLab.
+* EduLab does not claim ownership of user-generated content and acts solely as a tool to facilitate educational activities.
+* By using the platform, you grant EduLab the right to store and process your content as part of its educational functionality.
+
+### 3. Content Guidelines
+
+* You agree not to upload or create content that:
+  * Violates copyright, trademark, or other intellectual property rights.
+  * Contains offensive, harmful, or inappropriate material.
+  * Violates any applicable laws or regulations.
+* EduLab reserves the right to remove content that violates these guidelines without prior notice.
+
+### 4. Disclaimer of Liability
+
+* EduLab is provided "as is," without warranties of any kind, expressed or implied.
+* EduLab is not responsible for the accuracy, reliability, or legality of user-generated content.
+* The platform is not moderated, and EduLab is not liable for any damages resulting from the use of the platform or the content hosted on it.
+
+### 5. No Accounts or Personal Data
+
+* EduLab does not require user accounts or collect personal data.
+* Any data submitted is stored temporarily and used solely for educational purposes.
+
+### 6. Indemnification
+
+By using EduLab, you agree to indemnify and hold harmless the developers of EduLab from any claims or liabilities arising from your use of the platform or content you create.
+
+### 7. Updates to Terms
+
+These Terms of Service may be updated periodically. Continued use of the platform constitutes agreement to the updated terms.`),
+		},
+	}
+
+	srv.render(w, page)
+}

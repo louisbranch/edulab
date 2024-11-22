@@ -20,6 +20,7 @@ type Page struct {
 	Content   interface{}
 	About     string
 	FAQ       string
+	ToS       string
 	Languages []Language
 }
 

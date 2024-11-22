@@ -573,6 +573,13 @@
             "fuzzy": true
         },
         {
+            "id": "Terms",
+            "message": "Terms",
+            "translation": "Terms",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
             "id": "Warning: This assessment doesn't have any questions yet.\nPlease add questions before sharing the link with participants.",
             "message": "Warning: This assessment doesn't have any questions yet.\nPlease add questions before sharing the link with participants.",
             "translation": "Warning: This assessment doesn't have any questions yet.\nPlease add questions before sharing the link with participants.",
@@ -671,20 +678,34 @@
             "fuzzy": true
         },
         {
-            "id": "Question: {Text}",
-            "message": "Question: {Text}",
-            "translation": "Question: {Text}",
+            "id": "Question: {Text_20}",
+            "message": "Question: {Text_20}",
+            "translation": "Question: {Text_20}",
             "translatorComment": "Copied from source.",
             "placeholders": [
                 {
-                    "id": "Text",
+                    "id": "Text_20",
                     "string": "%[1]s",
                     "type": "string",
                     "underlyingType": "string",
                     "argNum": 1,
-                    "expr": "question.Text"
+                    "expr": "question.Text[:min(len(question.Text), 20)]"
                 }
             ],
+            "fuzzy": true
+        },
+        {
+            "id": "Question",
+            "message": "Question",
+            "translation": "Question",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Coming soon",
+            "message": "Coming soon",
+            "translation": "Coming soon",
+            "translatorComment": "Copied from source.",
             "fuzzy": true
         },
         {
@@ -705,6 +726,13 @@
             "id": "Demographics Results",
             "message": "Demographics Results",
             "translation": "Demographics Results",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Export as CSV",
+            "message": "Export as CSV",
+            "translation": "Export as CSV",
             "translatorComment": "Copied from source.",
             "fuzzy": true
         },
@@ -761,13 +789,6 @@
             "id": "Post",
             "message": "Post",
             "translation": "Post",
-            "translatorComment": "Copied from source.",
-            "fuzzy": true
-        },
-        {
-            "id": "No participation data available yet",
-            "message": "No participation data available yet",
-            "translation": "No participation data available yet",
             "translatorComment": "Copied from source.",
             "fuzzy": true
         },
@@ -859,6 +880,20 @@
             "id": "### How is data privacy ensured on EduLab?  \nEduLab anonymizes all student data, ensuring no personally identifiable information is stored or shared. The platform also complies with data protection standards.\n\n---\n\n### Can I customize the assessments?  \nYes, you can create and edit multiple-choice questions to align with your specific learning objectives.\n\n---\n\n### What types of demographic data can I collect?  \nEduLab allows you to collect data on gender, age group, year of study, and major, helping you understand how different factors influence learning outcomes.\n\n---\n\n### How do I interpret the learning gain analysis?  \nLearning gains are calculated as the difference between pre- and post-assessment scores, normalized to account for the initial baseline. Higher gains indicate more effective teaching methods.\n\n---\n\n### Is the platform open-source?  \nYes, EduLab provides access to its open-source code, allowing you to customize the platform to fit your needs.\n\n---\n\n### Can I use EduLab for non-science subjects?  \nAbsolutely! While EduLab is designed with science education in mind, its features are applicable across disciplines.",
             "message": "### How is data privacy ensured on EduLab?  \nEduLab anonymizes all student data, ensuring no personally identifiable information is stored or shared. The platform also complies with data protection standards.\n\n---\n\n### Can I customize the assessments?  \nYes, you can create and edit multiple-choice questions to align with your specific learning objectives.\n\n---\n\n### What types of demographic data can I collect?  \nEduLab allows you to collect data on gender, age group, year of study, and major, helping you understand how different factors influence learning outcomes.\n\n---\n\n### How do I interpret the learning gain analysis?  \nLearning gains are calculated as the difference between pre- and post-assessment scores, normalized to account for the initial baseline. Higher gains indicate more effective teaching methods.\n\n---\n\n### Is the platform open-source?  \nYes, EduLab provides access to its open-source code, allowing you to customize the platform to fit your needs.\n\n---\n\n### Can I use EduLab for non-science subjects?  \nAbsolutely! While EduLab is designed with science education in mind, its features are applicable across disciplines.",
             "translation": "### How is data privacy ensured on EduLab?  \nEduLab anonymizes all student data, ensuring no personally identifiable information is stored or shared. The platform also complies with data protection standards.\n\n---\n\n### Can I customize the assessments?  \nYes, you can create and edit multiple-choice questions to align with your specific learning objectives.\n\n---\n\n### What types of demographic data can I collect?  \nEduLab allows you to collect data on gender, age group, year of study, and major, helping you understand how different factors influence learning outcomes.\n\n---\n\n### How do I interpret the learning gain analysis?  \nLearning gains are calculated as the difference between pre- and post-assessment scores, normalized to account for the initial baseline. Higher gains indicate more effective teaching methods.\n\n---\n\n### Is the platform open-source?  \nYes, EduLab provides access to its open-source code, allowing you to customize the platform to fit your needs.\n\n---\n\n### Can I use EduLab for non-science subjects?  \nAbsolutely! While EduLab is designed with science education in mind, its features are applicable across disciplines.",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Terms of Service",
+            "message": "Terms of Service",
+            "translation": "Terms of Service",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "### 1. Purpose\n\nEduLab is a prototype platform designed for educational purposes only. It is not intended for commercial use. By using this platform, you agree to these Terms of Service.\n\n### 2. User-Generated Content\n\n* You retain ownership of any content you create or upload to EduLab.\n* EduLab does not claim ownership of user-generated content and acts solely as a tool to facilitate educational activities.\n* By using the platform, you grant EduLab the right to store and process your content as part of its educational functionality.\n\n### 3. Content Guidelines\n\n* You agree not to upload or create content that:\n  * Violates copyright, trademark, or other intellectual property rights.\n  * Contains offensive, harmful, or inappropriate material.\n  * Violates any applicable laws or regulations.\n* EduLab reserves the right to remove content that violates these guidelines without prior notice.\n\n### 4. Disclaimer of Liability\n\n* EduLab is provided \"as is,\" without warranties of any kind, expressed or implied.\n* EduLab is not responsible for the accuracy, reliability, or legality of user-generated content.\n* The platform is not moderated, and EduLab is not liable for any damages resulting from the use of the platform or the content hosted on it.\n\n### 5. No Accounts or Personal Data\n\n* EduLab does not require user accounts or collect personal data.\n* Any data submitted is stored temporarily and used solely for educational purposes.\n\n### 6. Indemnification\n\nBy using EduLab, you agree to indemnify and hold harmless the developers of EduLab from any claims or liabilities arising from your use of the platform or content you create.\n\n### 7. Updates to Terms\n\nThese Terms of Service may be updated periodically. Continued use of the platform constitutes agreement to the updated terms.",
+            "message": "### 1. Purpose\n\nEduLab is a prototype platform designed for educational purposes only. It is not intended for commercial use. By using this platform, you agree to these Terms of Service.\n\n### 2. User-Generated Content\n\n* You retain ownership of any content you create or upload to EduLab.\n* EduLab does not claim ownership of user-generated content and acts solely as a tool to facilitate educational activities.\n* By using the platform, you grant EduLab the right to store and process your content as part of its educational functionality.\n\n### 3. Content Guidelines\n\n* You agree not to upload or create content that:\n  * Violates copyright, trademark, or other intellectual property rights.\n  * Contains offensive, harmful, or inappropriate material.\n  * Violates any applicable laws or regulations.\n* EduLab reserves the right to remove content that violates these guidelines without prior notice.\n\n### 4. Disclaimer of Liability\n\n* EduLab is provided \"as is,\" without warranties of any kind, expressed or implied.\n* EduLab is not responsible for the accuracy, reliability, or legality of user-generated content.\n* The platform is not moderated, and EduLab is not liable for any damages resulting from the use of the platform or the content hosted on it.\n\n### 5. No Accounts or Personal Data\n\n* EduLab does not require user accounts or collect personal data.\n* Any data submitted is stored temporarily and used solely for educational purposes.\n\n### 6. Indemnification\n\nBy using EduLab, you agree to indemnify and hold harmless the developers of EduLab from any claims or liabilities arising from your use of the platform or content you create.\n\n### 7. Updates to Terms\n\nThese Terms of Service may be updated periodically. Continued use of the platform constitutes agreement to the updated terms.",
+            "translation": "### 1. Purpose\n\nEduLab is a prototype platform designed for educational purposes only. It is not intended for commercial use. By using this platform, you agree to these Terms of Service.\n\n### 2. User-Generated Content\n\n* You retain ownership of any content you create or upload to EduLab.\n* EduLab does not claim ownership of user-generated content and acts solely as a tool to facilitate educational activities.\n* By using the platform, you grant EduLab the right to store and process your content as part of its educational functionality.\n\n### 3. Content Guidelines\n\n* You agree not to upload or create content that:\n  * Violates copyright, trademark, or other intellectual property rights.\n  * Contains offensive, harmful, or inappropriate material.\n  * Violates any applicable laws or regulations.\n* EduLab reserves the right to remove content that violates these guidelines without prior notice.\n\n### 4. Disclaimer of Liability\n\n* EduLab is provided \"as is,\" without warranties of any kind, expressed or implied.\n* EduLab is not responsible for the accuracy, reliability, or legality of user-generated content.\n* The platform is not moderated, and EduLab is not liable for any damages resulting from the use of the platform or the content hosted on it.\n\n### 5. No Accounts or Personal Data\n\n* EduLab does not require user accounts or collect personal data.\n* Any data submitted is stored temporarily and used solely for educational purposes.\n\n### 6. Indemnification\n\nBy using EduLab, you agree to indemnify and hold harmless the developers of EduLab from any claims or liabilities arising from your use of the platform or content you create.\n\n### 7. Updates to Terms\n\nThese Terms of Service may be updated periodically. Continued use of the platform constitutes agreement to the updated terms.",
             "translatorComment": "Copied from source.",
             "fuzzy": true
         },

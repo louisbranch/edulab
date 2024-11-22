@@ -32,6 +32,7 @@ func (srv *Server) NewServeMux() *http.ServeMux {
 	mux.HandleFunc("/about", srv.about)
 	mux.HandleFunc("/guide", srv.guide)
 	mux.HandleFunc("/faq", srv.faq)
+	mux.HandleFunc("/tos", srv.tos)
 	mux.HandleFunc("/", srv.index)
 
 	if srv.URI != "" {
