@@ -5,6 +5,9 @@
     <i class="fas fa-download"></i> {{ .Texts.Download }} ({{ .Texts.ComingSoon }})
 </button>
 {{ range $i, $demographic := .Results.Demographics }}
+    {{ if gt $i 0 }}
+        <hr>
+    {{ end }}
     <h3>{{ $demographic.Text }}</h3>
     <div style="position: relative; height: 50vh;">
         <canvas id="demographics-{{ $i }}"></canvas>

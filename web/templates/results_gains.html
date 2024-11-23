@@ -61,6 +61,11 @@
           const gainControl = item.postControl - item.preControl;
           const gainIntervention = item.postIntervention - item.preIntervention;
 
+          if (index > 0) {
+            const hr = document.createElement('hr');
+            chartsContainer.appendChild(hr);
+          }
+
           // Create a section for each question
           const sectionDiv = document.createElement('div');
           sectionDiv.innerHTML = `<h3>${item.question}</h3>`;
