@@ -318,7 +318,6 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 			return
 		}
 
-		log.Printf("[DEBUG] Gains results for experiment %s: %v", experiment.ID, cache.payload)
 		w.Header().Set("Content-Type", "application/json")
 		w.Write(cache.payload)
 		return
@@ -458,8 +457,6 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 		participations: res.Participations(),
 		payload:        response,
 	}
-
-	log.Printf("[DEBUG] Gains results for experiment %s: %v", experiment.ID, payload)
 
 	w.Write(response)
 }
