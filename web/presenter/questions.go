@@ -10,7 +10,7 @@ import (
 
 type Question struct {
 	edulab.Question
-	Choices []edulab.QuestionChoice
+	Choices []edulab.QuestionChoice `json:"choices"`
 }
 
 type QuestionType struct {

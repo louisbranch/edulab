@@ -46,10 +46,10 @@ type Question struct {
 }
 
 type QuestionChoice struct {
-	ID         string
+	ID         string `json:"id"`
 	QuestionID string
-	Text       string
-	IsCorrect  bool
+	Text       string `json:"text"`
+	IsCorrect  bool   `json:"is_correct"`
 }
 
 type Cohort struct {
@@ -102,7 +102,7 @@ type Database interface {
 	FindAssessments(experimentID string) ([]Assessment, error)
 
 	CreateQuestion(*Question) error
-	FindQuestion(assessmentID string, publicID string) (Question, error)
+	FindQuestion(assessmentID string, id string) (Question, error)
 	FindQuestions(assessmentID string) ([]Question, error)
 
 	CreateQuestionChoice(*QuestionChoice) error

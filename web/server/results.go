@@ -149,10 +149,71 @@ func (srv *Server) demographicsResult(w http.ResponseWriter, r *http.Request,
 func (srv *Server) assessmentsResult(w http.ResponseWriter, r *http.Request,
 	experiment edulab.Experiment) {
 
+	printer, page := srv.i18n(w, r)
+
+	assessments, err := srv.DB.FindAssessments(experiment.ID)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	participations, err := srv.DB.FindParticipations(experiment.ID)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
+	var allChoices [][]edulab.QuestionChoice
+
+	aps := presenter.NewAssessments(assessments, printer)
+	for i := range aps {
+		questions, err := srv.DB.FindQuestions(assessments[i].ID)
+		if err != nil {
+			srv.renderError(w, r, err)
+			return
+		}
+
+		choices, err := srv.DB.FindQuestionChoices(assessments[i].ID)
+		if err != nil {
+			srv.renderError(w, r, err)
+			return
+		}
+
+		for _, q := range questions {
+			if q.Type == edulab.InputText {
+				continue
+			}
+
+			var cs []edulab.QuestionChoice
+			for _, c := range choices {
+				if c.QuestionID != q.ID {
+					continue
+				}
+				cs = append(cs, c)
+			}
+			allChoices = append(allChoices, cs)
+		}
+
+		aps[i].Questions = presenter.GroupQuestions(questions, choices)
+
+		for _, p := range participations {
+			if p.AssessmentID != assessments[i].ID {
+				continue
+			}
+
+		}
+	}
+
 	if r.Header.Get("Content-type") == "application/json" {
 
+		counts, err := result.CountChoicesByCohorts(srv.DB, experiment)
+		if err != nil {
+			srv.renderError(w, r, err)
+			return
+		}
+
 		w.Header().Set("Content-Type", "application/json")
-		err := json.NewEncoder(w).Encode(struct{}{})
+		err = json.NewEncoder(w).Encode(counts)
 		if err != nil {
 			srv.renderError(w, r, err)
 			return
@@ -161,30 +222,35 @@ func (srv *Server) assessmentsResult(w http.ResponseWriter, r *http.Request,
 		return
 	}
 
-	printer, page := srv.i18n(w, r)
-
 	title := printer.Sprintf("Assessments Results")
 	page.Title = title
 	page.Partials = []string{"results_assessments"}
 	page.Content = struct {
 		Breadcrumbs template.HTML
 		Experiment  edulab.Experiment
+		Assessments []presenter.Assessment
+		Choices     [][]edulab.QuestionChoice
 		Texts       interface{}
 	}{
 		Breadcrumbs: presenter.ExperimentBreadcrumb(experiment, printer),
 		Experiment:  experiment,
+		Assessments: aps,
+		Choices:     allChoices,
 		Texts: struct {
 			Title        string
 			Choices      string
 			Participants string
 			Empty        string
-			ComingSoon   string
+			CohortLabels []string
 		}{
 			Title:        title,
 			Choices:      printer.Sprintf("Choices"),
 			Participants: printer.Sprintf("Participants"),
 			Empty:        printer.Sprintf("No data available yet"),
-			ComingSoon:   printer.Sprintf("Coming soon"),
+			CohortLabels: []string{
+				printer.Sprintf("Control"),
+				printer.Sprintf("Intervention"),
+			},
 		},
 	}
 

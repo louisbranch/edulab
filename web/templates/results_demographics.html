@@ -37,7 +37,6 @@
     Chart.defaults.color = '#fff';
     ChartDataLabels.afterDraw = function(chart, args, options) {
         var sum = chart.data.datasets.map((d) => d.data.map((i) => i).reduce((p, a) => p + a, 0)).reduce((p, a) => p + a, 0);
-        window.console.log(sum);
         
         if (sum === 0) {
             // No data is present

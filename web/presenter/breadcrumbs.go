@@ -59,7 +59,7 @@ func AssessmentBreadcrumb(e edulab.Experiment, a edulab.Assessment, printer *mes
 		{URL: "/", Name: printer.Sprintf("Home")},
 		{URL: fmt.Sprintf("/experiments/%s", e.PublicID), Name: name},
 		{URL: fmt.Sprintf("/experiments/%s/assessments/", e.PublicID), Name: printer.Sprintf("Assessments")},
-		{URL: fmt.Sprintf("/experiments/%s/assessments/%s", e.PublicID, a.PublicID), Name: ap.Type()},
+		{URL: fmt.Sprintf("/experiments/%s/assessments/%s", e.PublicID, a.PublicID), Name: ap.Type},
 	})
 }
 

@@ -1,0 +1,12 @@
+- id: "1"
+  experimentid: "1"
+  publicid: "a1"
+  description: "Pre-assessment for experiment 1"
+  type: "pre"
+  questionscount: 3
+- id: "2"
+  experimentid: "1"
+  publicid: "a2"
+  description: "Post-assessment for experiment 1"
+  type: "post"
+  questionscount: 3

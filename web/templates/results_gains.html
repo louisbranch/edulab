@@ -9,7 +9,7 @@
 {{ if .Texts.Error }}
   <div class="pure-warning">{{ .Texts.Error }}</div>
 {{ else }}
-<div id="chartsContainer">
+<div id="charts-container">
     <!-- Charts will be dynamically added here -->
 </div>
 
@@ -20,18 +20,18 @@
   const cohorts = {{ .Texts.CohortLabels }};
   const empty = {{ .Texts.Empty }};
 
-    const colors = [
-        "#00CFFF", // Primary
-        "#FF8C00", // Secondary 1
-        "#FF00A6", // Secondary 2
-        "#008000", // Accent 1
-        "#800080", // Accent 2
-        "#FFD700", // Accent 3
-        "#0055FF", // Accent 4
-        "#FF4500", // Accent 5
-        "#4B0082", // Accent 6
-        "#40E0D0", // Accent 7
-    ]
+  const colors = [
+      "#00CFFF", // Primary
+      "#FF8C00", // Secondary 1
+      "#FF00A6", // Secondary 2
+      "#008000", // Accent 1
+      "#800080", // Accent 2
+      "#FFD700", // Accent 3
+      "#0055FF", // Accent 4
+      "#FF4500", // Accent 5
+      "#4B0082", // Accent 6
+      "#40E0D0", // Accent 7
+  ]
 
     Chart.defaults.backgroundColor = '#00CFFF';
     Chart.defaults.borderColor = null;
@@ -43,7 +43,7 @@
         }
     }).then(response => response.json())
       .then(data => {
-        const chartsContainer = document.getElementById('chartsContainer');
+        const chartsContainer = document.getElementById('charts-container');
 
         if (data == null || data.length == 0) {
             var noData = document.createElement('h3');
