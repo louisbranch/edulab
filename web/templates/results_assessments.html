@@ -2,19 +2,29 @@
 {{ .Breadcrumbs }}
 <h2>{{ .Texts.Title }}</h2>
 
-{{ if .Texts.ComingSoon }}
-<div class="alert alert-warning" role="alert">
-    {{ .Texts.ComingSoon }}
-</div>
-{{ else }}
+{{ range $i, $assessment := .Assessments }}
+    {{ if gt $i 0 }}
+        <hr>
+    {{ end }}
+
+    <h3>{{ $assessment.Type }}</h3>
+
+    {{ range $j, $question := $assessment.Questions }}
+        {{ if ne $question.Type "text" }}
+            <h4>{{ markdown $question.Text }}</h4>
+            <div style="position: relative; height: 50vh;">
+                <canvas id="assessment-{{ $i }}-{{ $j }}"></canvas>
+            </div>
+        {{ end }}
+    {{ end }}
+{{ end }}
 
 <script>
+
   (function(window){
 
-    return;
-
-    const labels = [];
-    const cohorts = [];
+    const cohorts = {{ .Texts.CohortLabels }};
+    const choices = {{ .Choices }};
 
     const colors = [
         "#00CFFF", // Primary
@@ -36,7 +46,6 @@
     Chart.defaults.color = '#fff';
     ChartDataLabels.afterDraw = function(chart, args, options) {
         var sum = chart.data.datasets.map((d) => d.data.map((i) => i).reduce((p, a) => p + a, 0)).reduce((p, a) => p + a, 0);
-        window.console.log(sum);
         
         if (sum === 0) {
             // No data is present
@@ -76,7 +85,15 @@
             x: {
                 stacked: true,
                 ticks: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    callback: function(value, index, ticks) {
+                        let characterLimit = 20;
+                        let label = this.getLabelForValue(value);
+                        if (label && label.length >= characterLimit) {
+                            return label.slice(0, label.length).substring(0, characterLimit -1).trim() + '...';
+                        }
+                        return label;
+                    }
                 }
             },
             y: {
@@ -109,7 +126,7 @@
         var chart = new Chart(canvases[i], {
             type: 'bar',
             data: {
-                labels: labels[i],
+                labels: choices[i].map((c) => c.text),
                 datasets: datasets
             },
             options: options
@@ -123,6 +140,9 @@
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     var data = JSON.parse(xhr.responseText);
+                    if (data === null) {
+                        return;
+                    }
                     for (var i = 0; i < data.length; i++) {
                         var chart = charts[i];
                         for (var j = 0; j < data[i].length; j++) {
@@ -144,5 +164,4 @@
     })(window);
 
 </script>
-{{ end }}
 {{ end }}

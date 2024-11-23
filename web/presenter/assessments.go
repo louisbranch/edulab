@@ -8,13 +8,14 @@ import (
 
 type Assessment struct {
 	edulab.Assessment
-	printer *message.Printer
+	Type      string     `json:"type"`
+	Questions []Question `json:"questions"`
 }
 
 func NewAssessment(a edulab.Assessment, printer *message.Printer) Assessment {
 	return Assessment{
 		Assessment: a,
-		printer:    printer,
+		Type:       AssessmentType(printer, a.Type),
 	}
 }
 
@@ -24,10 +25,6 @@ func NewAssessments(as []edulab.Assessment, printer *message.Printer) []Assessme
 		result[i] = NewAssessment(a, printer)
 	}
 	return result
-}
-
-func (a Assessment) Type() string {
-	return AssessmentType(a.printer, a.Assessment.Type)
 }
 
 func AssessmentType(printer *message.Printer, t edulab.AssessmentType) string {
