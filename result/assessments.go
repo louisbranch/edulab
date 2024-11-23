@@ -34,7 +34,7 @@ func CountChoicesByCohorts(db edulab.Database, experiment edulab.Experiment) ([]
 
 	for _, p := range participations {
 
-		if p.Answers == nil {
+		if len(p.Answers) == 0 {
 			continue
 		}
 
