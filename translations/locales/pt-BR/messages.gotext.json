@@ -2,6 +2,66 @@
     "language": "pt-BR",
     "messages": [
         {
+            "id": "Sample size too small to draw reliable conclusions. More data is needed.",
+            "message": "Sample size too small to draw reliable conclusions. More data is needed.",
+            "translation": "Tamanho da amostra muito pequeno para tirar conclusões confiáveis. Mais dados são necessários."
+        },
+        {
+            "id": "Results are marginally significant, but the small sample size limits reliability. Collect more data.",
+            "message": "Results are marginally significant, but the small sample size limits reliability. Collect more data.",
+            "translation": "Os resultados são marginalmente significativos, mas o tamanho da amostra pequeno limita a confiabilidade. Colete mais dados."
+        },
+        {
+            "id": "Statistical significance reached, but the small sample size limits confidence. Validation with more data is recommended.",
+            "message": "Statistical significance reached, but the small sample size limits confidence. Validation with more data is recommended.",
+            "translation": "Significância estatística alcançada, mas o tamanho da amostra pequeno limita a confiança. A validação com mais dados é recomendada."
+        },
+        {
+            "id": "Results are not significant. A larger sample size may help detect subtle effects.",
+            "message": "Results are not significant. A larger sample size may help detect subtle effects.",
+            "translation": "Os resultados não são significativos. Um tamanho de amostra maior pode ajudar a detectar efeitos sutis."
+        },
+        {
+            "id": "Results are marginally significant. Consider increasing sample size for validation.",
+            "message": "Results are marginally significant. Consider increasing sample size for validation.",
+            "translation": "Os resultados são marginalmente significativos. Considere aumentar o tamanho da amostra para validação."
+        },
+        {
+            "id": "Results are statistically significant, but a larger sample size would strengthen confidence.",
+            "message": "Results are statistically significant, but a larger sample size would strengthen confidence.",
+            "translation": "Os resultados são estaticamente significativos, mas um tamanho de amostra maior fortaleceria a confiança."
+        },
+        {
+            "id": "Results are not significant. More participants may improve statistical power.",
+            "message": "Results are not significant. More participants may improve statistical power.",
+            "translation": "Os resultados não são significativos. Mais participantes podem melhorar o poder estatístico."
+        },
+        {
+            "id": "Results are marginally significant. Consider more data to confirm findings.",
+            "message": "Results are marginally significant. Consider more data to confirm findings.",
+            "translation": "Os resultados são marginalmente significativos. Considere mais dados para confirmar as descobertas."
+        },
+        {
+            "id": "Results are statistically significant, supported by an adequate sample size.",
+            "message": "Results are statistically significant, supported by an adequate sample size.",
+            "translation": "Os resultados são estatisticamente significativos, suportados por um tamanho de amostra adequado."
+        },
+        {
+            "id": "Results are not significant, even with a large sample size. Effect may be too small or non-existent.",
+            "message": "Results are not significant, even with a large sample size. Effect may be too small or non-existent.",
+            "translation": "Os resultados não são significativos, mesmo com um tamanho de amostra grande. O efeito pode ser muito pequeno ou inexistente."
+        },
+        {
+            "id": "Results are marginally significant, suggesting a possible effect. Further analysis recommended.",
+            "message": "Results are marginally significant, suggesting a possible effect. Further analysis recommended.",
+            "translation": "Os resultados são marginalmente significativos, sugerindo um possível efeito. Análise adicional recomendada."
+        },
+        {
+            "id": "Results are statistically significant and supported by a large sample size, providing robust evidence.",
+            "message": "Results are statistically significant and supported by a large sample size, providing robust evidence.",
+            "translation": "Os resultados são estatisticamente significativos e suportados por um tamanho de amostra grande, fornecendo evidências robustas."
+        },
+        {
             "id": "Pre-Assessment",
             "message": "Pre-Assessment",
             "translation": "Pré-avaliação"
