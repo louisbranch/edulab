@@ -2,6 +2,90 @@
     "language": "en",
     "messages": [
         {
+            "id": "Sample size too small to draw reliable conclusions. More data is needed.",
+            "message": "Sample size too small to draw reliable conclusions. More data is needed.",
+            "translation": "Sample size too small to draw reliable conclusions. More data is needed.",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Results are marginally significant, but the small sample size limits reliability. Collect more data.",
+            "message": "Results are marginally significant, but the small sample size limits reliability. Collect more data.",
+            "translation": "Results are marginally significant, but the small sample size limits reliability. Collect more data.",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Statistical significance reached, but the small sample size limits confidence. Validation with more data is recommended.",
+            "message": "Statistical significance reached, but the small sample size limits confidence. Validation with more data is recommended.",
+            "translation": "Statistical significance reached, but the small sample size limits confidence. Validation with more data is recommended.",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Results are not significant. A larger sample size may help detect subtle effects.",
+            "message": "Results are not significant. A larger sample size may help detect subtle effects.",
+            "translation": "Results are not significant. A larger sample size may help detect subtle effects.",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Results are marginally significant. Consider increasing sample size for validation.",
+            "message": "Results are marginally significant. Consider increasing sample size for validation.",
+            "translation": "Results are marginally significant. Consider increasing sample size for validation.",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Results are statistically significant, but a larger sample size would strengthen confidence.",
+            "message": "Results are statistically significant, but a larger sample size would strengthen confidence.",
+            "translation": "Results are statistically significant, but a larger sample size would strengthen confidence.",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Results are not significant. More participants may improve statistical power.",
+            "message": "Results are not significant. More participants may improve statistical power.",
+            "translation": "Results are not significant. More participants may improve statistical power.",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Results are marginally significant. Consider more data to confirm findings.",
+            "message": "Results are marginally significant. Consider more data to confirm findings.",
+            "translation": "Results are marginally significant. Consider more data to confirm findings.",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Results are statistically significant, supported by an adequate sample size.",
+            "message": "Results are statistically significant, supported by an adequate sample size.",
+            "translation": "Results are statistically significant, supported by an adequate sample size.",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Results are not significant, even with a large sample size. Effect may be too small or non-existent.",
+            "message": "Results are not significant, even with a large sample size. Effect may be too small or non-existent.",
+            "translation": "Results are not significant, even with a large sample size. Effect may be too small or non-existent.",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Results are marginally significant, suggesting a possible effect. Further analysis recommended.",
+            "message": "Results are marginally significant, suggesting a possible effect. Further analysis recommended.",
+            "translation": "Results are marginally significant, suggesting a possible effect. Further analysis recommended.",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
+            "id": "Results are statistically significant and supported by a large sample size, providing robust evidence.",
+            "message": "Results are statistically significant and supported by a large sample size, providing robust evidence.",
+            "translation": "Results are statistically significant and supported by a large sample size, providing robust evidence.",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
             "id": "Pre-Assessment",
             "message": "Pre-Assessment",
             "translation": "Pre-Assessment",

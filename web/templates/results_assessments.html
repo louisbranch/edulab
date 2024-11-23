@@ -11,6 +11,10 @@
 
     {{ range $j, $question := $assessment.Questions }}
         {{ if ne $question.Type "text" }}
+            {{ if gt $j 0 }}
+                <hr>
+            {{ end }}
+
             <h4>{{ markdown $question.Text }}</h4>
             <div style="position: relative; height: 50vh;">
                 <canvas id="assessment-{{ $i }}-{{ $j }}"></canvas>

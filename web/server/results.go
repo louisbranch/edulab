@@ -351,6 +351,12 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 		return
 	}
 
+	participants, err := srv.DB.FindParticipants(experiment.ID)
+	if err != nil {
+		srv.renderError(w, r, err)
+		return
+	}
+
 	questions, err := srv.DB.FindQuestions(items[0][0].AssessmentID)
 	if err != nil {
 		srv.renderError(w, r, err)
@@ -382,6 +388,7 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 		Beta1            float64 `json:"beta1"`
 		RSquared         float64 `json:"rSquared"`
 		PValue           float64 `json:"pValue"`
+		Message          string  `json:"message"`
 	}
 
 	var payload []chart
@@ -433,6 +440,7 @@ func (srv *Server) gainsResult(w http.ResponseWriter, r *http.Request,
 			Beta1:            beta1,
 			RSquared:         rSquared,
 			PValue:           pValue,
+			Message:          result.EvaluateExperiment(len(participants), pValue, printer),
 		})
 
 	}
