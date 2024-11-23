@@ -162,6 +162,10 @@
           var pValue = document.createElement('p');
           pValue.innerHTML = `p-value: ${item.pValue.toFixed(10)}`;
           sectionDiv.appendChild(pValue);
+
+          var message = document.createElement('p');
+          message.innerHTML = item.message;
+          sectionDiv.appendChild(message);
         });
       })
       .catch(error => console.error('Error loading JSON data:', error));
