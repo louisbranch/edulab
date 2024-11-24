@@ -3,6 +3,7 @@ package server
 import (
 	"fmt"
 	"html/template"
+	"log"
 	"net/http"
 	"strings"
 
@@ -12,8 +13,12 @@ import (
 )
 
 func (srv *Server) experimentsHandler(w http.ResponseWriter, r *http.Request) {
+	log.Print("[DEBUG] Routing experiments")
+
 	path := r.URL.Path
-	segments := strings.Split(strings.Trim(path, "/"), "/")
+	path = strings.TrimPrefix(path, "/experiments/")
+
+	segments := strings.Split(path, "/")
 
 	pid := segments[0]
 
