@@ -14,7 +14,6 @@ type Server struct {
 	Template web.Template
 	Assets   http.Handler
 	Random   *rand.Rand
-	URI      string
 }
 
 func (srv *Server) NewServeMux() *http.ServeMux {
@@ -22,10 +21,10 @@ func (srv *Server) NewServeMux() *http.ServeMux {
 	mux := http.NewServeMux()
 
 	// Static assets
-	mux.Handle(srv.URI+"/assets/", http.StripPrefix(srv.URI+"/assets/", srv.Assets))
+	mux.Handle("/assets/", http.StripPrefix("/assets/", srv.Assets))
 
 	// Dynamic routes
-	mux.Handle("/experiments/", http.StripPrefix("/experiments/", http.HandlerFunc(srv.experimentsHandler)))
+	mux.HandleFunc("/experiments/", srv.experimentsHandler)
 	mux.HandleFunc("/demographics", srv.participateDemographics)
 	mux.HandleFunc("/assessments", srv.participateAssessments)
 
@@ -34,12 +33,6 @@ func (srv *Server) NewServeMux() *http.ServeMux {
 	mux.HandleFunc("/faq", srv.faq)
 	mux.HandleFunc("/tos", srv.tos)
 	mux.HandleFunc("/", srv.index)
-
-	if srv.URI != "" {
-		root := http.NewServeMux()
-		root.Handle(srv.URI, http.StripPrefix(srv.URI, mux))
-		return root
-	}
 
 	return mux
 }
