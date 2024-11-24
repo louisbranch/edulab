@@ -217,6 +217,6 @@ func (srv *Server) createQuestion(w http.ResponseWriter, r *http.Request,
 		}
 	}
 
-	uri := fmt.Sprintf("/experiments/%s/assessments/%s/", experiment.PublicID, assessment.PublicID)
+	uri := fmt.Sprintf("/experiments/%s/assessments/%s", experiment.PublicID, assessment.PublicID)
 	http.Redirect(w, r, uri, http.StatusFound)
 }
