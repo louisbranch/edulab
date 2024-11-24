@@ -9,17 +9,21 @@
 
     <h3>{{ $assessment.Type }}</h3>
 
-    {{ range $j, $question := $assessment.Questions }}
-        {{ if ne $question.Type "text" }}
-            {{ if gt $j 0 }}
-                <hr>
-            {{ end }}
+    {{ if $assessment.Questions }}
+        {{ range $j, $question := $assessment.Questions }}
+            {{ if ne $question.Type "text" }}
+                {{ if gt $j 0 }}
+                    <hr>
+                {{ end }}
 
-            <h4>{{ markdown $question.Text }}</h4>
-            <div style="position: relative; height: 50vh;">
-                <canvas id="assessment-{{ $i }}-{{ $j }}"></canvas>
-            </div>
+                <h4>{{ markdown $question.Text }}</h4>
+                <div style="position: relative; height: 50vh;">
+                    <canvas id="assessment-{{ $i }}-{{ $j }}"></canvas>
+                </div>
+            {{ end }}
         {{ end }}
+    {{ else }}
+        <div class="pure-warning">{{ $.Texts.Empty }}</div>
     {{ end }}
 {{ end }}
 
