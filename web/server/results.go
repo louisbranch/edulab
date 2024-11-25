@@ -2,7 +2,6 @@ package server
 
 import (
 	"encoding/json"
-	"fmt"
 	"html/template"
 	"log"
 	"math"
@@ -32,7 +31,7 @@ func (srv *Server) resultsHandler(w http.ResponseWriter, r *http.Request,
 	log.Print("[DEBUG] Routing results")
 
 	if len(segments) < 1 {
-		srv.listResults(w, r, experiment)
+		srv.renderNotFound(w, r)
 		return
 	}
 
@@ -50,14 +49,6 @@ func (srv *Server) resultsHandler(w http.ResponseWriter, r *http.Request,
 		srv.renderNotFound(w, r)
 		return
 	}
-}
-
-func (s *Server) listResults(w http.ResponseWriter, _ *http.Request,
-	experiment edulab.Experiment) {
-
-	log.Print("[DEBUG] Listing results")
-
-	fmt.Fprintf(w, "Listing results for experiment %s", experiment.ID)
 }
 
 func (srv *Server) demographicsResult(w http.ResponseWriter, r *http.Request,
