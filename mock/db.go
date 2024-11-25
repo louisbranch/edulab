@@ -1,7 +1,7 @@
 package mock
 
 import (
-	"errors"
+	"database/sql"
 	"os"
 	"path/filepath"
 
@@ -96,7 +96,7 @@ func (db *DB) FindExperiment(publicID string) (edulab.Experiment, error) {
 			return e, nil
 		}
 	}
-	return edulab.Experiment{}, errors.New("no experiment found")
+	return edulab.Experiment{}, sql.ErrNoRows
 }
 
 // UpdateExperiment updates an existing experiment
@@ -107,7 +107,7 @@ func (db *DB) UpdateExperiment(e edulab.Experiment) error {
 			return nil
 		}
 	}
-	return errors.New("no experiment found")
+	return sql.ErrNoRows
 }
 
 // DeleteExperiment deletes an existing experiment
@@ -118,7 +118,7 @@ func (db *DB) DeleteExperiment(publicID string) error {
 			return nil
 		}
 	}
-	return errors.New("no experiment found")
+	return sql.ErrNoRows
 }
 
 // CreateAssessment creates a new assessment
@@ -134,7 +134,7 @@ func (db *DB) FindAssessment(experimentID, publicID string) (edulab.Assessment, 
 			return a, nil
 		}
 	}
-	return edulab.Assessment{}, errors.New("no assessment found")
+	return edulab.Assessment{}, sql.ErrNoRows
 }
 
 // FindAssessments fetches assessments by experiment ID
@@ -162,7 +162,7 @@ func (db *DB) FindQuestion(assessmentID, id string) (edulab.Question, error) {
 		}
 	}
 
-	return edulab.Question{}, errors.New("no question found")
+	return edulab.Question{}, sql.ErrNoRows
 }
 
 // FindQuestions fetches questions by assessment ID
@@ -212,7 +212,7 @@ func (db *DB) UpdateCohort(experimentID string, c edulab.Cohort) error {
 			return nil
 		}
 	}
-	return errors.New("no cohort found")
+	return sql.ErrNoRows
 }
 
 // FindCohort fetches a cohort by public ID
@@ -222,7 +222,7 @@ func (db *DB) FindCohort(experimentID, publicID string) (edulab.Cohort, error) {
 			return c, nil
 		}
 	}
-	return edulab.Cohort{}, errors.New("no cohort found")
+	return edulab.Cohort{}, sql.ErrNoRows
 }
 
 // FindCohorts fetches cohorts by experiment ID
@@ -283,7 +283,7 @@ func (db *DB) FindParticipant(experimentID, accessToken string) (edulab.Particip
 			return p, nil
 		}
 	}
-	return edulab.Participant{}, errors.New("no participant found")
+	return edulab.Participant{}, sql.ErrNoRows
 }
 
 // FindParticipants fetches participants by experiment ID
@@ -311,7 +311,7 @@ func (db *DB) UpdateParticipation(p edulab.Participation) error {
 			return nil
 		}
 	}
-	return errors.New("no participation found")
+	return sql.ErrNoRows
 }
 
 // FindParticipation fetches a participation by public ID
@@ -321,7 +321,7 @@ func (db *DB) FindParticipation(experimentID, assessmentID, participantID string
 			return p, nil
 		}
 	}
-	return edulab.Participation{}, errors.New("no participation found")
+	return edulab.Participation{}, sql.ErrNoRows
 }
 
 // FindParticipations fetches participations by experiment ID
