@@ -17,9 +17,14 @@ func (srv *Server) questionsHandler(w http.ResponseWriter, r *http.Request,
 
 	log.Print("[DEBUG] web/server/questions.go: handling questions")
 
-	if len(segments) < 1 && r.Method == http.MethodPost {
-		srv.createQuestion(w, r, experiment, assessment)
-		return
+	if len(segments) < 1 {
+		if r.Method != http.MethodPost {
+			srv.createQuestion(w, r, experiment, assessment)
+			return
+		} else {
+			srv.renderNotFound(w, r)
+			return
+		}
 	}
 
 	pid := segments[0]
