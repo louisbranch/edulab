@@ -1,5 +1,5 @@
 # EduLab
-![Coverage](../../raw/badges/tests/coverage.svg)
+![Coverage](../../raw/badges/coverage.svg)
 
 ## Running locally
 
