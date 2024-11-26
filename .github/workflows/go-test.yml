@@ -33,7 +33,7 @@ jobs:
       run: |
         COVERAGE_PERCENT=$(go tool cover -func=coverage.out | grep total | awk '{print $3}' | sed 's/%//')
         echo $COVERAGE_PERCENT
-        printf "![Coverage](https://img.shields.io/badge/coverage-${COVERAGE_PERCENT}%25-brightgreen)" > coverage.svg
+        printf "![Coverage](https://img.shields.io/badge/coverage-%s%%25-brightgreen)" "$COVERAGE_PERCENT" > coverage.svg
 
     - name: Push coverage badge if changed
       if: github.ref == 'refs/heads/main'
