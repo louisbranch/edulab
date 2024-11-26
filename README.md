@@ -1,8 +1,9 @@
 # EduLab
+![Coverage](../../raw/badges/tests/coverage.svg)
 
 ## Running locally
 
-By default, the project runs on port `8080`: [http://localhost:8080/edulab/](http://localhost:8080/edulab/).
+By default, the project runs on port `8080`: [http://localhost:8080](http://localhost:8080).
 
 ### With Docker Compose
 ```
