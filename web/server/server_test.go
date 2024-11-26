@@ -1,7 +1,6 @@
 package server
 
 import (
-	"io"
 	"math/rand"
 	"net/http"
 	"net/http/httptest"
@@ -9,20 +8,15 @@ import (
 
 	"github.com/louisbranch/edulab"
 	"github.com/louisbranch/edulab/mock"
-	"github.com/louisbranch/edulab/web"
 )
 
 func serverTest(srv *Server, req *http.Request) *httptest.ResponseRecorder {
 	if srv == nil {
 		srv = &Server{}
 	}
-	if srv.Template == nil {
-		tpl := &mock.Template{}
 
-		tpl.RenderMethod = func(w io.Writer, page web.Page) error {
-			return nil
-		}
-		srv.Template = tpl
+	if srv.Template == nil {
+		srv.Template = &mock.Template{}
 	}
 
 	if srv.DB == nil {
@@ -54,6 +48,7 @@ func TestGetRoutes(t *testing.T) {
 		{path: "/experiments/E1/assessments/A1", statusCode: http.StatusOK},
 		{path: "/experiments/E1/assessments/A2", statusCode: http.StatusNotFound},
 		{path: "/experiments/E1/assessments/A1/preview", statusCode: http.StatusOK},
+		{path: "/experiments/E1/assessments/A1/questions/", statusCode: http.StatusNotFound},
 		{path: "/experiments/E1/assessments/A1/questions/new", statusCode: http.StatusOK},
 		{path: "/experiments/E1/assessments/A1/questions/1", statusCode: http.StatusOK},
 		{path: "/experiments/E1/assessments/A1/questions/2", statusCode: http.StatusNotFound},
@@ -131,5 +126,44 @@ func TestGetRoutes(t *testing.T) {
 				t.Errorf("expected status %d, got %d for path %s", tt.statusCode, res.Code, tt.path)
 			}
 		})
+	}
+}
+
+func TestIndex(t *testing.T) {
+	req, err := http.NewRequest("GET", "/", nil)
+	if err != nil {
+		t.Fatalf("failed to create request: %v", err)
+	}
+
+	srv := &Server{}
+
+	res := serverTest(srv, req)
+	if res.Code != http.StatusOK {
+		t.Errorf("expected status %d, got %d", http.StatusOK, res.Code)
+	}
+
+	page := srv.Template.(*mock.Template).PopPage()
+	if page.Title != "EduLab - Empowering Educators" {
+		t.Errorf("expected title EduLab - Empowering Educators, got %s", page.Title)
+	}
+
+	if page.Partials[0] != "index" {
+		t.Errorf("expected partial index, got %s", page.Partials[0])
+	}
+}
+
+func TestNewPublicID(t *testing.T) {
+	srv := &Server{
+		Random: rand.New(rand.NewSource(0)),
+	}
+
+	id1 := srv.newPublicID(3)
+	if id1 != "IID" {
+		t.Errorf("expected IID, got %s", id1)
+	}
+
+	id2 := srv.newPublicID(3, 3)
+	if id2 != "AZG-7H0" {
+		t.Errorf("expected AZG-7H0, got %s", id2)
 	}
 }
