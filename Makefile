@@ -1,4 +1,4 @@
-.PHONY: server watch translations
+.PHONY: server watch translations test
 
 # Path to your server's main file
 SERVER_PATH = cmd/server/main.go
@@ -13,3 +13,6 @@ watch:
 
 translations:
 	go generate translations/translations.go
+
+test:
+	go test ./...

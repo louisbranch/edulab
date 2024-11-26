@@ -1,23 +1,53 @@
 name: Go Test
 
 on:
-  pull_request:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: write
 
 jobs:
-  test:
+  build:
+    name: Test
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Set up Go
-        uses: actions/setup-go@v4
-        with:
-          go-version: '1.23'
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: "1.23"
 
-      - name: Run Go tests
-        run: go test ./...
+    - name: Run tests and generate coverage report
+      run: |
+        go test -coverprofile=coverage.out ./...
+        go tool cover -func=coverage.out
+        go tool cover -html=coverage.out -o coverage.html
+
+    - name: Generate coverage badge
+      run: |
+        COVERAGE_PERCENT=$(go tool cover -func=coverage.out | grep total | awk '{print $3}' | sed 's/%//')
+        echo $COVERAGE_PERCENT
+        printf "![Coverage](https://img.shields.io/badge/coverage-${COVERAGE_PERCENT}%25-brightgreen)" > coverage.svg
+
+    - name: Push coverage badge if changed
+      if: github.ref == 'refs/heads/main'
+      run: |
+        git fetch origin badges:badges
+        git checkout badges
+        mv coverage.svg ./coverage.svg
+        if git diff --quiet coverage.svg; then
+          echo "No changes to coverage badge."
+          exit 0
+        else
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add coverage.svg
+          git commit -m "Update coverage badge"
+          git push origin HEAD:refs/heads/badges
+        fi
