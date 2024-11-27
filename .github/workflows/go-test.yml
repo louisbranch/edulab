@@ -25,9 +25,7 @@ jobs:
 
     - name: Run tests and generate coverage report
       run: |
-        go test -coverprofile=coverage.out ./...
-        go tool cover -func=coverage.out
-        go tool cover -html=coverage.out -o coverage.html
+        make cover
 
     - name: Generate and push coverage badge
       if: github.ref == 'refs/heads/main'

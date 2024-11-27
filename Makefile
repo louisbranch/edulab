@@ -1,4 +1,4 @@
-.PHONY: server watch translations test
+.PHONY: server watch translations test cover
 
 # Path to your server's main file
 SERVER_PATH = cmd/server/main.go
@@ -16,3 +16,8 @@ translations:
 
 test:
 	go test ./...
+
+cover:
+	go test -v -coverpkg=./... -coverprofile=coverage.out ./...
+	go tool cover -func coverage.out
+	go tool cover -html=coverage.out -o coverage.html
