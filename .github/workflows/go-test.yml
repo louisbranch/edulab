@@ -29,18 +29,17 @@ jobs:
         go tool cover -func=coverage.out
         go tool cover -html=coverage.out -o coverage.html
 
-    - name: Generate coverage badge
-      run: |
-        COVERAGE_PERCENT=$(go tool cover -func=coverage.out | grep total | awk '{print $3}' | sed 's/%//')
-        curl -o coverage.svg "https://img.shields.io/badge/coverage-${COVERAGE_PERCENT}%25-brightgreen"
-
-    - name: Push coverage badge if changed
+    - name: Generate and push coverage badge
       if: github.ref == 'refs/heads/main'
       run: |
         git fetch origin badges:badges
-        git stash push -m "Save current uncommitted changes"
         git checkout badges
-        git stash pop || echo "No stashed changes to apply"
+        # Remove the old coverage badge if it exists
+        rm -f coverage.svg
+        # Generate the new coverage badge
+        COVERAGE_PERCENT=$(go tool cover -func=coverage.out | grep total | awk '{print $3}' | sed 's/%//')
+        curl -o coverage.svg "https://img.shields.io/badge/coverage-${COVERAGE_PERCENT}%25-brightgreen"
+        # Check if there are changes
         if git diff --quiet coverage.svg; then
           echo "No changes to coverage badge."
           exit 0
