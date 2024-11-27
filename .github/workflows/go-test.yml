@@ -38,7 +38,9 @@ jobs:
       if: github.ref == 'refs/heads/main'
       run: |
         git fetch origin badges:badges
+        git stash push -m "Save current uncommitted changes"
         git checkout badges
+        git stash pop || echo "No stashed changes to apply"
         if git diff --quiet coverage.svg; then
           echo "No changes to coverage badge."
           exit 0

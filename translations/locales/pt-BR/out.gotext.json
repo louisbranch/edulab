@@ -675,6 +675,11 @@
             "translation": "O EduLab traz experimentação **baseada em dados** para a sala de aula, capacitando você a avaliar e refinar métodos de ensino em diferentes **coortes**.\n\nAo realizar avaliações controladas antes e depois das aulas, você obtém **insights baseados em evidências** sobre como diferentes abordagens de ensino impactam os resultados de aprendizagem.\n\nCompare coortes, **meça ganhos de aprendizado** e adapte estratégias para aumentar o engajamento dos alunos—tudo com o suporte de dados educacionais em tempo real."
         },
         {
+            "id": "Read our draft paper:",
+            "message": "Read our draft paper:",
+            "translation": "Leia nosso artigo preliminar:"
+        },
+        {
             "id": "Educator's Guide",
             "message": "Educator's Guide",
             "translation": "Guia do Educador"

@@ -905,6 +905,13 @@
             "fuzzy": true
         },
         {
+            "id": "Read our draft paper:",
+            "message": "Read our draft paper:",
+            "translation": "Read our draft paper:",
+            "translatorComment": "Copied from source.",
+            "fuzzy": true
+        },
+        {
             "id": "Educator's Guide",
             "message": "Educator's Guide",
             "translation": "Educator's Guide",

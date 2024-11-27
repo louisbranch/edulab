@@ -60,6 +60,7 @@ func (srv *Server) index(w http.ResponseWriter, r *http.Request) {
 	page.Content = struct {
 		Tagline             string
 		Introduction        string
+		Paper               string
 		NewExperiment       string
 		EducatorsGuide      string
 		PreviousExperiments string
@@ -70,6 +71,7 @@ func (srv *Server) index(w http.ResponseWriter, r *http.Request) {
 By running controlled pre- and post-assessments, you gain **evidence-based insights** into how different teaching approaches impact learning outcomes.
 
 Compare cohorts, **measure learning gains**, and adapt strategies to elevate student engagement—all supported by real-time educational data.`),
+		Paper:               printer.Sprintf("Read our draft paper:"),
 		NewExperiment:       printer.Sprintf("New Experiment"),
 		EducatorsGuide:      printer.Sprintf("Educator's Guide"),
 		PreviousExperiments: printer.Sprintf("Previous Experiments"),
