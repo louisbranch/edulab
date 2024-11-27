@@ -39,23 +39,23 @@ func init() {
 }
 
 var messageKeyToIndex = map[string]int{
-	"\n### Introduction\nEduLab is designed to help educators incorporate scientific methods into their teaching strategies. This guide provides step-by-step instructions on using the platform to evaluate and refine your teaching methods with evidence-based insights.\n\n---\n\n### Step 1: Set Up an Experiment\n1. **Define Your Teaching Interventions**  \n   Identify the different teaching methods or approaches you want to compare (e.g., traditional lecture vs. interactive workshops).\n   \n2. **Create Cohorts**  \n   Use EduLab's cohort feature to group students who will experience specific teaching interventions. For example:\n   - **Control**: Traditional lecture method.\n   - **Intervention**: Interactive workshop approach.\n\n3. **Develop Assessments**  \n   Design a set of pre- and post-assessment questions to measure the effectiveness of each teaching method. Ensure these questions align with the learning objectives.\n\n---\n\n### Step 2: Conduct Pre-Assessment\n- Share the pre-assessment link with your cohorts before introducing any teaching intervention. \n- Encourage students to complete the assessment to establish a baseline for their knowledge.\n\n---\n\n### Step 3: Implement Your Teaching Interventions\n- Conduct your planned teaching methods for each cohort.\n- Ensure that the interventions are distinct and well-documented for accurate comparisons.\n\n---\n\n### Step 4: Conduct Post-Assessment\n- After completing the intervention, share the post-assessment link with the same cohorts.\n- Collect responses to measure the knowledge gained through each teaching method.\n\n---\n\n### Step 5: Analyze Results\n- Use EduLab's **Learning Gain Analysis** to compare pre- and post-assessment scores within and across cohorts. This allows you to:\n  - Identify which teaching method led to higher learning gains.\n  - Understand how different demographic groups responded to the interventions.\n  \n- Utilize the demographic data to tailor future teaching methods to meet the diverse needs of your students.\n\n---\n\n### Step 6: Iterate and Refine\n- Based on the results, refine your teaching strategies to optimize learning outcomes. Repeat the process to continually improve your methods.": 121,
-	"### 1. Purpose\n\nEduLab is a prototype platform designed for educational purposes only. It is not intended for commercial use. By using this platform, you agree to these Terms of Service.\n\n### 2. User-Generated Content\n\n* You retain ownership of any content you create or upload to EduLab.\n* EduLab does not claim ownership of user-generated content and acts solely as a tool to facilitate educational activities.\n* By using the platform, you grant EduLab the right to store and process your content as part of its educational functionality.\n\n### 3. Content Guidelines\n\n* You agree not to upload or create content that:\n  * Violates copyright, trademark, or other intellectual property rights.\n  * Contains offensive, harmful, or inappropriate material.\n  * Violates any applicable laws or regulations.\n* EduLab reserves the right to remove content that violates these guidelines without prior notice.\n\n### 4. Disclaimer of Liability\n\n* EduLab is provided \"as is,\" without warranties of any kind, expressed or implied.\n* EduLab is not responsible for the accuracy, reliability, or legality of user-generated content.\n* The platform is not moderated, and EduLab is not liable for any damages resulting from the use of the platform or the content hosted on it.\n\n### 5. No Accounts or Personal Data\n\n* EduLab does not require user accounts or collect personal data.\n* Any data submitted is stored temporarily and used solely for educational purposes.\n\n### 6. Indemnification\n\nBy using EduLab, you agree to indemnify and hold harmless the developers of EduLab from any claims or liabilities arising from your use of the platform or content you create.\n\n### 7. Updates to Terms\n\nThese Terms of Service may be updated periodically. Continued use of the platform constitutes agreement to the updated terms.":                                                                                                                                                                                                                                                                                                                                                                                              125,
-	"### How is data privacy ensured on EduLab?  \nEduLab anonymizes all student data, ensuring no personally identifiable information is stored or shared. The platform also complies with data protection standards.\n\n---\n\n### Can I customize the assessments?  \nYes, you can create and edit multiple-choice questions to align with your specific learning objectives.\n\n---\n\n### What types of demographic data can I collect?  \nEduLab allows you to collect data on gender, age group, year of study, and major, helping you understand how different factors influence learning outcomes.\n\n---\n\n### How do I interpret the learning gain analysis?  \nLearning gains are calculated as the difference between pre- and post-assessment scores, normalized to account for the initial baseline. Higher gains indicate more effective teaching methods.\n\n---\n\n### Is the platform open-source?  \nYes, EduLab provides access to its open-source code, allowing you to customize the platform to fit your needs.\n\n---\n\n### Can I use EduLab for non-science subjects?  \nAbsolutely! While EduLab is designed with science education in mind, its features are applicable across disciplines.":                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     123,
+	"\n### Introduction\nEduLab is designed to help educators incorporate scientific methods into their teaching strategies. This guide provides step-by-step instructions on using the platform to evaluate and refine your teaching methods with evidence-based insights.\n\n---\n\n### Step 1: Set Up an Experiment\n1. **Define Your Teaching Interventions**  \n   Identify the different teaching methods or approaches you want to compare (e.g., traditional lecture vs. interactive workshops).\n   \n2. **Create Cohorts**  \n   Use EduLab's cohort feature to group students who will experience specific teaching interventions. For example:\n   - **Control**: Traditional lecture method.\n   - **Intervention**: Interactive workshop approach.\n\n3. **Develop Assessments**  \n   Design a set of pre- and post-assessment questions to measure the effectiveness of each teaching method. Ensure these questions align with the learning objectives.\n\n---\n\n### Step 2: Conduct Pre-Assessment\n- Share the pre-assessment link with your cohorts before introducing any teaching intervention. \n- Encourage students to complete the assessment to establish a baseline for their knowledge.\n\n---\n\n### Step 3: Implement Your Teaching Interventions\n- Conduct your planned teaching methods for each cohort.\n- Ensure that the interventions are distinct and well-documented for accurate comparisons.\n\n---\n\n### Step 4: Conduct Post-Assessment\n- After completing the intervention, share the post-assessment link with the same cohorts.\n- Collect responses to measure the knowledge gained through each teaching method.\n\n---\n\n### Step 5: Analyze Results\n- Use EduLab's **Learning Gain Analysis** to compare pre- and post-assessment scores within and across cohorts. This allows you to:\n  - Identify which teaching method led to higher learning gains.\n  - Understand how different demographic groups responded to the interventions.\n  \n- Utilize the demographic data to tailor future teaching methods to meet the diverse needs of your students.\n\n---\n\n### Step 6: Iterate and Refine\n- Based on the results, refine your teaching strategies to optimize learning outcomes. Repeat the process to continually improve your methods.": 122,
+	"### 1. Purpose\n\nEduLab is a prototype platform designed for educational purposes only. It is not intended for commercial use. By using this platform, you agree to these Terms of Service.\n\n### 2. User-Generated Content\n\n* You retain ownership of any content you create or upload to EduLab.\n* EduLab does not claim ownership of user-generated content and acts solely as a tool to facilitate educational activities.\n* By using the platform, you grant EduLab the right to store and process your content as part of its educational functionality.\n\n### 3. Content Guidelines\n\n* You agree not to upload or create content that:\n  * Violates copyright, trademark, or other intellectual property rights.\n  * Contains offensive, harmful, or inappropriate material.\n  * Violates any applicable laws or regulations.\n* EduLab reserves the right to remove content that violates these guidelines without prior notice.\n\n### 4. Disclaimer of Liability\n\n* EduLab is provided \"as is,\" without warranties of any kind, expressed or implied.\n* EduLab is not responsible for the accuracy, reliability, or legality of user-generated content.\n* The platform is not moderated, and EduLab is not liable for any damages resulting from the use of the platform or the content hosted on it.\n\n### 5. No Accounts or Personal Data\n\n* EduLab does not require user accounts or collect personal data.\n* Any data submitted is stored temporarily and used solely for educational purposes.\n\n### 6. Indemnification\n\nBy using EduLab, you agree to indemnify and hold harmless the developers of EduLab from any claims or liabilities arising from your use of the platform or content you create.\n\n### 7. Updates to Terms\n\nThese Terms of Service may be updated periodically. Continued use of the platform constitutes agreement to the updated terms.":                                                                                                                                                                                                                                                                                                                                                                                              126,
+	"### How is data privacy ensured on EduLab?  \nEduLab anonymizes all student data, ensuring no personally identifiable information is stored or shared. The platform also complies with data protection standards.\n\n---\n\n### Can I customize the assessments?  \nYes, you can create and edit multiple-choice questions to align with your specific learning objectives.\n\n---\n\n### What types of demographic data can I collect?  \nEduLab allows you to collect data on gender, age group, year of study, and major, helping you understand how different factors influence learning outcomes.\n\n---\n\n### How do I interpret the learning gain analysis?  \nLearning gains are calculated as the difference between pre- and post-assessment scores, normalized to account for the initial baseline. Higher gains indicate more effective teaching methods.\n\n---\n\n### Is the platform open-source?  \nYes, EduLab provides access to its open-source code, allowing you to customize the platform to fit your needs.\n\n---\n\n### Can I use EduLab for non-science subjects?  \nAbsolutely! While EduLab is designed with science education in mind, its features are applicable across disciplines.":                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     124,
 	"%d days ago":                       21,
 	"%d hours ago":                      20,
 	"%d mins ago":                       19,
 	"%s - %s":                           45,
-	"18 to 20":                          133,
-	"21 to 23":                          134,
-	"24 to 26":                          135,
+	"18 to 20":                          134,
+	"21 to 23":                          135,
+	"24 to 26":                          136,
 	"About":                             79,
 	"Actions":                           27,
 	"Add Assessment":                    28,
 	"Add Cohort":                        47,
 	"Add Demographic":                   58,
 	"Add Question":                      40,
-	"Age Group":                         131,
+	"Age Group":                         132,
 	"Assessment":                        38,
 	"Assessments":                       16,
 	"Assessments Results":               105,
@@ -74,37 +74,37 @@ var messageKeyToIndex = map[string]int{
 	"Demographics":                      56,
 	"Demographics Results":              101,
 	"Description":                       34,
-	"Earth & Environmental Sciences":    145,
+	"Earth & Environmental Sciences":    146,
 	"Edit":                              30,
 	"Edit Experiment":                   71,
 	"Edit Experiment: %s":               70,
 	"EduLab":                            78,
 	"EduLab - Empowering Educators":     112,
 	"EduLab brings **data-driven** experimentation into the classroom, empowering you to evaluate and refine teaching methods across distinct **cohorts**.\n\nBy running controlled pre- and post-assessments, you gain **evidence-based insights** into how different teaching approaches impact learning outcomes.\n\nCompare cohorts, **measure learning gains**, and adapt strategies to elevate student engagement—all supported by real-time educational data.": 114,
-	"Educator's Guide": 115,
+	"Educator's Guide": 116,
 	"Empowering Educators Through Evidence-Based Insights": 113,
-	"Engineering":                147,
+	"Engineering":                148,
 	"Experiment %s":              73,
 	"Experiment: %s":             72,
 	"Experiments":                66,
 	"Export as CSV":              102,
 	"FAQ":                        80,
-	"Female":                     128,
-	"Frequently Asked Questions": 122,
+	"Female":                     129,
+	"Frequently Asked Questions": 123,
 	"Gains Results":              106,
-	"Gender":                     126,
+	"Gender":                     127,
 	"Home":                       15,
-	"If you would like to contribute to the project, for example, adding more translations, get in touch:": 119,
+	"If you would like to contribute to the project, for example, adding more translations, get in touch:": 120,
 	"Internal Server Error":                99,
 	"Intervention":                         65,
 	"Learning Gain by Cohort (Post - Pre)": 108,
 	"Learning Gains":                       77,
 	"Less than one min ago":                18,
-	"Life Sciences":                        144,
-	"Male":                                 127,
+	"Life Sciences":                        145,
+	"Male":                                 128,
 	"Markdown supported":                   86,
 	"Markdown supported. Empty choices will be ignored.": 89,
-	"Mathematics & Computer Science":                     146,
+	"Mathematics & Computer Science":                     147,
 	"Multiple Choice":                                    23,
 	"Name":                                               48,
 	"New Assessment":                                     33,
@@ -119,28 +119,29 @@ var messageKeyToIndex = map[string]int{
 	"No data available yet":                              104,
 	"No demographics have been added yet.":               59,
 	"No questions yet":                                   41,
-	"Non-binary":                                         129,
+	"Non-binary":                                         130,
 	"Not visible to participants.":                       52,
 	"Optional. Markdown supported.":                      35,
 	"Optional. Not visible to participants.":             54,
 	"Options":                                            103,
-	"Other":                                              148,
+	"Other":                                              149,
 	"Page Not Found":                                     100,
 	"Participants":                                       67,
 	"Participation Links":                                75,
-	"Physical Sciences":                                  143,
+	"Physical Sciences":                                  144,
 	"Post":                                               110,
 	"Post-Assessment":                                    13,
 	"Pre":                                                109,
 	"Pre-Assessment":                                     12,
-	"Prefer not to say":                                  130,
+	"Prefer not to say":                                  131,
 	"Preview":                                            31,
 	"Preview Assessment":                                 42,
-	"Previous Experiments":                               116,
+	"Previous Experiments":                               117,
 	"Question":                                           97,
 	"Question: %s":                                       96,
 	"Questions":                                          26,
-	"References":                                         117,
+	"Read our draft paper:":                              115,
+	"References":                                         118,
 	"Results":                                            76,
 	"Results are marginally significant, but the small sample size limits reliability. Collect more data.":   1,
 	"Results are marginally significant, suggesting a possible effect. Further analysis recommended.":        10,
@@ -152,30 +153,30 @@ var messageKeyToIndex = map[string]int{
 	"Results are statistically significant and supported by a large sample size, providing robust evidence.": 11,
 	"Results are statistically significant, but a larger sample size would strengthen confidence.":           5,
 	"Results are statistically significant, supported by an adequate sample size.":                           8,
-	"STEM Major": 142,
+	"STEM Major": 143,
 	"Sample size too small to draw reliable conclusions. More data is needed.": 0,
 	"Settings":      74,
 	"Single Choice": 22,
-	"Source Code":   120,
+	"Source Code":   121,
 	"Statistical significance reached, but the small sample size limits confidence. Validation with more data is recommended.": 2,
 	"Submit":                       43,
 	"Terms":                        81,
-	"Terms of Service":             124,
+	"Terms of Service":             125,
 	"Text":                         24,
 	"Thank you for participating!": 83,
-	"This project was created as part of the course, Physical Science in Contemporary Society, at the University of Toronto with the intention of being a free resource for educators.": 118,
+	"This project was created as part of the course, Physical Science in Contemporary Society, at the University of Toronto with the intention of being a free resource for educators.": 119,
 	"Type":                    25,
-	"Under 18":                132,
+	"Under 18":                133,
 	"Unknown Assessment Type": 14,
 	"Update":                  39,
 	"Warning: This assessment doesn't have any questions yet.\nPlease add questions before sharing the link with participants.": 82,
 	"Warning: This assessment doesn't have any questions yet.\nPlease contact your instructor for assistance.":                  46,
-	"Year 1":        137,
-	"Year 2":        138,
-	"Year 3":        139,
-	"Year 4":        140,
-	"Year 5+":       141,
-	"Year of Study": 136,
+	"Year 1":        138,
+	"Year 2":        139,
+	"Year 3":        140,
+	"Year 4":        141,
+	"Year 5+":       142,
+	"Year of Study": 137,
 	"Your participation has been successfully recorded.\n\nYou can now close this page.": 84,
 	"e.g. Cohort attending lecture-based instruction":                                    53,
 	"e.g. Control":         51,
@@ -190,7 +191,7 @@ var messageKeyToIndex = map[string]int{
 	"e.g. What is the best explanation for the cause of Earth's seasons?":                                                      87,
 }
 
-var enIndex = []uint32{ // 150 elements
+var enIndex = []uint32{ // 151 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000049, 0x000000ae, 0x00000127,
 	0x00000179, 0x000001cd, 0x0000022a, 0x00000278,
@@ -224,19 +225,19 @@ var enIndex = []uint32{ // 150 elements
 	0x00000bb3, 0x00000bc9, 0x00000bdd, 0x00000beb,
 	0x00000c0d, 0x00000c32, 0x00000c36, 0x00000c3b,
 	0x00000c5d, 0x00000c7b, 0x00000cb0, 0x00000e6e,
-	0x00000e7f, 0x00000e94, 0x00000e9f, 0x00000f51,
-	0x00000fb6, 0x00000fc2, 0x00001840, 0x0000185b,
-	0x00001cd6, 0x00001ce7, 0x000023ee, 0x000023f5,
+	0x00000e84, 0x00000e95, 0x00000eaa, 0x00000eb5,
+	0x00000f67, 0x00000fcc, 0x00000fd8, 0x00001856,
+	0x00001871, 0x00001cec, 0x00001cfd, 0x00002404,
 	// Entry 80 - 9F
-	0x000023fa, 0x00002401, 0x0000240c, 0x0000241e,
-	0x00002428, 0x00002431, 0x0000243a, 0x00002443,
-	0x0000244c, 0x0000245a, 0x00002461, 0x00002468,
-	0x0000246f, 0x00002476, 0x0000247e, 0x00002489,
-	0x0000249b, 0x000024a9, 0x000024c8, 0x000024e7,
-	0x000024f3, 0x000024f9,
-} // Size: 624 bytes
+	0x0000240b, 0x00002410, 0x00002417, 0x00002422,
+	0x00002434, 0x0000243e, 0x00002447, 0x00002450,
+	0x00002459, 0x00002462, 0x00002470, 0x00002477,
+	0x0000247e, 0x00002485, 0x0000248c, 0x00002494,
+	0x0000249f, 0x000024b1, 0x000024bf, 0x000024de,
+	0x000024fd, 0x00002509, 0x0000250f,
+} // Size: 628 bytes
 
-const enData string = "" + // Size: 9465 bytes
+const enData string = "" + // Size: 9487 bytes
 	"\x02Sample size too small to draw reliable conclusions. More data is nee" +
 	"ded.\x02Results are marginally significant, but the small sample size li" +
 	"mits reliability. Collect more data.\x02Statistical significance reached" +
@@ -293,96 +294,96 @@ const enData string = "" + // Size: 9465 bytes
 	"assessments, you gain **evidence-based insights** into how different tea" +
 	"ching approaches impact learning outcomes.\x0a\x0aCompare cohorts, **mea" +
 	"sure learning gains**, and adapt strategies to elevate student engagemen" +
-	"t—all supported by real-time educational data.\x02Educator's Guide\x02Pr" +
-	"evious Experiments\x02References\x02This project was created as part of " +
-	"the course, Physical Science in Contemporary Society, at the University " +
-	"of Toronto with the intention of being a free resource for educators." +
-	"\x02If you would like to contribute to the project, for example, adding " +
-	"more translations, get in touch:\x02Source Code\x04\x01\x0a\x00\xf8\x10" +
-	"\x02### Introduction\x0aEduLab is designed to help educators incorporate" +
-	" scientific methods into their teaching strategies. This guide provides " +
-	"step-by-step instructions on using the platform to evaluate and refine y" +
-	"our teaching methods with evidence-based insights.\x0a\x0a---\x0a\x0a###" +
-	" Step 1: Set Up an Experiment\x0a1. **Define Your Teaching Interventions" +
-	"**  \x0a   Identify the different teaching methods or approaches you wan" +
-	"t to compare (e.g., traditional lecture vs. interactive workshops).\x0a " +
-	"  \x0a2. **Create Cohorts**  \x0a   Use EduLab's cohort feature to group" +
-	" students who will experience specific teaching interventions. For examp" +
-	"le:\x0a   - **Control**: Traditional lecture method.\x0a   - **Intervent" +
-	"ion**: Interactive workshop approach.\x0a\x0a3. **Develop Assessments** " +
-	" \x0a   Design a set of pre- and post-assessment questions to measure th" +
-	"e effectiveness of each teaching method. Ensure these questions align wi" +
-	"th the learning objectives.\x0a\x0a---\x0a\x0a### Step 2: Conduct Pre-As" +
-	"sessment\x0a- Share the pre-assessment link with your cohorts before int" +
-	"roducing any teaching intervention. \x0a- Encourage students to complete" +
-	" the assessment to establish a baseline for their knowledge.\x0a\x0a---" +
-	"\x0a\x0a### Step 3: Implement Your Teaching Interventions\x0a- Conduct y" +
-	"our planned teaching methods for each cohort.\x0a- Ensure that the inter" +
-	"ventions are distinct and well-documented for accurate comparisons.\x0a" +
-	"\x0a---\x0a\x0a### Step 4: Conduct Post-Assessment\x0a- After completing" +
-	" the intervention, share the post-assessment link with the same cohorts." +
-	"\x0a- Collect responses to measure the knowledge gained through each tea" +
-	"ching method.\x0a\x0a---\x0a\x0a### Step 5: Analyze Results\x0a- Use Edu" +
-	"Lab's **Learning Gain Analysis** to compare pre- and post-assessment sco" +
-	"res within and across cohorts. This allows you to:\x0a  - Identify which" +
-	" teaching method led to higher learning gains.\x0a  - Understand how dif" +
-	"ferent demographic groups responded to the interventions.\x0a  \x0a- Uti" +
-	"lize the demographic data to tailor future teaching methods to meet the " +
-	"diverse needs of your students.\x0a\x0a---\x0a\x0a### Step 6: Iterate an" +
-	"d Refine\x0a- Based on the results, refine your teaching strategies to o" +
-	"ptimize learning outcomes. Repeat the process to continually improve you" +
-	"r methods.\x02Frequently Asked Questions\x02### How is data privacy ensu" +
-	"red on EduLab?  \x0aEduLab anonymizes all student data, ensuring no pers" +
-	"onally identifiable information is stored or shared. The platform also c" +
-	"omplies with data protection standards.\x0a\x0a---\x0a\x0a### Can I cust" +
-	"omize the assessments?  \x0aYes, you can create and edit multiple-choice" +
-	" questions to align with your specific learning objectives.\x0a\x0a---" +
-	"\x0a\x0a### What types of demographic data can I collect?  \x0aEduLab al" +
-	"lows you to collect data on gender, age group, year of study, and major," +
-	" helping you understand how different factors influence learning outcome" +
-	"s.\x0a\x0a---\x0a\x0a### How do I interpret the learning gain analysis? " +
-	" \x0aLearning gains are calculated as the difference between pre- and po" +
-	"st-assessment scores, normalized to account for the initial baseline. Hi" +
-	"gher gains indicate more effective teaching methods.\x0a\x0a---\x0a\x0a#" +
-	"## Is the platform open-source?  \x0aYes, EduLab provides access to its " +
-	"open-source code, allowing you to customize the platform to fit your nee" +
-	"ds.\x0a\x0a---\x0a\x0a### Can I use EduLab for non-science subjects?  " +
-	"\x0aAbsolutely! While EduLab is designed with science education in mind," +
-	" its features are applicable across disciplines.\x02Terms of Service\x02" +
-	"### 1. Purpose\x0a\x0aEduLab is a prototype platform designed for educat" +
-	"ional purposes only. It is not intended for commercial use. By using thi" +
-	"s platform, you agree to these Terms of Service.\x0a\x0a### 2. User-Gene" +
-	"rated Content\x0a\x0a* You retain ownership of any content you create or" +
-	" upload to EduLab.\x0a* EduLab does not claim ownership of user-generate" +
-	"d content and acts solely as a tool to facilitate educational activities" +
-	".\x0a* By using the platform, you grant EduLab the right to store and pr" +
-	"ocess your content as part of its educational functionality.\x0a\x0a### " +
-	"3. Content Guidelines\x0a\x0a* You agree not to upload or create content" +
-	" that:\x0a  * Violates copyright, trademark, or other intellectual prope" +
-	"rty rights.\x0a  * Contains offensive, harmful, or inappropriate materia" +
-	"l.\x0a  * Violates any applicable laws or regulations.\x0a* EduLab reser" +
-	"ves the right to remove content that violates these guidelines without p" +
-	"rior notice.\x0a\x0a### 4. Disclaimer of Liability\x0a\x0a* EduLab is pr" +
-	"ovided \x22as is,\x22 without warranties of any kind, expressed or impli" +
-	"ed.\x0a* EduLab is not responsible for the accuracy, reliability, or leg" +
-	"ality of user-generated content.\x0a* The platform is not moderated, and" +
-	" EduLab is not liable for any damages resulting from the use of the plat" +
-	"form or the content hosted on it.\x0a\x0a### 5. No Accounts or Personal " +
-	"Data\x0a\x0a* EduLab does not require user accounts or collect personal " +
-	"data.\x0a* Any data submitted is stored temporarily and used solely for " +
-	"educational purposes.\x0a\x0a### 6. Indemnification\x0a\x0aBy using EduL" +
-	"ab, you agree to indemnify and hold harmless the developers of EduLab fr" +
-	"om any claims or liabilities arising from your use of the platform or co" +
-	"ntent you create.\x0a\x0a### 7. Updates to Terms\x0a\x0aThese Terms of S" +
-	"ervice may be updated periodically. Continued use of the platform consti" +
-	"tutes agreement to the updated terms.\x02Gender\x02Male\x02Female\x02Non" +
-	"-binary\x02Prefer not to say\x02Age Group\x02Under 18\x0218 to 20\x0221 " +
-	"to 23\x0224 to 26\x02Year of Study\x02Year 1\x02Year 2\x02Year 3\x02Year" +
-	" 4\x02Year 5+\x02STEM Major\x02Physical Sciences\x02Life Sciences\x02Ear" +
-	"th & Environmental Sciences\x02Mathematics & Computer Science\x02Enginee" +
-	"ring\x02Other"
+	"t—all supported by real-time educational data.\x02Read our draft paper:" +
+	"\x02Educator's Guide\x02Previous Experiments\x02References\x02This proje" +
+	"ct was created as part of the course, Physical Science in Contemporary S" +
+	"ociety, at the University of Toronto with the intention of being a free " +
+	"resource for educators.\x02If you would like to contribute to the projec" +
+	"t, for example, adding more translations, get in touch:\x02Source Code" +
+	"\x04\x01\x0a\x00\xf8\x10\x02### Introduction\x0aEduLab is designed to he" +
+	"lp educators incorporate scientific methods into their teaching strategi" +
+	"es. This guide provides step-by-step instructions on using the platform " +
+	"to evaluate and refine your teaching methods with evidence-based insight" +
+	"s.\x0a\x0a---\x0a\x0a### Step 1: Set Up an Experiment\x0a1. **Define You" +
+	"r Teaching Interventions**  \x0a   Identify the different teaching metho" +
+	"ds or approaches you want to compare (e.g., traditional lecture vs. inte" +
+	"ractive workshops).\x0a   \x0a2. **Create Cohorts**  \x0a   Use EduLab's" +
+	" cohort feature to group students who will experience specific teaching " +
+	"interventions. For example:\x0a   - **Control**: Traditional lecture met" +
+	"hod.\x0a   - **Intervention**: Interactive workshop approach.\x0a\x0a3. " +
+	"**Develop Assessments**  \x0a   Design a set of pre- and post-assessment" +
+	" questions to measure the effectiveness of each teaching method. Ensure " +
+	"these questions align with the learning objectives.\x0a\x0a---\x0a\x0a##" +
+	"# Step 2: Conduct Pre-Assessment\x0a- Share the pre-assessment link with" +
+	" your cohorts before introducing any teaching intervention. \x0a- Encour" +
+	"age students to complete the assessment to establish a baseline for thei" +
+	"r knowledge.\x0a\x0a---\x0a\x0a### Step 3: Implement Your Teaching Inter" +
+	"ventions\x0a- Conduct your planned teaching methods for each cohort.\x0a" +
+	"- Ensure that the interventions are distinct and well-documented for acc" +
+	"urate comparisons.\x0a\x0a---\x0a\x0a### Step 4: Conduct Post-Assessment" +
+	"\x0a- After completing the intervention, share the post-assessment link " +
+	"with the same cohorts.\x0a- Collect responses to measure the knowledge g" +
+	"ained through each teaching method.\x0a\x0a---\x0a\x0a### Step 5: Analyz" +
+	"e Results\x0a- Use EduLab's **Learning Gain Analysis** to compare pre- a" +
+	"nd post-assessment scores within and across cohorts. This allows you to:" +
+	"\x0a  - Identify which teaching method led to higher learning gains.\x0a" +
+	"  - Understand how different demographic groups responded to the interve" +
+	"ntions.\x0a  \x0a- Utilize the demographic data to tailor future teachin" +
+	"g methods to meet the diverse needs of your students.\x0a\x0a---\x0a\x0a" +
+	"### Step 6: Iterate and Refine\x0a- Based on the results, refine your te" +
+	"aching strategies to optimize learning outcomes. Repeat the process to c" +
+	"ontinually improve your methods.\x02Frequently Asked Questions\x02### Ho" +
+	"w is data privacy ensured on EduLab?  \x0aEduLab anonymizes all student " +
+	"data, ensuring no personally identifiable information is stored or share" +
+	"d. The platform also complies with data protection standards.\x0a\x0a---" +
+	"\x0a\x0a### Can I customize the assessments?  \x0aYes, you can create an" +
+	"d edit multiple-choice questions to align with your specific learning ob" +
+	"jectives.\x0a\x0a---\x0a\x0a### What types of demographic data can I col" +
+	"lect?  \x0aEduLab allows you to collect data on gender, age group, year " +
+	"of study, and major, helping you understand how different factors influe" +
+	"nce learning outcomes.\x0a\x0a---\x0a\x0a### How do I interpret the lear" +
+	"ning gain analysis?  \x0aLearning gains are calculated as the difference" +
+	" between pre- and post-assessment scores, normalized to account for the " +
+	"initial baseline. Higher gains indicate more effective teaching methods." +
+	"\x0a\x0a---\x0a\x0a### Is the platform open-source?  \x0aYes, EduLab pro" +
+	"vides access to its open-source code, allowing you to customize the plat" +
+	"form to fit your needs.\x0a\x0a---\x0a\x0a### Can I use EduLab for non-s" +
+	"cience subjects?  \x0aAbsolutely! While EduLab is designed with science " +
+	"education in mind, its features are applicable across disciplines.\x02Te" +
+	"rms of Service\x02### 1. Purpose\x0a\x0aEduLab is a prototype platform d" +
+	"esigned for educational purposes only. It is not intended for commercial" +
+	" use. By using this platform, you agree to these Terms of Service.\x0a" +
+	"\x0a### 2. User-Generated Content\x0a\x0a* You retain ownership of any c" +
+	"ontent you create or upload to EduLab.\x0a* EduLab does not claim owners" +
+	"hip of user-generated content and acts solely as a tool to facilitate ed" +
+	"ucational activities.\x0a* By using the platform, you grant EduLab the r" +
+	"ight to store and process your content as part of its educational functi" +
+	"onality.\x0a\x0a### 3. Content Guidelines\x0a\x0a* You agree not to uplo" +
+	"ad or create content that:\x0a  * Violates copyright, trademark, or othe" +
+	"r intellectual property rights.\x0a  * Contains offensive, harmful, or i" +
+	"nappropriate material.\x0a  * Violates any applicable laws or regulation" +
+	"s.\x0a* EduLab reserves the right to remove content that violates these " +
+	"guidelines without prior notice.\x0a\x0a### 4. Disclaimer of Liability" +
+	"\x0a\x0a* EduLab is provided \x22as is,\x22 without warranties of any ki" +
+	"nd, expressed or implied.\x0a* EduLab is not responsible for the accurac" +
+	"y, reliability, or legality of user-generated content.\x0a* The platform" +
+	" is not moderated, and EduLab is not liable for any damages resulting fr" +
+	"om the use of the platform or the content hosted on it.\x0a\x0a### 5. No" +
+	" Accounts or Personal Data\x0a\x0a* EduLab does not require user account" +
+	"s or collect personal data.\x0a* Any data submitted is stored temporaril" +
+	"y and used solely for educational purposes.\x0a\x0a### 6. Indemnificatio" +
+	"n\x0a\x0aBy using EduLab, you agree to indemnify and hold harmless the d" +
+	"evelopers of EduLab from any claims or liabilities arising from your use" +
+	" of the platform or content you create.\x0a\x0a### 7. Updates to Terms" +
+	"\x0a\x0aThese Terms of Service may be updated periodically. Continued us" +
+	"e of the platform constitutes agreement to the updated terms.\x02Gender" +
+	"\x02Male\x02Female\x02Non-binary\x02Prefer not to say\x02Age Group\x02Un" +
+	"der 18\x0218 to 20\x0221 to 23\x0224 to 26\x02Year of Study\x02Year 1" +
+	"\x02Year 2\x02Year 3\x02Year 4\x02Year 5+\x02STEM Major\x02Physical Scie" +
+	"nces\x02Life Sciences\x02Earth & Environmental Sciences\x02Mathematics &" +
+	" Computer Science\x02Engineering\x02Other"
 
-var pt_BRIndex = []uint32{ // 150 elements
+var pt_BRIndex = []uint32{ // 151 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000063, 0x000000e1, 0x0000016c,
 	0x000001d6, 0x00000241, 0x000002ad, 0x0000030d,
@@ -416,19 +417,19 @@ var pt_BRIndex = []uint32{ // 150 elements
 	0x00000da1, 0x00000dbf, 0x00000ddb, 0x00000df1,
 	0x00000e19, 0x00000e47, 0x00000e4c, 0x00000e51,
 	0x00000e7e, 0x00000e9e, 0x00000ede, 0x000010e9,
-	0x000010fa, 0x00001112, 0x0000111f, 0x000011d2,
-	0x0000123f, 0x0000124d, 0x00001bd1, 0x00001be6,
-	0x00002160, 0x00002173, 0x00002967, 0x0000296f,
+	0x00001107, 0x00001118, 0x00001130, 0x0000113d,
+	0x000011f0, 0x0000125d, 0x0000126b, 0x00001bef,
+	0x00001c04, 0x0000217e, 0x00002191, 0x00002985,
 	// Entry 80 - 9F
-	0x00002979, 0x00002982, 0x00002990, 0x000029a3,
-	0x000029b1, 0x000029c2, 0x000029cf, 0x000029dc,
-	0x000029e9, 0x000029f7, 0x000029fd, 0x00002a03,
-	0x00002a09, 0x00002a0f, 0x00002a16, 0x00002a21,
-	0x00002a34, 0x00002a4a, 0x00002a6a, 0x00002a91,
-	0x00002a9c, 0x00002aa2,
-} // Size: 624 bytes
+	0x0000298d, 0x00002997, 0x000029a0, 0x000029ae,
+	0x000029c1, 0x000029cf, 0x000029e0, 0x000029ed,
+	0x000029fa, 0x00002a07, 0x00002a15, 0x00002a1b,
+	0x00002a21, 0x00002a27, 0x00002a2d, 0x00002a34,
+	0x00002a3f, 0x00002a52, 0x00002a68, 0x00002a88,
+	0x00002aaf, 0x00002aba, 0x00002ac0,
+} // Size: 628 bytes
 
-const pt_BRData string = "" + // Size: 10914 bytes
+const pt_BRData string = "" + // Size: 10944 bytes
 	"\x02Tamanho da amostra muito pequeno para tirar conclusões confiáveis. M" +
 	"ais dados são necessários.\x02Os resultados são marginalmente significat" +
 	"ivos, mas o tamanho da amostra pequeno limita a confiabilidade. Colete m" +
@@ -492,102 +493,102 @@ const pt_BRData string = "" + // Size: 10914 bytes
 	"sobre como diferentes abordagens de ensino impactam os resultados de apr" +
 	"endizagem.\x0a\x0aCompare coortes, **meça ganhos de aprendizado** e adap" +
 	"te estratégias para aumentar o engajamento dos alunos—tudo com o suporte" +
-	" de dados educacionais em tempo real.\x02Guia do Educador\x02Experimento" +
-	"s Anteriores\x02Referências\x02Este projeto foi criado como parte do cur" +
-	"so Ciência Física na Sociedade Contemporânea, na Universidade de Toronto" +
-	", com a intenção de ser um recurso gratuito para educadores.\x02Se você " +
-	"gostaria de contribuir para o projeto, por exemplo, adicionando mais tra" +
-	"duções, entre em contato:\x02Código Fonte\x04\x01\x0a\x00\xfe\x12\x02###" +
-	" Introdução\x0aO EduLab foi projetado para ajudar educadores a incorpora" +
-	"r métodos científicos em suas estratégias de ensino. Este guia fornece i" +
-	"nstruções passo a passo sobre como usar a plataforma para avaliar e refi" +
-	"nar seus métodos de ensino com insights baseados em evidências.\x0a\x0a-" +
-	"--\x0a\x0a### Etapa 1: Configurar um Experimento\x0a1. **Defina Suas Int" +
-	"ervenções de Ensino**  \x0a   Identifique os diferentes métodos ou abord" +
-	"agens de ensino que você deseja comparar (ex.: aula tradicional vs. work" +
-	"shops interativos).\x0a\x0a2. **Crie Coortes**  \x0a   Use o recurso de " +
-	"coortes do EduLab para agrupar estudantes que experimentarão intervençõe" +
-	"s de ensino específicas. Por exemplo:\x0a   - **Controle**: Método de au" +
-	"la tradicional.\x0a   - **Intervenção**: Abordagem de workshop interativ" +
-	"o.\x0a\x0a3. **Desenvolva Avaliações**  \x0a   Projete um conjunto de pe" +
-	"rguntas de pré e pós-avaliação para medir a eficácia de cada método de e" +
-	"nsino. Certifique-se de que essas perguntas estejam alinhadas com os obj" +
-	"etivos de aprendizagem.\x0a\x0a---\x0a\x0a### Etapa 2: Realizar a Pré-Av" +
-	"aliação\x0a- Compartilhe o link da pré-avaliação com suas coortes antes " +
-	"de introduzir qualquer intervenção de ensino. \x0a- Incentive os estudan" +
-	"tes a completar a avaliação para estabelecer uma linha de base de conhec" +
-	"imento.\x0a\x0a---\x0a\x0a### Etapa 3: Implemente Suas Intervenções de E" +
-	"nsino\x0a- Conduza os métodos de ensino planejados para cada coorte.\x0a" +
-	"- Certifique-se de que as intervenções sejam distintas e bem documentada" +
-	"s para comparações precisas.\x0a\x0a---\x0a\x0a### Etapa 4: Realizar a P" +
-	"ós-Avaliação\x0a- Após concluir a intervenção, compartilhe o link da pó" +
-	"s-avaliação com as mesmas coortes.\x0a- Colete respostas para medir o co" +
-	"nhecimento adquirido por meio de cada método de ensino.\x0a\x0a---\x0a" +
-	"\x0a### Etapa 5: Analisar os Resultados\x0a- Use a **Análise de Ganho de" +
-	" Aprendizado** do EduLab para comparar os resultados das pré e pós-avali" +
-	"ações dentro e entre coortes. Isso permite que você:\x0a  - Identifique " +
-	"qual método de ensino gerou maiores ganhos de aprendizado.\x0a  - Compre" +
-	"enda como diferentes grupos demográficos responderam às intervenções." +
-	"\x0a  \x0a- Utilize os dados demográficos para adaptar futuros métodos d" +
-	"e ensino às diversas necessidades de seus estudantes.\x0a\x0a---\x0a\x0a" +
-	"### Etapa 6: Iterar e Refinar\x0a- Com base nos resultados, refine suas " +
-	"estratégias de ensino para otimizar os resultados de aprendizagem. Repit" +
-	"a o processo para melhorar continuamente seus métodos.\x02Perguntas Freq" +
-	"uentes\x02### Como a privacidade dos dados é garantida no EduLab?  \x0aO" +
-	" EduLab anonimiza todos os dados dos estudantes, garantindo que nenhuma " +
-	"informação pessoalmente identificável seja armazenada ou compartilhada. " +
-	"A plataforma também está em conformidade com os padrões de proteção de d" +
-	"ados.\x0a\x0a---\x0a\x0a### Posso personalizar as avaliações?  \x0aSim, " +
-	"você pode criar e editar perguntas de múltipla escolha para alinhá-las a" +
-	"os seus objetivos específicos de aprendizado.\x0a\x0a---\x0a\x0a### Que " +
-	"tipos de dados demográficos posso coletar?  \x0aO EduLab permite a colet" +
-	"a de dados como gênero, faixa etária, ano de estudo e área de formação, " +
-	"ajudando você a entender como diferentes fatores influenciam os resultad" +
-	"os de aprendizado.\x0a\x0a---\x0a\x0a### Como interpreto a análise de ga" +
-	"nho de aprendizado?  \x0aOs ganhos de aprendizado são calculados como a " +
-	"diferença entre as pontuações de pré e pós-avaliação, normalizados para " +
-	"levar em conta a linha de base inicial. Ganhos mais altos indicam método" +
-	"s de ensino mais eficazes.\x0a\x0a---\x0a\x0a### A plataforma é de códig" +
-	"o aberto?  \x0aSim, o EduLab oferece acesso ao seu código aberto, permit" +
-	"indo que você personalize a plataforma de acordo com suas necessidades." +
-	"\x0a\x0a---\x0a\x0a### Posso usar o EduLab para disciplinas não relacion" +
-	"adas às ciências?  \x0aCom certeza! Embora o EduLab seja projetado com f" +
-	"oco na educação científica, seus recursos são aplicáveis a outras discip" +
-	"linas.\x02Termos de Serviço\x02### 1. Finalidade\x0a\x0aO EduLab é um pr" +
-	"otótipo desenvolvido exclusivamente para fins educacionais. Ele não poss" +
-	"ui fins comerciais. Ao utilizar esta plataforma, você concorda com estes" +
-	" Termos de Uso.\x0a\x0a### 2. Conteúdo Gerado pelo Usuário\x0a\x0a* Você" +
-	" mantém a propriedade de qualquer conteúdo que criar ou enviar ao EduLab" +
-	".\x0a\x0a* O EduLab não reivindica a propriedade do conteúdo gerado pelo" +
-	"s usuários e atua apenas como uma ferramenta para facilitar atividades e" +
-	"ducacionais.\x0a\x0a* Ao usar a plataforma, você concede ao EduLab o dir" +
-	"eito de armazenar e processar seu conteúdo como parte de suas funcionali" +
-	"dades educacionais.\x0a\x0a### 3. Diretrizes de Conteúdo\x0a\x0a* Você c" +
-	"oncorda em não enviar ou criar conteúdo que:\x0a\x0a* Viole direitos aut" +
-	"orais, marcas registradas ou outros direitos de propriedade intelectual." +
-	"\x0a\x0a* Contenha material ofensivo, prejudicial ou inadequado.\x0a\x0a" +
-	"* Viole quaisquer leis ou regulamentos aplicáveis.\x0a\x0a* O EduLab res" +
-	"erva-se o direito de remover conteúdos que violem essas diretrizes sem a" +
-	"viso prévio.\x0a\x0a### 4. Isenção de Responsabilidade\x0a\x0a* O EduLab" +
-	" é fornecido \x22como está\x22, sem garantias de qualquer tipo, expressa" +
-	"s ou implícitas.\x0a\x0a* O EduLab não se responsabiliza pela precisão, " +
-	"confiabilidade ou legalidade do conteúdo gerado pelos usuários.\x0a\x0a*" +
-	" A plataforma não é moderada, e o EduLab não se responsabiliza por quais" +
-	"quer danos decorrentes do uso da plataforma ou do conteúdo hospedado nel" +
-	"a.\x0a\x0a### 5. Sem Contas ou Dados Pessoais\x0a\x0a* O EduLab não exig" +
-	"e contas de usuário nem coleta dados pessoais.\x0a\x0a* Quaisquer dados " +
-	"enviados são armazenados temporariamente e usados exclusivamente para fi" +
-	"ns educacionais.\x0a\x0a### 6. Indenização\x0a\x0aAo usar o EduLab, você" +
-	" concorda em indenizar e isentar os desenvolvedores do EduLab de quaisqu" +
-	"er reivindicações ou responsabilidades decorrentes do uso da plataforma " +
-	"ou do conteúdo que você criar.\x0a\x0a### 7. Atualizações nos Termos\x0a" +
-	"\x0aEstes Termos de Uso podem ser atualizados periodicamente. O uso cont" +
-	"ínuo da plataforma constitui concordância com os termos atualizados." +
-	"\x02Gênero\x02Masculino\x02Feminino\x02Não binário\x02Prefiro não dizer" +
-	"\x02Faixa Etária\x02Menor de 18 anos\x0218 a 20 anos\x0221 a 23 anos\x02" +
-	"24 a 26 anos\x02Ano de Estudo\x02Ano 1\x02Ano 2\x02Ano 3\x02Ano 4\x02Ano" +
-	" 5+\x02Curso STEM\x02Ciências Físicas\x02Ciências Biológicas\x02Ciências" +
-	" da Terra e Ambientais\x02Matemática e Ciência da Computação\x02Engenhar" +
-	"ia\x02Outro"
+	" de dados educacionais em tempo real.\x02Leia nosso artigo preliminar:" +
+	"\x02Guia do Educador\x02Experimentos Anteriores\x02Referências\x02Este p" +
+	"rojeto foi criado como parte do curso Ciência Física na Sociedade Contem" +
+	"porânea, na Universidade de Toronto, com a intenção de ser um recurso gr" +
+	"atuito para educadores.\x02Se você gostaria de contribuir para o projeto" +
+	", por exemplo, adicionando mais traduções, entre em contato:\x02Código F" +
+	"onte\x04\x01\x0a\x00\xfe\x12\x02### Introdução\x0aO EduLab foi projetado" +
+	" para ajudar educadores a incorporar métodos científicos em suas estraté" +
+	"gias de ensino. Este guia fornece instruções passo a passo sobre como us" +
+	"ar a plataforma para avaliar e refinar seus métodos de ensino com insigh" +
+	"ts baseados em evidências.\x0a\x0a---\x0a\x0a### Etapa 1: Configurar um " +
+	"Experimento\x0a1. **Defina Suas Intervenções de Ensino**  \x0a   Identif" +
+	"ique os diferentes métodos ou abordagens de ensino que você deseja compa" +
+	"rar (ex.: aula tradicional vs. workshops interativos).\x0a\x0a2. **Crie " +
+	"Coortes**  \x0a   Use o recurso de coortes do EduLab para agrupar estuda" +
+	"ntes que experimentarão intervenções de ensino específicas. Por exemplo:" +
+	"\x0a   - **Controle**: Método de aula tradicional.\x0a   - **Intervenção" +
+	"**: Abordagem de workshop interativo.\x0a\x0a3. **Desenvolva Avaliações*" +
+	"*  \x0a   Projete um conjunto de perguntas de pré e pós-avaliação para m" +
+	"edir a eficácia de cada método de ensino. Certifique-se de que essas per" +
+	"guntas estejam alinhadas com os objetivos de aprendizagem.\x0a\x0a---" +
+	"\x0a\x0a### Etapa 2: Realizar a Pré-Avaliação\x0a- Compartilhe o link da" +
+	" pré-avaliação com suas coortes antes de introduzir qualquer intervenção" +
+	" de ensino. \x0a- Incentive os estudantes a completar a avaliação para e" +
+	"stabelecer uma linha de base de conhecimento.\x0a\x0a---\x0a\x0a### Etap" +
+	"a 3: Implemente Suas Intervenções de Ensino\x0a- Conduza os métodos de e" +
+	"nsino planejados para cada coorte.\x0a- Certifique-se de que as interven" +
+	"ções sejam distintas e bem documentadas para comparações precisas.\x0a" +
+	"\x0a---\x0a\x0a### Etapa 4: Realizar a Pós-Avaliação\x0a- Após concluir " +
+	"a intervenção, compartilhe o link da pós-avaliação com as mesmas coortes" +
+	".\x0a- Colete respostas para medir o conhecimento adquirido por meio de " +
+	"cada método de ensino.\x0a\x0a---\x0a\x0a### Etapa 5: Analisar os Result" +
+	"ados\x0a- Use a **Análise de Ganho de Aprendizado** do EduLab para compa" +
+	"rar os resultados das pré e pós-avaliações dentro e entre coortes. Isso " +
+	"permite que você:\x0a  - Identifique qual método de ensino gerou maiores" +
+	" ganhos de aprendizado.\x0a  - Compreenda como diferentes grupos demográ" +
+	"ficos responderam às intervenções.\x0a  \x0a- Utilize os dados demográfi" +
+	"cos para adaptar futuros métodos de ensino às diversas necessidades de s" +
+	"eus estudantes.\x0a\x0a---\x0a\x0a### Etapa 6: Iterar e Refinar\x0a- Com" +
+	" base nos resultados, refine suas estratégias de ensino para otimizar os" +
+	" resultados de aprendizagem. Repita o processo para melhorar continuamen" +
+	"te seus métodos.\x02Perguntas Frequentes\x02### Como a privacidade dos d" +
+	"ados é garantida no EduLab?  \x0aO EduLab anonimiza todos os dados dos e" +
+	"studantes, garantindo que nenhuma informação pessoalmente identificável " +
+	"seja armazenada ou compartilhada. A plataforma também está em conformida" +
+	"de com os padrões de proteção de dados.\x0a\x0a---\x0a\x0a### Posso pers" +
+	"onalizar as avaliações?  \x0aSim, você pode criar e editar perguntas de " +
+	"múltipla escolha para alinhá-las aos seus objetivos específicos de apren" +
+	"dizado.\x0a\x0a---\x0a\x0a### Que tipos de dados demográficos posso cole" +
+	"tar?  \x0aO EduLab permite a coleta de dados como gênero, faixa etária, " +
+	"ano de estudo e área de formação, ajudando você a entender como diferent" +
+	"es fatores influenciam os resultados de aprendizado.\x0a\x0a---\x0a\x0a#" +
+	"## Como interpreto a análise de ganho de aprendizado?  \x0aOs ganhos de " +
+	"aprendizado são calculados como a diferença entre as pontuações de pré e" +
+	" pós-avaliação, normalizados para levar em conta a linha de base inicial" +
+	". Ganhos mais altos indicam métodos de ensino mais eficazes.\x0a\x0a---" +
+	"\x0a\x0a### A plataforma é de código aberto?  \x0aSim, o EduLab oferece " +
+	"acesso ao seu código aberto, permitindo que você personalize a plataform" +
+	"a de acordo com suas necessidades.\x0a\x0a---\x0a\x0a### Posso usar o Ed" +
+	"uLab para disciplinas não relacionadas às ciências?  \x0aCom certeza! Em" +
+	"bora o EduLab seja projetado com foco na educação científica, seus recur" +
+	"sos são aplicáveis a outras disciplinas.\x02Termos de Serviço\x02### 1. " +
+	"Finalidade\x0a\x0aO EduLab é um protótipo desenvolvido exclusivamente pa" +
+	"ra fins educacionais. Ele não possui fins comerciais. Ao utilizar esta p" +
+	"lataforma, você concorda com estes Termos de Uso.\x0a\x0a### 2. Conteúdo" +
+	" Gerado pelo Usuário\x0a\x0a* Você mantém a propriedade de qualquer cont" +
+	"eúdo que criar ou enviar ao EduLab.\x0a\x0a* O EduLab não reivindica a p" +
+	"ropriedade do conteúdo gerado pelos usuários e atua apenas como uma ferr" +
+	"amenta para facilitar atividades educacionais.\x0a\x0a* Ao usar a plataf" +
+	"orma, você concede ao EduLab o direito de armazenar e processar seu cont" +
+	"eúdo como parte de suas funcionalidades educacionais.\x0a\x0a### 3. Dire" +
+	"trizes de Conteúdo\x0a\x0a* Você concorda em não enviar ou criar conteúd" +
+	"o que:\x0a\x0a* Viole direitos autorais, marcas registradas ou outros di" +
+	"reitos de propriedade intelectual.\x0a\x0a* Contenha material ofensivo, " +
+	"prejudicial ou inadequado.\x0a\x0a* Viole quaisquer leis ou regulamentos" +
+	" aplicáveis.\x0a\x0a* O EduLab reserva-se o direito de remover conteúdos" +
+	" que violem essas diretrizes sem aviso prévio.\x0a\x0a### 4. Isenção de " +
+	"Responsabilidade\x0a\x0a* O EduLab é fornecido \x22como está\x22, sem ga" +
+	"rantias de qualquer tipo, expressas ou implícitas.\x0a\x0a* O EduLab não" +
+	" se responsabiliza pela precisão, confiabilidade ou legalidade do conteú" +
+	"do gerado pelos usuários.\x0a\x0a* A plataforma não é moderada, e o EduL" +
+	"ab não se responsabiliza por quaisquer danos decorrentes do uso da plata" +
+	"forma ou do conteúdo hospedado nela.\x0a\x0a### 5. Sem Contas ou Dados P" +
+	"essoais\x0a\x0a* O EduLab não exige contas de usuário nem coleta dados p" +
+	"essoais.\x0a\x0a* Quaisquer dados enviados são armazenados temporariamen" +
+	"te e usados exclusivamente para fins educacionais.\x0a\x0a### 6. Indeniz" +
+	"ação\x0a\x0aAo usar o EduLab, você concorda em indenizar e isentar os de" +
+	"senvolvedores do EduLab de quaisquer reivindicações ou responsabilidades" +
+	" decorrentes do uso da plataforma ou do conteúdo que você criar.\x0a\x0a" +
+	"### 7. Atualizações nos Termos\x0a\x0aEstes Termos de Uso podem ser atua" +
+	"lizados periodicamente. O uso contínuo da plataforma constitui concordân" +
+	"cia com os termos atualizados.\x02Gênero\x02Masculino\x02Feminino\x02Não" +
+	" binário\x02Prefiro não dizer\x02Faixa Etária\x02Menor de 18 anos\x0218 " +
+	"a 20 anos\x0221 a 23 anos\x0224 a 26 anos\x02Ano de Estudo\x02Ano 1\x02A" +
+	"no 2\x02Ano 3\x02Ano 4\x02Ano 5+\x02Curso STEM\x02Ciências Físicas\x02Ci" +
+	"ências Biológicas\x02Ciências da Terra e Ambientais\x02Matemática e Ciê" +
+	"ncia da Computação\x02Engenharia\x02Outro"
 
-	// Total table size 21627 bytes (21KiB); checksum: AC403EE5
+	// Total table size 21687 bytes (21KiB); checksum: 60D2D4BA
